@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 4969428835485593973}
   - component: {fileID: 8738966805127812589}
   - component: {fileID: 7472118257715723413}
+  - component: {fileID: 5385607533295452281}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -692,7 +693,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 245, y: 320}
+  m_SizeDelta: {x: 225, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6610975043187666639
 CanvasRenderer:
@@ -820,3 +821,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   previousParent: {fileID: 0}
+--- !u!225 &5385607533295452281
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9198363437581952728}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

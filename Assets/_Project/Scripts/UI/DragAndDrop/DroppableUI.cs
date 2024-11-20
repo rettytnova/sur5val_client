@@ -24,25 +24,79 @@ public class DropableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPo
 
     public void OnDrop(PointerEventData eventData)
     {
-        // 현재 슬롯에 이미 아이템이 있는지 확인
-        if (transform.childCount > 0)
+        if (eventData.pointerDrag != null)
         {
-            // 슬롯에 이미 있는 아이템
-            Transform existingItem = transform.GetChild(0);         
+            // Card(Script)를 가져옴 이미지 숫자를 알기 위함
+            Card cardScript = eventData.pointerDrag.GetComponent<Card>();
+            DraggableUI draggableUI = eventData.pointerDrag.GetComponent<DraggableUI>();
 
-            // 기존 아이템의 부모를 드래그된 아이템의 원래 부모로 설정
-            existingItem.SetParent(eventData.pointerDrag.transform.parent);            
-            existingItem.transform.localPosition = Vector3.zero;
+            // 드랍 했을때 카테고리가 있는 경우
+            if (cardScript != null)
+            {
+                // Card(Script)에서 Rcode를 가져옴
+                string rcode = cardScript.cardData.rcode;
 
-            // 드래그된 아이템의 부모를 현재 슬롯으로 설정
-            eventData.pointerDrag.transform.SetParent(transform);
-            eventData.pointerDrag.transform.localPosition = Vector3.zero;
-        }
-        else
-        {
-            // 슬롯이 비어 있으면 드래그된 아이템만 추가
-            eventData.pointerDrag.transform.SetParent(transform);
-            eventData.pointerDrag.transform.localPosition = Vector3.zero;
+                // Rcode에서 "CAD" 뒤의 숫자를 추출
+                string parentCategory = "";
+                if (rcode.StartsWith("CAD"))
+                {                    
+                    int rcodeNumber = int.Parse(rcode.Substring(3));
+
+                    if (rcodeNumber >= 1 && rcodeNumber <= 12)
+                    {
+                        parentCategory = "Skill";// 스킬
+                    }
+                    else if (rcodeNumber >= 13 && rcodeNumber <= 20)
+                    {
+                        parentCategory = "Slots";// 무기 및 장비
+                    }
+                    else if (rcodeNumber >= 21 && rcodeNumber <= 23)
+                    {
+                        parentCategory = "Expendables";// 소모품
+                    }
+                }
+
+                // 카테고리가 맞는지 확인
+                if (transform.parent.name == parentCategory || transform.parent.name == "GameObject")
+                {
+                    // 드랍할 슬롯에 이미 아이템이 있는지 확인
+                    if (transform.childCount > 0)
+                    {
+                        // 슬롯에 이미 있는 아이템
+                        Transform existingItem = transform.GetChild(0);
+
+                        // 드랍 위치 아이템의 부모를 드래그 아이템의 부모로 설정 후 이동
+                        existingItem.SetParent(eventData.pointerDrag.transform.parent);
+                        existingItem.transform.localPosition = Vector3.zero;
+
+                        // 드래그된 아이템의 부모를 드랍 위치 슬롯으로 설정 후 이동
+                        eventData.pointerDrag.transform.SetParent(transform);
+                        eventData.pointerDrag.transform.localPosition = Vector3.zero;
+                    }
+                    else
+                    {
+                        // 슬롯이 비어 있으면 부모 설정 후 이동
+                        eventData.pointerDrag.transform.SetParent(transform);
+                        eventData.pointerDrag.transform.localPosition = Vector3.zero;
+                    }
+                }
+                else // 카테고리가 맞지 않는 경우
+                {
+                    // 드래그된 아이템을 원래 위치로 복원
+                    eventData.pointerDrag.transform.SetParent(draggableUI.previousParent);
+                    eventData.pointerDrag.transform.localPosition = Vector3.zero;
+                }
+            }
+            else // 드랍 했을때 카테고리가 없는 경우
+            {
+                if (draggableUI != null)
+                {
+                    // 드래그된 아이템을 원래 위치로 복원
+                    eventData.pointerDrag.transform.SetParent(draggableUI.previousParent);
+                    eventData.pointerDrag.transform.localPosition = Vector3.zero;
+                }
+            }
         }
     }
+
 }

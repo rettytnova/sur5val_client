@@ -3,20 +3,21 @@ using UnityEngine.EventSystems;
 
 public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Transform canvas;
+    public Canvas canvas;
     public Transform previousParent;
     private RectTransform rect;
     private CanvasGroup canvasGroup;
 
     private void Awake()
     {
-        canvas = FindObjectOfType<Canvas>().transform;
         rect = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
+        // 이전 부모 저장
         previousParent = transform.parent;
+
         transform.SetAsLastSibling();
         transform.SetParent(transform.root);
 
@@ -31,7 +32,8 @@ public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if(transform.parent == canvas)
+        // 허공에 카드 드래그시 원래 위치로 돌아오기(Drop의 카테고리가 없는 경우와는 다름)
+        if (transform.parent.GetComponent(typeof(Canvas)) != null)
         {
             transform.SetParent(previousParent);
             rect.position = previousParent.GetComponent<RectTransform>().position;
