@@ -32,6 +32,7 @@ public class UIRoom : UIBase
     {
         roomNo.text = roomData.Id.ToString();
         roomName.text = roomData.Name;
+        roomData.MaxUserNum = 5;
         maxUserCount = roomData.MaxUserNum;
         roomCount.text = string.Format("{0}/{1}", roomData.Users.Count, roomData.MaxUserNum);
         for (int i = 0; i < roomData.Users.Count; i++)

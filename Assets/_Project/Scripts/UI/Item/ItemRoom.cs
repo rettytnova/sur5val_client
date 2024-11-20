@@ -22,6 +22,7 @@ public class ItemRoom : UIListItem
         this.callback = callback;
         roomNo.text = (roomData.Id).ToString();
         title.text = roomData.Name;
+        roomData.MaxUserNum = 5;
         count.text = string.Format("({0}/{1})", roomData.Users.Count, roomData.MaxUserNum);
     }
 
