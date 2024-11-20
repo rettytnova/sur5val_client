@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8708732486976451621}
   - component: {fileID: 7475904156446793502}
   - component: {fileID: 436447562027933126}
+  - component: {fileID: 5326519611860081885}
   m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
@@ -75,6 +76,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5326519611860081885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497481705735620454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f55e0042eb66b48a68c9f1962a8025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &499608222801732832
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +657,7 @@ GameObject:
   - component: {fileID: 1638508134779979910}
   - component: {fileID: 3647623777654963947}
   - component: {fileID: 726610810165537618}
+  - component: {fileID: 7317751439189323428}
   m_Layer: 5
   m_Name: Frame
   m_TagString: Untagged
@@ -708,6 +722,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7317751439189323428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2961001694292476900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f55e0042eb66b48a68c9f1962a8025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2984934767470348801
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,6 +870,7 @@ GameObject:
   - component: {fileID: 1277105800192934599}
   - component: {fileID: 3263646209152984010}
   - component: {fileID: 5907478633336399110}
+  - component: {fileID: 314848472110201893}
   m_Layer: 5
   m_Name: Frame (3)
   m_TagString: Untagged
@@ -908,6 +935,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &314848472110201893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4093095321964360085}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f55e0042eb66b48a68c9f1962a8025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4680179464666635571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,6 +1169,7 @@ GameObject:
   - component: {fileID: 3402057913567275335}
   - component: {fileID: 5160894874921691688}
   - component: {fileID: 1528868676602315718}
+  - component: {fileID: 1700962676113481948}
   m_Layer: 5
   m_Name: Frame (2)
   m_TagString: Untagged
@@ -1194,6 +1234,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1700962676113481948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086920355674400157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f55e0042eb66b48a68c9f1962a8025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5124672930798838095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,6 +1742,7 @@ GameObject:
   - component: {fileID: 4648506871146081585}
   - component: {fileID: 5345966219614154745}
   - component: {fileID: 828895621751457289}
+  - component: {fileID: 3832304712197047991}
   m_Layer: 5
   m_Name: Frame (1)
   m_TagString: Untagged
@@ -1754,6 +1807,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3832304712197047991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9037664499421808740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f55e0042eb66b48a68c9f1962a8025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5933147889720242752
 PrefabInstance:
   m_ObjectHideFlags: 0
