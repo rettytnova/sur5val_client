@@ -176,7 +176,6 @@ public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSo
                         var totalLength = 11 + versionLength + payloadLength;
                         var packet = new Packet(type, version, sequence, payloadBytes);
                         receiveQueue.Enqueue(packet);
-                        Debug.Log($"Enqueued Type: {type}|{receiveQueue.Count}");
 
                         processedLength += totalLength;
                     }

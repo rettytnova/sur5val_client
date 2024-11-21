@@ -57,16 +57,16 @@ public class DropableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPo
                 }
 
                 // 카테고리가 맞는지 확인
-                if (transform.parent.name == parentCategory || transform.parent.name == "GameObject")
+                if (transform.parent.name == parentCategory || transform.parent.name == "HandCards")
                 {
                     // 드랍할 슬롯에 이미 아이템이 있는지 확인
                     if (transform.childCount > 0)
                     {
                         // 슬롯에 이미 있는 아이템
-                        Transform existingItem = transform.GetChild(0);
+                        Transform existingItem = transform.GetChild(0);                      
 
                         // 드랍 위치 아이템의 부모를 드래그 아이템의 부모로 설정 후 이동
-                        existingItem.SetParent(eventData.pointerDrag.transform.parent);
+                        existingItem.SetParent(draggableUI.previousParent);
                         existingItem.transform.localPosition = Vector3.zero;
 
                         // 드래그된 아이템의 부모를 드랍 위치 슬롯으로 설정 후 이동
@@ -79,6 +79,13 @@ public class DropableUI : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPo
                         eventData.pointerDrag.transform.SetParent(transform);
                         eventData.pointerDrag.transform.localPosition = Vector3.zero;
                     }
+
+                    // 슬롯에 드랍한 카드가 소모품일 경우
+                    if(parentCategory == "Expendables")
+                    {
+                        UIPotion uIPotion = eventData.pointerDrag.transform.parent.parent.parent.parent.parent.Find("UI").Find("UIGame").GetComponent<UIPotion>();
+                        uIPotion.potionObject = eventData.pointerDrag.transform; // nullRef 오류 뜰수도 있음
+                    }                    
                 }
                 else // 카테고리가 맞지 않는 경우
                 {

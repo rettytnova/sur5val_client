@@ -10,20 +10,26 @@ public class PopupDeck : UIListBase<Card>
     [SerializeField] private UIPagingViewController uiPagingViewController;
     [SerializeField] private GameObject select;
     [SerializeField] private Button use;
+    [SerializeField] private List<Transform> inventorySlots;
     [SerializeField] private Transform weaponSlot;
     [SerializeField] private List<Transform> equipSlots;
+    private bool UIState = false;
     public override void Opened(object[] param)
     {
-        SetList();
-        if (GameManager.instance.userCharacter.IsState<CharacterPrisonState>() ||
-            GameManager.instance.userCharacter.IsState<CharacterStopState>())
+        if(!UIState)
         {
-            use.gameObject.SetActive(false);
-        }
-        uiPagingViewController.OnChangeValue += OnChangeValue;
-        uiPagingViewController.OnMoveStart += OnMoveStart;
-        uiPagingViewController.OnMoveEnd += OnMoveEnd;
-        UIGame.instance.OnSelectDirectTarget(false);
+            SetList();
+            if (GameManager.instance.userCharacter.IsState<CharacterPrisonState>() ||
+                GameManager.instance.userCharacter.IsState<CharacterStopState>())
+            {
+                use.gameObject.SetActive(false);
+            }
+            uiPagingViewController.OnChangeValue += OnChangeValue;
+            uiPagingViewController.OnMoveStart += OnMoveStart;
+            uiPagingViewController.OnMoveEnd += OnMoveEnd;
+            UIGame.instance.OnSelectDirectTarget(false);
+            UIState = true;
+        } else gameObject.SetActive(true);
     }
 
     private void Update()
@@ -31,7 +37,7 @@ public class PopupDeck : UIListBase<Card>
         if(GameManager.instance.userCharacter.IsState<CharacterIdleState>() ||
             GameManager.instance.userCharacter.IsState<CharacterWalkState>())
         {
-            use.gameObject.SetActive(true);
+            use.gameObject.SetActive(true); // nullRef 오류 뜰수도 있음
         }
 
     }
@@ -43,8 +49,9 @@ public class PopupDeck : UIListBase<Card>
 
     public override void HideDirect()
     {
-        UIGame.instance.SetDeckCount();
-        UIManager.Hide<PopupDeck>();
+        gameObject.SetActive(false);
+        //UIGame.instance.SetDeckCount();
+        //UIManager.Hide<PopupDeck>();
     }
 
     public void ClearWeapon()
@@ -84,13 +91,24 @@ public class PopupDeck : UIListBase<Card>
         ClearList();
         ClearEquips();
         ClearWeapon();
-        var datas = UserInfo.myInfo.handCards;
-        foreach (var data in datas)
+
+        // 빵 게임 원본 코드
+        //var datas = UserInfo.myInfo.handCards;
+        //foreach (var data in datas)
+        //{            
+        //    var item = AddItem();
+        //    item.Init(data, OnClickItem);
+        //}
+
+        // 아이템 인벤토리 추가 부분
+        var handCards = UserInfo.myInfo.handCards;
+        for(int i = 0; i < UserInfo.myInfo.handCards.Count; i++)
         {
-            var item = AddItem();
-            item.Init(data, OnClickItem);
+            var slot = inventorySlots[i];
+            var item = Instantiate(itemPrefab, slot);
+            item.Init(handCards[i], OnClickItem);
         }
-        if(UserInfo.myInfo.weapon != null)
+        if (UserInfo.myInfo.weapon != null)
         {
             AddWeapon(UserInfo.myInfo.weapon);
         }

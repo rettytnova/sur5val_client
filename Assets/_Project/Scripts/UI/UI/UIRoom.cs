@@ -111,10 +111,10 @@ public class UIRoom : UIBase
         else
         {
             var roles = new Dictionary<int, List<eRoleType>>() {
-                { 4, new List<eRoleType>() { eRoleType.target, eRoleType.psychopass, eRoleType.hitman, eRoleType.hitman } },
-                { 5, new List<eRoleType>() { eRoleType.target, eRoleType.psychopass, eRoleType.hitman, eRoleType.hitman, eRoleType.bodyguard } },
-                { 6, new List<eRoleType>() { eRoleType.target, eRoleType.psychopass, eRoleType.hitman, eRoleType.hitman, eRoleType.hitman, eRoleType.bodyguard } },
-                { 7, new List<eRoleType>() { eRoleType.target, eRoleType.psychopass, eRoleType.hitman, eRoleType.hitman, eRoleType.hitman, eRoleType.bodyguard, eRoleType.bodyguard } }
+                { 2, new List<eRoleType>() { eRoleType.hitman, eRoleType.bodyguard } },
+                { 3, new List<eRoleType>() { eRoleType.hitman, eRoleType.bodyguard, eRoleType.bodyguard } },
+                { 4, new List<eRoleType>() { eRoleType.hitman, eRoleType.bodyguard, eRoleType.bodyguard, eRoleType.bodyguard } },
+                { 5, new List<eRoleType>() { eRoleType.hitman, eRoleType.bodyguard, eRoleType.bodyguard, eRoleType.bodyguard, eRoleType.bodyguard } }
             };
 
             var role = roles[users.Count];

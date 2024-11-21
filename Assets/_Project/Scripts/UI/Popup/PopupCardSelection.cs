@@ -8,7 +8,7 @@ using TMPro;
 public class PopupCardSelection : UIListBase<Card>
 {
     [SerializeField] private UIPagingViewController uiPagingViewController;
-    [SerializeField] private Button use;
+    [SerializeField] private Button use;    
     [SerializeField] private Transform weaponSlot;
     [SerializeField] private List<Transform> equipSlots;
     [SerializeField] private List<Transform> debuffSlots;

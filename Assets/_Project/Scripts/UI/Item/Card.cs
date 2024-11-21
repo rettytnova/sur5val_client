@@ -29,6 +29,7 @@ public class Card : UIListItem
         cardDesc.text = cardData.description;
     }
 
+    // 전투
     public async void Init(CardDataSO cardData, UnityAction<CardDataSO> callback)
     {
         select.gameObject.SetActive(false);
@@ -47,7 +48,8 @@ public class Card : UIListItem
         SetCardBack();
     }
 
-    public async void Init(CardDataSO cardData, int idx, UnityAction<int> callback)
+    // 플리마켓
+    public async void Init(CardDataSO cardData, int idx, UnityAction<int> callback) 
     {
         select.gameObject.SetActive(false);
         this.idx = idx;

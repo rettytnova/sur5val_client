@@ -2,7 +2,11 @@
 
 using Google.Protobuf.Collections;
 using Ironcow;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using Unity.VisualScripting;
+//using UnityEditor.U2D.Animation;
 
 public partial class UserInfo
 {
@@ -67,11 +71,12 @@ public partial class UserInfo
             }
             if (userData.Character.Weapon > 0)
             {
-                weapon = DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", userData.Character.Weapon));
+                weapon = DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", userData.Character.Weapon));                
             }
             foreach (var card in userData.Character.Equips)
             {
                 equips.Add(DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", card)));
+                Debug.WriteLine("equips:", equips);
             }
             foreach (var card in userData.Character.Debuffs)
             {
@@ -106,7 +111,7 @@ public partial class UserInfo
                 for (int i = 0; i < card.Count; i++)
                 {
                     if (card.Type != CardType.None)
-                        handCards.Add(card.GetCardData());
+                        handCards.Add(card.GetCardData()); // 인벤 추가 부분
                 }
             }
             if (userData.Character.Weapon > 0)
@@ -115,7 +120,7 @@ public partial class UserInfo
             }
             foreach (var card in userData.Character.Equips)
             {
-                equips.Add(DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", card)));
+                equips.Add(DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", userData.Character.Equips)));
             }
             foreach (var card in userData.Character.Debuffs)
             {

@@ -99,7 +99,7 @@ public class UIGame : UIBase
                 userInfoSlot.UpdateData(users[i]);
             }
         }
-        SetDeckCount();
+        SetDeckCount(); // µ¦ Ä«µå ¼ö
     }
 
     public void SetShotButton(bool isActive)
