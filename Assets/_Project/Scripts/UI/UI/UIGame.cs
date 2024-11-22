@@ -40,15 +40,16 @@ public class UIGame : UIBase
     public IEnumerator Init()
     {
         yield return new WaitUntil(() => GameManager.instance.isInit);
-        for(int i = 0; i < DataManager.instance.users.Count; i++)
+        for (int i = 0; i < DataManager.instance.users.Count; i++)
         {
-            if (DataManager.instance.users[i].id != UserInfo.myInfo.id)
+            if (DataManager.instance.users[i].id != UserInfo.myInfo.id &&
+                DataManager.instance.users[i].roleType != eRoleType.bodyguard)
             {
                 var item = Instantiate(anotherSlotPrefab, userInfoParent);
                 yield return item.Init(DataManager.instance.users[i], i, OnClickCharacterSlot);
                 userslots.Add(DataManager.instance.users[i].id, item);
             }
-            else
+            else if (DataManager.instance.users[i].id == UserInfo.myInfo.id)
             {
                 yield return userInfoSlot.Init(UserInfo.myInfo, i, OnClickCharacterSlot);
                 userInfoSlot.SetVisibleRole(true);
@@ -67,7 +68,7 @@ public class UIGame : UIBase
             GameManager.instance.SendSocketUseCard(target, UserInfo.myInfo, card.rcode);
             SetSelectCard(null);
         }
-        if(GameManager.instance.isSelectBombTarget)
+        if (GameManager.instance.isSelectBombTarget)
         {
             GameManager.instance.isSelectBombTarget = false;
             if (SocketManager.instance.isConnected)
@@ -88,7 +89,7 @@ public class UIGame : UIBase
 
     public void UpdateUserSlot(List<UserInfo> users)
     {
-        for(int i = 0; i < users.Count; i++)
+        for (int i = 0; i < users.Count; i++)
         {
             if (userslots.ContainsKey(users[i].id))
             {
@@ -131,7 +132,7 @@ public class UIGame : UIBase
     {
         dayInfo.text = string.Format("Day {0} {1}", day, phase == PhaseType.Day ? "Afternoon" : phase == PhaseType.Evening ? "Evening" : "Night");
         var dt = DateTimeOffset.FromUnixTimeMilliseconds(nextAt) - DateTime.UtcNow;
-        timer = (float) dt.TotalSeconds;
+        timer = (float)dt.TotalSeconds;
         //timer = phase == 1 ? 180 : 60;
     }
 
@@ -223,7 +224,7 @@ public class UIGame : UIBase
 
     public void OnClickBomb()
     {
-        if(GameManager.instance.targetCharacter != null && GameManager.instance.targetCharacter.tag == "Bomb")
+        if (GameManager.instance.targetCharacter != null && GameManager.instance.targetCharacter.tag == "Bomb")
         {
             GameManager.instance.isSelectBombTarget = true;
             OnSelectDirectTarget(true);
