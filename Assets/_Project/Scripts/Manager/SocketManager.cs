@@ -178,6 +178,11 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         var response = gamePacket.PositionUpdateNotification;
         for (int i = 0; i < response.CharacterPositions.Count; i++)
         {
+            if (GameManager.instance.characters[response.CharacterPositions[i].Id].userInfo.hp == 0)
+            {
+                continue;
+            }
+
             if (GameManager.instance.characters != null && GameManager.instance.characters.ContainsKey(response.CharacterPositions[i].Id))
                 GameManager.instance.characters[response.CharacterPositions[i].Id].SetMovePosition(response.CharacterPositions[i].ToVector3());
         }
