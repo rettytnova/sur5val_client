@@ -216,7 +216,7 @@ public static partial class ProtocolReflection {
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::GlobalFailCode), typeof(global::WarningType), typeof(global::WinType), typeof(global::CharacterType), typeof(global::CharacterStateType), typeof(global::CardType), typeof(global::RoleType), typeof(global::RoomStateType), typeof(global::PhaseType), typeof(global::ReactionType), typeof(global::SelectCardType), typeof(global::AnimationType), }, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::RoomData), global::RoomData.Parser, new[]{ "Id", "OwnerId", "Name", "MaxUserNum", "State", "Users" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::UserData), global::UserData.Parser, new[]{ "Id", "Nickname", "Character" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::CharacterData), global::CharacterData.Parser, new[]{ "CharacterType", "RoleType", "Hp", "Weapon", "StateInfo", "Equips", "Debuffs", "HandCards", "BbangCount", "HandCardsCount" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::CharacterData), global::CharacterData.Parser, new[]{ "CharacterType", "RoleType", "Hp", "Weapon", "potion", "StateInfo", "Equips", "Debuffs", "HandCards", "BbangCount", "HandCardsCount" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::CharacterPositionData), global::CharacterPositionData.Parser, new[]{ "Id", "X", "Y" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::CardData), global::CardData.Parser, new[]{ "Type", "Count" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::GameStateData), global::GameStateData.Parser, new[]{ "PhaseType", "NextPhaseAt" }, null, null, null, null),
@@ -539,7 +539,8 @@ public enum SelectCardType {
   [pbr::OriginalName("HAND")] Hand = 0,
   [pbr::OriginalName("EQUIP")] Equip = 1,
   [pbr::OriginalName("WEAPON")] Weapon = 2,
-  [pbr::OriginalName("DEBUFF")] Debuff = 3,
+  [pbr::OriginalName("POTION")] Potion = 3,
+  [pbr::OriginalName("DEBUFF")] Debuff = 4,
 }
 
 public enum AnimationType {
@@ -1048,6 +1049,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
     roleType_ = other.roleType_;
     hp_ = other.hp_;
     weapon_ = other.weapon_;
+    potion_ = other.potion_;
     stateInfo_ = other.stateInfo_ != null ? other.stateInfo_.Clone() : null;
     equips_ = other.equips_.Clone();
     debuffs_ = other.debuffs_.Clone();
@@ -1106,8 +1108,19 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
     }
   }
 
+  public const int PotionFieldNumber = 5;
+  private int potion_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int Potion {
+      get { return potion_; }
+      set
+      {
+          potion_ = value;
+      }
+  }
+
   /// <summary>Field number for the "stateInfo" field.</summary>
-  public const int StateInfoFieldNumber = 5;
+  public const int StateInfoFieldNumber = 6;
   private global::CharacterStateInfoData stateInfo_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::CharacterStateInfoData StateInfo {
@@ -1118,7 +1131,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
   }
 
   /// <summary>Field number for the "equips" field.</summary>
-  public const int EquipsFieldNumber = 6;
+  public const int EquipsFieldNumber = 7;
   private static readonly pb::FieldCodec<int> _repeated_equips_codec
       = pb::FieldCodec.ForInt32(50);
   private readonly pbc::RepeatedField<int> equips_ = new pbc::RepeatedField<int>();
@@ -1128,7 +1141,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
   }
 
   /// <summary>Field number for the "debuffs" field.</summary>
-  public const int DebuffsFieldNumber = 7;
+  public const int DebuffsFieldNumber = 8;
   private static readonly pb::FieldCodec<int> _repeated_debuffs_codec
       = pb::FieldCodec.ForInt32(58);
   private readonly pbc::RepeatedField<int> debuffs_ = new pbc::RepeatedField<int>();
@@ -1138,7 +1151,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
   }
 
   /// <summary>Field number for the "handCards" field.</summary>
-  public const int HandCardsFieldNumber = 8;
+  public const int HandCardsFieldNumber = 9;
   private static readonly pb::FieldCodec<global::CardData> _repeated_handCards_codec
       = pb::FieldCodec.ForMessage(66, global::CardData.Parser);
   private readonly pbc::RepeatedField<global::CardData> handCards_ = new pbc::RepeatedField<global::CardData>();
@@ -1148,7 +1161,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
   }
 
   /// <summary>Field number for the "bbangCount" field.</summary>
-  public const int BbangCountFieldNumber = 9;
+  public const int BbangCountFieldNumber = 10;
   private int bbangCount_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int BbangCount {
@@ -1159,7 +1172,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
   }
 
   /// <summary>Field number for the "handCardsCount" field.</summary>
-  public const int HandCardsCountFieldNumber = 10;
+  public const int HandCardsCountFieldNumber = 11;
   private int handCardsCount_;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int HandCardsCount {
@@ -1186,6 +1199,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
     if (RoleType != other.RoleType) return false;
     if (Hp != other.Hp) return false;
     if (Weapon != other.Weapon) return false;
+    if (Potion != other.Potion) return false;
     if (!object.Equals(StateInfo, other.StateInfo)) return false;
     if(!equips_.Equals(other.equips_)) return false;
     if(!debuffs_.Equals(other.debuffs_)) return false;
@@ -1202,6 +1216,7 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
     if (RoleType != global::RoleType.NoneRole) hash ^= RoleType.GetHashCode();
     if (Hp != 0) hash ^= Hp.GetHashCode();
     if (Weapon != 0) hash ^= Weapon.GetHashCode();
+    if (Potion != 0) hash ^= Potion.GetHashCode();
     if (stateInfo_ != null) hash ^= StateInfo.GetHashCode();
     hash ^= equips_.GetHashCode();
     hash ^= debuffs_.GetHashCode();
@@ -1237,19 +1252,24 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
       output.WriteRawTag(32);
       output.WriteInt32(Weapon);
     }
+    if (Potion != 0)
+    {
+      output.WriteRawTag(40);
+      output.WriteInt32(Potion);
+    }
     if (stateInfo_ != null) {
-      output.WriteRawTag(42);
+      output.WriteRawTag(50);
       output.WriteMessage(StateInfo);
     }
     equips_.WriteTo(output, _repeated_equips_codec);
     debuffs_.WriteTo(output, _repeated_debuffs_codec);
     handCards_.WriteTo(output, _repeated_handCards_codec);
     if (BbangCount != 0) {
-      output.WriteRawTag(72);
+      output.WriteRawTag(80);
       output.WriteInt32(BbangCount);
     }
     if (HandCardsCount != 0) {
-      output.WriteRawTag(80);
+      output.WriteRawTag(88);
       output.WriteInt32(HandCardsCount);
     }
     if (_unknownFields != null) {
@@ -1271,6 +1291,9 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
     }
     if (Weapon != 0) {
       size += 1 + pb::CodedOutputStream.ComputeInt32Size(Weapon);
+    }
+    if (Potion != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Potion);
     }
     if (stateInfo_ != null) {
       size += 1 + pb::CodedOutputStream.ComputeMessageSize(StateInfo);
@@ -1306,6 +1329,10 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
     }
     if (other.Weapon != 0) {
       Weapon = other.Weapon;
+    }
+    if (other.Potion != 0)
+    {
+            Potion = other.Potion;
     }
     if (other.stateInfo_ != null) {
       if (stateInfo_ == null) {
@@ -1349,32 +1376,34 @@ public sealed partial class CharacterData : pb::IMessage<CharacterData> {
           Weapon = input.ReadInt32();
           break;
         }
-        case 42: {
+        case 40: {
+          Potion = input.ReadInt32();
+          break;
+        }
+        case 50: {
           if (stateInfo_ == null) {
             StateInfo = new global::CharacterStateInfoData();
           }
           input.ReadMessage(StateInfo);
           break;
         }
-        case 50:
-        case 48: {
+        case 58: {
           equips_.AddEntriesFrom(input, _repeated_equips_codec);
           break;
         }
-        case 58:
-        case 56: {
+        case 66: {
           debuffs_.AddEntriesFrom(input, _repeated_debuffs_codec);
           break;
         }
-        case 66: {
+        case 74: {
           handCards_.AddEntriesFrom(input, _repeated_handCards_codec);
           break;
         }
-        case 72: {
+        case 80: {
           BbangCount = input.ReadInt32();
           break;
         }
-        case 80: {
+        case 88: {
           HandCardsCount = input.ReadInt32();
           break;
         }

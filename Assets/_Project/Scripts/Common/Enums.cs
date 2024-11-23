@@ -4,6 +4,7 @@ public enum eCardType
 {
     active,
     weapon,
+    potion,
     equip,
     debuff
 }

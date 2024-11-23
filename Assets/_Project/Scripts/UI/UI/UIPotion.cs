@@ -15,18 +15,16 @@ public class UIPotion : MonoBehaviour
 
     private void OnButtonClick()
     {
-        // 포션이 있으면 포션 사용
+        // 포션 슬롯에 포션이 있으면 포션 사용
         if (potionObject != null)
         {
             Transform potionName = potionObject.Find("cardName");
             TMP_Text potionNameTextComponent = potionName.GetComponent<TMP_Text>();
             UsePotion(potionNameTextComponent.text);
 
-            Debug.Log("potionObject: ", potionObject);
             // 포션 오브젝트 삭제
             Destroy(potionObject.gameObject);
             potionObject = null;
-            Debug.Log("potionObject: ", potionObject);
         }
         else // 포션 슬롯에 포션이 없음
         {

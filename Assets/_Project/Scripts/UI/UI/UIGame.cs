@@ -54,7 +54,7 @@ public class UIGame : UIBase
                 userInfoSlot.SetVisibleRole(true);
             }
         }
-        SetShotButton(false);
+        //SetShotButton(false);
     }
 
     public void OnClickCharacterSlot(int idx)
@@ -160,7 +160,7 @@ public class UIGame : UIBase
                     (GameManager.instance.SelectedCard.cardType == CardType.Bbang && !UserInfo.myInfo.isShotPossible))
                 {
                     GameManager.instance.UnselectCard();
-                    SetShotButton(false);
+                    //SetShotButton(false);
                     return;
                 }
             }
@@ -170,18 +170,18 @@ public class UIGame : UIBase
         if (card == null)
         {
             GameManager.instance.UnselectCard();
-            SetShotButton(false);
+            //SetShotButton(false);
             return;
         }
         var shotCount = SetShotCount();
         if (shotCount > 0)
         {
             selectCardText.text = card.displayName;
-            SetShotButton(true);
+            //SetShotButton(true);
         }
         else
         {
-            SetShotButton(false);
+            //SetShotButton(false);
         }
     }
 

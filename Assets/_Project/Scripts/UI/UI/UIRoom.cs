@@ -117,14 +117,15 @@ public class UIRoom : UIBase
                 { 5, new List<eRoleType>() { eRoleType.hitman, eRoleType.bodyguard, eRoleType.bodyguard, eRoleType.bodyguard, eRoleType.bodyguard } }
             };
 
-            var role = roles[users.Count];
+            // 클라이언트 랜덤 역할 부여
+            //var role = roles[users.Count];
 
-            users.ForEach(obj =>
-            {
-                var rand = Random.Range(0, role.Count);
-                obj.roleType = role[rand];
-                role.RemoveAt(rand);
-            });
+            //users.ForEach(obj =>
+            //{
+            //    var rand = Random.Range(0, role.Count);
+            //    obj.roleType = role[rand];
+            //    role.RemoveAt(rand);
+            //});
 
             var characters = new List<CharacterDataSO>(DataManager.instance.GetDatas<CharacterDataSO>());
             users.ForEach(obj =>

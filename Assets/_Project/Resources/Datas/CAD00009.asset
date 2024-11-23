@@ -21,6 +21,6 @@ MonoBehaviour:
   defCard: CAD00009
   isDirectUse: 0
   isTargetSelect: 1
-  isTargetCardSelection: 1
+  isTargetCardSelection: 0
   useTag: 
   isMarketSelected: 0

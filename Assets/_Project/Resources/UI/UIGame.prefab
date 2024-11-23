@@ -1750,13 +1750,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 47224a350b90f2a49bd0dba46046edc2, type: 3}
-        m_TargetAssemblyTypeName: UIGame, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 3790229365158448635, guid: 3fa09ea16db6a37498ebf6179cd716ed, type: 3}
+        m_TargetAssemblyTypeName: PopupDeck, Assembly-CSharp
+        m_MethodName: OnClickUse
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2720,6 +2720,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1937439762093059890}
   - component: {fileID: 6400901464007864104}
+  - component: {fileID: 2901334636576681179}
+  - component: {fileID: 1431805266734967335}
   - component: {fileID: 4220845230725525378}
   m_Layer: 5
   m_Name: UIGame
@@ -2792,6 +2794,32 @@ MonoBehaviour:
   noticeLogParent: {fileID: 6519109290989437827}
   stick: {fileID: 7003160105872405901}
   bombButton: {fileID: 7522288604937824600}
+--- !u!114 &2901334636576681179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379369723354100367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39fe4b0c6ed5f4e4c8535a5426b99eba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillObject: {fileID: 0}
+  myButton: {fileID: 2526911060016788829}
+--- !u!114 &1431805266734967335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379369723354100367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c145df59087234e948f60dba3c7aca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4220845230725525378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2804,7 +2832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47224a350b90f2a49bd0dba46046edc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Frame: {fileID: 1032134319817348856, guid: 3fa09ea16db6a37498ebf6179cd716ed, type: 3}
+  potionObject: {fileID: 0}
   myButton: {fileID: 3951570072692739675}
 --- !u!1 &3403500821616325586
 GameObject:

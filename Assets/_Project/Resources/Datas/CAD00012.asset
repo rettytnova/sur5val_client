@@ -19,8 +19,8 @@ MonoBehaviour:
   type: 0
   isUsable: 1
   defCard: CAD00012
-  isDirectUse: 0
+  isDirectUse: 1
   isTargetSelect: 0
   isTargetCardSelection: 0
-  useTag: Lottery
+  useTag: 
   isMarketSelected: 0

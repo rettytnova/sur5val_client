@@ -19,12 +19,12 @@ public class PopupDeck : UIListBase<Card>
         if(!UIState)
         {
             SetList();
-            if (GameManager.instance.userCharacter.IsState<CharacterPrisonState>() ||
-                GameManager.instance.userCharacter.IsState<CharacterStopState>())
-            {
-                use.gameObject.SetActive(false);
-            }
-            uiPagingViewController.OnChangeValue += OnChangeValue;
+            //if (GameManager.instance.userCharacter.IsState<CharacterPrisonState>() ||
+            //    GameManager.instance.userCharacter.IsState<CharacterStopState>())
+            //{
+            //    use.gameObject.SetActive(false);
+            //}
+            //uiPagingViewController.OnChangeValue += OnChangeValue;
             uiPagingViewController.OnMoveStart += OnMoveStart;
             uiPagingViewController.OnMoveEnd += OnMoveEnd;
             UIGame.instance.OnSelectDirectTarget(false);
@@ -34,17 +34,17 @@ public class PopupDeck : UIListBase<Card>
 
     private void Update()
     {
-        if(GameManager.instance.userCharacter.IsState<CharacterIdleState>() ||
-            GameManager.instance.userCharacter.IsState<CharacterWalkState>())
-        {
-            use.gameObject.SetActive(true); // nullRef 오류 뜰수도 있음
-        }
+        //if(GameManager.instance.userCharacter.IsState<CharacterIdleState>() ||
+        //    GameManager.instance.userCharacter.IsState<CharacterWalkState>())
+        //{
+        //    use.gameObject.SetActive(true); // nullRef 오류 뜰수도 있음
+        //}
 
     }
 
     public void OnChangeValue(int idx)
     {
-        use.interactable = UserInfo.myInfo.handCards[idx].isUsable;
+        //use.interactable = UserInfo.myInfo.handCards[idx].isUsable;
     }
 
     public override void HideDirect()
@@ -137,22 +137,22 @@ public class PopupDeck : UIListBase<Card>
     {
         var idx = uiPagingViewController.selectedIdx;
         var card = UserInfo.myInfo.handCards[idx];
-        if (card.rcode == "CAD00005")
+
+        // 스킬일 경우 카드 사용 요청
+        if (card.rcode == "CAD00001" || card.rcode == "CAD00002" || card.rcode == "CAD00003" || card.rcode == "CAD00004" || card.rcode == "CAD00005" || card.rcode == "CAD00006" ||
+            card.rcode == "CAD00007" || card.rcode == "CAD00008" || card.rcode == "CAD00009" || card.rcode == "CAD00010" || card.rcode == "CAD00011" || card.rcode == "CAD00012")
         {
-            UIManager.ShowAlert("누구에게 사용 하시겠습니까?", "119 호출", "나에게", "모두에게", () =>
-            {
-                UserInfo.myInfo.OnUseCard(idx);
-                GameManager.instance.SendSocketUseCard(UserInfo.myInfo, UserInfo.myInfo, card.rcode);
-            }, () =>
-            {
-                UserInfo.myInfo.OnUseCard(idx);
-                GameManager.instance.SendSocketUseCard(null, UserInfo.myInfo, card.rcode);
-            });
+            //UserInfo.myInfo.OnUseCard(idx);
+            GameManager.instance.SendSocketUseCard(UserInfo.myInfo, UserInfo.myInfo, card.rcode);
         }
-        else
+        else // 장비 소모품일 경우 카드 사용 요청
         {
-            OnUseCard();
+            GameManager.instance.SendSocketUseCard(null, UserInfo.myInfo, card.rcode);
         }
+        //else
+        //{
+        //    OnUseCard();
+        //}
     }
 
     public void OnUseCard()

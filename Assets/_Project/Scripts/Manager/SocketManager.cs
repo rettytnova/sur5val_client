@@ -194,10 +194,11 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         var response = gamePacket.UseCardResponse;
         if (response.Success)
         {
-            if (UIManager.IsOpened<PopupDeck>())
-                UIManager.Hide<PopupDeck>();
-            if (UIManager.IsOpened<PopupBattle>())
-                UIManager.Hide<PopupBattle>();
+            //if (UIManager.IsOpened<PopupDeck>())
+            //    UIManager.Hide<PopupDeck>();
+            //if (UIManager.IsOpened<PopupBattle>())
+            //    UIManager.Hide<PopupBattle>();
+
             UIGame.instance.SetSelectCard(null);
             GameManager.instance.targetCharacter.OnSelect();
             GameManager.instance.targetCharacter = null;
@@ -503,10 +504,10 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
     public void DestroyCardResponse(GamePacket gamePacket)
     {
         var response = gamePacket.DestroyCardResponse;
-        UIManager.Hide<PopupRemoveCardSelection>();
-        UserInfo.myInfo.UpdateHandCard(response.HandCards);
-        UIGame.instance.SetSelectCard();
-        UIGame.instance.SetDeckCount();
+        //UIManager.Hide<PopupRemoveCardSelection>();
+        //UserInfo.myInfo.UpdateHandCard(response.HandCards);
+        //UIGame.instance.SetSelectCard();
+        //UIGame.instance.SetDeckCount();
     }
 
     // 페이즈 업데이트
