@@ -242,10 +242,37 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         UIGame.instance.SetNotice(text);
     }
 
-    public void FleaMarketPickResponse(GamePacket gamePacket)
+    public async void FleaMarketPickResponse(GamePacket gamePacket)
     {
         var response = gamePacket.FleaMarketPickResponse;
-        
+
+        PopupPleaMarket popupPleaMarket = UIManager.Get<PopupPleaMarket>();
+        if (popupPleaMarket == null)
+        {
+            popupPleaMarket = await UIManager.Show<PopupPleaMarket>();
+        }
+
+        // isInit = 플리마켓 팝업창의 cards가 0 보다 크면 true       
+        if (!popupPleaMarket.isInitCards)
+        {
+            popupPleaMarket.SetCards(response.FleaMarketCardTypes);
+        }
+    }
+
+    public void FleMarketCardPickResponse(GamePacket gamePacket)
+    {
+        var response = gamePacket.FleMarketCardPickResponse;
+
+        Debug.Log($"마켓에서 카드 선택함 {response.HandCards}");
+        var users = DataManager.instance.users;
+        for (int i = 0; i < users.Count; i++)
+        {
+            if (users[i].id == response.UserId)
+            {
+                users[i].UpdateHandCard(response.HandCards);
+                break;
+            }
+        }
     }
 
     public async void FleaMarketNotification(GamePacket gamePacket)
