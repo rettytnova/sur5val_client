@@ -78,145 +78,151 @@ public static partial class ProtocolReflection {
           "YXRlUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCBIhCghmYWlsQ29kZRgCIAEo",
           "DjIPLkdsb2JhbEZhaWxDb2RlIlMKHVMyQ1Bvc2l0aW9uVXBkYXRlTm90aWZp",
           "Y2F0aW9uEjIKEmNoYXJhY3RlclBvc2l0aW9ucxgBIAMoCzIWLkNoYXJhY3Rl",
-          "clBvc2l0aW9uRGF0YSJGChFDMlNVc2VDYXJkUmVxdWVzdBIbCghjYXJkVHlw",
-          "ZRgBIAEoDjIJLkNhcmRUeXBlEhQKDHRhcmdldFVzZXJJZBgCIAEoAyJIChJT",
-          "MkNVc2VDYXJkUmVzcG9uc2USDwoHc3VjY2VzcxgBIAEoCBIhCghmYWlsQ29k",
-          "ZRgCIAEoDjIPLkdsb2JhbEZhaWxDb2RlIlsKFlMyQ1VzZUNhcmROb3RpZmlj",
-          "YXRpb24SGwoIY2FyZFR5cGUYASABKA4yCS5DYXJkVHlwZRIOCgZ1c2VySWQY",
-          "AiABKAMSFAoMdGFyZ2V0VXNlcklkGAMgASgDIkcKGFMyQ0VxdWlwQ2FyZE5v",
-          "dGlmaWNhdGlvbhIbCghjYXJkVHlwZRgBIAEoDjIJLkNhcmRUeXBlEg4KBnVz",
-          "ZXJJZBgCIAEoAyJZChlTMkNDYXJkRWZmZWN0Tm90aWZpY2F0aW9uEhsKCGNh",
-          "cmRUeXBlGAEgASgOMgkuQ2FyZFR5cGUSDgoGdXNlcklkGAIgASgDEg8KB3N1",
-          "Y2Nlc3MYAyABKAgiTAoZUzJDRmxlYU1hcmtldE5vdGlmaWNhdGlvbhIcCglj",
-          "YXJkVHlwZXMYASADKA4yCS5DYXJkVHlwZRIRCglwaWNrSW5kZXgYAiADKAUi",
-          "GgoYQzJTRmxlYU1hcmtldFBpY2tSZXF1ZXN0IjEKHEMyU0ZsZWFNYXJrZXRD",
-          "YXJkUGlja1JlcXVlc3QSEQoJcGlja0luZGV4GAEgASgFIkMKGVMyQ0ZsZWFN",
-          "YXJrZXRQaWNrUmVzcG9uc2USJgoTZmxlYU1hcmtldENhcmRUeXBlcxgBIAMo",
-          "DjIJLkNhcmRUeXBlIk0KHVMyQ0ZsZWFNYXJrZXRDYXJkUGlja1Jlc3BvbnNl",
-          "Eg4KBnVzZXJJZBgBIAEoAxIcCgloYW5kQ2FyZHMYAiADKAsyCS5DYXJkRGF0",
-          "YSI0ChlTMkNVc2VyVXBkYXRlTm90aWZpY2F0aW9uEhcKBHVzZXIYASADKAsy",
-          "CS5Vc2VyRGF0YSKEAQoaUzJDUGhhc2VVcGRhdGVOb3RpZmljYXRpb24SHQoJ",
-          "cGhhc2VUeXBlGAEgASgOMgouUGhhc2VUeXBlEhMKC25leHRQaGFzZUF0GAIg",
-          "ASgDEjIKEmNoYXJhY3RlclBvc2l0aW9ucxgDIAMoCzIWLkNoYXJhY3RlclBv",
-          "c2l0aW9uRGF0YSI5ChJDMlNSZWFjdGlvblJlcXVlc3QSIwoMcmVhY3Rpb25U",
-          "eXBlGAEgASgOMg0uUmVhY3Rpb25UeXBlIkkKE1MyQ1JlYWN0aW9uUmVzcG9u",
-          "c2USDwoHc3VjY2VzcxgBIAEoCBIhCghmYWlsQ29kZRgCIAEoDjIPLkdsb2Jh",
-          "bEZhaWxDb2RlIjgKFUMyU0Rlc3Ryb3lDYXJkUmVxdWVzdBIfCgxkZXN0cm95",
-          "Q2FyZHMYASADKAsyCS5DYXJkRGF0YSI2ChZTMkNEZXN0cm95Q2FyZFJlc3Bv",
-          "bnNlEhwKCWhhbmRDYXJkcxgBIAMoCzIJLkNhcmREYXRhIkQKFlMyQ0dhbWVF",
-          "bmROb3RpZmljYXRpb24SDwoHd2lubmVycxgBIAMoCRIZCgd3aW5UeXBlGAIg",
-          "ASgOMgguV2luVHlwZSJeChRDMlNDYXJkU2VsZWN0UmVxdWVzdBIjCgpzZWxl",
-          "Y3RUeXBlGAEgASgOMg8uU2VsZWN0Q2FyZFR5cGUSIQoOc2VsZWN0Q2FyZFR5",
-          "cGUYAiABKA4yCS5DYXJkVHlwZSJLChVTMkNDYXJkU2VsZWN0UmVzcG9uc2US",
-          "DwoHc3VjY2VzcxgBIAEoCBIhCghmYWlsQ29kZRgCIAEoDjIPLkdsb2JhbEZh",
-          "aWxDb2RlIk8KFEMyU1Bhc3NEZWJ1ZmZSZXF1ZXN0EhQKDHRhcmdldFVzZXJJ",
-          "ZBgBIAEoAxIhCg5kZWJ1ZmZDYXJkVHlwZRgCIAEoDjIJLkNhcmRUeXBlIksK",
-          "FVMyQ1Bhc3NEZWJ1ZmZSZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEiEKCGZh",
-          "aWxDb2RlGAIgASgOMg8uR2xvYmFsRmFpbENvZGUiTwoWUzJDV2FybmluZ05v",
-          "dGlmaWNhdGlvbhIhCgt3YXJuaW5nVHlwZRgBIAEoDjIMLldhcm5pbmdUeXBl",
-          "EhIKCmV4cGVjdGVkQXQYAiABKAMiUQoYUzJDQW5pbWF0aW9uTm90aWZpY2F0",
-          "aW9uEg4KBnVzZXJJZBgBIAEoAxIlCg1hbmltYXRpb25UeXBlGAIgASgOMg4u",
-          "QW5pbWF0aW9uVHlwZSLPFAoKR2FtZVBhY2tldBIuCg9yZWdpc3RlclJlcXVl",
-          "c3QYASABKAsyEy5DMlNSZWdpc3RlclJlcXVlc3RIABIwChByZWdpc3RlclJl",
-          "c3BvbnNlGAIgASgLMhQuUzJDUmVnaXN0ZXJSZXNwb25zZUgAEigKDGxvZ2lu",
-          "UmVxdWVzdBgDIAEoCzIQLkMyU0xvZ2luUmVxdWVzdEgAEioKDWxvZ2luUmVz",
-          "cG9uc2UYBCABKAsyES5TMkNMb2dpblJlc3BvbnNlSAASMgoRY3JlYXRlUm9v",
-          "bVJlcXVlc3QYBSABKAsyFS5DMlNDcmVhdGVSb29tUmVxdWVzdEgAEjQKEmNy",
-          "ZWF0ZVJvb21SZXNwb25zZRgGIAEoCzIWLlMyQ0NyZWF0ZVJvb21SZXNwb25z",
-          "ZUgAEjQKEmdldFJvb21MaXN0UmVxdWVzdBgHIAEoCzIWLkMyU0dldFJvb21M",
-          "aXN0UmVxdWVzdEgAEjYKE2dldFJvb21MaXN0UmVzcG9uc2UYCCABKAsyFy5T",
-          "MkNHZXRSb29tTGlzdFJlc3BvbnNlSAASLgoPam9pblJvb21SZXF1ZXN0GAkg",
-          "ASgLMhMuQzJTSm9pblJvb21SZXF1ZXN0SAASMAoQam9pblJvb21SZXNwb25z",
-          "ZRgKIAEoCzIULlMyQ0pvaW5Sb29tUmVzcG9uc2VIABI6ChVqb2luUmFuZG9t",
-          "Um9vbVJlcXVlc3QYCyABKAsyGS5DMlNKb2luUmFuZG9tUm9vbVJlcXVlc3RI",
-          "ABI8ChZqb2luUmFuZG9tUm9vbVJlc3BvbnNlGAwgASgLMhouUzJDSm9pblJh",
-          "bmRvbVJvb21SZXNwb25zZUgAEjgKFGpvaW5Sb29tTm90aWZpY2F0aW9uGA0g",
-          "ASgLMhguUzJDSm9pblJvb21Ob3RpZmljYXRpb25IABIwChBsZWF2ZVJvb21S",
-          "ZXF1ZXN0GA4gASgLMhQuQzJTTGVhdmVSb29tUmVxdWVzdEgAEjIKEWxlYXZl",
-          "Um9vbVJlc3BvbnNlGA8gASgLMhUuUzJDTGVhdmVSb29tUmVzcG9uc2VIABI6",
-          "ChVsZWF2ZVJvb21Ob3RpZmljYXRpb24YECABKAsyGS5TMkNMZWF2ZVJvb21O",
-          "b3RpZmljYXRpb25IABI0ChJnYW1lUHJlcGFyZVJlcXVlc3QYESABKAsyFi5D",
-          "MlNHYW1lUHJlcGFyZVJlcXVlc3RIABI2ChNnYW1lUHJlcGFyZVJlc3BvbnNl",
-          "GBIgASgLMhcuUzJDR2FtZVByZXBhcmVSZXNwb25zZUgAEj4KF2dhbWVQcmVw",
-          "YXJlTm90aWZpY2F0aW9uGBMgASgLMhsuUzJDR2FtZVByZXBhcmVOb3RpZmlj",
-          "YXRpb25IABIwChBnYW1lU3RhcnRSZXF1ZXN0GBQgASgLMhQuQzJTR2FtZVN0",
-          "YXJ0UmVxdWVzdEgAEjIKEWdhbWVTdGFydFJlc3BvbnNlGBUgASgLMhUuUzJD",
-          "R2FtZVN0YXJ0UmVzcG9uc2VIABI6ChVnYW1lU3RhcnROb3RpZmljYXRpb24Y",
-          "FiABKAsyGS5TMkNHYW1lU3RhcnROb3RpZmljYXRpb25IABI6ChVwb3NpdGlv",
-          "blVwZGF0ZVJlcXVlc3QYFyABKAsyGS5DMlNQb3NpdGlvblVwZGF0ZVJlcXVl",
-          "c3RIABJEChpwb3NpdGlvblVwZGF0ZU5vdGlmaWNhdGlvbhgYIAEoCzIeLlMy",
-          "Q1Bvc2l0aW9uVXBkYXRlTm90aWZpY2F0aW9uSAASLAoOdXNlQ2FyZFJlcXVl",
-          "c3QYGSABKAsyEi5DMlNVc2VDYXJkUmVxdWVzdEgAEi4KD3VzZUNhcmRSZXNw",
-          "b25zZRgaIAEoCzITLlMyQ1VzZUNhcmRSZXNwb25zZUgAEjYKE3VzZUNhcmRO",
-          "b3RpZmljYXRpb24YGyABKAsyFy5TMkNVc2VDYXJkTm90aWZpY2F0aW9uSAAS",
-          "OgoVZXF1aXBDYXJkTm90aWZpY2F0aW9uGBwgASgLMhkuUzJDRXF1aXBDYXJk",
-          "Tm90aWZpY2F0aW9uSAASPAoWY2FyZEVmZmVjdE5vdGlmaWNhdGlvbhgdIAEo",
-          "CzIaLlMyQ0NhcmRFZmZlY3ROb3RpZmljYXRpb25IABI8ChZmbGVhTWFya2V0",
-          "Tm90aWZpY2F0aW9uGB4gASgLMhouUzJDRmxlYU1hcmtldE5vdGlmaWNhdGlv",
-          "bkgAEjoKFWZsZWFNYXJrZXRQaWNrUmVxdWVzdBgfIAEoCzIZLkMyU0ZsZWFN",
-          "YXJrZXRQaWNrUmVxdWVzdEgAEjwKFmZsZWFNYXJrZXRQaWNrUmVzcG9uc2UY",
-          "ICABKAsyGi5TMkNGbGVhTWFya2V0UGlja1Jlc3BvbnNlSAASQQoYZmxlTWFy",
-          "a2V0Q2FyZFBpY2tSZXF1ZXN0GCEgASgLMh0uQzJTRmxlYU1hcmtldENhcmRQ",
-          "aWNrUmVxdWVzdEgAEkMKGWZsZU1hcmtldENhcmRQaWNrUmVzcG9uc2UYIiAB",
-          "KAsyHi5TMkNGbGVhTWFya2V0Q2FyZFBpY2tSZXNwb25zZUgAEjwKFnVzZXJV",
-          "cGRhdGVOb3RpZmljYXRpb24YIyABKAsyGi5TMkNVc2VyVXBkYXRlTm90aWZp",
-          "Y2F0aW9uSAASPgoXcGhhc2VVcGRhdGVOb3RpZmljYXRpb24YJCABKAsyGy5T",
-          "MkNQaGFzZVVwZGF0ZU5vdGlmaWNhdGlvbkgAEi4KD3JlYWN0aW9uUmVxdWVz",
-          "dBglIAEoCzITLkMyU1JlYWN0aW9uUmVxdWVzdEgAEjAKEHJlYWN0aW9uUmVz",
-          "cG9uc2UYJiABKAsyFC5TMkNSZWFjdGlvblJlc3BvbnNlSAASNAoSZGVzdHJv",
-          "eUNhcmRSZXF1ZXN0GCcgASgLMhYuQzJTRGVzdHJveUNhcmRSZXF1ZXN0SAAS",
-          "NgoTZGVzdHJveUNhcmRSZXNwb25zZRgoIAEoCzIXLlMyQ0Rlc3Ryb3lDYXJk",
-          "UmVzcG9uc2VIABI2ChNnYW1lRW5kTm90aWZpY2F0aW9uGCkgASgLMhcuUzJD",
-          "R2FtZUVuZE5vdGlmaWNhdGlvbkgAEjIKEWNhcmRTZWxlY3RSZXF1ZXN0GCog",
-          "ASgLMhUuQzJTQ2FyZFNlbGVjdFJlcXVlc3RIABI0ChJjYXJkU2VsZWN0UmVz",
-          "cG9uc2UYKyABKAsyFi5TMkNDYXJkU2VsZWN0UmVzcG9uc2VIABIyChFwYXNz",
-          "RGVidWZmUmVxdWVzdBgsIAEoCzIVLkMyU1Bhc3NEZWJ1ZmZSZXF1ZXN0SAAS",
-          "NAoScGFzc0RlYnVmZlJlc3BvbnNlGC0gASgLMhYuUzJDUGFzc0RlYnVmZlJl",
-          "c3BvbnNlSAASNgoTd2FybmluZ05vdGlmaWNhdGlvbhguIAEoCzIXLlMyQ1dh",
-          "cm5pbmdOb3RpZmljYXRpb25IABI6ChVhbmltYXRpb25Ob3RpZmljYXRpb24Y",
-          "LyABKAsyGS5TMkNBbmltYXRpb25Ob3RpZmljYXRpb25IAEIJCgdwYXlsb2Fk",
-          "Ko8DCg5HbG9iYWxGYWlsQ29kZRIRCg1OT05FX0ZBSUxDT0RFEAASEQoNVU5L",
-          "Tk9XTl9FUlJPUhABEhMKD0lOVkFMSURfUkVRVUVTVBACEhkKFUFVVEhFTlRJ",
-          "Q0FUSU9OX0ZBSUxFRBADEhYKEkNSRUFURV9ST09NX0ZBSUxFRBAEEhQKEEpP",
-          "SU5fUk9PTV9GQUlMRUQQBRIVChFMRUFWRV9ST09NX0ZBSUxFRBAGEhMKD1JF",
-          "R0lTVEVSX0ZBSUxFRBAHEhIKDlJPT01fTk9UX0ZPVU5EEAgSFwoTQ0hBUkFD",
-          "VEVSX05PVF9GT1VORBAJEhkKFUNIQVJBQ1RFUl9TVEFURV9FUlJPUhAKEhUK",
-          "EUNIQVJBQ1RFUl9OT19DQVJEEAsSFgoSSU5WQUxJRF9ST09NX1NUQVRFEAwS",
-          "EgoOTk9UX1JPT01fT1dORVIQDRIWChJBTFJFQURZX1VTRURfQkJBTkcQDhIR",
-          "Cg1JTlZBTElEX1BIQVNFEA8SFwoTQ0hBUkFDVEVSX0NPTlRBSU5FRBAQKi4K",
-          "C1dhcm5pbmdUeXBlEg4KCk5PX1dBUk5JTkcQABIPCgtCT01CX1dBTklORxAB",
-          "KksKB1dpblR5cGUSHAoYVEFSR0VUX0FORF9CT0RZR1VBUkRfV0lOEAASDgoK",
-          "SElUTUFOX1dJThABEhIKDlBTWUNIT1BBVEhfV0lOEAIqkwEKDUNoYXJhY3Rl",
-          "clR5cGUSEgoOTk9ORV9DSEFSQUNURVIQABIHCgNSRUQQARIJCgVTSEFSSxAD",
-          "EgoKBk1BTEFORxAFEgoKBkZST0dHWRAHEggKBFBJTksQCBIQCgxTV0lNX0dM",
-          "QVNTRVMQCRIICgRNQVNLEAoSDAoIRElOT1NBVVIQDBIOCgpQSU5LX1NMSU1F",
-          "EA0q6gIKEkNoYXJhY3RlclN0YXRlVHlwZRIYChROT05FX0NIQVJBQ1RFUl9T",
-          "VEFURRAAEhEKDUJCQU5HX1NIT09URVIQARIQCgxCQkFOR19UQVJHRVQQAhIV",
-          "ChFERUFUSF9NQVRDSF9TVEFURRADEhoKFkRFQVRIX01BVENIX1RVUk5fU1RB",
-          "VEUQBBIUChBGTEVBX01BUktFVF9UVVJOEAUSFAoQRkxFQV9NQVJLRVRfV0FJ",
-          "VBAGEhUKEUdVRVJSSUxMQV9TSE9PVEVSEAcSFAoQR1VFUlJJTExBX1RBUkdF",
-          "VBAIEhUKEUJJR19CQkFOR19TSE9PVEVSEAkSFAoQQklHX0JCQU5HX1RBUkdF",
-          "VBAKEg0KCUFCU09SQklORxALEhEKDUFCU09SQl9UQVJHRVQQDBIRCg1IQUxM",
-          "VUNJTkFUSU5HEA0SGAoUSEFMTFVDSU5BVElPTl9UQVJHRVQQDhINCglDT05U",
-          "QUlORUQQDyqCAwoIQ2FyZFR5cGUSCAoETk9ORRAAEgkKBUJCQU5HEAESDQoJ",
-          "QklHX0JCQU5HEAISCgoGU0hJRUxEEAMSCwoHVkFDQ0lORRAEEgwKCENBTExf",
-          "MTE5EAUSDwoLREVBVEhfTUFUQ0gQBhINCglHVUVSUklMTEEQBxIKCgZBQlNP",
-          "UkIQCBIRCg1IQUxMVUNJTkFUSU9OEAkSDwoLRkxFQV9NQVJLRVQQChITCg9N",
-          "QVRVUkVEX1NBVklOR1MQCxIPCgtXSU5fTE9UVEVSWRAMEg4KClNOSVBFUl9H",
-          "VU4QDRIMCghIQU5EX0dVThAOEhAKDERFU0VSVF9FQUdMRRAPEg4KCkFVVE9f",
-          "UklGTEUQEBIRCg1MQVNFUl9QT0lOVEVSEBESCQoFUkFEQVIQEhIPCgtBVVRP",
-          "X1NISUVMRBATEhAKDFNURUFMVEhfU1VJVBAUEhQKEENPTlRBSU5NRU5UX1VO",
-          "SVQQFRIUChBTQVRFTExJVEVfVEFSR0VUEBYSCAoEQk9NQhAXKlAKCFJvbGVU",
-          "eXBlEg0KCU5PTkVfUk9MRRAAEgoKBlRBUkdFVBABEg0KCUJPRFlHVUFSRBAC",
-          "EgoKBkhJVE1BThADEg4KClBTWUNIT1BBVEgQBCoyCg1Sb29tU3RhdGVUeXBl",
-          "EggKBFdBSVQQABILCgdQUkVQQVJFEAESCgoGSU5HQU1FEAIqOgoJUGhhc2VU",
-          "eXBlEg4KCk5PTkVfUEhBU0UQABIHCgNEQVkQARILCgdFVkVOSU5HEAISBwoD",
-          "RU5EEAMqMwoMUmVhY3Rpb25UeXBlEhEKDU5PTkVfUkVBQ1RJT04QABIQCgxO",
-          "T1RfVVNFX0NBUkQQASo9Cg5TZWxlY3RDYXJkVHlwZRIICgRIQU5EEAASCQoF",
-          "RVFVSVAQARIKCgZXRUFQT04QAhIKCgZERUJVRkYQAyprCg1BbmltYXRpb25U",
-          "eXBlEhAKDE5PX0FOSU1BVElPThAAEh4KGlNBVEVMTElURV9UQVJHRVRfQU5J",
-          "TUFUSU9OEAESEgoOQk9NQl9BTklNQVRJT04QAhIUChBTSElFTERfQU5JTUFU",
-          "SU9OEANiBnByb3RvMw=="));
+          "clBvc2l0aW9uRGF0YSJWChJDMlNNb3ZlQ2FyZFJlcXVlc3QSHwoMZHJhZ0Nh",
+          "cmRUeXBlGAEgASgOMgkuQ2FyZFR5cGUSHwoMZHJvcENhcmRUeXBlGAIgASgO",
+          "MgkuQ2FyZFR5cGUiSQoTUzJDTW92ZUNhcmRSZXNwb25zZRIPCgdzdWNjZXNz",
+          "GAEgASgIEiEKCGZhaWxDb2RlGAIgASgOMg8uR2xvYmFsRmFpbENvZGUiRgoR",
+          "QzJTVXNlQ2FyZFJlcXVlc3QSGwoIY2FyZFR5cGUYASABKA4yCS5DYXJkVHlw",
+          "ZRIUCgx0YXJnZXRVc2VySWQYAiABKAMiSAoSUzJDVXNlQ2FyZFJlc3BvbnNl",
+          "Eg8KB3N1Y2Nlc3MYASABKAgSIQoIZmFpbENvZGUYAiABKA4yDy5HbG9iYWxG",
+          "YWlsQ29kZSJbChZTMkNVc2VDYXJkTm90aWZpY2F0aW9uEhsKCGNhcmRUeXBl",
+          "GAEgASgOMgkuQ2FyZFR5cGUSDgoGdXNlcklkGAIgASgDEhQKDHRhcmdldFVz",
+          "ZXJJZBgDIAEoAyJHChhTMkNFcXVpcENhcmROb3RpZmljYXRpb24SGwoIY2Fy",
+          "ZFR5cGUYASABKA4yCS5DYXJkVHlwZRIOCgZ1c2VySWQYAiABKAMiWQoZUzJD",
+          "Q2FyZEVmZmVjdE5vdGlmaWNhdGlvbhIbCghjYXJkVHlwZRgBIAEoDjIJLkNh",
+          "cmRUeXBlEg4KBnVzZXJJZBgCIAEoAxIPCgdzdWNjZXNzGAMgASgIIkwKGVMy",
+          "Q0ZsZWFNYXJrZXROb3RpZmljYXRpb24SHAoJY2FyZFR5cGVzGAEgAygOMgku",
+          "Q2FyZFR5cGUSEQoJcGlja0luZGV4GAIgAygFIhoKGEMyU0ZsZWFNYXJrZXRQ",
+          "aWNrUmVxdWVzdCIxChxDMlNGbGVhTWFya2V0Q2FyZFBpY2tSZXF1ZXN0EhEK",
+          "CXBpY2tJbmRleBgBIAEoBSJDChlTMkNGbGVhTWFya2V0UGlja1Jlc3BvbnNl",
+          "EiYKE2ZsZWFNYXJrZXRDYXJkVHlwZXMYASADKA4yCS5DYXJkVHlwZSJNCh1T",
+          "MkNGbGVhTWFya2V0Q2FyZFBpY2tSZXNwb25zZRIOCgZ1c2VySWQYASABKAMS",
+          "HAoJaGFuZENhcmRzGAIgAygLMgkuQ2FyZERhdGEiNAoZUzJDVXNlclVwZGF0",
+          "ZU5vdGlmaWNhdGlvbhIXCgR1c2VyGAEgAygLMgkuVXNlckRhdGEihAEKGlMy",
+          "Q1BoYXNlVXBkYXRlTm90aWZpY2F0aW9uEh0KCXBoYXNlVHlwZRgBIAEoDjIK",
+          "LlBoYXNlVHlwZRITCgtuZXh0UGhhc2VBdBgCIAEoAxIyChJjaGFyYWN0ZXJQ",
+          "b3NpdGlvbnMYAyADKAsyFi5DaGFyYWN0ZXJQb3NpdGlvbkRhdGEiOQoSQzJT",
+          "UmVhY3Rpb25SZXF1ZXN0EiMKDHJlYWN0aW9uVHlwZRgBIAEoDjINLlJlYWN0",
+          "aW9uVHlwZSJJChNTMkNSZWFjdGlvblJlc3BvbnNlEg8KB3N1Y2Nlc3MYASAB",
+          "KAgSIQoIZmFpbENvZGUYAiABKA4yDy5HbG9iYWxGYWlsQ29kZSI4ChVDMlNE",
+          "ZXN0cm95Q2FyZFJlcXVlc3QSHwoMZGVzdHJveUNhcmRzGAEgAygLMgkuQ2Fy",
+          "ZERhdGEiNgoWUzJDRGVzdHJveUNhcmRSZXNwb25zZRIcCgloYW5kQ2FyZHMY",
+          "ASADKAsyCS5DYXJkRGF0YSJEChZTMkNHYW1lRW5kTm90aWZpY2F0aW9uEg8K",
+          "B3dpbm5lcnMYASADKAkSGQoHd2luVHlwZRgCIAEoDjIILldpblR5cGUiXgoU",
+          "QzJTQ2FyZFNlbGVjdFJlcXVlc3QSIwoKc2VsZWN0VHlwZRgBIAEoDjIPLlNl",
+          "bGVjdENhcmRUeXBlEiEKDnNlbGVjdENhcmRUeXBlGAIgASgOMgkuQ2FyZFR5",
+          "cGUiSwoVUzJDQ2FyZFNlbGVjdFJlc3BvbnNlEg8KB3N1Y2Nlc3MYASABKAgS",
+          "IQoIZmFpbENvZGUYAiABKA4yDy5HbG9iYWxGYWlsQ29kZSJPChRDMlNQYXNz",
+          "RGVidWZmUmVxdWVzdBIUCgx0YXJnZXRVc2VySWQYASABKAMSIQoOZGVidWZm",
+          "Q2FyZFR5cGUYAiABKA4yCS5DYXJkVHlwZSJLChVTMkNQYXNzRGVidWZmUmVz",
+          "cG9uc2USDwoHc3VjY2VzcxgBIAEoCBIhCghmYWlsQ29kZRgCIAEoDjIPLkds",
+          "b2JhbEZhaWxDb2RlIk8KFlMyQ1dhcm5pbmdOb3RpZmljYXRpb24SIQoLd2Fy",
+          "bmluZ1R5cGUYASABKA4yDC5XYXJuaW5nVHlwZRISCgpleHBlY3RlZEF0GAIg",
+          "ASgDIlEKGFMyQ0FuaW1hdGlvbk5vdGlmaWNhdGlvbhIOCgZ1c2VySWQYASAB",
+          "KAMSJQoNYW5pbWF0aW9uVHlwZRgCIAEoDjIOLkFuaW1hdGlvblR5cGUisRUK",
+          "CkdhbWVQYWNrZXQSLgoPcmVnaXN0ZXJSZXF1ZXN0GAEgASgLMhMuQzJTUmVn",
+          "aXN0ZXJSZXF1ZXN0SAASMAoQcmVnaXN0ZXJSZXNwb25zZRgCIAEoCzIULlMy",
+          "Q1JlZ2lzdGVyUmVzcG9uc2VIABIoCgxsb2dpblJlcXVlc3QYAyABKAsyEC5D",
+          "MlNMb2dpblJlcXVlc3RIABIqCg1sb2dpblJlc3BvbnNlGAQgASgLMhEuUzJD",
+          "TG9naW5SZXNwb25zZUgAEjIKEWNyZWF0ZVJvb21SZXF1ZXN0GAUgASgLMhUu",
+          "QzJTQ3JlYXRlUm9vbVJlcXVlc3RIABI0ChJjcmVhdGVSb29tUmVzcG9uc2UY",
+          "BiABKAsyFi5TMkNDcmVhdGVSb29tUmVzcG9uc2VIABI0ChJnZXRSb29tTGlz",
+          "dFJlcXVlc3QYByABKAsyFi5DMlNHZXRSb29tTGlzdFJlcXVlc3RIABI2ChNn",
+          "ZXRSb29tTGlzdFJlc3BvbnNlGAggASgLMhcuUzJDR2V0Um9vbUxpc3RSZXNw",
+          "b25zZUgAEi4KD2pvaW5Sb29tUmVxdWVzdBgJIAEoCzITLkMyU0pvaW5Sb29t",
+          "UmVxdWVzdEgAEjAKEGpvaW5Sb29tUmVzcG9uc2UYCiABKAsyFC5TMkNKb2lu",
+          "Um9vbVJlc3BvbnNlSAASOgoVam9pblJhbmRvbVJvb21SZXF1ZXN0GAsgASgL",
+          "MhkuQzJTSm9pblJhbmRvbVJvb21SZXF1ZXN0SAASPAoWam9pblJhbmRvbVJv",
+          "b21SZXNwb25zZRgMIAEoCzIaLlMyQ0pvaW5SYW5kb21Sb29tUmVzcG9uc2VI",
+          "ABI4ChRqb2luUm9vbU5vdGlmaWNhdGlvbhgNIAEoCzIYLlMyQ0pvaW5Sb29t",
+          "Tm90aWZpY2F0aW9uSAASMAoQbGVhdmVSb29tUmVxdWVzdBgOIAEoCzIULkMy",
+          "U0xlYXZlUm9vbVJlcXVlc3RIABIyChFsZWF2ZVJvb21SZXNwb25zZRgPIAEo",
+          "CzIVLlMyQ0xlYXZlUm9vbVJlc3BvbnNlSAASOgoVbGVhdmVSb29tTm90aWZp",
+          "Y2F0aW9uGBAgASgLMhkuUzJDTGVhdmVSb29tTm90aWZpY2F0aW9uSAASNAoS",
+          "Z2FtZVByZXBhcmVSZXF1ZXN0GBEgASgLMhYuQzJTR2FtZVByZXBhcmVSZXF1",
+          "ZXN0SAASNgoTZ2FtZVByZXBhcmVSZXNwb25zZRgSIAEoCzIXLlMyQ0dhbWVQ",
+          "cmVwYXJlUmVzcG9uc2VIABI+ChdnYW1lUHJlcGFyZU5vdGlmaWNhdGlvbhgT",
+          "IAEoCzIbLlMyQ0dhbWVQcmVwYXJlTm90aWZpY2F0aW9uSAASMAoQZ2FtZVN0",
+          "YXJ0UmVxdWVzdBgUIAEoCzIULkMyU0dhbWVTdGFydFJlcXVlc3RIABIyChFn",
+          "YW1lU3RhcnRSZXNwb25zZRgVIAEoCzIVLlMyQ0dhbWVTdGFydFJlc3BvbnNl",
+          "SAASOgoVZ2FtZVN0YXJ0Tm90aWZpY2F0aW9uGBYgASgLMhkuUzJDR2FtZVN0",
+          "YXJ0Tm90aWZpY2F0aW9uSAASOgoVcG9zaXRpb25VcGRhdGVSZXF1ZXN0GBcg",
+          "ASgLMhkuQzJTUG9zaXRpb25VcGRhdGVSZXF1ZXN0SAASRAoacG9zaXRpb25V",
+          "cGRhdGVOb3RpZmljYXRpb24YGCABKAsyHi5TMkNQb3NpdGlvblVwZGF0ZU5v",
+          "dGlmaWNhdGlvbkgAEi4KD21vdmVDYXJkUmVxdWVzdBgZIAEoCzITLkMyU01v",
+          "dmVDYXJkUmVxdWVzdEgAEjAKEG1vdmVDYXJkUmVzcG9uc2UYGiABKAsyFC5T",
+          "MkNNb3ZlQ2FyZFJlc3BvbnNlSAASLAoOdXNlQ2FyZFJlcXVlc3QYGyABKAsy",
+          "Ei5DMlNVc2VDYXJkUmVxdWVzdEgAEi4KD3VzZUNhcmRSZXNwb25zZRgcIAEo",
+          "CzITLlMyQ1VzZUNhcmRSZXNwb25zZUgAEjYKE3VzZUNhcmROb3RpZmljYXRp",
+          "b24YHSABKAsyFy5TMkNVc2VDYXJkTm90aWZpY2F0aW9uSAASOgoVZXF1aXBD",
+          "YXJkTm90aWZpY2F0aW9uGB4gASgLMhkuUzJDRXF1aXBDYXJkTm90aWZpY2F0",
+          "aW9uSAASPAoWY2FyZEVmZmVjdE5vdGlmaWNhdGlvbhgfIAEoCzIaLlMyQ0Nh",
+          "cmRFZmZlY3ROb3RpZmljYXRpb25IABI8ChZmbGVhTWFya2V0Tm90aWZpY2F0",
+          "aW9uGCAgASgLMhouUzJDRmxlYU1hcmtldE5vdGlmaWNhdGlvbkgAEjoKFWZs",
+          "ZWFNYXJrZXRQaWNrUmVxdWVzdBghIAEoCzIZLkMyU0ZsZWFNYXJrZXRQaWNr",
+          "UmVxdWVzdEgAEjwKFmZsZWFNYXJrZXRQaWNrUmVzcG9uc2UYIiABKAsyGi5T",
+          "MkNGbGVhTWFya2V0UGlja1Jlc3BvbnNlSAASQQoYZmxlTWFya2V0Q2FyZFBp",
+          "Y2tSZXF1ZXN0GCMgASgLMh0uQzJTRmxlYU1hcmtldENhcmRQaWNrUmVxdWVz",
+          "dEgAEkMKGWZsZU1hcmtldENhcmRQaWNrUmVzcG9uc2UYJCABKAsyHi5TMkNG",
+          "bGVhTWFya2V0Q2FyZFBpY2tSZXNwb25zZUgAEjwKFnVzZXJVcGRhdGVOb3Rp",
+          "ZmljYXRpb24YJSABKAsyGi5TMkNVc2VyVXBkYXRlTm90aWZpY2F0aW9uSAAS",
+          "PgoXcGhhc2VVcGRhdGVOb3RpZmljYXRpb24YJiABKAsyGy5TMkNQaGFzZVVw",
+          "ZGF0ZU5vdGlmaWNhdGlvbkgAEi4KD3JlYWN0aW9uUmVxdWVzdBgnIAEoCzIT",
+          "LkMyU1JlYWN0aW9uUmVxdWVzdEgAEjAKEHJlYWN0aW9uUmVzcG9uc2UYKCAB",
+          "KAsyFC5TMkNSZWFjdGlvblJlc3BvbnNlSAASNAoSZGVzdHJveUNhcmRSZXF1",
+          "ZXN0GCkgASgLMhYuQzJTRGVzdHJveUNhcmRSZXF1ZXN0SAASNgoTZGVzdHJv",
+          "eUNhcmRSZXNwb25zZRgqIAEoCzIXLlMyQ0Rlc3Ryb3lDYXJkUmVzcG9uc2VI",
+          "ABI2ChNnYW1lRW5kTm90aWZpY2F0aW9uGCsgASgLMhcuUzJDR2FtZUVuZE5v",
+          "dGlmaWNhdGlvbkgAEjIKEWNhcmRTZWxlY3RSZXF1ZXN0GCwgASgLMhUuQzJT",
+          "Q2FyZFNlbGVjdFJlcXVlc3RIABI0ChJjYXJkU2VsZWN0UmVzcG9uc2UYLSAB",
+          "KAsyFi5TMkNDYXJkU2VsZWN0UmVzcG9uc2VIABIyChFwYXNzRGVidWZmUmVx",
+          "dWVzdBguIAEoCzIVLkMyU1Bhc3NEZWJ1ZmZSZXF1ZXN0SAASNAoScGFzc0Rl",
+          "YnVmZlJlc3BvbnNlGC8gASgLMhYuUzJDUGFzc0RlYnVmZlJlc3BvbnNlSAAS",
+          "NgoTd2FybmluZ05vdGlmaWNhdGlvbhgwIAEoCzIXLlMyQ1dhcm5pbmdOb3Rp",
+          "ZmljYXRpb25IABI6ChVhbmltYXRpb25Ob3RpZmljYXRpb24YMSABKAsyGS5T",
+          "MkNBbmltYXRpb25Ob3RpZmljYXRpb25IAEIJCgdwYXlsb2FkKo8DCg5HbG9i",
+          "YWxGYWlsQ29kZRIRCg1OT05FX0ZBSUxDT0RFEAASEQoNVU5LTk9XTl9FUlJP",
+          "UhABEhMKD0lOVkFMSURfUkVRVUVTVBACEhkKFUFVVEhFTlRJQ0FUSU9OX0ZB",
+          "SUxFRBADEhYKEkNSRUFURV9ST09NX0ZBSUxFRBAEEhQKEEpPSU5fUk9PTV9G",
+          "QUlMRUQQBRIVChFMRUFWRV9ST09NX0ZBSUxFRBAGEhMKD1JFR0lTVEVSX0ZB",
+          "SUxFRBAHEhIKDlJPT01fTk9UX0ZPVU5EEAgSFwoTQ0hBUkFDVEVSX05PVF9G",
+          "T1VORBAJEhkKFUNIQVJBQ1RFUl9TVEFURV9FUlJPUhAKEhUKEUNIQVJBQ1RF",
+          "Ul9OT19DQVJEEAsSFgoSSU5WQUxJRF9ST09NX1NUQVRFEAwSEgoOTk9UX1JP",
+          "T01fT1dORVIQDRIWChJBTFJFQURZX1VTRURfQkJBTkcQDhIRCg1JTlZBTElE",
+          "X1BIQVNFEA8SFwoTQ0hBUkFDVEVSX0NPTlRBSU5FRBAQKi4KC1dhcm5pbmdU",
+          "eXBlEg4KCk5PX1dBUk5JTkcQABIPCgtCT01CX1dBTklORxABKksKB1dpblR5",
+          "cGUSHAoYVEFSR0VUX0FORF9CT0RZR1VBUkRfV0lOEAASDgoKSElUTUFOX1dJ",
+          "ThABEhIKDlBTWUNIT1BBVEhfV0lOEAIqkwEKDUNoYXJhY3RlclR5cGUSEgoO",
+          "Tk9ORV9DSEFSQUNURVIQABIHCgNSRUQQARIJCgVTSEFSSxADEgoKBk1BTEFO",
+          "RxAFEgoKBkZST0dHWRAHEggKBFBJTksQCBIQCgxTV0lNX0dMQVNTRVMQCRII",
+          "CgRNQVNLEAoSDAoIRElOT1NBVVIQDBIOCgpQSU5LX1NMSU1FEA0q6gIKEkNo",
+          "YXJhY3RlclN0YXRlVHlwZRIYChROT05FX0NIQVJBQ1RFUl9TVEFURRAAEhEK",
+          "DUJCQU5HX1NIT09URVIQARIQCgxCQkFOR19UQVJHRVQQAhIVChFERUFUSF9N",
+          "QVRDSF9TVEFURRADEhoKFkRFQVRIX01BVENIX1RVUk5fU1RBVEUQBBIUChBG",
+          "TEVBX01BUktFVF9UVVJOEAUSFAoQRkxFQV9NQVJLRVRfV0FJVBAGEhUKEUdV",
+          "RVJSSUxMQV9TSE9PVEVSEAcSFAoQR1VFUlJJTExBX1RBUkdFVBAIEhUKEUJJ",
+          "R19CQkFOR19TSE9PVEVSEAkSFAoQQklHX0JCQU5HX1RBUkdFVBAKEg0KCUFC",
+          "U09SQklORxALEhEKDUFCU09SQl9UQVJHRVQQDBIRCg1IQUxMVUNJTkFUSU5H",
+          "EA0SGAoUSEFMTFVDSU5BVElPTl9UQVJHRVQQDhINCglDT05UQUlORUQQDyqC",
+          "AwoIQ2FyZFR5cGUSCAoETk9ORRAAEgkKBUJCQU5HEAESDQoJQklHX0JCQU5H",
+          "EAISCgoGU0hJRUxEEAMSCwoHVkFDQ0lORRAEEgwKCENBTExfMTE5EAUSDwoL",
+          "REVBVEhfTUFUQ0gQBhINCglHVUVSUklMTEEQBxIKCgZBQlNPUkIQCBIRCg1I",
+          "QUxMVUNJTkFUSU9OEAkSDwoLRkxFQV9NQVJLRVQQChITCg9NQVRVUkVEX1NB",
+          "VklOR1MQCxIPCgtXSU5fTE9UVEVSWRAMEg4KClNOSVBFUl9HVU4QDRIMCghI",
+          "QU5EX0dVThAOEhAKDERFU0VSVF9FQUdMRRAPEg4KCkFVVE9fUklGTEUQEBIR",
+          "Cg1MQVNFUl9QT0lOVEVSEBESCQoFUkFEQVIQEhIPCgtBVVRPX1NISUVMRBAT",
+          "EhAKDFNURUFMVEhfU1VJVBAUEhQKEENPTlRBSU5NRU5UX1VOSVQQFRIUChBT",
+          "QVRFTExJVEVfVEFSR0VUEBYSCAoEQk9NQhAXKlAKCFJvbGVUeXBlEg0KCU5P",
+          "TkVfUk9MRRAAEgoKBlRBUkdFVBABEg0KCUJPRFlHVUFSRBACEgoKBkhJVE1B",
+          "ThADEg4KClBTWUNIT1BBVEgQBCoyCg1Sb29tU3RhdGVUeXBlEggKBFdBSVQQ",
+          "ABILCgdQUkVQQVJFEAESCgoGSU5HQU1FEAIqOgoJUGhhc2VUeXBlEg4KCk5P",
+          "TkVfUEhBU0UQABIHCgNEQVkQARILCgdFVkVOSU5HEAISBwoDRU5EEAMqMwoM",
+          "UmVhY3Rpb25UeXBlEhEKDU5PTkVfUkVBQ1RJT04QABIQCgxOT1RfVVNFX0NB",
+          "UkQQASo9Cg5TZWxlY3RDYXJkVHlwZRIICgRIQU5EEAASCQoFRVFVSVAQARIK",
+          "CgZXRUFQT04QAhIKCgZERUJVRkYQAyprCg1BbmltYXRpb25UeXBlEhAKDE5P",
+          "X0FOSU1BVElPThAAEh4KGlNBVEVMTElURV9UQVJHRVRfQU5JTUFUSU9OEAES",
+          "EgoOQk9NQl9BTklNQVRJT04QAhIUChBTSElFTERfQU5JTUFUSU9OEANiBnBy",
+          "b3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(new[] {typeof(global::GlobalFailCode), typeof(global::WarningType), typeof(global::WinType), typeof(global::CharacterType), typeof(global::CharacterStateType), typeof(global::CardType), typeof(global::RoleType), typeof(global::RoomStateType), typeof(global::PhaseType), typeof(global::ReactionType), typeof(global::SelectCardType), typeof(global::AnimationType), }, null, new pbr::GeneratedClrTypeInfo[] {
@@ -252,6 +258,8 @@ public static partial class ProtocolReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SPositionUpdateRequest), global::C2SPositionUpdateRequest.Parser, new[]{ "X", "Y" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CPositionUpdateResponse), global::S2CPositionUpdateResponse.Parser, new[]{ "Success", "FailCode" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CPositionUpdateNotification), global::S2CPositionUpdateNotification.Parser, new[]{ "CharacterPositions" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::C2SMoveCardRequest), global::C2SMoveCardRequest.Parser, new[]{ "DragCardType", "DropCardType" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::S2CMoveCardResponse), global::S2CMoveCardResponse.Parser, new[]{ "Success", "FailCode" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SUseCardRequest), global::C2SUseCardRequest.Parser, new[]{ "CardType", "TargetUserId" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CUseCardResponse), global::S2CUseCardResponse.Parser, new[]{ "Success", "FailCode" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CUseCardNotification), global::S2CUseCardNotification.Parser, new[]{ "CardType", "UserId", "TargetUserId" }, null, null, null, null),
@@ -275,7 +283,7 @@ public static partial class ProtocolReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CPassDebuffResponse), global::S2CPassDebuffResponse.Parser, new[]{ "Success", "FailCode" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CWarningNotification), global::S2CWarningNotification.Parser, new[]{ "WarningType", "ExpectedAt" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CAnimationNotification), global::S2CAnimationNotification.Parser, new[]{ "UserId", "AnimationType" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::GamePacket), global::GamePacket.Parser, new[]{ "RegisterRequest", "RegisterResponse", "LoginRequest", "LoginResponse", "CreateRoomRequest", "CreateRoomResponse", "GetRoomListRequest", "GetRoomListResponse", "JoinRoomRequest", "JoinRoomResponse", "JoinRandomRoomRequest", "JoinRandomRoomResponse", "JoinRoomNotification", "LeaveRoomRequest", "LeaveRoomResponse", "LeaveRoomNotification", "GamePrepareRequest", "GamePrepareResponse", "GamePrepareNotification", "GameStartRequest", "GameStartResponse", "GameStartNotification", "PositionUpdateRequest", "PositionUpdateNotification", "UseCardRequest", "UseCardResponse", "UseCardNotification", "EquipCardNotification", "CardEffectNotification", "FleaMarketNotification", "FleaMarketPickRequest", "FleaMarketPickResponse", "FleMarketCardPickRequest", "FleMarketCardPickResponse", "UserUpdateNotification", "PhaseUpdateNotification", "ReactionRequest", "ReactionResponse", "DestroyCardRequest", "DestroyCardResponse", "GameEndNotification", "CardSelectRequest", "CardSelectResponse", "PassDebuffRequest", "PassDebuffResponse", "WarningNotification", "AnimationNotification" }, new[]{ "Payload" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::GamePacket), global::GamePacket.Parser, new[]{ "RegisterRequest", "RegisterResponse", "LoginRequest", "LoginResponse", "CreateRoomRequest", "CreateRoomResponse", "GetRoomListRequest", "GetRoomListResponse", "JoinRoomRequest", "JoinRoomResponse", "JoinRandomRoomRequest", "JoinRandomRoomResponse", "JoinRoomNotification", "LeaveRoomRequest", "LeaveRoomResponse", "LeaveRoomNotification", "GamePrepareRequest", "GamePrepareResponse", "GamePrepareNotification", "GameStartRequest", "GameStartResponse", "GameStartNotification", "PositionUpdateRequest", "PositionUpdateNotification", "MoveCardRequest", "MoveCardResponse", "UseCardRequest", "UseCardResponse", "UseCardNotification", "EquipCardNotification", "CardEffectNotification", "FleaMarketNotification", "FleaMarketPickRequest", "FleaMarketPickResponse", "FleMarketCardPickRequest", "FleMarketCardPickResponse", "UserUpdateNotification", "PhaseUpdateNotification", "ReactionRequest", "ReactionResponse", "DestroyCardRequest", "DestroyCardResponse", "GameEndNotification", "CardSelectRequest", "CardSelectResponse", "PassDebuffRequest", "PassDebuffResponse", "WarningNotification", "AnimationNotification" }, new[]{ "Payload" }, null, null, null)
         }));
   }
   #endregion
@@ -5918,6 +5926,320 @@ public sealed partial class S2CPositionUpdateNotification : pb::IMessage<S2CPosi
 
 }
 
+public sealed partial class C2SMoveCardRequest : pb::IMessage<C2SMoveCardRequest> {
+  private static readonly pb::MessageParser<C2SMoveCardRequest> _parser = new pb::MessageParser<C2SMoveCardRequest>(() => new C2SMoveCardRequest());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<C2SMoveCardRequest> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[32]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public C2SMoveCardRequest() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public C2SMoveCardRequest(C2SMoveCardRequest other) : this() {
+    dragCardType_ = other.dragCardType_;
+    dropCardType_ = other.dropCardType_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public C2SMoveCardRequest Clone() {
+    return new C2SMoveCardRequest(this);
+  }
+
+  /// <summary>Field number for the "dragCardType" field.</summary>
+  public const int DragCardTypeFieldNumber = 1;
+  private global::CardType dragCardType_ = global::CardType.None;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::CardType DragCardType {
+    get { return dragCardType_; }
+    set {
+      dragCardType_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "dropCardType" field.</summary>
+  public const int DropCardTypeFieldNumber = 2;
+  private global::CardType dropCardType_ = global::CardType.None;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::CardType DropCardType {
+    get { return dropCardType_; }
+    set {
+      dropCardType_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as C2SMoveCardRequest);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(C2SMoveCardRequest other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (DragCardType != other.DragCardType) return false;
+    if (DropCardType != other.DropCardType) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (DragCardType != global::CardType.None) hash ^= DragCardType.GetHashCode();
+    if (DropCardType != global::CardType.None) hash ^= DropCardType.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (DragCardType != global::CardType.None) {
+      output.WriteRawTag(8);
+      output.WriteEnum((int) DragCardType);
+    }
+    if (DropCardType != global::CardType.None) {
+      output.WriteRawTag(16);
+      output.WriteEnum((int) DropCardType);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (DragCardType != global::CardType.None) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DragCardType);
+    }
+    if (DropCardType != global::CardType.None) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) DropCardType);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(C2SMoveCardRequest other) {
+    if (other == null) {
+      return;
+    }
+    if (other.DragCardType != global::CardType.None) {
+      DragCardType = other.DragCardType;
+    }
+    if (other.DropCardType != global::CardType.None) {
+      DropCardType = other.DropCardType;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          DragCardType = (global::CardType) input.ReadEnum();
+          break;
+        }
+        case 16: {
+          DropCardType = (global::CardType) input.ReadEnum();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+public sealed partial class S2CMoveCardResponse : pb::IMessage<S2CMoveCardResponse> {
+  private static readonly pb::MessageParser<S2CMoveCardResponse> _parser = new pb::MessageParser<S2CMoveCardResponse>(() => new S2CMoveCardResponse());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<S2CMoveCardResponse> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[33]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public S2CMoveCardResponse() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public S2CMoveCardResponse(S2CMoveCardResponse other) : this() {
+    success_ = other.success_;
+    failCode_ = other.failCode_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public S2CMoveCardResponse Clone() {
+    return new S2CMoveCardResponse(this);
+  }
+
+  /// <summary>Field number for the "success" field.</summary>
+  public const int SuccessFieldNumber = 1;
+  private bool success_;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Success {
+    get { return success_; }
+    set {
+      success_ = value;
+    }
+  }
+
+  /// <summary>Field number for the "failCode" field.</summary>
+  public const int FailCodeFieldNumber = 2;
+  private global::GlobalFailCode failCode_ = global::GlobalFailCode.NoneFailcode;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::GlobalFailCode FailCode {
+    get { return failCode_; }
+    set {
+      failCode_ = value;
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as S2CMoveCardResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(S2CMoveCardResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (Success != other.Success) return false;
+    if (FailCode != other.FailCode) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (Success != false) hash ^= Success.GetHashCode();
+    if (FailCode != global::GlobalFailCode.NoneFailcode) hash ^= FailCode.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (Success != false) {
+      output.WriteRawTag(8);
+      output.WriteBool(Success);
+    }
+    if (FailCode != global::GlobalFailCode.NoneFailcode) {
+      output.WriteRawTag(16);
+      output.WriteEnum((int) FailCode);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (Success != false) {
+      size += 1 + 1;
+    }
+    if (FailCode != global::GlobalFailCode.NoneFailcode) {
+      size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) FailCode);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(S2CMoveCardResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.Success != false) {
+      Success = other.Success;
+    }
+    if (other.FailCode != global::GlobalFailCode.NoneFailcode) {
+      FailCode = other.FailCode;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 8: {
+          Success = input.ReadBool();
+          break;
+        }
+        case 16: {
+          FailCode = (global::GlobalFailCode) input.ReadEnum();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
 public sealed partial class C2SUseCardRequest : pb::IMessage<C2SUseCardRequest> {
   private static readonly pb::MessageParser<C2SUseCardRequest> _parser = new pb::MessageParser<C2SUseCardRequest>(() => new C2SUseCardRequest());
   private pb::UnknownFieldSet _unknownFields;
@@ -5926,7 +6248,7 @@ public sealed partial class C2SUseCardRequest : pb::IMessage<C2SUseCardRequest> 
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[32]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[34]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6089,7 +6411,7 @@ public sealed partial class S2CUseCardResponse : pb::IMessage<S2CUseCardResponse
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[33]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[35]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6246,7 +6568,7 @@ public sealed partial class S2CUseCardNotification : pb::IMessage<S2CUseCardNoti
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[34]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[36]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6434,7 +6756,7 @@ public sealed partial class S2CEquipCardNotification : pb::IMessage<S2CEquipCard
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[35]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[37]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6591,7 +6913,7 @@ public sealed partial class S2CCardEffectNotification : pb::IMessage<S2CCardEffe
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[36]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[38]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6776,7 +7098,7 @@ public sealed partial class S2CFleaMarketNotification : pb::IMessage<S2CFleaMark
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[37]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[39]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -6919,7 +7241,7 @@ public sealed partial class C2SFleaMarketPickRequest : pb::IMessage<C2SFleaMarke
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[38]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[40]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7020,7 +7342,7 @@ public sealed partial class C2SFleaMarketCardPickRequest : pb::IMessage<C2SFleaM
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[39]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[41]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7149,7 +7471,7 @@ public sealed partial class S2CFleaMarketPickResponse : pb::IMessage<S2CFleaMark
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[40]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[42]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7271,7 +7593,7 @@ public sealed partial class S2CFleaMarketCardPickResponse : pb::IMessage<S2CFlea
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[41]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[43]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7420,7 +7742,7 @@ public sealed partial class S2CUserUpdateNotification : pb::IMessage<S2CUserUpda
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[42]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[44]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7541,7 +7863,7 @@ public sealed partial class S2CPhaseUpdateNotification : pb::IMessage<S2CPhaseUp
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[43]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[45]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7727,7 +8049,7 @@ public sealed partial class C2SReactionRequest : pb::IMessage<C2SReactionRequest
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[44]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[46]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -7859,7 +8181,7 @@ public sealed partial class S2CReactionResponse : pb::IMessage<S2CReactionRespon
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[45]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[47]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8016,7 +8338,7 @@ public sealed partial class C2SDestroyCardRequest : pb::IMessage<C2SDestroyCardR
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[46]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[48]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8137,7 +8459,7 @@ public sealed partial class S2CDestroyCardResponse : pb::IMessage<S2CDestroyCard
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[47]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[49]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8258,7 +8580,7 @@ public sealed partial class S2CGameEndNotification : pb::IMessage<S2CGameEndNoti
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[48]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[50]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8407,7 +8729,7 @@ public sealed partial class C2SCardSelectRequest : pb::IMessage<C2SCardSelectReq
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[49]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[51]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8570,7 +8892,7 @@ public sealed partial class S2CCardSelectResponse : pb::IMessage<S2CCardSelectRe
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[50]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[52]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8727,7 +9049,7 @@ public sealed partial class C2SPassDebuffRequest : pb::IMessage<C2SPassDebuffReq
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[51]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[53]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -8884,7 +9206,7 @@ public sealed partial class S2CPassDebuffResponse : pb::IMessage<S2CPassDebuffRe
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[52]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[54]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9041,7 +9363,7 @@ public sealed partial class S2CWarningNotification : pb::IMessage<S2CWarningNoti
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[53]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[55]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9201,7 +9523,7 @@ public sealed partial class S2CAnimationNotification : pb::IMessage<S2CAnimation
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[54]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[56]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9361,7 +9683,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ProtocolReflection.Descriptor.MessageTypes[55]; }
+    get { return global::ProtocolReflection.Descriptor.MessageTypes[57]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -9450,6 +9772,12 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
         break;
       case PayloadOneofCase.PositionUpdateNotification:
         PositionUpdateNotification = other.PositionUpdateNotification.Clone();
+        break;
+      case PayloadOneofCase.MoveCardRequest:
+        MoveCardRequest = other.MoveCardRequest.Clone();
+        break;
+      case PayloadOneofCase.MoveCardResponse:
+        MoveCardResponse = other.MoveCardResponse.Clone();
         break;
       case PayloadOneofCase.UseCardRequest:
         UseCardRequest = other.UseCardRequest.Clone();
@@ -9827,8 +10155,33 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
     }
   }
 
+  /// <summary>Field number for the "moveCardRequest" field.</summary>
+  public const int MoveCardRequestFieldNumber = 25;
+  /// <summary>
+  /// 카드 이동
+  /// </summary>
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::C2SMoveCardRequest MoveCardRequest {
+    get { return payloadCase_ == PayloadOneofCase.MoveCardRequest ? (global::C2SMoveCardRequest) payload_ : null; }
+    set {
+      payload_ = value;
+      payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.MoveCardRequest;
+    }
+  }
+
+  /// <summary>Field number for the "moveCardResponse" field.</summary>
+  public const int MoveCardResponseFieldNumber = 26;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::S2CMoveCardResponse MoveCardResponse {
+    get { return payloadCase_ == PayloadOneofCase.MoveCardResponse ? (global::S2CMoveCardResponse) payload_ : null; }
+    set {
+      payload_ = value;
+      payloadCase_ = value == null ? PayloadOneofCase.None : PayloadOneofCase.MoveCardResponse;
+    }
+  }
+
   /// <summary>Field number for the "useCardRequest" field.</summary>
-  public const int UseCardRequestFieldNumber = 25;
+  public const int UseCardRequestFieldNumber = 27;
   /// <summary>
   /// 카드 사용
   /// </summary>
@@ -9842,7 +10195,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "useCardResponse" field.</summary>
-  public const int UseCardResponseFieldNumber = 26;
+  public const int UseCardResponseFieldNumber = 28;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CUseCardResponse UseCardResponse {
     get { return payloadCase_ == PayloadOneofCase.UseCardResponse ? (global::S2CUseCardResponse) payload_ : null; }
@@ -9853,7 +10206,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "useCardNotification" field.</summary>
-  public const int UseCardNotificationFieldNumber = 27;
+  public const int UseCardNotificationFieldNumber = 29;
   /// <summary>
   /// 카드 효과 알림
   /// </summary>
@@ -9867,7 +10220,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "equipCardNotification" field.</summary>
-  public const int EquipCardNotificationFieldNumber = 28;
+  public const int EquipCardNotificationFieldNumber = 30;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CEquipCardNotification EquipCardNotification {
     get { return payloadCase_ == PayloadOneofCase.EquipCardNotification ? (global::S2CEquipCardNotification) payload_ : null; }
@@ -9878,7 +10231,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "cardEffectNotification" field.</summary>
-  public const int CardEffectNotificationFieldNumber = 29;
+  public const int CardEffectNotificationFieldNumber = 31;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CCardEffectNotification CardEffectNotification {
     get { return payloadCase_ == PayloadOneofCase.CardEffectNotification ? (global::S2CCardEffectNotification) payload_ : null; }
@@ -9889,7 +10242,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "fleaMarketNotification" field.</summary>
-  public const int FleaMarketNotificationFieldNumber = 30;
+  public const int FleaMarketNotificationFieldNumber = 32;
   /// <summary>
   /// 플리마켓
   /// </summary>
@@ -9903,7 +10256,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "fleaMarketPickRequest" field.</summary>
-  public const int FleaMarketPickRequestFieldNumber = 31;
+  public const int FleaMarketPickRequestFieldNumber = 33;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::C2SFleaMarketPickRequest FleaMarketPickRequest {
     get { return payloadCase_ == PayloadOneofCase.FleaMarketPickRequest ? (global::C2SFleaMarketPickRequest) payload_ : null; }
@@ -9914,7 +10267,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "fleaMarketPickResponse" field.</summary>
-  public const int FleaMarketPickResponseFieldNumber = 32;
+  public const int FleaMarketPickResponseFieldNumber = 34;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CFleaMarketPickResponse FleaMarketPickResponse {
     get { return payloadCase_ == PayloadOneofCase.FleaMarketPickResponse ? (global::S2CFleaMarketPickResponse) payload_ : null; }
@@ -9925,7 +10278,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "fleMarketCardPickRequest" field.</summary>
-  public const int FleMarketCardPickRequestFieldNumber = 33;
+  public const int FleMarketCardPickRequestFieldNumber = 35;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::C2SFleaMarketCardPickRequest FleMarketCardPickRequest {
     get { return payloadCase_ == PayloadOneofCase.FleMarketCardPickRequest ? (global::C2SFleaMarketCardPickRequest) payload_ : null; }
@@ -9936,7 +10289,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "fleMarketCardPickResponse" field.</summary>
-  public const int FleMarketCardPickResponseFieldNumber = 34;
+  public const int FleMarketCardPickResponseFieldNumber = 36;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CFleaMarketCardPickResponse FleMarketCardPickResponse {
     get { return payloadCase_ == PayloadOneofCase.FleMarketCardPickResponse ? (global::S2CFleaMarketCardPickResponse) payload_ : null; }
@@ -9947,7 +10300,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "userUpdateNotification" field.</summary>
-  public const int UserUpdateNotificationFieldNumber = 35;
+  public const int UserUpdateNotificationFieldNumber = 37;
   /// <summary>
   /// 카드 사용 등으로 인한 유저 정보 업데이트
   /// </summary>
@@ -9961,7 +10314,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "phaseUpdateNotification" field.</summary>
-  public const int PhaseUpdateNotificationFieldNumber = 36;
+  public const int PhaseUpdateNotificationFieldNumber = 38;
   /// <summary>
   /// 페이즈 업데이트
   /// </summary>
@@ -9975,7 +10328,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "reactionRequest" field.</summary>
-  public const int ReactionRequestFieldNumber = 37;
+  public const int ReactionRequestFieldNumber = 39;
   /// <summary>
   /// 리액션
   /// </summary>
@@ -9989,7 +10342,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "reactionResponse" field.</summary>
-  public const int ReactionResponseFieldNumber = 38;
+  public const int ReactionResponseFieldNumber = 40;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CReactionResponse ReactionResponse {
     get { return payloadCase_ == PayloadOneofCase.ReactionResponse ? (global::S2CReactionResponse) payload_ : null; }
@@ -10000,7 +10353,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "destroyCardRequest" field.</summary>
-  public const int DestroyCardRequestFieldNumber = 39;
+  public const int DestroyCardRequestFieldNumber = 41;
   /// <summary>
   /// 턴 종료시 (phaseType 3) 카드 버리기
   /// </summary>
@@ -10014,7 +10367,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "destroyCardResponse" field.</summary>
-  public const int DestroyCardResponseFieldNumber = 40;
+  public const int DestroyCardResponseFieldNumber = 42;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CDestroyCardResponse DestroyCardResponse {
     get { return payloadCase_ == PayloadOneofCase.DestroyCardResponse ? (global::S2CDestroyCardResponse) payload_ : null; }
@@ -10025,7 +10378,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "gameEndNotification" field.</summary>
-  public const int GameEndNotificationFieldNumber = 41;
+  public const int GameEndNotificationFieldNumber = 43;
   /// <summary>
   /// 게임 종료
   /// </summary>
@@ -10039,7 +10392,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "cardSelectRequest" field.</summary>
-  public const int CardSelectRequestFieldNumber = 42;
+  public const int CardSelectRequestFieldNumber = 44;
   /// <summary>
   /// 카드 선택
   /// </summary>
@@ -10053,7 +10406,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "cardSelectResponse" field.</summary>
-  public const int CardSelectResponseFieldNumber = 43;
+  public const int CardSelectResponseFieldNumber = 45;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CCardSelectResponse CardSelectResponse {
     get { return payloadCase_ == PayloadOneofCase.CardSelectResponse ? (global::S2CCardSelectResponse) payload_ : null; }
@@ -10064,7 +10417,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "passDebuffRequest" field.</summary>
-  public const int PassDebuffRequestFieldNumber = 44;
+  public const int PassDebuffRequestFieldNumber = 46;
   /// <summary>
   /// 디버프 넘기기
   /// </summary>
@@ -10078,7 +10431,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "passDebuffResponse" field.</summary>
-  public const int PassDebuffResponseFieldNumber = 45;
+  public const int PassDebuffResponseFieldNumber = 47;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CPassDebuffResponse PassDebuffResponse {
     get { return payloadCase_ == PayloadOneofCase.PassDebuffResponse ? (global::S2CPassDebuffResponse) payload_ : null; }
@@ -10089,7 +10442,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "warningNotification" field.</summary>
-  public const int WarningNotificationFieldNumber = 46;
+  public const int WarningNotificationFieldNumber = 48;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public global::S2CWarningNotification WarningNotification {
     get { return payloadCase_ == PayloadOneofCase.WarningNotification ? (global::S2CWarningNotification) payload_ : null; }
@@ -10100,7 +10453,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
   }
 
   /// <summary>Field number for the "animationNotification" field.</summary>
-  public const int AnimationNotificationFieldNumber = 47;
+  public const int AnimationNotificationFieldNumber = 49;
   /// <summary>
   /// 효과 알림
   /// </summary>
@@ -10141,29 +10494,31 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
     GameStartNotification = 22,
     PositionUpdateRequest = 23,
     PositionUpdateNotification = 24,
-    UseCardRequest = 25,
-    UseCardResponse = 26,
-    UseCardNotification = 27,
-    EquipCardNotification = 28,
-    CardEffectNotification = 29,
-    FleaMarketNotification = 30,
-    FleaMarketPickRequest = 31,
-    FleaMarketPickResponse = 32,
-    FleMarketCardPickRequest = 33,
-    FleMarketCardPickResponse = 34,
-    UserUpdateNotification = 35,
-    PhaseUpdateNotification = 36,
-    ReactionRequest = 37,
-    ReactionResponse = 38,
-    DestroyCardRequest = 39,
-    DestroyCardResponse = 40,
-    GameEndNotification = 41,
-    CardSelectRequest = 42,
-    CardSelectResponse = 43,
-    PassDebuffRequest = 44,
-    PassDebuffResponse = 45,
-    WarningNotification = 46,
-    AnimationNotification = 47,
+    MoveCardRequest = 25,
+    MoveCardResponse = 26,
+    UseCardRequest = 27,
+    UseCardResponse = 28,
+    UseCardNotification = 29,
+    EquipCardNotification = 30,
+    CardEffectNotification = 31,
+    FleaMarketNotification = 32,
+    FleaMarketPickRequest = 33,
+    FleaMarketPickResponse = 34,
+    FleMarketCardPickRequest = 35,
+    FleMarketCardPickResponse = 36,
+    UserUpdateNotification = 37,
+    PhaseUpdateNotification = 38,
+    ReactionRequest = 39,
+    ReactionResponse = 40,
+    DestroyCardRequest = 41,
+    DestroyCardResponse = 42,
+    GameEndNotification = 43,
+    CardSelectRequest = 44,
+    CardSelectResponse = 45,
+    PassDebuffRequest = 46,
+    PassDebuffResponse = 47,
+    WarningNotification = 48,
+    AnimationNotification = 49,
   }
   private PayloadOneofCase payloadCase_ = PayloadOneofCase.None;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -10214,6 +10569,8 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
     if (!object.Equals(GameStartNotification, other.GameStartNotification)) return false;
     if (!object.Equals(PositionUpdateRequest, other.PositionUpdateRequest)) return false;
     if (!object.Equals(PositionUpdateNotification, other.PositionUpdateNotification)) return false;
+    if (!object.Equals(MoveCardRequest, other.MoveCardRequest)) return false;
+    if (!object.Equals(MoveCardResponse, other.MoveCardResponse)) return false;
     if (!object.Equals(UseCardRequest, other.UseCardRequest)) return false;
     if (!object.Equals(UseCardResponse, other.UseCardResponse)) return false;
     if (!object.Equals(UseCardNotification, other.UseCardNotification)) return false;
@@ -10268,6 +10625,8 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
     if (payloadCase_ == PayloadOneofCase.GameStartNotification) hash ^= GameStartNotification.GetHashCode();
     if (payloadCase_ == PayloadOneofCase.PositionUpdateRequest) hash ^= PositionUpdateRequest.GetHashCode();
     if (payloadCase_ == PayloadOneofCase.PositionUpdateNotification) hash ^= PositionUpdateNotification.GetHashCode();
+    if (payloadCase_ == PayloadOneofCase.MoveCardRequest) hash ^= MoveCardRequest.GetHashCode();
+    if (payloadCase_ == PayloadOneofCase.MoveCardResponse) hash ^= MoveCardResponse.GetHashCode();
     if (payloadCase_ == PayloadOneofCase.UseCardRequest) hash ^= UseCardRequest.GetHashCode();
     if (payloadCase_ == PayloadOneofCase.UseCardResponse) hash ^= UseCardResponse.GetHashCode();
     if (payloadCase_ == PayloadOneofCase.UseCardNotification) hash ^= UseCardNotification.GetHashCode();
@@ -10401,96 +10760,104 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
       output.WriteRawTag(194, 1);
       output.WriteMessage(PositionUpdateNotification);
     }
-    if (payloadCase_ == PayloadOneofCase.UseCardRequest) {
+    if (payloadCase_ == PayloadOneofCase.MoveCardRequest) {
       output.WriteRawTag(202, 1);
+      output.WriteMessage(MoveCardRequest);
+    }
+    if (payloadCase_ == PayloadOneofCase.MoveCardResponse) {
+      output.WriteRawTag(210, 1);
+      output.WriteMessage(MoveCardResponse);
+    }
+    if (payloadCase_ == PayloadOneofCase.UseCardRequest) {
+      output.WriteRawTag(218, 1);
       output.WriteMessage(UseCardRequest);
     }
     if (payloadCase_ == PayloadOneofCase.UseCardResponse) {
-      output.WriteRawTag(210, 1);
+      output.WriteRawTag(226, 1);
       output.WriteMessage(UseCardResponse);
     }
     if (payloadCase_ == PayloadOneofCase.UseCardNotification) {
-      output.WriteRawTag(218, 1);
+      output.WriteRawTag(234, 1);
       output.WriteMessage(UseCardNotification);
     }
     if (payloadCase_ == PayloadOneofCase.EquipCardNotification) {
-      output.WriteRawTag(226, 1);
+      output.WriteRawTag(242, 1);
       output.WriteMessage(EquipCardNotification);
     }
     if (payloadCase_ == PayloadOneofCase.CardEffectNotification) {
-      output.WriteRawTag(234, 1);
+      output.WriteRawTag(250, 1);
       output.WriteMessage(CardEffectNotification);
     }
     if (payloadCase_ == PayloadOneofCase.FleaMarketNotification) {
-      output.WriteRawTag(242, 1);
+      output.WriteRawTag(130, 2);
       output.WriteMessage(FleaMarketNotification);
     }
     if (payloadCase_ == PayloadOneofCase.FleaMarketPickRequest) {
-      output.WriteRawTag(250, 1);
+      output.WriteRawTag(138, 2);
       output.WriteMessage(FleaMarketPickRequest);
     }
     if (payloadCase_ == PayloadOneofCase.FleaMarketPickResponse) {
-      output.WriteRawTag(130, 2);
+      output.WriteRawTag(146, 2);
       output.WriteMessage(FleaMarketPickResponse);
     }
     if (payloadCase_ == PayloadOneofCase.FleMarketCardPickRequest) {
-      output.WriteRawTag(138, 2);
+      output.WriteRawTag(154, 2);
       output.WriteMessage(FleMarketCardPickRequest);
     }
     if (payloadCase_ == PayloadOneofCase.FleMarketCardPickResponse) {
-      output.WriteRawTag(146, 2);
+      output.WriteRawTag(162, 2);
       output.WriteMessage(FleMarketCardPickResponse);
     }
     if (payloadCase_ == PayloadOneofCase.UserUpdateNotification) {
-      output.WriteRawTag(154, 2);
+      output.WriteRawTag(170, 2);
       output.WriteMessage(UserUpdateNotification);
     }
     if (payloadCase_ == PayloadOneofCase.PhaseUpdateNotification) {
-      output.WriteRawTag(162, 2);
+      output.WriteRawTag(178, 2);
       output.WriteMessage(PhaseUpdateNotification);
     }
     if (payloadCase_ == PayloadOneofCase.ReactionRequest) {
-      output.WriteRawTag(170, 2);
+      output.WriteRawTag(186, 2);
       output.WriteMessage(ReactionRequest);
     }
     if (payloadCase_ == PayloadOneofCase.ReactionResponse) {
-      output.WriteRawTag(178, 2);
+      output.WriteRawTag(194, 2);
       output.WriteMessage(ReactionResponse);
     }
     if (payloadCase_ == PayloadOneofCase.DestroyCardRequest) {
-      output.WriteRawTag(186, 2);
+      output.WriteRawTag(202, 2);
       output.WriteMessage(DestroyCardRequest);
     }
     if (payloadCase_ == PayloadOneofCase.DestroyCardResponse) {
-      output.WriteRawTag(194, 2);
+      output.WriteRawTag(210, 2);
       output.WriteMessage(DestroyCardResponse);
     }
     if (payloadCase_ == PayloadOneofCase.GameEndNotification) {
-      output.WriteRawTag(202, 2);
+      output.WriteRawTag(218, 2);
       output.WriteMessage(GameEndNotification);
     }
     if (payloadCase_ == PayloadOneofCase.CardSelectRequest) {
-      output.WriteRawTag(210, 2);
+      output.WriteRawTag(226, 2);
       output.WriteMessage(CardSelectRequest);
     }
     if (payloadCase_ == PayloadOneofCase.CardSelectResponse) {
-      output.WriteRawTag(218, 2);
+      output.WriteRawTag(234, 2);
       output.WriteMessage(CardSelectResponse);
     }
     if (payloadCase_ == PayloadOneofCase.PassDebuffRequest) {
-      output.WriteRawTag(226, 2);
+      output.WriteRawTag(242, 2);
       output.WriteMessage(PassDebuffRequest);
     }
     if (payloadCase_ == PayloadOneofCase.PassDebuffResponse) {
-      output.WriteRawTag(234, 2);
+      output.WriteRawTag(250, 2);
       output.WriteMessage(PassDebuffResponse);
     }
     if (payloadCase_ == PayloadOneofCase.WarningNotification) {
-      output.WriteRawTag(242, 2);
+      output.WriteRawTag(130, 3);
       output.WriteMessage(WarningNotification);
     }
     if (payloadCase_ == PayloadOneofCase.AnimationNotification) {
-      output.WriteRawTag(250, 2);
+      output.WriteRawTag(138, 3);
       output.WriteMessage(AnimationNotification);
     }
     if (_unknownFields != null) {
@@ -10572,6 +10939,12 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
     }
     if (payloadCase_ == PayloadOneofCase.PositionUpdateNotification) {
       size += 2 + pb::CodedOutputStream.ComputeMessageSize(PositionUpdateNotification);
+    }
+    if (payloadCase_ == PayloadOneofCase.MoveCardRequest) {
+      size += 2 + pb::CodedOutputStream.ComputeMessageSize(MoveCardRequest);
+    }
+    if (payloadCase_ == PayloadOneofCase.MoveCardResponse) {
+      size += 2 + pb::CodedOutputStream.ComputeMessageSize(MoveCardResponse);
     }
     if (payloadCase_ == PayloadOneofCase.UseCardRequest) {
       size += 2 + pb::CodedOutputStream.ComputeMessageSize(UseCardRequest);
@@ -10797,6 +11170,18 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           PositionUpdateNotification = new global::S2CPositionUpdateNotification();
         }
         PositionUpdateNotification.MergeFrom(other.PositionUpdateNotification);
+        break;
+      case PayloadOneofCase.MoveCardRequest:
+        if (MoveCardRequest == null) {
+          MoveCardRequest = new global::C2SMoveCardRequest();
+        }
+        MoveCardRequest.MergeFrom(other.MoveCardRequest);
+        break;
+      case PayloadOneofCase.MoveCardResponse:
+        if (MoveCardResponse == null) {
+          MoveCardResponse = new global::S2CMoveCardResponse();
+        }
+        MoveCardResponse.MergeFrom(other.MoveCardResponse);
         break;
       case PayloadOneofCase.UseCardRequest:
         if (UseCardRequest == null) {
@@ -11166,6 +11551,24 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           break;
         }
         case 202: {
+          global::C2SMoveCardRequest subBuilder = new global::C2SMoveCardRequest();
+          if (payloadCase_ == PayloadOneofCase.MoveCardRequest) {
+            subBuilder.MergeFrom(MoveCardRequest);
+          }
+          input.ReadMessage(subBuilder);
+          MoveCardRequest = subBuilder;
+          break;
+        }
+        case 210: {
+          global::S2CMoveCardResponse subBuilder = new global::S2CMoveCardResponse();
+          if (payloadCase_ == PayloadOneofCase.MoveCardResponse) {
+            subBuilder.MergeFrom(MoveCardResponse);
+          }
+          input.ReadMessage(subBuilder);
+          MoveCardResponse = subBuilder;
+          break;
+        }
+        case 218: {
           global::C2SUseCardRequest subBuilder = new global::C2SUseCardRequest();
           if (payloadCase_ == PayloadOneofCase.UseCardRequest) {
             subBuilder.MergeFrom(UseCardRequest);
@@ -11174,7 +11577,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           UseCardRequest = subBuilder;
           break;
         }
-        case 210: {
+        case 226: {
           global::S2CUseCardResponse subBuilder = new global::S2CUseCardResponse();
           if (payloadCase_ == PayloadOneofCase.UseCardResponse) {
             subBuilder.MergeFrom(UseCardResponse);
@@ -11183,7 +11586,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           UseCardResponse = subBuilder;
           break;
         }
-        case 218: {
+        case 234: {
           global::S2CUseCardNotification subBuilder = new global::S2CUseCardNotification();
           if (payloadCase_ == PayloadOneofCase.UseCardNotification) {
             subBuilder.MergeFrom(UseCardNotification);
@@ -11192,7 +11595,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           UseCardNotification = subBuilder;
           break;
         }
-        case 226: {
+        case 242: {
           global::S2CEquipCardNotification subBuilder = new global::S2CEquipCardNotification();
           if (payloadCase_ == PayloadOneofCase.EquipCardNotification) {
             subBuilder.MergeFrom(EquipCardNotification);
@@ -11201,7 +11604,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           EquipCardNotification = subBuilder;
           break;
         }
-        case 234: {
+        case 250: {
           global::S2CCardEffectNotification subBuilder = new global::S2CCardEffectNotification();
           if (payloadCase_ == PayloadOneofCase.CardEffectNotification) {
             subBuilder.MergeFrom(CardEffectNotification);
@@ -11210,7 +11613,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           CardEffectNotification = subBuilder;
           break;
         }
-        case 242: {
+        case 258: {
           global::S2CFleaMarketNotification subBuilder = new global::S2CFleaMarketNotification();
           if (payloadCase_ == PayloadOneofCase.FleaMarketNotification) {
             subBuilder.MergeFrom(FleaMarketNotification);
@@ -11219,7 +11622,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           FleaMarketNotification = subBuilder;
           break;
         }
-        case 250: {
+        case 266: {
           global::C2SFleaMarketPickRequest subBuilder = new global::C2SFleaMarketPickRequest();
           if (payloadCase_ == PayloadOneofCase.FleaMarketPickRequest) {
             subBuilder.MergeFrom(FleaMarketPickRequest);
@@ -11228,7 +11631,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           FleaMarketPickRequest = subBuilder;
           break;
         }
-        case 258: {
+        case 274: {
           global::S2CFleaMarketPickResponse subBuilder = new global::S2CFleaMarketPickResponse();
           if (payloadCase_ == PayloadOneofCase.FleaMarketPickResponse) {
             subBuilder.MergeFrom(FleaMarketPickResponse);
@@ -11237,7 +11640,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           FleaMarketPickResponse = subBuilder;
           break;
         }
-        case 266: {
+        case 282: {
           global::C2SFleaMarketCardPickRequest subBuilder = new global::C2SFleaMarketCardPickRequest();
           if (payloadCase_ == PayloadOneofCase.FleMarketCardPickRequest) {
             subBuilder.MergeFrom(FleMarketCardPickRequest);
@@ -11246,7 +11649,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           FleMarketCardPickRequest = subBuilder;
           break;
         }
-        case 274: {
+        case 290: {
           global::S2CFleaMarketCardPickResponse subBuilder = new global::S2CFleaMarketCardPickResponse();
           if (payloadCase_ == PayloadOneofCase.FleMarketCardPickResponse) {
             subBuilder.MergeFrom(FleMarketCardPickResponse);
@@ -11255,7 +11658,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           FleMarketCardPickResponse = subBuilder;
           break;
         }
-        case 282: {
+        case 298: {
           global::S2CUserUpdateNotification subBuilder = new global::S2CUserUpdateNotification();
           if (payloadCase_ == PayloadOneofCase.UserUpdateNotification) {
             subBuilder.MergeFrom(UserUpdateNotification);
@@ -11264,7 +11667,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           UserUpdateNotification = subBuilder;
           break;
         }
-        case 290: {
+        case 306: {
           global::S2CPhaseUpdateNotification subBuilder = new global::S2CPhaseUpdateNotification();
           if (payloadCase_ == PayloadOneofCase.PhaseUpdateNotification) {
             subBuilder.MergeFrom(PhaseUpdateNotification);
@@ -11273,7 +11676,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           PhaseUpdateNotification = subBuilder;
           break;
         }
-        case 298: {
+        case 314: {
           global::C2SReactionRequest subBuilder = new global::C2SReactionRequest();
           if (payloadCase_ == PayloadOneofCase.ReactionRequest) {
             subBuilder.MergeFrom(ReactionRequest);
@@ -11282,7 +11685,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           ReactionRequest = subBuilder;
           break;
         }
-        case 306: {
+        case 322: {
           global::S2CReactionResponse subBuilder = new global::S2CReactionResponse();
           if (payloadCase_ == PayloadOneofCase.ReactionResponse) {
             subBuilder.MergeFrom(ReactionResponse);
@@ -11291,7 +11694,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           ReactionResponse = subBuilder;
           break;
         }
-        case 314: {
+        case 330: {
           global::C2SDestroyCardRequest subBuilder = new global::C2SDestroyCardRequest();
           if (payloadCase_ == PayloadOneofCase.DestroyCardRequest) {
             subBuilder.MergeFrom(DestroyCardRequest);
@@ -11300,7 +11703,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           DestroyCardRequest = subBuilder;
           break;
         }
-        case 322: {
+        case 338: {
           global::S2CDestroyCardResponse subBuilder = new global::S2CDestroyCardResponse();
           if (payloadCase_ == PayloadOneofCase.DestroyCardResponse) {
             subBuilder.MergeFrom(DestroyCardResponse);
@@ -11309,7 +11712,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           DestroyCardResponse = subBuilder;
           break;
         }
-        case 330: {
+        case 346: {
           global::S2CGameEndNotification subBuilder = new global::S2CGameEndNotification();
           if (payloadCase_ == PayloadOneofCase.GameEndNotification) {
             subBuilder.MergeFrom(GameEndNotification);
@@ -11318,7 +11721,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           GameEndNotification = subBuilder;
           break;
         }
-        case 338: {
+        case 354: {
           global::C2SCardSelectRequest subBuilder = new global::C2SCardSelectRequest();
           if (payloadCase_ == PayloadOneofCase.CardSelectRequest) {
             subBuilder.MergeFrom(CardSelectRequest);
@@ -11327,7 +11730,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           CardSelectRequest = subBuilder;
           break;
         }
-        case 346: {
+        case 362: {
           global::S2CCardSelectResponse subBuilder = new global::S2CCardSelectResponse();
           if (payloadCase_ == PayloadOneofCase.CardSelectResponse) {
             subBuilder.MergeFrom(CardSelectResponse);
@@ -11336,7 +11739,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           CardSelectResponse = subBuilder;
           break;
         }
-        case 354: {
+        case 370: {
           global::C2SPassDebuffRequest subBuilder = new global::C2SPassDebuffRequest();
           if (payloadCase_ == PayloadOneofCase.PassDebuffRequest) {
             subBuilder.MergeFrom(PassDebuffRequest);
@@ -11345,7 +11748,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           PassDebuffRequest = subBuilder;
           break;
         }
-        case 362: {
+        case 378: {
           global::S2CPassDebuffResponse subBuilder = new global::S2CPassDebuffResponse();
           if (payloadCase_ == PayloadOneofCase.PassDebuffResponse) {
             subBuilder.MergeFrom(PassDebuffResponse);
@@ -11354,7 +11757,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           PassDebuffResponse = subBuilder;
           break;
         }
-        case 370: {
+        case 386: {
           global::S2CWarningNotification subBuilder = new global::S2CWarningNotification();
           if (payloadCase_ == PayloadOneofCase.WarningNotification) {
             subBuilder.MergeFrom(WarningNotification);
@@ -11363,7 +11766,7 @@ public sealed partial class GamePacket : pb::IMessage<GamePacket> {
           WarningNotification = subBuilder;
           break;
         }
-        case 378: {
+        case 394: {
           global::S2CAnimationNotification subBuilder = new global::S2CAnimationNotification();
           if (payloadCase_ == PayloadOneofCase.AnimationNotification) {
             subBuilder.MergeFrom(AnimationNotification);

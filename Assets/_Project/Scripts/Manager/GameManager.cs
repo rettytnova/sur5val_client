@@ -251,6 +251,20 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    public void MoveCard(int dragCardType, int drawCardType)
+    {
+        if (SocketManager.instance.isConnected)
+        {
+            GamePacket packet = new GamePacket();
+            packet.MoveCardRequest = new C2SMoveCardRequest()
+            {
+                DragCardType = (CardType)dragCardType,
+                DropCardType = (CardType)drawCardType
+            };
+            SocketManager.instance.Send(packet);
+        }
+    }
+
     public void OnUseCard(string rcode = "", UserInfo target = null)
     {
         if (!string.IsNullOrEmpty(rcode))
