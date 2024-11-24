@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
   rcode: CAD00006
-  displayName: "\uD604\uD53C"
-  description: "\uD50C\uB808\uC774\uC5B4 \uD55C\uBA85\uC744 \uC9C0\uC815\uD558\uC5EC
-    \uBC88\uAC08\uC544\uAC00\uBA70 \uBE75\uC57C!\uCE74\uB4DC\uB97C \uB0B8\uB2E4.
-    \uBE75\uC57C!\uB97C \uBABB\uB0B4\uBA74 \uCCB4\uB825 1 \uC18C\uBAA8"
+  displayName: "\uB85C\uADF8 \uD2B9\uC218 \uC2A4\uD0AC"
+  description: "\uB85C\uADF8 \uD2B9\uC218 \uC2A4\uD0AC\uC785\uB2C8\uB2E4."
   type: 0
   isUsable: 1
-  defCard: CAD00001
+  defCard: CAD00006
   isDirectUse: 0
   isTargetSelect: 1
   isTargetCardSelection: 0
