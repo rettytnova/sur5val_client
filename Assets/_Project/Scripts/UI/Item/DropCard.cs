@@ -74,9 +74,8 @@ public class DropCard : MonoBehaviour, IPointerEnterHandler, IDropHandler, IPoin
             dragPosCard.transform.SetParent(transform);
             dragPosCard.transform.localPosition = Vector3.zero;
 
-            // 클라이언트 데이터 이동 필요
-
             // 카드 데이터 이동 필요
+            
         }
         else // 드랍 위치가 드래그 카드와 카테고리가 다를 경우
         {
