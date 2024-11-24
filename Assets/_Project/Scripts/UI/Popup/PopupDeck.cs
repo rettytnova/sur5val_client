@@ -8,37 +8,37 @@ using TMPro;
 public class PopupDeck : UIListBase<Card>
 {
     [SerializeField] private UIPagingViewController uiPagingViewController;
-    [SerializeField] private GameObject select;
-    [SerializeField] private Button use;
+    //[SerializeField] private GameObject select;
+    //[SerializeField] private Button use;
     [SerializeField] private Transform weaponSlot;
     [SerializeField] private List<Transform> equipSlots;
+    [SerializeField] private List<Transform> inventorySlots;
     public override void Opened(object[] param)
     {
         SetList();
-        if (GameManager.instance.userCharacter.IsState<CharacterPrisonState>() ||
-            GameManager.instance.userCharacter.IsState<CharacterStopState>())
-        {
-            use.gameObject.SetActive(false);
-        }
+        //if (GameManager.instance.userCharacter.IsState<CharacterPrisonState>() ||
+        //    GameManager.instance.userCharacter.IsState<CharacterStopState>())
+        //{
+        //    use.gameObject.SetActive(false);
+        //}
         uiPagingViewController.OnChangeValue += OnChangeValue;
-        uiPagingViewController.OnMoveStart += OnMoveStart;
-        uiPagingViewController.OnMoveEnd += OnMoveEnd;
+        //uiPagingViewController.OnMoveStart += OnMoveStart;
+        //uiPagingViewController.OnMoveEnd += OnMoveEnd;
         UIGame.instance.OnSelectDirectTarget(false);
     }
 
-    private void Update()
-    {
-        if(GameManager.instance.userCharacter.IsState<CharacterIdleState>() ||
-            GameManager.instance.userCharacter.IsState<CharacterWalkState>())
-        {
-            use.gameObject.SetActive(true);
-        }
-
-    }
+    //private void Update()
+    //{
+    //    if(GameManager.instance.userCharacter.IsState<CharacterIdleState>() ||
+    //        GameManager.instance.userCharacter.IsState<CharacterWalkState>())
+    //    {
+    //        use.gameObject.SetActive(true);
+    //    }
+    //}
 
     public void OnChangeValue(int idx)
     {
-        use.interactable = UserInfo.myInfo.handCards[idx].isUsable;
+        //use.interactable = UserInfo.myInfo.handCards[idx].isUsable;
     }
 
     public override void HideDirect()
@@ -84,13 +84,16 @@ public class PopupDeck : UIListBase<Card>
         ClearList();
         ClearEquips();
         ClearWeapon();
-        var datas = UserInfo.myInfo.handCards;
-        foreach (var data in datas)
+
+        // 아이템 인벤토리 추가 부분
+        var handCards = UserInfo.myInfo.handCards;
+        for (int i = 0; i < UserInfo.myInfo.handCards.Count; i++)
         {
-            var item = AddItem();
-            item.Init(data, OnClickItem);
+            var slot = inventorySlots[i];
+            var item = Instantiate(itemPrefab, slot);
+            item.Init(handCards[i], OnClickItem);
         }
-        if(UserInfo.myInfo.weapon != null)
+        if (UserInfo.myInfo.weapon != null)
         {
             AddWeapon(UserInfo.myInfo.weapon);
         }
@@ -105,15 +108,15 @@ public class PopupDeck : UIListBase<Card>
         
     }
 
-    private void OnMoveStart()
-    {
-        select.SetActive(false);
-    }
+    //private void OnMoveStart()
+    //{
+    //    select.SetActive(false);
+    //}
 
-    private void OnMoveEnd()
-    {
-        select.SetActive(true);
-    }
+    //private void OnMoveEnd()
+    //{
+    //    select.SetActive(true);
+    //}
 
     public void OnClickUse()
     {
@@ -135,6 +138,7 @@ public class PopupDeck : UIListBase<Card>
         {
             OnUseCard();
         }
+        UIGame.instance.SetDeckCount();
     }
 
     public void OnUseCard()

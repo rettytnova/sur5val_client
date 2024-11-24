@@ -14,6 +14,7 @@ public partial class UserInfo
     public CharacterData characterData = new CharacterData();
     public List<CardDataSO> handCards = new List<CardDataSO>();
     public CardDataSO weapon;
+    public CardDataSO potion;
     public List<CardDataSO> equips = new List<CardDataSO>();
     public List<CardDataSO> debuffs = new List<CardDataSO>();
     public int handcardCount { get => characterData.HandCardsCount; }
@@ -69,6 +70,10 @@ public partial class UserInfo
             {
                 weapon = DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", userData.Character.Weapon));
             }
+            if (userData.Character.Potion > 0)
+            {
+                potion = DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", userData.Character.Potion));
+            }
             foreach (var card in userData.Character.Equips)
             {
                 equips.Add(DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", card)));
@@ -113,6 +118,10 @@ public partial class UserInfo
             {
                 weapon = DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", userData.Character.Weapon));
             }
+            if (userData.Character.Potion > 0)
+            {
+                potion = DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", userData.Character.Potion));
+            }
             foreach (var card in userData.Character.Equips)
             {
                 equips.Add(DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", card)));
@@ -136,12 +145,20 @@ public partial class UserInfo
         }
     }
 
+    public void MoveCard(int dragIdx, int dropIdx)
+    {
+        // 배열이 아닌 경우
+
+        // 배열인 경우
+    }
+
     public void Clear()
     {
         handCards.Clear();
         equips.Clear();
         debuffs.Clear();
         weapon = null;
+        potion = null;
         characterData = null;
     }
 
@@ -191,6 +208,17 @@ public partial class UserInfo
                         GameManager.instance.TrashCard(weapon);
                     }
                     weapon = card;
+                    handCards.Remove(card);
+                    UIGame.instance.SetDeckCount();
+                }
+                break;
+            case eCardType.potion:
+                {
+                    if (potion != null)
+                    {
+                        GameManager.instance.TrashCard(potion);
+                    }
+                    potion = card;
                     handCards.Remove(card);
                     UIGame.instance.SetDeckCount();
                 }
