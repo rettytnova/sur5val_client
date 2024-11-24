@@ -201,14 +201,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     protected override T ChangeState<T>()
     {
-        if (currentState is T)
-        {
-            if (!IsState<CharacterDeathState>())
-                return base.ChangeState<T>();
-            else
-                return currentState == null ? null : (T)currentState;
-        }
-
-        return base.ChangeState<T>();
+        if (!IsState<CharacterDeathState>())
+            return base.ChangeState<T>();
+        else
+            return currentState == null ? null : (T)currentState;
     }
 }
