@@ -1,0 +1,21 @@
+# 기본 설정: 텍스트 파일의 라인 엔딩을 자동으로 처리
+* text=auto
+
+# Unity의 바이너리 파일은 라인 엔딩 변환 제외
+*.unity binary
+*.prefab binary
+*.meta binary
+*.asset binary
+*.png binary
+*.jpg binary
+*.fbx binary
+
+# 강제로 LF를 사용해야 할 경우
+*.sh text eol=lf
+*.json text eol=lf
+
+# Windows에서 CRLF 사용 강제
+*.bat text eol=crlf
+
+# 텍스트 파일 자동 처리
+* text=auto
