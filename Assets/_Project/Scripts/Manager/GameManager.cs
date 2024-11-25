@@ -253,14 +253,91 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void OnUseCard(string rcode = "", UserInfo target = null)
     {
-        if (!string.IsNullOrEmpty(rcode))
+        // 클라 원본 코드  
+        // if (!string.IsNullOrEmpty(rcode))  
+        // {  
+        //     SendSocketUseCard(target == null ? UserInfo.myInfo : target, UserInfo.myInfo, rcode);  
+        // }  
+        // else if(targetCharacter != null && SelectedCard != null)  
+        // {  
+        //     UserInfo.myInfo.handCards.Remove(SelectedCard);  
+        //     SendSocketUseCard(targetCharacter.userInfo, UserInfo.myInfo, SelectedCard.rcode);  
+        // }  
+
+        // 카드 사용 로직  
+        // 사용하기 버튼과 스킬 사용 버튼에서 같이 쓰인다  
+        // 같이 쓰이면 안될것 같지만 수정에 시간이 오래 걸리기에 수정은 추후 고려  
+
+        // 사용할 변수 값 초기화  
+        int rcodeNumber = 0;
+
+        // rcode가 CAD로 시작하는지 확인  
+        if (rcode.StartsWith("CAD"))
         {
-            SendSocketUseCard(target == null ? UserInfo.myInfo : target, UserInfo.myInfo, rcode);
+            // rcode의 3번째부터 끝까지를 int로 변환  
+            rcodeNumber = int.Parse(rcode.Substring(3));
         }
-        else if(targetCharacter != null && SelectedCard != null)
+
+        // 로그 출력  
+        Debug.Log("rcodeNumber: " + rcodeNumber);
+
+        if (SelectedCard != null)
+            Debug.Log("SelectedCard.type: " + SelectedCard.type);
+
+        Debug.Log("UserInfo.myInfo.weapon: " + UserInfo.myInfo.weapon);
+
+        if (targetCharacter != null)
+            Debug.Log("targetCharacter: " + targetCharacter);
+
+        // 카드가 스킬인데 사용하기 버튼을 통해 들어온 경우  
+        if ((1 <= rcodeNumber && rcodeNumber <= 12) && new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().DeclaringType == typeof(PopupDeck))
+        {
+            // 스킬 슬롯에 스킬 장착  
+            UserInfo.myInfo.weapon = DataManager.instance.GetData<CardDataSO>(string.Format("CAD{0:00000}", rcodeNumber));
+
+            // 스킬 사용 버튼 활성화  
+            UIGame.instance.SetShotButton(true);
+            Debug.Log("스킬 장착 완료");
+        }
+        // 카드가 스킬인데 스킬 사용 버튼을 통해 들어온 경우  
+        else if ((1 <= rcodeNumber && rcodeNumber <= 12) && UserInfo.myInfo.weapon != null && targetCharacter != null)
+        {
+            // 스킬 슬롯에서 스킬 제거  
+            UserInfo.myInfo.weapon = null;
+
+            // 스킬 사용 버튼 비활성화  
+            UIGame.instance.SetShotButton(false);
+
+            // 스킬 사용 카드 데이터 서버에 보내기  
+            SendSocketUseCard(targetCharacter.userInfo, UserInfo.myInfo, rcode);
+            Debug.Log("스킬 카드 사용 완료");
+        }
+        // 카드가 스킬인데 타겟이 선택되지 않은 경우  
+        else if ((1 <= rcodeNumber && rcodeNumber <= 12) && targetCharacter == null)
+        {
+            Debug.Log("타겟이 선택되지 않았습니다.");
+        }
+        // 카드가 스킬인데 스킬 슬롯에 스킬이 없는 경우  
+        else if ((1 <= rcodeNumber && rcodeNumber <= 12) && UserInfo.myInfo.weapon == null)
+        {
+            Debug.Log("스킬 슬롯에 스킬이 없습니다.");
+        }
+        // 스킬 외의 카드(장비와 포션)를 사용한 경우  
+        else if (SelectedCard != null)
         {
             UserInfo.myInfo.handCards.Remove(SelectedCard);
-            SendSocketUseCard(targetCharacter.userInfo, UserInfo.myInfo, SelectedCard.rcode);
+            SendSocketUseCard(null, UserInfo.myInfo, SelectedCard.rcode);
+            Debug.Log("스킬 외의 카드 사용 완료");
+        }
+        // 카드가 선택 되지 않은 경우  
+        else if (!SelectedCard)
+        {
+            Debug.Log("카드가 선택 되지 않았습니다.");
+        }
+        // 그 외의 경우  
+        else
+        {
+            Debug.Log("예외 발생");
         }
     }
 
@@ -276,137 +353,139 @@ public class GameManager : MonoSingleton<GameManager>
             packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo == null ? 0 : userinfo.id };
             SocketManager.instance.Send(packet);
         }
-        else
-        {
-            switch (rcode)
-            {
-                case "CAD00001":
-                    {
-                        if (userinfo.id == UserInfo.myInfo.id)
-                        {
-                            UIManager.Show<PopupBattle>(rcode, useUserInfo.id);
-                        }
-                        else
-                        {
-                            var defCard = userinfo.handCards.Find(obj => obj.rcode == card.defCard);
-                            if (defCard != null)
-                            {
-                                userinfo.handCards.Remove(defCard);
-                            }
-                            else
-                            {
-                                userinfo.hp--;
-                            }
-                        }
-                    }
-                    break;
-                case "CAD00002":
-                case "CAD00007":
-                    {
-                        foreach (var user in DataManager.instance.users)
-                        {
-                            if (user.id == userinfo.id) continue;
-                            if (user.id == UserInfo.myInfo.id)
-                            {
-                                UIManager.Show<PopupBattle>(rcode, useUserInfo.id);
-                            }
-                            else
-                            {
-                                var defCard = user.handCards.Find(obj => obj.rcode == card.defCard);
-                                if (defCard != null)
-                                {
-                                    user.handCards.Remove(defCard);
-                                }
-                                else
-                                {
-                                    user.hp--;
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case "CAD00004":
-                    {
-                        userinfo.hp = Mathf.Min(userinfo.maxHp, userinfo.hp + 1);
-                    }
-                    break;
-                case "CAD00005":
-                    {
-                        if (userinfo == UserInfo.myInfo)
-                        {
-                            userinfo.hp = Mathf.Min(userinfo.maxHp, userinfo.hp + 1);
-                        }
-                        else
-                        {
-                            foreach (var user in DataManager.instance.users)
-                            {
-                                if (user.id == userinfo.id) continue;
-                                user.hp = Mathf.Min(user.maxHp, user.hp + 1);
-                            }
-                        }
-                    }
-                    break;
-                case "CAD00006":
-                    {
-                        if (userinfo == UserInfo.myInfo)
-                        {
-                            userinfo.hp = Mathf.Min(userinfo.maxHp, userinfo.hp + 1);
-                        }
-                        else
-                        {
-                            var usecard = DataManager.instance.GetData<CardDataSO>(rcode);
-                            var defCard = useUserInfo.handCards.Find(obj => obj.rcode == card.defCard);
-                            if (defCard != null)
-                            {
-                                useUserInfo.OnUseCard(defCard);
-                                UIManager.Get<PopupBattle>().AddUseCard(defCard);
-                            }
-                        }
-                    }
-                    break;
-                case "CAD00008":
-                    {
-                        UIManager.Show<PopupCardSelection>(userinfo, rcode);
-                    }
-                    break;
-                case "CAD00009":
-                    {
-                        UIManager.Show<PopupCardSelection>(userinfo, rcode);
-                    }
-                    break;
-                case "CAD00010":
-                    {
-                        UIManager.Show<PopupPleaMarket>(userinfo.id);
-                    }
-                    break;
-                case "CAD00011":
-                    {
 
-                    }
-                    break;
-                case "CAD00012":
-                    {
+        // 카드 효과 로직인데 우리 기획은 서버에서 연산하기 때문에 안쓰임
+        //else
+        //{
+        //    switch (rcode)
+        //    {
+        //        case "CAD00001":
+        //            {
+        //                if (userinfo.id == UserInfo.myInfo.id)
+        //                {
+        //                    UIManager.Show<PopupBattle>(rcode, useUserInfo.id);
+        //                }
+        //                else
+        //                {
+        //                    var defCard = userinfo.handCards.Find(obj => obj.rcode == card.defCard);
+        //                    if (defCard != null)
+        //                    {
+        //                        userinfo.handCards.Remove(defCard);
+        //                    }
+        //                    else
+        //                    {
+        //                        userinfo.hp--;
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "CAD00002":
+        //        case "CAD00007":
+        //            {
+        //                foreach (var user in DataManager.instance.users)
+        //                {
+        //                    if (user.id == userinfo.id) continue;
+        //                    if (user.id == UserInfo.myInfo.id)
+        //                    {
+        //                        UIManager.Show<PopupBattle>(rcode, useUserInfo.id);
+        //                    }
+        //                    else
+        //                    {
+        //                        var defCard = user.handCards.Find(obj => obj.rcode == card.defCard);
+        //                        if (defCard != null)
+        //                        {
+        //                            user.handCards.Remove(defCard);
+        //                        }
+        //                        else
+        //                        {
+        //                            user.hp--;
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "CAD00004":
+        //            {
+        //                userinfo.hp = Mathf.Min(userinfo.maxHp, userinfo.hp + 1);
+        //            }
+        //            break;
+        //        case "CAD00005":
+        //            {
+        //                if (userinfo == UserInfo.myInfo)
+        //                {
+        //                    userinfo.hp = Mathf.Min(userinfo.maxHp, userinfo.hp + 1);
+        //                }
+        //                else
+        //                {
+        //                    foreach (var user in DataManager.instance.users)
+        //                    {
+        //                        if (user.id == userinfo.id) continue;
+        //                        user.hp = Mathf.Min(user.maxHp, user.hp + 1);
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "CAD00006":
+        //            {
+        //                if (userinfo == UserInfo.myInfo)
+        //                {
+        //                    userinfo.hp = Mathf.Min(userinfo.maxHp, userinfo.hp + 1);
+        //                }
+        //                else
+        //                {
+        //                    var usecard = DataManager.instance.GetData<CardDataSO>(rcode);
+        //                    var defCard = useUserInfo.handCards.Find(obj => obj.rcode == card.defCard);
+        //                    if (defCard != null)
+        //                    {
+        //                        useUserInfo.OnUseCard(defCard);
+        //                        UIManager.Get<PopupBattle>().AddUseCard(defCard);
+        //                    }
+        //                }
+        //            }
+        //            break;
+        //        case "CAD00008":
+        //            {
+        //                UIManager.Show<PopupCardSelection>(userinfo, rcode);
+        //            }
+        //            break;
+        //        case "CAD00009":
+        //            {
+        //                UIManager.Show<PopupCardSelection>(userinfo, rcode);
+        //            }
+        //            break;
+        //        case "CAD00010":
+        //            {
+        //                UIManager.Show<PopupPleaMarket>(userinfo.id);
+        //            }
+        //            break;
+        //        case "CAD00011":
+        //            {
 
-                    }
-                    break;
-                case "CAD00021":
-                    {
+        //            }
+        //            break;
+        //        case "CAD00012":
+        //            {
 
-                    }
-                    break;
-                case "CAD00022":
-                    {
+        //            }
+        //            break;
+        //        case "CAD00021":
+        //            {
 
-                    }
-                    break;
-                case "CAD00023":
-                    {
+        //            }
+        //            break;
+        //        case "CAD00022":
+        //            {
 
-                    }
-                    break;
-            }
-            OnUseCardResult(userinfo, rcode);
-        }
+        //            }
+        //            break;
+        //        case "CAD00023":
+        //            {
+
+        //            }
+        //            break;
+        //    }
+        //    OnUseCardResult(userinfo, rcode);
+        //}
     }
 
     public async void OnSelectCard(UserInfo userinfo, string rcode, UserInfo useUserInfo, string actionRcode)

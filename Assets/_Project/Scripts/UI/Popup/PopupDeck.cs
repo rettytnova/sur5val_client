@@ -117,31 +117,34 @@ public class PopupDeck : UIListBase<Card>
 
     public void OnClickUse()
     {
-        var idx = uiPagingViewController.selectedIdx;
-        var card = UserInfo.myInfo.handCards[idx];
-        if (card.rcode == "CAD00005")
-        {
-            UIManager.ShowAlert("누구에게 사용 하시겠습니까?", "119 호출", "나에게", "모두에게", () =>
-            {
-                UserInfo.myInfo.OnUseCard(idx);
-                GameManager.instance.SendSocketUseCard(UserInfo.myInfo, UserInfo.myInfo, card.rcode);
-            }, () =>
-            {
-                UserInfo.myInfo.OnUseCard(idx);
-                GameManager.instance.SendSocketUseCard(null, UserInfo.myInfo, card.rcode);
-            });
-        }
-        else
-        {
-            OnUseCard();
-        }
+        // 원본 클라 코드
+        // 원본 코드는 카드가 CAD00005이면 사용 할 수 있는 대상을 선택할 수 있다.
+        //var idx = uiPagingViewController.selectedIdx;
+        //var card = UserInfo.myInfo.handCards[idx];
+        //if (card.rcode == "CAD00005")
+        //{
+        //    UIManager.ShowAlert("누구에게 사용 하시겠습니까?", "119 호출", "나에게", "모두에게", () =>
+        //    {
+        //        UserInfo.myInfo.OnUseCard(idx);
+        //        GameManager.instance.SendSocketUseCard(UserInfo.myInfo, UserInfo.myInfo, card.rcode);
+        //    }, () =>
+        //    {
+        //        UserInfo.myInfo.OnUseCard(idx);
+        //        GameManager.instance.SendSocketUseCard(null, UserInfo.myInfo, card.rcode);
+        //    });
+        //}
+        //else
+        //{
+        //    OnUseCard();
+        //}
+        OnUseCard();
     }
 
     public void OnUseCard()
     {
         var idx = uiPagingViewController.selectedIdx;
         var card = UserInfo.myInfo.OnUseCard(idx);
-        if (card.isTargetSelect || (UserInfo.myInfo.isSniper && card.cardType == CardType.Bbang))
+        if (card.isTargetSelect || (UserInfo.myInfo.isSniper && card.cardType == CardType.Cad00001))
         {
             UIGame.instance.OnSelectDirectTarget(true);
         }
