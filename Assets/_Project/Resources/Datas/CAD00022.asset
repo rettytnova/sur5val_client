@@ -14,15 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
   rcode: CAD00022
-  displayName: "\uC704\uC131 \uD0C0\uAC9F"
-  description: "\uD558\uB8E8 \uC2DC\uC791 \uC2DC 3% \uD655\uB960\uB85C \uCCB4\uB8253\uC744
-    \uC18C\uBAA8. \uBBF8\uBC1C\uB3D9 \uC2DC \uB2E4\uC74C \uCC28\uB840\uC758 \uC720\uC800\uC5D0\uAC8C
-    \uC774\uC804"
-  type: 3
+  displayName: "\uB9C8\uB098 \uD68C\uBCF5 \uD3EC\uC158"
+  description: "\uB9C8\uB098 \uD68C\uBCF5 \uD3EC\uC158\uC785\uB2C8\uB2E4."
+  type: 2
   isUsable: 1
-  defCard: 
-  isDirectUse: 0
-  isTargetSelect: 1
+  defCard: CAD00022
+  isDirectUse: 1
+  isTargetSelect: 0
   isTargetCardSelection: 0
   useTag: 
   isMarketSelected: 0
