@@ -54,7 +54,11 @@ public class UIGame : UIBase
                 userInfoSlot.SetVisibleRole(true);
             }
         }
-        SetShotButton(false);
+
+        // 유저 버튼 활성 비활성 초기화
+        if(UserInfo.myInfo.weapon != null)
+            SetShotButton(true);
+        else SetShotButton(false);
     }
 
     public void OnClickCharacterSlot(int idx)
@@ -73,7 +77,7 @@ public class UIGame : UIBase
             if (SocketManager.instance.isConnected)
             {
                 GamePacket packet = new GamePacket();
-                packet.PassDebuffRequest = new C2SPassDebuffRequest() { DebuffCardType = CardType.Bomb, TargetUserId = target.id };
+                packet.PassDebuffRequest = new C2SPassDebuffRequest() { DebuffCardType = CardType.Cad00023, TargetUserId = target.id };
                 SocketManager.instance.Send(packet);
             }
             else
@@ -104,9 +108,13 @@ public class UIGame : UIBase
 
     public void SetShotButton(bool isActive)
     {
+        // bool 값에 따라 버튼 활성화 여부 결정하는 기능
         buttonShot.interactable = isActive;
         selectCard.SetActive(isActive);
-        shotCount.transform.parent.gameObject.SetActive(isActive);
+
+        // 현재 기획 단계에서는 필요 없어서 없어도 되는 원본 코드
+        // 샷 카운트 텍스트 활성화 여부 결정하는 기능
+        // shotCount.transform.parent.gameObject.SetActive(isActive);
     }
 
     public void SetDeckCount()
@@ -146,57 +154,76 @@ public class UIGame : UIBase
 
     public void OnClickBang()
     {
-        if (UserInfo.myInfo.isShotPossible || GameManager.instance.SelectedCard.cardType != CardType.Bbang)
-            GameManager.instance.OnUseCard();
+        // 클라 원본 코드
+        // if (UserInfo.myInfo.isShotPossible || GameManager.instance.SelectedCard.cardType != CardType.Bbang)
+        //      GameManager.instance.OnUseCard();
+
+        // isShotPossible 내부 로직
+        // if(shotCount < bbangCount) return bool
+        var rcode = UserInfo.myInfo.weapon.rcode;
+        Debug.Log("rcode: " + rcode);
+
+        // 카드 사용
+        GameManager.instance.OnUseCard(rcode);
     }
 
     public void SetSelectCard(CardDataSO card = null)
     {
-        if (card == null)
+        // 스킬 장착시 버튼 활성화
+        if(card.type == eCardType.weapon)
         {
-            if (GameManager.instance.SelectedCard != null)
-            {
-                if (UserInfo.myInfo.handCards.Find(obj => obj.rcode == GameManager.instance.SelectedCard.rcode) == null ||
-                    (GameManager.instance.SelectedCard.cardType == CardType.Bbang && !UserInfo.myInfo.isShotPossible))
-                {
-                    GameManager.instance.UnselectCard();
-                    SetShotButton(false);
-                    return;
-                }
-            }
-            return;
-        }
-        card = UserInfo.myInfo.handCards.Find(obj => obj.rcode == card.rcode);
-        if (card == null)
-        {
-            GameManager.instance.UnselectCard();
-            SetShotButton(false);
-            return;
-        }
-        var shotCount = SetShotCount();
-        if (shotCount > 0)
-        {
-            selectCardText.text = card.displayName;
             SetShotButton(true);
         }
-        else
-        {
-            SetShotButton(false);
-        }
+        // 스킬 사용 버튼 활성 비활성화
+        // 클라 원본 코드
+        // if (card == null)
+        // {
+        //     if (GameManager.instance.SelectedCard != null)
+        //     {
+        //         if (UserInfo.myInfo.handCards.Find(obj => obj.rcode == GameManager.instance.SelectedCard.rcode) == null ||
+        //             (GameManager.instance.SelectedCard.cardType == CardType.Bbang && !UserInfo.myInfo.isShotPossible))
+        //         {
+        //             GameManager.instance.UnselectCard();
+        //             SetShotButton(false);
+        //             return;
+        //         }
+        //     }
+        //     return;
+        // }
+        // card = UserInfo.myInfo.handCards.Find(obj => obj.rcode == card.rcode);
+        // if (card == null)
+        // {
+        //     GameManager.instance.UnselectCard();
+        //     SetShotButton(false);
+        //     return;
+        // }
+        // var shotCount = SetShotCount();
+        // if (shotCount > 0)
+        // {
+        //     selectCardText.text = card.displayName;
+        //     SetShotButton(true);
+        // }
+        // else
+        // {
+        //     SetShotButton(false);
+        // }
+
+
     }
 
-    public int SetShotCount()
-    {
-        var card = GameManager.instance.SelectedCard;
-        var count = UserInfo.myInfo.handCards.FindAll(obj => obj.rcode == card.rcode).Count;
-        shotCount.text = count.ToString();
-        if (card.cardType == CardType.Bbang)
-        {
-            count = Mathf.Min(UserInfo.myInfo.handCards.FindAll(obj => obj.rcode == card.rcode).Count, UserInfo.myInfo.bbangCount - UserInfo.myInfo.shotCount);
-            shotCount.text = count.ToString();
-        }
-        return count;
-    }
+    // 샷 카운트 텍스트 설정
+    //public int SetShotCount()
+    //{
+    //    var card = GameManager.instance.SelectedCard;
+    //    var count = UserInfo.myInfo.handCards.FindAll(obj => obj.rcode == card.rcode).Count;
+    //    shotCount.text = count.ToString();
+    //    if (card.cardType == CardType.Bbang)
+    //    {
+    //        count = Mathf.Min(UserInfo.myInfo.handCards.FindAll(obj => obj.rcode == card.rcode).Count, UserInfo.myInfo.bbangCount - UserInfo.myInfo.shotCount);
+    //        shotCount.text = count.ToString();
+    //    }
+    //    return count;
+    //}
 
     public void OnClickNotice()
     {

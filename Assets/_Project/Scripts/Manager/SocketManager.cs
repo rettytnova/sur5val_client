@@ -217,7 +217,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         var text = string.Format(response.TargetUserId != 0 ? "{0}유저가 {1}카드를 사용했습니다." : "{0}유저가 {1}카드를 {2}유저에게 사용했습니다.",
             use.nickname, response.CardType.GetCardData().displayName, target.nickname);
         UIGame.instance.SetNotice(text);
-        if (response.UserId == UserInfo.myInfo.id && card.cardType == CardType.Bbang)
+        if (response.UserId == UserInfo.myInfo.id && card.cardType == CardType.Cad00001)
         {
             //UserInfo.myInfo.shotCount++;
             UIGame.instance.SetSelectCard(null);
