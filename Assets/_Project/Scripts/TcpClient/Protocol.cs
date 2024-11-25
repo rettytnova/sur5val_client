@@ -104,7 +104,7 @@ public static partial class ProtocolReflection {
           "bEZhaWxDb2RlIjgKFUMyU0Rlc3Ryb3lDYXJkUmVxdWVzdBIfCgxkZXN0cm95",
           "Q2FyZHMYASADKAsyCS5DYXJkRGF0YSI2ChZTMkNEZXN0cm95Q2FyZFJlc3Bv",
           "bnNlEhwKCWhhbmRDYXJkcxgBIAMoCzIJLkNhcmREYXRhIkQKFlMyQ0dhbWVF",
-          "bmROb3RpZmljYXRpb24SDwoHd2lubmVycxgBIAMoCRIZCgd3aW5UeXBlGAIg",
+          "bmROb3RpZmljYXRpb24SDwoHd2lubmVycxgBIAMoAxIZCgd3aW5UeXBlGAIg",
           "ASgOMgguV2luVHlwZSJeChRDMlNDYXJkU2VsZWN0UmVxdWVzdBIjCgpzZWxl",
           "Y3RUeXBlGAEgASgOMg8uU2VsZWN0Q2FyZFR5cGUSIQoOc2VsZWN0Q2FyZFR5",
           "cGUYAiABKA4yCS5DYXJkVHlwZSJLChVTMkNDYXJkU2VsZWN0UmVzcG9uc2US",
@@ -8287,11 +8287,11 @@ public sealed partial class S2CGameEndNotification : pb::IMessage<S2CGameEndNoti
 
   /// <summary>Field number for the "winners" field.</summary>
   public const int WinnersFieldNumber = 1;
-  private static readonly pb::FieldCodec<string> _repeated_winners_codec
-      = pb::FieldCodec.ForString(10);
-  private readonly pbc::RepeatedField<string> winners_ = new pbc::RepeatedField<string>();
+  private static readonly pb::FieldCodec<long> _repeated_winners_codec
+      = pb::FieldCodec.ForInt64(10);
+  private readonly pbc::RepeatedField<long> winners_ = new pbc::RepeatedField<long>();
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-  public pbc::RepeatedField<string> Winners {
+  public pbc::RepeatedField<long> Winners {
     get { return winners_; }
   }
 
@@ -8385,7 +8385,8 @@ public sealed partial class S2CGameEndNotification : pb::IMessage<S2CGameEndNoti
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
-        case 10: {
+        case 10:
+        case 8: {
           winners_.AddEntriesFrom(input, _repeated_winners_codec);
           break;
         }
