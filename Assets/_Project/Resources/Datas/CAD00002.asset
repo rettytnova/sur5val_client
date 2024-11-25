@@ -16,7 +16,7 @@ MonoBehaviour:
   rcode: CAD00002
   displayName: "\uC804\uC0AC \uBC29\uC5B4 \uC2A4\uD0AC"
   description: "\uC804\uC0AC \uBC29\uC5B4 \uC2A4\uD0AC\uC785\uB2C8\uB2E4."
-  type: 0
+  type: 1
   isUsable: 1
   defCard: CAD00002
   isDirectUse: 1

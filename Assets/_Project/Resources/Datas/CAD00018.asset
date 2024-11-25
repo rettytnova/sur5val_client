@@ -16,7 +16,7 @@ MonoBehaviour:
   rcode: CAD00018
   displayName: "\uAC00\uC8FD \uAC11\uC637"
   description: "\uAC00\uC8FD \uAC11\uC637\uC785\uB2C8\uB2E4."
-  type: 3
+  type: 2
   isUsable: 1
   defCard: CAD00018
   isDirectUse: 1

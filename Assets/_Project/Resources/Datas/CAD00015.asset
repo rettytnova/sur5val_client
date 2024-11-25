@@ -16,7 +16,7 @@ MonoBehaviour:
   rcode: CAD00015
   displayName: "\uD65C"
   description: "\uAE30\uBCF8 \uD65C\uC785\uB2C8\uB2E4."
-  type: 1
+  type: 2
   isUsable: 1
   defCard: CAD00015
   isDirectUse: 1
