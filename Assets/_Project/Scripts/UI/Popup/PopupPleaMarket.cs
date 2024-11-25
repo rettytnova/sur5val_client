@@ -17,7 +17,7 @@ public class PopupPleaMarket : UIBase
     List<Card> cards = new List<Card>();
     long id;
     float time = 0;
-    public bool isMyTurn;
+    //public bool isMyTurn;
 
     public bool isInitCards { get => cards.Count > 0; }
     public override async void Opened(object[] param)
@@ -26,7 +26,7 @@ public class PopupPleaMarket : UIBase
     }
 
     public async void Init(long id)
-    { 
+    {
         this.id = id;
         GameManager.instance.SetPleaMarketCards();
         cardObjects.ForEach(obj => obj.SetActive(false));
@@ -42,14 +42,16 @@ public class PopupPleaMarket : UIBase
 
     public void OnClickItem(int idx)
     {
-        if (!isMyTurn) return;
+        //if (!isMyTurn) return;
         if (SocketManager.instance.isConnected)
         {
             GamePacket packet = new GamePacket();
-            packet.FleaMarketPickRequest = new C2SFleaMarketPickRequest() { PickIndex = idx };
+            packet.FleMarketCardPickRequest = new C2SFleaMarketCardPickRequest() { PickIndex = idx };
             SocketManager.instance.Send(packet);
-            StopAllCoroutines();
             timer.text = "";
+
+            //StopAllCoroutines();
+            UIManager.Hide<PopupPleaMarket>();
         }
         else
         {
@@ -90,7 +92,7 @@ public class PopupPleaMarket : UIBase
 
     public void OnSelectedCard(RepeatedField<int> idxs)
     {
-        for(int i = 0; i < idxs.Count; i++)
+        for (int i = 0; i < idxs.Count; i++)
         {
             this.cards[idxs[i]].SetActive(false);
         }
@@ -98,8 +100,8 @@ public class PopupPleaMarket : UIBase
 
     public void SetUserSelectTurn(int time)
     {
-        isMyTurn = true;
-        if(time == 0)
+        //isMyTurn = true;
+        if (time == 0)
         {
             time = 5;
         }
@@ -110,7 +112,7 @@ public class PopupPleaMarket : UIBase
 
     IEnumerator SetTimer()
     {
-        while(time > 0)
+        while (time > 0)
         {
             time -= Time.deltaTime;
             timer.text = string.Format("{0:0}", time);
