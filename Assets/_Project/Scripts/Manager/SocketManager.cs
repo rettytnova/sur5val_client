@@ -170,6 +170,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
             GameManager.instance.characters[DataManager.instance.users[i].id].SetPosition(response.CharacterPositions[i].ToVector3());
         }
         GameManager.instance.OnGameStart();
+        GameManager.instance.visualHiddenRoad(false);
         GameManager.instance.SetGameState(response.GameState);
     }
 

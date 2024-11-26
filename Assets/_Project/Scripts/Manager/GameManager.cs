@@ -540,11 +540,21 @@ public class GameManager : MonoSingleton<GameManager>
     // 탈출로 활성화
     public void visualHiddenRoad(bool isVisible)
     {
-        Debug.Log("visualHiddenRoad : " + isVisible);
-        hiddenRoads[0].SetActive(isVisible);
-        colliders.SetActive(!isVisible);
-        hiddenColliders[0].SetActive(isVisible);
-        navMeshSurface.BuildNavMesh();
+        if (isVisible)
+        {
+            int rand = Util.Random(0, hiddenRoads.Count - 1);
+            hiddenRoads[rand].SetActive(isVisible);
+            colliders.SetActive(!isVisible);
+            hiddenColliders[rand].SetActive(isVisible);
+            navMeshSurface.BuildNavMesh();
+        }
+        else
+        {
+            hiddenRoads.ForEach(obj => obj.SetActive(isVisible));
+            colliders.SetActive(!isVisible);
+            hiddenColliders.ForEach(obj => obj.SetActive(isVisible));
+            navMeshSurface.BuildNavMesh();
+        }
     }
 
     public void OnGameEnd()
