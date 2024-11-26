@@ -30,9 +30,10 @@ public class GameManager : MonoSingleton<GameManager>
     [SerializeField] private GameObject cover;
     [SerializeField] private GameObject deco;
     [SerializeField] private NavMeshSurface navMeshSurface;
-    [SerializeField] private GameObject hiddenRoad;
+    [SerializeField] private List<GameObject> hiddenRoads;
     [SerializeField] private GameObject colliders;
-    [SerializeField] private GameObject hiddenColliders;
+    [SerializeField] private List<GameObject> hiddenColliders;
+    [SerializeField] private GameObject extrance;
     [SerializeField] public CinemachineCamera virtualCamera;
     [SerializeField] private TilemapRenderer tilemapRenderer;
     [SerializeField] private Controller controller;
@@ -59,7 +60,7 @@ public class GameManager : MonoSingleton<GameManager>
     public async void Init()
     {
         Debug.Log("Init");
-        // Ä«µå µ¦À» ¸ÕÀú ±¸¼º
+        // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var deckDatas = DataManager.instance.GetDatas<DeckData>();
         var cards = new List<CardDataSO>();
         foreach (var deckData in deckDatas)
@@ -71,7 +72,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         worldDeck = new Queue<CardDataSO>(cards.Shuffle());
 
-        //À¯Àú Ä³¸¯ÅÍ ¼¼ÆÃ
+        //ï¿½ï¿½ï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         var bounds = tilemapRenderer.bounds;
         var myIndex = DataManager.instance.users.FindIndex(obj => obj == UserInfo.myInfo);
         spawns = new List<Transform>(spawnPoints);
@@ -83,7 +84,7 @@ public class GameManager : MonoSingleton<GameManager>
             chara.OnChangeState<CharacterStopState>();
             if (userinfo.roleType == eRoleType.target)
                 chara.SetTargetMark();
-            chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // °¡´ÉÇÑ °Å¸®¿¡ ÀÖ´Â À¯Àú ¾ÆÀÌÄÜ¸¸ Ç¥½Ã
+            chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ü¸ï¿½ Ç¥ï¿½ï¿½
             chara.userInfo = userinfo;
             var data = DataManager.instance.GetData<CharacterDataSO>(userinfo.selectedCharacterRcode);
             userinfo.maxHp = data.health + (userinfo.roleType == eRoleType.target ? 1 : 0);
@@ -100,7 +101,7 @@ public class GameManager : MonoSingleton<GameManager>
                 OnDrawCard(user);
             }
         }
-        // Å»Ãâ·Î °¡¸®±â
+        // Å»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         visualHiddenRoad(true);
         OnGameStart();
         isInit = true;
@@ -175,7 +176,7 @@ public class GameManager : MonoSingleton<GameManager>
         chara.OnChangeState<CharacterStopState>();
         if (userinfo.roleType == eRoleType.target)
             chara.SetTargetMark();
-        chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // °¡´ÉÇÑ °Å¸®¿¡ ÀÖ´Â À¯Àú ¾ÆÀÌÄÜ¸¸ Ç¥½Ã
+        chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ü¸ï¿½ Ç¥ï¿½ï¿½
         chara.userInfo = userinfo;
     }
 
@@ -536,13 +537,13 @@ public class GameManager : MonoSingleton<GameManager>
             if (rcode == "CAD00003") UIManager.Hide<PopupBattle>();
         }
     }
-    // Å»Ãâ·Î °³¹æ
+    // Å»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void visualHiddenRoad(bool isVisible)
     {
         Debug.Log("visualHiddenRoad : " + isVisible);
-        hiddenRoad.SetActive(isVisible);
+        hiddenRoads[0].SetActive(isVisible);
         colliders.SetActive(!isVisible);
-        hiddenColliders.SetActive(isVisible);
+        hiddenColliders[0].SetActive(isVisible);
         navMeshSurface.BuildNavMesh();
     }
 
