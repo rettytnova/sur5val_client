@@ -37,7 +37,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         UIManager.Get<PopupLogin>().OnRegisterEnd(response.Success);
     }
 
-    // 방 생성
+    // �� ����
     public void CreateRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.CreateRoomResponse;
@@ -45,14 +45,14 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         UIManager.Get<PopupRoomCreate>().OnRoomCreateResult(response.Success, response.Room);
     }
 
-    // 방 목록 조회
+    // �� ��� ��ȸ
     public void GetRoomListResponse(GamePacket gamePacket)
     {
         var response = gamePacket.GetRoomListResponse;
         UIManager.Get<UIMain>().SetRoomList(response.Rooms.ToList());
     }
 
-    // 방 참가
+    // �� ����
     public void JoinRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRoomResponse;
@@ -62,7 +62,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 랜덤 방 참가
+    // ���� �� ����
     public void JoinRandomRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRandomRoomResponse;
@@ -76,7 +76,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 방 참가 알림
+    // �� ���� �˸�
     public void JoinRoomNotification(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRoomNotification;
@@ -86,7 +86,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 방 나가기
+    // �� ������
     public void LeaveRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.LeaveRoomResponse;
@@ -96,7 +96,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 방 나가기 알림
+    // �� ������ �˸�
     public void LeaveRoomNotification(GamePacket gamePacket)
     {
         var response = gamePacket.LeaveRoomNotification;
@@ -108,7 +108,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         var response = gamePacket.GamePrepareResponse;
         if (response.FailCode != 0)
         {
-            UIManager.ShowAlert(response.FailCode.ToString(), "오류");
+            UIManager.ShowAlert(response.FailCode.ToString(), "����");
             Debug.Log("GamePrepareResponse Failcode : " + response.FailCode.ToString());
         }
     }
@@ -131,12 +131,12 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         var response = gamePacket.GameStartResponse;
         if (response.FailCode != 0)
         {
-            UIManager.ShowAlert(response.FailCode.ToString(), "오류");
+            UIManager.ShowAlert(response.FailCode.ToString(), "����");
             Debug.Log("GameStartResponse Failcode : " + response.FailCode.ToString());
         }
     }
 
-    // 게임 시작
+    // ���� ����
     public async void GameStartNotification(GamePacket gamePacket)
     {
         var response = gamePacket.GameStartNotification;
@@ -172,7 +172,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         GameManager.instance.SetGameState(response.GameState);
     }
 
-    // 위치 업데이트
+    // ��ġ ������Ʈ
     public void PositionUpdateNotification(GamePacket gamePacket)
     {
         var response = gamePacket.PositionUpdateNotification;
@@ -188,7 +188,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 카드 사용
+    // ī�� ���
     public void UseCardResponse(GamePacket gamePacket)
     {
         var response = gamePacket.UseCardResponse;
@@ -214,7 +214,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
         var use = DataManager.instance.users.Find(obj => obj.id == response.UserId);
         var target = DataManager.instance.users.Find(obj => obj.id == response.TargetUserId);
-        var text = string.Format(response.TargetUserId != 0 ? "{0}유저가 {1}카드를 사용했습니다." : "{0}유저가 {1}카드를 {2}유저에게 사용했습니다.",
+        var text = string.Format(response.TargetUserId != 0 ? "{0}������ {1}ī�带 ����߽��ϴ�." : "{0}������ {1}ī�带 {2}�������� ����߽��ϴ�.",
             use.nickname, response.CardType.GetCardData().displayName, target.nickname);
         UIGame.instance.SetNotice(text);
         if (response.UserId == UserInfo.myInfo.id && card.cardType == CardType.Bbang)
@@ -237,7 +237,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         var response = gamePacket.UseCardNotification;
         var use = DataManager.instance.users.Find(obj => obj.id == response.UserId);
         var target = DataManager.instance.users.Find(obj => obj.id == response.TargetUserId);
-        var text = string.Format(response.TargetUserId != 0 ? "{0}유저가 {1}카드를 사용했습니다." : "{0}유저가 {1}카드를 {2}유저에게 사용했습니다.",
+        var text = string.Format(response.TargetUserId != 0 ? "{0}������ {1}ī�带 ����߽��ϴ�." : "{0}������ {1}ī�带 {2}�������� ����߽��ϴ�.",
             use.nickname, response.CardType.GetCardData().displayName, target.nickname);
         UIGame.instance.SetNotice(text);
     }
@@ -252,7 +252,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
             popupPleaMarket = await UIManager.Show<PopupPleaMarket>();
         }
 
-        // isInit = 플리마켓 팝업창의 cards가 0 보다 크면 true       
+        // isInit = �ø����� �˾�â�� cards�� 0 ���� ũ�� true       
         if (!popupPleaMarket.isInitCards)
         {
             popupPleaMarket.SetCards(response.FleaMarketCardTypes);
@@ -263,7 +263,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
     {
         var response = gamePacket.FleMarketCardPickResponse;
 
-        Debug.Log($"마켓에서 카드 선택함 {response.HandCards}");
+        Debug.Log($"���Ͽ��� ī�� ������ {response.HandCards}");
         var users = DataManager.instance.users;
         for (int i = 0; i < users.Count; i++)
         {
@@ -303,12 +303,13 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         var response = gamePacket.ReactionResponse;
         if (response.Success)
         {
-            if (UIManager.IsOpened<PopupBattle>())
-                UIManager.Hide<PopupBattle>();
+            // if (UIManager.IsOpened<PopupBattle>())
+            //     UIManager.Hide<PopupBattle>();
+            GameManager.instance.visualHiddenRoad(true);
         }
     }
 
-    // 카드 사용 등으로 인한 유저 정보 업데이트
+    // ī�� ��� ������ ���� ���� ���� ������Ʈ
     public async void UserUpdateNotification(GamePacket gamePacket)
     {
         while (isAnimationPlaying)
@@ -327,7 +328,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
             }
-            targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
+            targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // ������ �Ÿ��� �ִ� ���� �����ܸ� ǥ��
 
             GamePacket packet = new GamePacket();
             Action<int, long> callback = (type, userId) =>
@@ -360,12 +361,12 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                 }
                 switch ((eCharacterState)users[i].characterData.StateInfo.State)
                 {
-                    case eCharacterState.BBANG_SHOOTER: // 뱅 사용 후 대기
+                    case eCharacterState.BBANG_SHOOTER: // �� ��� �� ���
                         {
                             targetCharacter.OnChangeState<CharacterStopState>();
                         }
                         break;
-                    case eCharacterState.BBANG_TARGET: // 뱅 타겟
+                    case eCharacterState.BBANG_TARGET: // �� Ÿ��
                         {
                             var card = DataManager.instance.GetData<CardDataSO>("CAD00001");
                             if (user.handCards.FindAll(obj => obj.rcode == card.defCard).Count >= targetInfo.needShieldCount)
@@ -379,7 +380,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                             }
                         }
                         break;
-                    case eCharacterState.DEATH_MATCH: // 현피 대기
+                    case eCharacterState.DEATH_MATCH: // ���� ���
                         {
                             var card = DataManager.instance.GetData<CardDataSO>("CAD00006");
                             if (user.handCards.Find(obj => obj.rcode == card.defCard))
@@ -390,7 +391,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                             }
                         }
                         break;
-                    case eCharacterState.DEATH_MATCH_TURN: // 현피 차례
+                    case eCharacterState.DEATH_MATCH_TURN: // ���� ����
                         {
                             var card = DataManager.instance.GetData<CardDataSO>("CAD00006");
                             if (user.handCards.Find(obj => obj.rcode == card.defCard))
@@ -406,7 +407,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                             }
                         }
                         break;
-                    case eCharacterState.FLEA_MARKET_TURN: // 플리마켓 내 턴
+                    case eCharacterState.FLEA_MARKET_TURN: // �ø����� �� ��
                         {
                             targetCharacter.OnChangeState<CharacterStopState>();
                             var ui = UIManager.Get<PopupPleaMarket>();
@@ -418,7 +419,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                             ui.SetUserSelectTurn((int)dt.TotalSeconds);
                         }
                         break;
-                    case eCharacterState.FLEA_MARKET_WAIT: // 플라마켓 대기
+                    case eCharacterState.FLEA_MARKET_WAIT: // �ö��� ���
                         {
                             targetCharacter.OnChangeState<CharacterStopState>();
                             var ui = UIManager.Get<PopupPleaMarket>();
@@ -526,7 +527,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
             UIGame.instance.UpdateUserSlot(users);
     }
 
-    // 턴 종료시 (phaseType 3) 카드 버리기
+    // �� ����� (phaseType 3) ī�� ������
     public void DestroyCardResponse(GamePacket gamePacket)
     {
         var response = gamePacket.DestroyCardResponse;
@@ -536,7 +537,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         UIGame.instance.SetDeckCount();
     }
 
-    // 페이즈 업데이트
+    // ������ ������Ʈ
     public void PhaseUpdateNotification(GamePacket gamePacket)
     {
         var response = gamePacket.PhaseUpdateNotification;
@@ -548,7 +549,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 게임 종료
+    // ���� ����
     public void GameEndNotification(GamePacket gamePacket)
     {
         var response = gamePacket.GameEndNotification;
@@ -570,7 +571,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 폭탄 넘기기 
+    // ��ź �ѱ�� 
     public void PassDebuffResponse(GamePacket gamePacket)
     {
         var response = gamePacket.PassDebuffResponse;
@@ -582,14 +583,14 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    // 폭탄 위기 시
+    // ��ź ���� ��
     public void WarningNotification(GamePacket gamePacket)
     {
         var response = gamePacket.WarningNotification;
         UIGame.instance.SetBombAlert(response.WarningType == WarningType.BombWaning);
     }
 
-    // 애니메이션 요청
+    // �ִϸ��̼� ��û
     public async void AnimationNotification(GamePacket gamePacket)
     {
         var response = gamePacket.AnimationNotification;
