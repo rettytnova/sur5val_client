@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine.AI;
 using System;
 using Unity.Multiplayer.Playmode;
+using Ironcow.WebSocketPacket;
 
 
 public class Character : FSMController<CharacterState, CharacterFSM, CharacterDataSO>
@@ -111,7 +112,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     public void OnVisibleMinimapIcon(bool visible)
     {
-        if(characterType == eCharacterType.non_playable)
+        if (characterType == eCharacterType.non_playable)
             minimapIcon.gameObject.SetActive(visible && !isInside);
         else
             minimapIcon.gameObject.SetActive(false);
@@ -154,6 +155,17 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id); // 가능한 거리에 있는 유저 아이콘만 표시
 
         }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
+        {
+            Debug.Log("OnTriggerEnter2D" + "트리거 영역 진입" + collision.gameObject.layer + " " + LayerMask.NameToLayer("Extrance"));
+            //if (characterType == eCharacterType.playable && userInfo.roleType == eRoleType.bodyguard)
+            if (characterType == eCharacterType.playable) // 테스트용 조건문 (역할 조건 x)
+            {
+                GamePacket packet = new GamePacket();
+                packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
+                SocketManager.instance.Send(packet);
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -173,9 +185,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.TryGetComponent<Character>(out var character))
+        if (collision.gameObject.TryGetComponent<Character>(out var character))
         {
-            if(!SocketManager.instance.isConnected && character == GameManager.instance.userCharacter &&
+            if (!SocketManager.instance.isConnected && character == GameManager.instance.userCharacter &&
                 userInfo.handCards.Find(obj => obj.rcode == "CAD00001"))
             {
                 GameManager.instance.SendSocketUseCard(character.userInfo, userInfo, "CAD00001");
@@ -185,7 +197,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void Update()
     {
-        if(fsm != null)
+        if (fsm != null)
             fsm.UpdateState();
     }
 
