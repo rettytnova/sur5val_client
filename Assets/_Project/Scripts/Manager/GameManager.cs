@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System;
 using UnityEngine.TextCore.Text;
 using Unity.Cinemachine;
+using NavMeshPlus.Components;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -28,6 +29,11 @@ public class GameManager : MonoSingleton<GameManager>
     public Dictionary<long, Character> characters = new Dictionary<long, Character>();
     [SerializeField] private GameObject cover;
     [SerializeField] private GameObject deco;
+    [SerializeField] private NavMeshSurface navMeshSurface;
+    [SerializeField] private List<GameObject> hiddenRoads;
+    [SerializeField] private GameObject colliders;
+    [SerializeField] private List<GameObject> hiddenColliders;
+    [SerializeField] private GameObject extrance;
     [SerializeField] public CinemachineCamera virtualCamera;
     [SerializeField] private TilemapRenderer tilemapRenderer;
     [SerializeField] private Controller controller;
@@ -47,13 +53,14 @@ public class GameManager : MonoSingleton<GameManager>
     private void Start()
     {
         if (!SocketManager.instance.isConnected) Init();
-        if(spawnPoints != null)
+        if (spawnPoints != null)
             spawns = new List<Transform>(spawnPoints);
     }
 
     public async void Init()
     {
-        // ƒ´µÂ µ¶¿ª ∏’¿˙ ±∏º∫
+        Debug.Log("Init");
+        // Ïπ¥Îìú Îç±ÏùÑ Î®ºÏ†Ä Íµ¨ÏÑ±
         var deckDatas = DataManager.instance.GetDatas<DeckData>();
         var cards = new List<CardDataSO>();
         foreach (var deckData in deckDatas)
@@ -65,9 +72,9 @@ public class GameManager : MonoSingleton<GameManager>
         }
         worldDeck = new Queue<CardDataSO>(cards.Shuffle());
 
-        //¿Ø¿˙ ƒ≥∏Ø≈Õ ºº∆√
+        // Ïú†Ï†Ä Ï∫êÎ¶≠ÌÑ∞ ÏÑ∏ÌåÖ
         var bounds = tilemapRenderer.bounds;
-        var myIndex = DataManager.instance.users.FindIndex(obj => obj == UserInfo.myInfo); 
+        var myIndex = DataManager.instance.users.FindIndex(obj => obj == UserInfo.myInfo);
         spawns = new List<Transform>(spawnPoints);
         for (int i = 0; i < DataManager.instance.users.Count; i++)
         {
@@ -77,11 +84,11 @@ public class GameManager : MonoSingleton<GameManager>
             chara.OnChangeState<CharacterStopState>();
             if (userinfo.roleType == eRoleType.target)
                 chara.SetTargetMark();
-            chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // ∞°¥…«— ∞≈∏Æø° ¿÷¥¬ ¿Ø¿˙ æ∆¿Ãƒ‹∏∏ «•Ω√
+            chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩ≈∏ÔøΩÔøΩÔøΩ ÔøΩ÷¥ÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩ‹∏ÔøΩ «•ÔøΩÔøΩ
             chara.userInfo = userinfo;
             var data = DataManager.instance.GetData<CharacterDataSO>(userinfo.selectedCharacterRcode);
             userinfo.maxHp = data.health + (userinfo.roleType == eRoleType.target ? 1 : 0);
-            for(int j = 0; j < userinfo.hp; j++)
+            for (int j = 0; j < userinfo.hp; j++)
             {
                 OnDrawCard(userinfo);
             }
@@ -94,6 +101,8 @@ public class GameManager : MonoSingleton<GameManager>
                 OnDrawCard(user);
             }
         }
+        // Ïã±Í∏ÄÎ™®Îìú ÌÉàÏ∂úÎ°ú ÌôúÏÑ±Ìôî ÌÖåÏä§Ìä∏
+        visualHiddenRoad(true);
         OnGameStart();
         isInit = true;
     }
@@ -104,7 +113,7 @@ public class GameManager : MonoSingleton<GameManager>
     }
 
     public async void SetGameState(PhaseType PhaseType, long NextPhaseAt)
-    { 
+    {
         if (PhaseType == PhaseType.Day)
         {
             UserInfo.myInfo.OnDayOfAfter();
@@ -124,14 +133,14 @@ public class GameManager : MonoSingleton<GameManager>
 
         if (PhaseType == PhaseType.End)
         {
-            if(UserInfo.myInfo.handCards.Count > UserInfo.myInfo.hp)
+            if (UserInfo.myInfo.handCards.Count > UserInfo.myInfo.hp)
                 UIManager.Show<PopupRemoveCardSelection>();
         }
         else
         {
             UIManager.Hide<PopupRemoveCardSelection>();
         }
-        
+
         isPlaying = true;
         UIGame.instance.SetDeckCount();
     }
@@ -167,7 +176,7 @@ public class GameManager : MonoSingleton<GameManager>
         chara.OnChangeState<CharacterStopState>();
         if (userinfo.roleType == eRoleType.target)
             chara.SetTargetMark();
-        chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // ∞°¥…«— ∞≈∏Æø° ¿÷¥¬ ¿Ø¿˙ æ∆¿Ãƒ‹∏∏ «•Ω√
+        chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ ÔøΩ≈∏ÔøΩÔøΩÔøΩ ÔøΩ÷¥ÔøΩ ÔøΩÔøΩÔøΩÔøΩ ÔøΩÔøΩÔøΩÔøΩÔøΩ‹∏ÔøΩ «•ÔøΩÔøΩ
         chara.userInfo = userinfo;
     }
 
@@ -257,14 +266,14 @@ public class GameManager : MonoSingleton<GameManager>
         {
             SendSocketUseCard(target == null ? UserInfo.myInfo : target, UserInfo.myInfo, rcode);
         }
-        else if(targetCharacter != null && SelectedCard != null)
+        else if (targetCharacter != null && SelectedCard != null)
         {
             UserInfo.myInfo.handCards.Remove(SelectedCard);
             SendSocketUseCard(targetCharacter.userInfo, UserInfo.myInfo, SelectedCard.rcode);
         }
     }
 
-    public void SendSocketUseCard(UserInfo userinfo, UserInfo useUserInfo,  string rcode)
+    public void SendSocketUseCard(UserInfo userinfo, UserInfo useUserInfo, string rcode)
     {
         var card = DataManager.instance.GetData<CardDataSO>(rcode);
         if (!string.IsNullOrEmpty(card.useTag) && card.useTag != targetCharacter.tag) return;
@@ -411,7 +420,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public async void OnSelectCard(UserInfo userinfo, string rcode, UserInfo useUserInfo, string actionRcode)
     {
-        switch(actionRcode)
+        switch (actionRcode)
         {
             case "CAD00001":
             case "CAD00002":
@@ -433,7 +442,7 @@ public class GameManager : MonoSingleton<GameManager>
                     {
                         var card = DataManager.instance.GetData<CardDataSO>(actionRcode);
                         var defCard = useUserInfo.handCards.Find(obj => obj.rcode == card.defCard);
-                        if(defCard != null)
+                        if (defCard != null)
                         {
                             useUserInfo.OnUseCard(defCard);
                             UIManager.Get<PopupBattle>().AddUseCard(defCard);
@@ -466,7 +475,7 @@ public class GameManager : MonoSingleton<GameManager>
                         if (card != null)
                             userinfo.debuffs.Remove(card);
                     }
-                    if(card != null)
+                    if (card != null)
                     {
                         useUserInfo.handCards.Add(card);
                     }
@@ -528,11 +537,20 @@ public class GameManager : MonoSingleton<GameManager>
             if (rcode == "CAD00003") UIManager.Hide<PopupBattle>();
         }
     }
+    // ÌÉàÏ∂úÎ°ú ÌôúÏÑ±Ìôî
+    public void visualHiddenRoad(bool isVisible)
+    {
+        Debug.Log("visualHiddenRoad : " + isVisible);
+        hiddenRoads[0].SetActive(isVisible);
+        colliders.SetActive(!isVisible);
+        hiddenColliders[0].SetActive(isVisible);
+        navMeshSurface.BuildNavMesh();
+    }
 
     public void OnGameEnd()
     {
         isPlaying = false;
-        if(!SocketManager.instance.isConnected)
+        if (!SocketManager.instance.isConnected)
             UIManager.Show<PopupResult>(DataManager.instance.users.Find(obj => obj.hp > 0));
     }
 
