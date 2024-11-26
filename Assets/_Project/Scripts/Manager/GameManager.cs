@@ -60,7 +60,7 @@ public class GameManager : MonoSingleton<GameManager>
     public async void Init()
     {
         Debug.Log("Init");
-        // ī�� ���� ���� ����
+        // 카드 덱을 먼저 구성
         var deckDatas = DataManager.instance.GetDatas<DeckData>();
         var cards = new List<CardDataSO>();
         foreach (var deckData in deckDatas)
@@ -72,7 +72,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
         worldDeck = new Queue<CardDataSO>(cards.Shuffle());
 
-        //���� ĳ���� ����
+        // 유저 캐릭터 세팅
         var bounds = tilemapRenderer.bounds;
         var myIndex = DataManager.instance.users.FindIndex(obj => obj == UserInfo.myInfo);
         spawns = new List<Transform>(spawnPoints);
@@ -101,7 +101,7 @@ public class GameManager : MonoSingleton<GameManager>
                 OnDrawCard(user);
             }
         }
-        // Ż��� ������
+        // 싱글모드 탈출로 활성화 테스트
         visualHiddenRoad(true);
         OnGameStart();
         isInit = true;
@@ -537,7 +537,7 @@ public class GameManager : MonoSingleton<GameManager>
             if (rcode == "CAD00003") UIManager.Hide<PopupBattle>();
         }
     }
-    // Ż��� ����
+    // 탈출로 활성화
     public void visualHiddenRoad(bool isVisible)
     {
         Debug.Log("visualHiddenRoad : " + isVisible);
