@@ -1,9 +1,16 @@
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class KeyManager
 {
     private List<BindingKey> uiBindingKeys = new List<BindingKey>();
+    
+    private BindingKey moveUpKey = new BindingKey();
+    private BindingKey moveDownKey = new BindingKey();
+    private BindingKey moveLeftKey = new BindingKey();
+    private BindingKey moveRightKey = new BindingKey();
 
     public KeyManager()
     {
@@ -15,8 +22,55 @@ public class KeyManager
         skillUseKey.quickSlotType = en_QuickSlot.QUICK_SLOT_SKILL_USE;
         skillUseKey.keyCode = en_KeyCode.KEY_CODE_SPACE;
 
+        moveUpKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_UP;
+        moveUpKey.keyCode = en_KeyCode.KEY_CODE_W;
+
+        moveDownKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_DOWN;
+        moveDownKey.keyCode = en_KeyCode.KEY_CODE_S;
+
+        moveLeftKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_LEFT;
+        moveLeftKey.keyCode = en_KeyCode.KEY_CODE_A;
+
+        moveRightKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_RIGHT;
+        moveRightKey.keyCode = en_KeyCode.KEY_CODE_D;
+
         uiBindingKeys.Add(inventoryOpenCloseKey);
         uiBindingKeys.Add(skillUseKey);
+    }
+
+    public bool KeyboardGetKeyActions(en_KeyCode keyCode)
+    {
+        bool isKeyboardKeyAction = false;
+
+        switch (keyCode)
+        {
+            case en_KeyCode.KEY_CODE_W:
+                if (Input.GetKey(KeyCode.W))
+                {
+                    isKeyboardKeyAction = true;
+                }
+                break;
+            case en_KeyCode.KEY_CODE_S:
+                if (Input.GetKey(KeyCode.S))
+                {
+                    isKeyboardKeyAction = true;
+                }
+                break;
+            case en_KeyCode.KEY_CODE_A:
+                if (Input.GetKey(KeyCode.A))
+                {
+                    isKeyboardKeyAction = true;
+                }
+                break;
+            case en_KeyCode.KEY_CODE_D:
+                if (Input.GetKey(KeyCode.D))
+                {
+                    isKeyboardKeyAction = true;
+                }
+                break;
+        }
+
+        return isKeyboardKeyAction;
     }
 
     public bool KeyboardGetKeyDownActions(en_KeyCode keyCode)
@@ -57,8 +111,8 @@ public class KeyManager
     {
         switch (quickSlot)
         {
-            case en_QuickSlot.QUICK_SLOT_UI_INVENTORY:                
-                if(UIManager.IsOpened<PopupDeck>())
+            case en_QuickSlot.QUICK_SLOT_UI_INVENTORY:
+                if (UIManager.IsOpened<PopupDeck>())
                 {
                     UIManager.Hide<PopupDeck>();
                     return;
@@ -70,5 +124,51 @@ public class KeyManager
                 UIGame.instance.OnCardUse();
                 break;
         }
+    }
+
+    public void MoveKeyUpdate()
+    {
+        Vector2 moveDirection = new Vector2();
+
+        moveDirection.x = 0;
+        moveDirection.y = 0;
+
+        if (KeyboardGetKeyActions(moveUpKey.keyCode))
+        {
+            moveDirection.y += 1.0f;
+            if (moveDirection.y > 0)
+            {
+                moveDirection.y = 1.0f;
+            }
+        }
+
+        if (KeyboardGetKeyActions(moveDownKey.keyCode))
+        {
+            moveDirection.y += -1.0f;
+            if (moveDirection.y < 0)
+            {
+                moveDirection.y = -1.0f;
+            }
+        }
+
+        if (KeyboardGetKeyActions(moveLeftKey.keyCode))
+        {
+            moveDirection.x += -1.0f;
+            if (moveDirection.x < 0)
+            {
+                moveDirection.x = -1.0f;
+            }
+        }
+
+        if (KeyboardGetKeyActions(moveRightKey.keyCode))
+        {
+            moveDirection.x += 1.0f;
+            if (moveDirection.x > 0)
+            {
+                moveDirection.x = 1.0f;
+            }
+        }
+
+        GameManager.instance.userCharacter?.MoveCharacter(moveDirection);        
     }
 }
