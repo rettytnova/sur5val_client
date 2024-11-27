@@ -10,15 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9171727e36817448e486b1f30532e0, type: 3}
-  m_Name: CAD00101
+  m_Name: CAD00105
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
-  rcode: CAD00101
-  displayName: "\uC30D\uB465\uC774 \uD3ED\uD314"
-  description: "\uC2E0\uBE44\uB85C\uC6B4 \uB9C8\uBC95\uC758 \uC5D0\uB108\uC9C0\uAC00
-    \uB450 \uBC88 \uC801\uC744 \uBE60\uB974\uAC8C \uBCA0\uC5B4\uB0B8\uB2E4. \uB450
-    \uBC88\uC9F8 \uD0C0\uACA9\uC740 \uB9C8\uBC95\uC758 \uD3ED\uBC1C\uB85C \uC801\uC744
-    \uB354 \uAC15\uD558\uAC8C \uACF5\uACA9\uD55C\uB2E4."
+  rcode: CAD00105
+  displayName: "\uB9C8\uBC95\uC0AC \uAC15\uD654 \uC2A4\uD0AC"
+  description: 
   type: 0
   isUsable: 1
   defCard: 

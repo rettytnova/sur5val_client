@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91bb29cac0589a848ae9f9aafdd6d154
+guid: bfb77292db0e75141b706d8e07bfc2bc
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -105,8 +105,8 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 779
+        width: 200
+        height: 130
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CAD00101_0: 5794768871305116513
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
