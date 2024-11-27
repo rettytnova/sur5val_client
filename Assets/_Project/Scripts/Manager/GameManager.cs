@@ -62,6 +62,7 @@ public class GameManager : MonoSingleton<GameManager>
     private void Update()
     {
         keyManager.QuickSlotBarActions();
+        keyManager.MoveKeyUpdate();
     }
 
     public async void Init()
