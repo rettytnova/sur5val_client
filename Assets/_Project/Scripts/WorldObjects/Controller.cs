@@ -39,9 +39,10 @@ public class Controller : FSMController<ControlState, ControlFSM, BaseDataSO>
     {
         if (UIGame.instance != null && UIGame.instance.stick.OnHandleChanged == null)
         {
-            var dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
-            GameManager.instance.userCharacter?.MoveCharacter(dir);
+            //var dir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+            //GameManager.instance.userCharacter?.MoveCharacter(dir);
         }
+
         fsm.UpdateState();
     }
 }
