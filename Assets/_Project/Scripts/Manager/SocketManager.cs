@@ -153,8 +153,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
             var userinfo = user.ToUserInfo();
             if (UserInfo.myInfo.id == user.Id)
             {
-                //userinfo = UserInfo.myInfo;
-                UserInfo.myInfo.maxHp = user.Character.Hp;
+                //userinfo = UserInfo.myInfo;                
                 UserInfo.myInfo.UpdateUserInfo(user);
                 DataManager.instance.users.Add(UserInfo.myInfo);
             }

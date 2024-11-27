@@ -15,6 +15,11 @@ public class UserInfoSlot : UIListItem
     [SerializeField] private List<GameObject> hpGauges;
     [SerializeField] private Image hpGauge;
     [SerializeField] private TMP_Text hpGaugeText;
+    [SerializeField] private TMP_Text mpTxt;
+    [SerializeField] private TMP_Text attackTxt;
+    [SerializeField] private TMP_Text armorTxt;
+    [SerializeField] private TMP_Text goldTxt;
+    [SerializeField] private TMP_Text expTxt;
     [SerializeField] private GameObject targetMark;
     [SerializeField] private TMP_Text index;
     [SerializeField] private Image weapon;
@@ -35,9 +40,17 @@ public class UserInfoSlot : UIListItem
         var data = DataManager.instance.GetData<CharacterDataSO>(userinfo.selectedCharacterRcode);
         thumbnail.sprite = await ResourceManager.instance.LoadAsset<Sprite>(data.rcode, eAddressableType.Thumbnail);
         targetMark.GetComponent<Image>().sprite = await ResourceManager.instance.LoadAsset<Sprite>("role_" + userinfo.roleType.ToString(), eAddressableType.Thumbnail);
-        // 체력 바
-        Debug.Log("userinfo.nickname : " + userinfo.nickname + " userinfo.hp : " + userinfo.hp + " userinfo.maxHp : " + userinfo.maxHp);
+        // 체력 바        
         SetHpGauge(userinfo.hp, userinfo.maxHp);
+        if (UserInfo.myInfo.id == userinfo.id)
+        {
+            // 내 캐릭터일 경우 공격력, 방어력, 골드, 경험치 표시
+            mpTxt.text = userinfo.mp.ToString();
+            attackTxt.text = userinfo.attack.ToString();
+            armorTxt.text = userinfo.armor.ToString();
+            goldTxt.text = userinfo.gold.ToString();
+            //exp.text = userinfo.exp.ToString();
+        }
         // for (int i = 0; i < 5; i++)
         // {
         //     hpSlots[i].SetActive(userinfo.hp > i);
@@ -67,6 +80,15 @@ public class UserInfoSlot : UIListItem
         //     hpGauges[i].SetActive(userinfo.hp > i);
         // }
         SetHpGauge(userinfo.hp, userinfo.maxHp);
+        if (UserInfo.myInfo.id == userinfo.id)
+        {
+            // 내 캐릭터일 경우 공격력, 방어력, 골드, 경험치 표시
+            mpTxt.text = userinfo.mp.ToString();
+            attackTxt.text = userinfo.attack.ToString();
+            armorTxt.text = userinfo.armor.ToString();
+            goldTxt.text = userinfo.gold.ToString();
+            //expTxt.text = userinfo.exp.ToString();
+        }
         if (weapon != null)
         {
             weapon.gameObject.SetActive(userinfo.weapon != null);
