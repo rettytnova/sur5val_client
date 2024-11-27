@@ -50,11 +50,18 @@ public class GameManager : MonoSingleton<GameManager>
     List<Transform> spawns;
     public bool isSelectBombTarget = false;
 
+    private KeyManager keyManager = new KeyManager();
+
     private void Start()
     {
         if (!SocketManager.instance.isConnected) Init();
         if (spawnPoints != null)
             spawns = new List<Transform>(spawnPoints);
+    }
+
+    private void Update()
+    {
+        keyManager.QuickSlotBarActions();
     }
 
     public async void Init()
