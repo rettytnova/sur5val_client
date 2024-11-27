@@ -150,6 +150,11 @@ public class UIGame : UIBase
             GameManager.instance.OnUseCard();
     }
 
+    public void OnCardUse()
+    {
+        GameManager.instance.OnUseCard();
+    }
+
     public void SetSelectCard(CardDataSO card = null)
     {
         if (card == null)
