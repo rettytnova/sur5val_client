@@ -14,7 +14,7 @@ using Unity.Services.CloudCode.GeneratedBindings;
 
 namespace Ironcow
 {
-    public class NetworkManager : MonoSingleton<NetworkManager>
+    public class OldNetworkManager : MonoSingleton<OldNetworkManager>
     {
         public bool isInit = false;
 #if USE_CLOUD_CODE
@@ -139,7 +139,7 @@ namespace Ironcow
         }
 
 #endif
-#endregion
+        #endregion
 
         #region Ironcow
 #if !NEXON_API
@@ -178,7 +178,7 @@ namespace Ironcow
             UIManager.ShowIndicator();
 
             var asyncOperation = response.SendWebRequest();
-            
+
             await response.SendWebRequest();
 
             UIManager.HideIndicator();
@@ -246,10 +246,10 @@ namespace Ironcow
         }
 
 #endif
-#endregion
+        #endregion
 
         #region Post
-        
+
         /// <summary>POST 요청 비동기로 실행</summary>
         public async Task<Response<T>> requestAPIAsync<T>(string api, WWWForm form, eRequestType requestType)
         {

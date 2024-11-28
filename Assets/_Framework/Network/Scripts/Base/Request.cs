@@ -158,14 +158,14 @@ namespace Ironcow
 
             if (requestType == eRequestType.POST)
             {
-                NetworkManager.instance.requestAPI<T>(string.IsNullOrEmpty(rawLink) ? API : rawLink, ToWWWForm(), (response) =>
+                OldNetworkManager.instance.requestAPI<T>(string.IsNullOrEmpty(rawLink) ? API : rawLink, ToWWWForm(), (response) =>
                 {
                     callback.Invoke(response);
                 }, errorCallback, string.IsNullOrEmpty(rawLink) ? false : true);
             }
             else
             {
-                NetworkManager.instance.requestAPI<T>(API, useFormat ? string.Empty : ToParam(), requestType, (response) =>
+                OldNetworkManager.instance.requestAPI<T>(API, useFormat ? string.Empty : ToParam(), requestType, (response) =>
                 {
                     callback.Invoke(response);
                 }, errorCallback);
@@ -187,11 +187,11 @@ namespace Ironcow
 
             if (requestType == eRequestType.POST)
             {
-                return await NetworkManager.instance.requestAPIAsync<T>(API, ToWWWForm(), requestType);
+                return await OldNetworkManager.instance.requestAPIAsync<T>(API, ToWWWForm(), requestType);
             }
             else
             {
-                return await NetworkManager.instance.requestAPIAsync<T>(API, ToParam(), requestType);
+                return await OldNetworkManager.instance.requestAPIAsync<T>(API, ToParam(), requestType);
             }
         }
 
@@ -202,11 +202,11 @@ namespace Ironcow
         {
             if (type == eRequestType.POST)
             {
-                return await NetworkManager.instance.requestAPIAsync<T>(API, ToWWWForm(), type);
+                return await OldNetworkManager.instance.requestAPIAsync<T>(API, ToWWWForm(), type);
             }
             else
             {
-                return await NetworkManager.instance.requestAPIAsync<T>(API, ToParam(), type);
+                return await OldNetworkManager.instance.requestAPIAsync<T>(API, ToParam(), type);
             }
         }
 
