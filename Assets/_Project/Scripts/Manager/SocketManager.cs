@@ -324,7 +324,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         for (int i = 0; i < users.Count; i++)
         {
             var targetCharacter = GameManager.instance.characters[users[i].id];
-            if (users[i].aliveState && users[i].hp <= 0)
+            if (!users[i].aliveState && users[i].hp <= 0)
             {                
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
