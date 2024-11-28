@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9171727e36817448e486b1f30532e0, type: 3}
-  m_Name: CAD00105
+  m_Name: CAD00314
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
-  rcode: CAD00105
-  displayName: "\uC0BC\uC911 \uD0C0\uACA9"
-  description: "\uD478\uB978\uBE5B, \uBCF4\uB78F\uBE5B, \uBD89\uC740 \uD3ED\uBC1C\uB85C
-    \uC801\uC744 \uAC15\uD0C0\uD55C\uB2E4. \uD0C0\uACA9\uB9C8\uB2E4 \uC5D0\uB108\uC9C0\uAC00
-    \uC99D\uD3ED\uB418\uC5B4 \uCD5C\uC885 \uD0C0\uACA9\uC740 \uC555\uB3C4\uC801\uC778
-    \uD30C\uAD34\uB825\uC744 \uBC1C\uD718\uD55C\uB2E4."
-  type: 0
+  rcode: CAD00314
+  displayName: "\uC219\uB828\uC790\uC758 \uB9DD\uD1A0"
+  description: "\uC81C\uB300\uB85C \uC791\uB3D9\uD558\uBA74 \uBC14\uAFD4\uC90C"
+  type: 2
   isUsable: 1
   defCard: 
-  isDirectUse: 0
+  isDirectUse: 1
   isTargetSelect: 0
   isTargetCardSelection: 0
   useTag: 
