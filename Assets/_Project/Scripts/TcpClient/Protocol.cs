@@ -333,9 +333,9 @@ public enum WarningType
 
 public enum WinType
 {
-    [pbr::OriginalName("TARGET_AND_BODYGUARD_WIN")] TargetAndBodyguardWin = 0,
-    [pbr::OriginalName("HITMAN_WIN")] HitmanWin = 1,
-    [pbr::OriginalName("PSYCHOPATH_WIN")] PsychopathWin = 2,
+    [pbr::OriginalName("a")] TargetAndBodyguardWin = 0,
+    [pbr::OriginalName("abc")] HitmanWin = 1,
+    [pbr::OriginalName("abcd")] PsychopathWin = 2,
 }
 
 public enum CharacterType
