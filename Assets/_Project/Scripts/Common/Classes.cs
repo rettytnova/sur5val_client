@@ -12,6 +12,7 @@ public partial class UserInfo
     public int coin;
     public string selectedCharacterRcode { get => characterData.GetRcode(); set => characterData.CharacterType = (CharacterType)int.Parse(value.Substring(3, 5)); }
     public eRoleType roleType { get => (eRoleType)characterData.RoleType; set => characterData.RoleType = (RoleType)value; }
+    public bool aliveState { get => characterData.AliveState; set => characterData.AliveState = value; }
     public CharacterData characterData = new CharacterData();
     public List<CardDataSO> handCards = new List<CardDataSO>();
     public CardDataSO weapon;
