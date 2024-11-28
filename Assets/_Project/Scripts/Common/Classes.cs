@@ -3,6 +3,7 @@
 using Google.Protobuf.Collections;
 using Ironcow;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 public partial class UserInfo
 {
@@ -18,7 +19,13 @@ public partial class UserInfo
     public List<CardDataSO> debuffs = new List<CardDataSO>();
     public int handcardCount { get => characterData.HandCardsCount; }
     public int hp { get => characterData.Hp; set => characterData.Hp = value; }
-    public int maxHp;
+    // 추가한 속성들 maxHp, mp, attack, armor, gold, exp
+    public int maxHp { get => characterData.MaxHp; set => characterData.MaxHp = value; }
+    public int mp { get => characterData.Mp; set => characterData.Mp = value; }
+    public int attack { get => characterData.Attack; set => characterData.Attack = value; }
+    public int armor { get => characterData.Armor; set => characterData.Armor = value; }
+    public int gold { get => characterData.Gold; set => characterData.Gold = value; }
+    public int exp { get => characterData.Exp; set => characterData.Exp = value; }
 
     public bool isStelth { get => equips.Find(obj => obj.rcode == "CAD00020") != null; }
     public bool isRaider { get => equips.Find(obj => obj.rcode == "CAD00018") != null; }
@@ -56,12 +63,11 @@ public partial class UserInfo
         characterData = userData.Character;
         if (characterData != null)
         {
-            this.maxHp = userData.Character.Hp;
             foreach (var card in userData.Character.HandCards)
             {
                 for (int i = 0; i < card.Count; i++)
                 {
-                    if(card.Type != CardType.None)
+                    if (card.Type != CardType.None)
                         handCards.Add(card.GetCardData());
                 }
             }
@@ -148,7 +154,7 @@ public partial class UserInfo
     public static UserInfo CreateRandomUser()
     {
         var userinfo = new UserInfo();
-        userinfo.nickname = firstName.RandomValue() +" " + lastName.RandomValue();
+        userinfo.nickname = firstName.RandomValue() + " " + lastName.RandomValue();
         userinfo.id = Util.Random(10000, 99999);
 
         return userinfo;
@@ -171,7 +177,7 @@ public partial class UserInfo
 
     public CardDataSO OnUseCard(CardDataSO card)
     {
-        switch(card.type)
+        switch (card.type)
         {
             case eCardType.active:
                 {

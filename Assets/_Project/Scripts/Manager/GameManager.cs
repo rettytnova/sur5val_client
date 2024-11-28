@@ -92,7 +92,7 @@ public class GameManager : MonoSingleton<GameManager>
             chara.OnChangeState<CharacterStopState>();
             if (userinfo.roleType == eRoleType.target)
                 chara.SetTargetMark();
-            chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // ������ �Ÿ��� �ִ� ���� �����ܸ� ǥ��
+            chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
             chara.userInfo = userinfo;
             var data = DataManager.instance.GetData<CharacterDataSO>(userinfo.selectedCharacterRcode);
             userinfo.maxHp = data.health + (userinfo.roleType == eRoleType.target ? 1 : 0);
@@ -184,7 +184,7 @@ public class GameManager : MonoSingleton<GameManager>
         chara.OnChangeState<CharacterStopState>();
         if (userinfo.roleType == eRoleType.target)
             chara.SetTargetMark();
-        chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // ������ �Ÿ��� �ִ� ���� �����ܸ� ǥ��
+        chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // 가능한 거리에 있는 유저 아이콘만 표시
         chara.userInfo = userinfo;
     }
 
@@ -548,6 +548,7 @@ public class GameManager : MonoSingleton<GameManager>
     // 탈출로 활성화
     public void visualHiddenRoad(bool isVisible)
     {
+        navMeshSurface.hideEditorLogs = true;
         if (isVisible)
         {
             int rand = Util.Random(0, hiddenRoads.Count - 1);
