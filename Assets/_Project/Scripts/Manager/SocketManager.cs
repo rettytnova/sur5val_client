@@ -324,20 +324,10 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         for (int i = 0; i < users.Count; i++)
         {
             var targetCharacter = GameManager.instance.characters[users[i].id];
-            Debug.Log("users[i].aliveState: [" + i + "]" + users[i].aliveState);
             if (users[i].aliveState && users[i].hp <= 0)
             {                
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
-
-                // 몬스터 죽일 경우 보상 요청
-                if (users[i].roleType != eRoleType.bodyguard && isConnected)
-                {
-                    Debug.Log("users["+ i + "].request");
-                    GamePacket rewardPacket = new GamePacket();
-                    rewardPacket.MonsterDeathRewardRequest = new C2SMonsterDeathRewardRequest() { User = (users[i] == null ? null : response.User[i]) };
-                    Send(rewardPacket);                    
-                }
             }
             targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
 
