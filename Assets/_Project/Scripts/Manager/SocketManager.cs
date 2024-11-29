@@ -494,6 +494,10 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                         break;
                     case eCharacterState.NONE:
                         {
+                            if (!targetCharacter.IsState<CharacterDeathState>())
+                            {
+                                targetCharacter.OnChangeState<CharacterIdleState>();
+                            }
                             targetCharacter.OnChangeState<CharacterIdleState>();
                             if (UIManager.IsOpened<PopupPleaMarket>())
                                 UIManager.Hide<PopupPleaMarket>();
@@ -514,13 +518,16 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
             }
             else
             {
-                if ((eCharacterState)users[i].characterData.StateInfo.State == eCharacterState.NONE)
+                if (!targetCharacter.IsState<CharacterDeathState>())
                 {
-                    targetCharacter.OnChangeState<CharacterIdleState>();
-                }
-                else
-                {
-                    targetCharacter.OnChangeState<CharacterStopState>();
+                    if ((eCharacterState)users[i].characterData.StateInfo.State == eCharacterState.NONE)
+                    {
+                        targetCharacter.OnChangeState<CharacterIdleState>();
+                    }
+                    else
+                    {
+                        targetCharacter.OnChangeState<CharacterStopState>();
+                    }
                 }
             }
         }
