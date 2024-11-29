@@ -17,7 +17,7 @@ namespace Ironcow.WebSocketPacket
         LOGIN_REQUEST = 3,
         LOGIN_RESPONSE = 4,
 
-        // ¸ÅÄª
+        // ¸ÅÄª   
         MATCH_REQUEST = 5,
         MATCH_START_NOTIFICATION = 6,
 
@@ -51,7 +51,7 @@ namespace Ironcow.WebSocketPacket
         ENEMY_MONSTER_DEATH_NOTIFICATION = 21,
     }
 
-    public class Packet
+    public class GamePayload
     {
         public PayloadOneofCase type;
         public string version;
@@ -69,7 +69,7 @@ namespace Ironcow.WebSocketPacket
 
         public MessageDescriptor Descriptor => throw new NotImplementedException();
 
-        public Packet(byte[] bytes)
+        public GamePayload(byte[] bytes)
         {
             var stream = new MemoryStream(bytes);
             var reader = new BinaryReader(stream);
@@ -89,7 +89,7 @@ namespace Ironcow.WebSocketPacket
             payloadBytes = reader.ReadBytes(payloadLength);
         }
 
-        public Packet(PayloadOneofCase type, string version, int sequence, byte[] payload)
+        public GamePayload(PayloadOneofCase type, string version, int sequence, byte[] payload)
         {
             this.type = type;
             this.version = version;
