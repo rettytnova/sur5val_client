@@ -1,4 +1,11 @@
 
+// 서버 구분
+public enum en_ServerPacketType
+{
+    SERVER_PACKET_TYPE_NONE,
+    SERVER_PACKET_TYPE_GAME, // 게임 서버
+    SERVER_PACKET_TYPE_CHATTING // 채팅 서버
+}
 
 public enum eCardType
 {
