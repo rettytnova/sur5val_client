@@ -61,8 +61,8 @@ public class NetworkManager
                 gameServerSession.SessionInit(this.gameServerIp, this.gameServerPort, en_ServerPacketType.SERVER_PACKET_TYPE_GAME);
                 gameServerSession.Connect(() =>
                 {
-                    UIManager.Get<PopupLogin>().buttonSet.SetActive(false);
-                    UIManager.Get<PopupLogin>().login.SetActive(true);
+                    //UIManager.Get<PopupLogin>().buttonSet.SetActive(false);
+                    //UIManager.Get<PopupLogin>().login.SetActive(true);
                 });
             }
         }
