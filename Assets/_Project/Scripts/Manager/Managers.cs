@@ -9,13 +9,13 @@ public class Managers : MonoBehaviour
     }
 
     #region ServerManager
-    NetworkManager _networkManager = new NetworkManager();
+    //NetworkManager _networkManager = new NetworkManager();
     #endregion
 
-    public static NetworkManager networkManager
-    {
-        get {  return GetInstance._networkManager; }
-    }
+    //public static NetworkManager networkManager
+    //{
+    //    get {  return GetInstance._networkManager; }
+    //}
 
     void Start()
     {
