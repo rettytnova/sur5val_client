@@ -17,8 +17,8 @@ public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSo
     public bool useDNS = false;
     public Dictionary<PayloadOneofCase, Action<GamePacket>> _onRecv = new Dictionary<PayloadOneofCase, Action<GamePacket>>();
 
-    public Queue<Packet> sendQueue = new Queue<Packet>();
-    public Queue<Packet> receiveQueue = new Queue<Packet>();
+    public Queue<GamePayload> sendQueue = new Queue<GamePayload>();
+    public Queue<GamePayload> receiveQueue = new Queue<GamePayload>();
 
     public string ip = "127.0.0.1";
     public int port = 3000;
@@ -174,7 +174,7 @@ public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSo
                         var payloadBytes = reader.ReadBytes(payloadLength);
 
                         var totalLength = 11 + versionLength + payloadLength;
-                        var packet = new Packet(type, version, sequence, payloadBytes);
+                        var packet = new GamePayload(type, version, sequence, payloadBytes);
                         receiveQueue.Enqueue(packet);
                         Debug.Log($"Enqueued Type: {type}|{receiveQueue.Count}");
 
@@ -212,7 +212,7 @@ public abstract class TCPSocketManagerBase<T> : MonoSingleton<T> where T : TCPSo
     {
         if (socket == null) return;
         var byteArray = gamePacket.ToByteArray();
-        var packet = new Packet(gamePacket.PayloadCase, version, sequenceNumber++, byteArray);
+        var packet = new GamePayload(gamePacket.PayloadCase, version, sequenceNumber++, byteArray);
         sendQueue.Enqueue(packet);
     }
 
