@@ -89,38 +89,38 @@ public class UserInfoSlot : UIListItem
             goldTxt.text = userinfo.gold.ToString();
             //expTxt.text = userinfo.exp.ToString();
         }
-        if (weapon != null)
-        {
-            weapon.gameObject.SetActive(userinfo.weapon != null);
-            if (userinfo.weapon != null)
-            {
-                weapon.sprite = await ResourceManager.instance.LoadAsset<Sprite>("icon_" + userinfo.weapon.rcode, eAddressableType.Thumbnail);
-            }
-        }
-        for (int i = 0; i < equips.Count; i++)
-        {
-            if (userinfo.equips.Count > i)
-            {
-                equips[i].gameObject.SetActive(true);
-                equips[i].sprite = await ResourceManager.instance.LoadAsset<Sprite>("icon_" + userinfo.equips[i].rcode, eAddressableType.Thumbnail);
-            }
-            else
-            {
-                equips[i].gameObject.SetActive(false);
-            }
-        }
-        for (int i = 0; i < debuffs.Count; i++)
-        {
-            if (userinfo.debuffs.Count > i)
-            {
-                debuffs[i].gameObject.SetActive(true);
-                debuffs[i].sprite = await ResourceManager.instance.LoadAsset<Sprite>("icon_" + userinfo.debuffs[i].rcode, eAddressableType.Thumbnail);
-            }
-            else
-            {
-                debuffs[i].gameObject.SetActive(false);
-            }
-        }
+        // if (weapon != null)
+        // {
+        //     weapon.gameObject.SetActive(userinfo.weapon != null);
+        //     if (userinfo.weapon != null)
+        //     {
+        //         weapon.sprite = await ResourceManager.instance.LoadAsset<Sprite>("icon_" + userinfo.weapon.rcode, eAddressableType.Thumbnail);
+        //     }
+        // }
+        // for (int i = 0; i < equips.Count; i++)
+        // {
+        //     if (userinfo.equips.Count > i)
+        //     {
+        //         equips[i].gameObject.SetActive(true);
+        //         equips[i].sprite = await ResourceManager.instance.LoadAsset<Sprite>("icon_" + userinfo.equips[i].rcode, eAddressableType.Thumbnail);
+        //     }
+        //     else
+        //     {
+        //         equips[i].gameObject.SetActive(false);
+        //     }
+        // }
+        // for (int i = 0; i < debuffs.Count; i++)
+        // {
+        //     if (userinfo.debuffs.Count > i)
+        //     {
+        //         debuffs[i].gameObject.SetActive(true);
+        //         debuffs[i].sprite = await ResourceManager.instance.LoadAsset<Sprite>("icon_" + userinfo.debuffs[i].rcode, eAddressableType.Thumbnail);
+        //     }
+        //     else
+        //     {
+        //         debuffs[i].gameObject.SetActive(false);
+        //     }
+        // }
     }
 
     public void OnClickItem()
