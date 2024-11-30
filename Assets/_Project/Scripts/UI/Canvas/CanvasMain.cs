@@ -9,7 +9,7 @@ public class CanvasMain : CanvasBase<CanvasMain>
     protected override void Awake()
     {
         base.Awake();
-        if (!SocketManager.instance.isConnected)
+        if (!Managers.networkManager.GameServerIsConnected())
         {
             UIManager.Show<PopupLogin>();
         }

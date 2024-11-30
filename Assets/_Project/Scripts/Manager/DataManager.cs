@@ -16,7 +16,7 @@ public class DataManager : DataManagerBase<DataManager>
 
     public async void OnLogout()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             SocketManager.instance.Disconnect();
         }

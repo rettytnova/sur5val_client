@@ -54,9 +54,9 @@ public class GameManager : MonoSingleton<GameManager>
 
     private void Start()
     {
-        if (!SocketManager.instance.isConnected) Init();
+        if (!Managers.networkManager.GameServerIsConnected()) Init();
         if (spawnPoints != null)
-            spawns = new List<Transform>(spawnPoints);
+            spawns = new List<Transform>(spawnPoints);        
     }
 
     private void Update()
@@ -101,7 +101,7 @@ public class GameManager : MonoSingleton<GameManager>
                 OnDrawCard(userinfo);
             }
         }
-        if (!SocketManager.instance.isConnected)
+        if (!Managers.networkManager.GameServerIsConnected())
         {
             foreach (var user in DataManager.instance.users)
             {
@@ -159,7 +159,7 @@ public class GameManager : MonoSingleton<GameManager>
         if (!isAfternoon)
         {
             day++;
-            if (!SocketManager.instance.isConnected)
+            if (!Managers.networkManager.GameServerIsConnected())
             {
                 foreach (var user in DataManager.instance.users)
                 {
@@ -285,13 +285,13 @@ public class GameManager : MonoSingleton<GameManager>
     {
         var card = DataManager.instance.GetData<CardDataSO>(rcode);
         if (!string.IsNullOrEmpty(card.useTag) && card.useTag != targetCharacter.tag) return;
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             var cardIdx = useUserInfo.handCards.FindIndex(obj => obj.rcode == rcode);
             GamePacket packet = new GamePacket();
             //packet.UseCardRequest = new C2SUseCardRequest() { CardType = cardIdx, TargetUserId = userinfo == null ? "" : userinfo.id };
             packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo == null ? 0 : userinfo.id };
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
         else
         {
@@ -569,7 +569,7 @@ public class GameManager : MonoSingleton<GameManager>
     public void OnGameEnd()
     {
         isPlaying = false;
-        if (!SocketManager.instance.isConnected)
+        if (!Managers.networkManager.GameServerIsConnected())
             UIManager.Show<PopupResult>(DataManager.instance.users.Find(obj => obj.hp > 0));
     }
 

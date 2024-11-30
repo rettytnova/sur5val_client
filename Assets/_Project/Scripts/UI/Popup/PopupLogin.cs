@@ -9,9 +9,9 @@ using Unity.Multiplayer.Playmode;
 public class PopupLogin : UIBase
 {
     [SerializeField] private GameObject touch;
-    [SerializeField] private GameObject buttonSet;
+    [SerializeField] public GameObject buttonSet;
     [SerializeField] private GameObject register;
-    [SerializeField] private GameObject login;
+    [SerializeField] public GameObject login;
     [SerializeField] private TMP_InputField loginId;
     [SerializeField] private TMP_InputField loginPassword;
     [SerializeField] private TMP_InputField regId;
@@ -39,17 +39,19 @@ public class PopupLogin : UIBase
 
     public void OnClickLogin()
     {
-        if (!SocketManager.instance.isConnected)
+        if (!Managers.networkManager.GameServerIsConnected())
         {
-            var ip = PlayerPrefs.GetString("ip", "127.0.0.1");
-            var port = PlayerPrefs.GetString("port", "5555");
-            SocketManager.instance.Init(ip, int.Parse(port));
-            SocketManager.instance.Connect(() =>
-            {
-                buttonSet.SetActive(false);
-                login.SetActive(true);
+            var gameServerIp = PlayerPrefs.GetString("gameServerIp", "127.0.0.1");
+            var gameServerPort = PlayerPrefs.GetString("gameServerPort", "5555");
 
-            });
+            var chattingServerIp = PlayerPrefs.GetString("chattingServerIp", "127.0.0.1");
+            var chattingServerPort = PlayerPrefs.GetString("chattingServerPort", "5556");
+
+            //Debug.Log($"gameServerIp {gameServerIp} gameServerPort {gameServerPort}");
+            //Debug.Log($"chattingServerIp {chattingServerIp} chattingServerPort {chattingServerPort}");
+
+            Managers.networkManager.GameServerConnect(gameServerIp,int.Parse(gameServerPort));
+            Managers.networkManager.ChattingServerConnect(chattingServerIp,int.Parse(chattingServerPort));
         }
         else
         {
@@ -60,16 +62,16 @@ public class PopupLogin : UIBase
 
     public void OnClickRegister()
     {
-        if (!SocketManager.instance.isConnected)
+        if (!Managers.networkManager.GameServerIsConnected())
         {
-            var ip = PlayerPrefs.GetString("ip", "127.0.0.1");
-            var port = PlayerPrefs.GetString("port", "5555");
-            SocketManager.instance.Init(ip, int.Parse(port));
-            SocketManager.instance.Connect(() =>
-            {
-                buttonSet.SetActive(false);
-                register.SetActive(true);
-            });
+            var gameServerIp = PlayerPrefs.GetString("gameServerIp", "127.0.0.1");
+            var gameServerPort = PlayerPrefs.GetString("gameServerPort", "5555");
+
+            var chattingServerIp = PlayerPrefs.GetString("chattingServerIp", "127.0.0.1");
+            var chattingServerPort = PlayerPrefs.GetString("chattingServerPort", "5556");           
+
+            Managers.networkManager.GameServerConnect(gameServerIp, int.Parse(gameServerPort));
+            Managers.networkManager.ChattingServerConnect(chattingServerIp, int.Parse(chattingServerPort));
         }
         else
         {
@@ -89,7 +91,7 @@ public class PopupLogin : UIBase
         }
         PlayerPrefs.SetString("id" + tags[0], loginId.text);
         PlayerPrefs.SetString("password" + tags[0], loginPassword.text);
-        SocketManager.instance.Send(packet);
+        Managers.networkManager.GameServerSend(packet);        
         //OnLoginEnd(true);
     }
 
@@ -109,7 +111,7 @@ public class PopupLogin : UIBase
         }
         PlayerPrefs.SetString("id" + tags[0], regId.text);
         PlayerPrefs.SetString("password" + tags[0], regPassword.text);
-        SocketManager.instance.Send(packet);
+        Managers.networkManager.GameServerSend(packet);
     }
 
     public void OnClickCancelRegister()

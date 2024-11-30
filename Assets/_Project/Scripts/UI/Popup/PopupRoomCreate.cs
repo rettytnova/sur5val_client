@@ -23,11 +23,11 @@ public class PopupRoomCreate : UIBase
 
     public void OnClickCreate()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.CreateRoomRequest = new C2SCreateRoomRequest() { MaxUserNum = count.value + 4, Name = roomName.text };
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
         else
         {

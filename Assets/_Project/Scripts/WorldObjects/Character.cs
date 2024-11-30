@@ -163,7 +163,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
             {
                 GamePacket packet = new GamePacket();
                 packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
-                SocketManager.instance.Send(packet);
+                Managers.networkManager.GameServerSend(packet);
             }
         }
     }
@@ -187,7 +187,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     {
         if (collision.gameObject.TryGetComponent<Character>(out var character))
         {
-            if (!SocketManager.instance.isConnected && character == GameManager.instance.userCharacter &&
+            if (!Managers.networkManager.GameServerIsConnected() && character == GameManager.instance.userCharacter &&
                 userInfo.handCards.Find(obj => obj.rcode == "CAD00001"))
             {
                 GameManager.instance.SendSocketUseCard(character.userInfo, userInfo, "CAD00001");

@@ -70,11 +70,11 @@ public class UIGame : UIBase
         if(GameManager.instance.isSelectBombTarget)
         {
             GameManager.instance.isSelectBombTarget = false;
-            if (SocketManager.instance.isConnected)
+            if (Managers.networkManager.GameServerIsConnected())
             {
                 GamePacket packet = new GamePacket();
-                packet.PassDebuffRequest = new C2SPassDebuffRequest() { DebuffCardType = CardType.Bomb, TargetUserId = target.id };
-                SocketManager.instance.Send(packet);
+                packet.PassDebuffRequest = new C2SPassDebuffRequest() { DebuffCardType = CardType.Bomb, TargetUserId = target.id };                
+                Managers.networkManager.GameServerSend(packet);                
             }
             else
             {
@@ -88,7 +88,8 @@ public class UIGame : UIBase
 
     public void UpdateUserSlot(List<UserInfo> users)
     {
-        for(int i = 0; i < users.Count; i++)
+        Debug.Log("UIGame UpdateUserSlot");
+        for (int i = 0; i < users.Count; i++)
         {
             if (userslots.ContainsKey(users[i].id))
             {
@@ -119,7 +120,7 @@ public class UIGame : UIBase
         if (!GameManager.instance.isPlaying) return;
         timer -= Time.deltaTime;
         time.text = string.Format("{0:00}:{1:00}", Mathf.Floor(timer / 60), timer % 60);
-        if (timer <= 0 && !SocketManager.instance.isConnected) GameManager.instance.OnTimeEnd();
+        if (timer <= 0 && !Managers.networkManager.GameServerIsConnected()) GameManager.instance.OnTimeEnd();
     }
 
     public override void HideDirect()

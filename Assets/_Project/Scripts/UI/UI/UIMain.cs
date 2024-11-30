@@ -32,12 +32,12 @@ public class UIMain : UIListBase<ItemRoom>
     }
 
     public void OnRefreshRoomList()
-    {
-        if (SocketManager.instance.isConnected)
+    {        
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.GetRoomListRequest = new C2SGetRoomListRequest();
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);            
         }
     }
 
@@ -58,11 +58,11 @@ public class UIMain : UIListBase<ItemRoom>
 
     public void OnClickRandomMatch()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.JoinRandomRoomRequest = new C2SJoinRandomRoomRequest();
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
     }
 
@@ -73,11 +73,11 @@ public class UIMain : UIListBase<ItemRoom>
 
     public void OnJoinRoom(int idx)
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.JoinRoomRequest = new C2SJoinRoomRequest() { RoomId = idx };
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
     }
 

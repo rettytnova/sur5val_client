@@ -65,7 +65,7 @@ public class UIRoom : UIBase
         for (int i = 0; i < slots.Count; i++)
         {
             var userInfo = users.Count > i ? users[i] : null;
-            slots[i].SetItem(userInfo, userInfo != null ? null : (!SocketManager.instance.isConnected ? OnClickTestAddUser : null));
+            slots[i].SetItem(userInfo, userInfo != null ? null : (!Managers.networkManager.GameServerIsConnected() ? OnClickTestAddUser : null));
         }
         buttonStart.interactable = users.Count > 1;
         roomCount.text = string.Format("{0}/{1}", users.Count, maxUserCount);
@@ -77,7 +77,7 @@ public class UIRoom : UIBase
         for (int i = 0; i < slots.Count; i++)
         {
             var userInfo = users.Count > i ? users[i] : null;
-            slots[i].SetItem(userInfo, userInfo != null ? null : (!SocketManager.instance.isConnected ? OnClickTestAddUser : null));
+            slots[i].SetItem(userInfo, userInfo != null ? null : (!Managers.networkManager.GameServerIsConnected() ? OnClickTestAddUser : null));
         }
         roomCount.text = string.Format("{0}/{1}", users.Count, maxUserCount);
     }
@@ -101,11 +101,11 @@ public class UIRoom : UIBase
     public void OnClickGameStart()
     {
         //if (users.Count < 4) return;
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.GamePrepareRequest = new C2SGamePrepareRequest();
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
         else
         {
@@ -165,13 +165,13 @@ public class UIRoom : UIBase
 
         DataManager.instance.users = users;
 
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             if (UserInfo.myInfo.id == roomData.OwnerId)
             {
                 GamePacket packet = new GamePacket();
                 packet.GameStartRequest = new C2SGameStartRequest();
-                SocketManager.instance.Send(packet);
+                Managers.networkManager.GameServerSend(packet);
             }
         }
         else
@@ -187,11 +187,11 @@ public class UIRoom : UIBase
 
     public void OnClickExit()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.LeaveRoomRequest = new C2SLeaveRoomRequest();
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
         else
         {
