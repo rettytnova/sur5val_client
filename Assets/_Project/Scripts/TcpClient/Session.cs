@@ -70,8 +70,7 @@ public abstract class Session : MonoBehaviour
                 foreach (var payload in payloads)
                 {
                     var val = (PayloadOneofCase)Enum.Parse(typeof(PayloadOneofCase), payload);
-                    var method = GetType().GetMethod(payload);
-                    Debug.Log(method);
+                    var method = GetType().GetMethod(payload);                    
                     if (method != null)
                     {
                         var action = (Action<GamePacket>)Delegate.CreateDelegate(typeof(Action<GamePacket>), this, method);
@@ -217,7 +216,7 @@ public abstract class Session : MonoBehaviour
                         switch (serverPacketType)
                         {
                             case en_ServerPacketType.SERVER_PACKET_TYPE_GAME:
-                                var gameType = (PayloadOneofCase)type;
+                                var gameType = (PayloadOneofCase)type;                               
 
                                 var gamePacket = new GamePayload(gameType, version, sequence, payloadBytes);
                                 receiveGameQueue.Enqueue(gamePacket);
@@ -264,7 +263,7 @@ public abstract class Session : MonoBehaviour
         var byteArray = gamePacket.ToByteArray();
         var packet = new GamePayload(gamePacket.PayloadCase, version, sequenceNumber++, byteArray);
         sendGameQueue.Enqueue(packet);
-        Debug.Log($"sendGameQueue.Count: {sendGameQueue.Count} packetType {packet.type}");
+        //Debug.Log($"sendGameQueue.Count: {sendGameQueue.Count} packetType {packet.type}");
     }
 
     // 채팅서버로 패킷 전송
@@ -286,7 +285,7 @@ public abstract class Session : MonoBehaviour
 
             var bytes = gamePacket.ToByteArray();
             var sendByte = socket.Send(bytes, SocketFlags.None);
-            Debug.Log($"Send Packet: {gamePacket.type}, Sent bytes: {sendByte}");
+            //Debug.Log($"Send Packet: {gamePacket.type}, Sent bytes: {sendByte}");
 
             yield return new WaitForSeconds(0.01f);
         }
