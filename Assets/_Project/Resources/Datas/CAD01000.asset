@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9171727e36817448e486b1f30532e0, type: 3}
   m_Name: CAD01000
   m_EditorClassIdentifier: 
-  thumbnail: {fileID: 0}
+  thumbnail: {fileID: 21300000, guid: 879d2339866da49968a95d6b3f418194, type: 3}
   rcode: CAD01000
   displayName: "\uC0C1\uC810 \uB098\uAC00\uAE30"
   description: "\uC0C1\uC810 \uB098\uAC00\uAE30"

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b8fe1a7d9c3e3254ba47909d2d4b5c67
+guid: 0635baa337d0d4f4db3c5650730f3be0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4449948510777029116
-    second: CAD00307_0
+      213: 699635692626446036
+    second: CAD00319_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CAD00307_0
+      name: CAD00319_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1024
-        height: 776
+        width: 1792
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cf1b4adf79461cd30800000000000000
-      internalID: 4449948510777029116
+      spriteID: 4d60f23a4fa95b900800000000000000
+      internalID: 699635692626446036
       vertices: []
       indices: 
       edges: []
