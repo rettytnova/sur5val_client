@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9171727e36817448e486b1f30532e0, type: 3}
+  m_Name: CAD00205
+  m_EditorClassIdentifier: 
+  thumbnail: {fileID: 0}
+  rcode: CAD00205
+  displayName: "\uC0DD\uBA85\uC758 \uC228\uACB0"
+  description: "\uC2E0\uBE44\uB85C\uC6B4 \uC0DD\uBA85\uC758 \uAE30\uC6B4\uC774 \uCCB4\uB825\uC744
+    10 \uD68C\uBCF5\uD574\uC900\uB2E4! \uC0DD\uBA85\uC758 \uADFC\uC6D0\uC774 \uB2F4\uAE34
+    \uC774 \uBB3C\uC57D\uC740 \uAC00\uC7A5 \uADF9\uD55C\uC758 \uC0C1\uD669\uC5D0\uC11C\uB3C4
+    \uC0C8\uB85C\uC6B4 \uD798\uC744 \uBD88\uC5B4\uB123\uB294\uB2E4."
+  type: 0
+  isUsable: 1
+  defCard: 
+  isDirectUse: 1
+  isTargetSelect: 0
+  isTargetCardSelection: 0
+  useTag: 
+  isMarketSelected: 0
