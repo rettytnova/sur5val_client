@@ -9,7 +9,7 @@ public class ServerSession : Session
 {
     public bool isAnimationPlaying = false;
     public int id = 0;
-   
+
     public void LoginResponse(GamePacket gamePacket)
     {
         var response = gamePacket.LoginResponse;
@@ -308,7 +308,7 @@ public class ServerSession : Session
         while (isAnimationPlaying)
         {
             await Task.Delay(100);
-        }      
+        }
 
         var response = gamePacket.UserUpdateNotification;
         var users = DataManager.instance.users.UpdateUserData(response.User);
@@ -325,10 +325,47 @@ public class ServerSession : Session
             targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시                       
         }
 
+        for (int i = 0; i < users.Count; i++)
+        {
+            var targetCharacter = GameManager.instance.characters[users[i].id];
+            if (!users[i].aliveState && users[i].hp <= 0)
+            {
+                targetCharacter.SetDeath();
+                UIGame.instance.SetDeath(users[i].id);
+            }
+            targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
+
+            if (users[i].id == UserInfo.myInfo.id)
+            {
+                var user = users[i];
+                var targetId = user.characterData.StateInfo.StateTargetUserId;
+                var targetInfo = DataManager.instance.users.Find(obj => obj.id == targetId);
+
+                switch ((eCharacterState)users[i].characterData.StateInfo.State)
+                {
+                    case eCharacterState.NONE:
+                        {
+                            if (!targetCharacter.IsState<CharacterDeathState>())
+                            {
+                                targetCharacter.OnChangeState<CharacterIdleState>();
+                            }
+
+                            targetCharacter.OnChangeState<CharacterIdleState>();
+
+                            if (UIManager.IsOpened<PopupPleaMarket>())
+                                UIManager.Hide<PopupPleaMarket>();
+                            if (UIManager.IsOpened<PopupBattle>())
+                                UIManager.Hide<PopupBattle>();
+                        }
+                        break;
+                }
+            }
+        }
+
         if (UIGame.instance != null)
         {
             UIGame.instance.UpdateUserSlot(users);
-        }       
+        }
     }
 
     // 턴 종료시 (phaseType 3) 카드 버리기
@@ -428,5 +465,18 @@ public class ServerSession : Session
     public void ChattingServerLoginResponse(ChattingPacket chattingPacket)
     {
 
+    }
+
+    public void ChattingServerCreateRoomResponse(ChattingPacket chattingPacket)
+    {
+        var response = chattingPacket.ChattingServerCreateRoomResponse;
+
+        var roomId = response.ChattingRoomId;
+
+        Debug.Log($"서버에서 만들어진 채팅 방 룸 id : {roomId}");
+
+        //ChattingPacket joinRoomChattingPacket = new ChattingPacket();
+        //joinRoomChattingPacket.ChattingServerJoinRoomRequest = new C2SChattingServerJoinRoomRequest() { ChattingRoomId = roomId };
+        //Managers.networkManager.ChattingServerSend(joinRoomChattingPacket);
     }
 }
