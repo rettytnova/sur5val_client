@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f04cbb8bac2b0d74fad229d7b2b69717
+guid: 0035407a97a38f545bdb44f7a7e659a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6622318183186328163
-    second: CAD00313_0
+      213: -4821719504934266051
+    second: CAD00102_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,17 +96,43 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: CAD00313_0
+      name: CAD00102_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1792
-        height: 910
+        width: 1800
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d95919de2bcc814a0800000000000000
-      internalID: -6622318183186328163
+      spriteID: d3b12d528afc51db0800000000000000
+      internalID: -4821719504934266051
       vertices: []
       indices: 
       edges: []
@@ -135,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      CAD00313_0: -6622318183186328163
+      CAD00102_0: -4821719504934266051
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

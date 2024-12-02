@@ -269,6 +269,26 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
+    public void OnBasicAttack()
+    {
+        if (targetCharacter != null)
+        {
+            SendSocketBasicAttack(targetCharacter.userInfo, UserInfo.myInfo, "CAD00100");
+        }
+    }
+
+    public void SendSocketBasicAttack(UserInfo userinfo, UserInfo useUserInfo, string rcode)
+    {
+        var card = DataManager.instance.GetData<CardDataSO>(rcode);
+        if (!string.IsNullOrEmpty(card.useTag) && card.useTag != targetCharacter.tag) return;
+        if (Managers.networkManager.GameServerIsConnected())
+        {
+            GamePacket packet = new GamePacket();
+            packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo == null ? 0 : userinfo.id };
+            Managers.networkManager.GameServerSend(packet);
+        }
+    }
+
     public void OnUseCard(string rcode = "", UserInfo target = null)
     {
         if (!string.IsNullOrEmpty(rcode))
