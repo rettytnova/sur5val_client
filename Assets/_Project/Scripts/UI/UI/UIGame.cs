@@ -20,6 +20,7 @@ public class UIGame : UIBase
     [SerializeField] private GameObject selectCard;
     [SerializeField] private TMP_Text selectCardText;
     [SerializeField] private TMP_Text deckCount;
+    [SerializeField] private Button buttonBasicAttack;
     [SerializeField] private Button buttonShot;
     [SerializeField] private TMP_Text noticeText;
     [SerializeField] private TMP_Text noticeLogItem;
@@ -155,6 +156,12 @@ public class UIGame : UIBase
     public void OnCardUse()
     {
         GameManager.instance.OnUseCard();
+    }
+
+    public void OnClickBasicAttack()
+    {
+        if (GameManager.instance.targetCharacter)
+            GameManager.instance.OnBasicAttack();
     }
 
     public void SetSelectCard(CardDataSO card = null)
