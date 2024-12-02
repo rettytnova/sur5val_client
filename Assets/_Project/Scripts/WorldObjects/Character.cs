@@ -141,7 +141,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         else ChangeState<CharacterWalkState>().SetElement(anim, rig, this);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private async void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
@@ -178,7 +178,24 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         else if(collision.gameObject.layer == LayerMask.NameToLayer("Store"))
         {
             if (characterType == eCharacterType.playable)
-                Debug.Log("OnTriggerEnter2D: Store");
+            {
+                Debug.Log("OnTriggerEnter2D: Entered Store");
+
+                // 플리마켓 UI 띄우기
+                if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+                {
+                    if (characterType == eCharacterType.playable)
+                    {
+                        Debug.Log("OnTriggerEnter2D: Exited Store");
+
+                        // 플리마켓 UI 지우기
+                        GamePacket packet = new GamePacket();
+                        packet.FleaMarketPickRequest = new C2SFleaMarketPickRequest() { };
+                        Managers.networkManager.GameServerSend(packet);
+                    }
+                }
+
+            }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
         {
@@ -194,11 +211,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
-        {
-            if (characterType == eCharacterType.playable)
-                Debug.Log("OnTriggerExit2D: Store");
-        }
+
     }
 
 
