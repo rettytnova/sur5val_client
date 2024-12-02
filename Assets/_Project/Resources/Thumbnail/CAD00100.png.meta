@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7085e4baace40564e9f3654e58e9f14b
+guid: 0035407a97a38f545bdb44f7a7e659a0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8223760342256937110
-    second: room_0
+      213: -4821719504934266051
+    second: CAD00102_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: room_0
+      name: CAD00102_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1501
-        height: 942
+        width: 1800
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6986b2eb57aa02270800000000000000
-      internalID: 8223760342256937110
+      spriteID: d3b12d528afc51db0800000000000000
+      internalID: -4821719504934266051
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      room_0: 8223760342256937110
+      CAD00102_0: -4821719504934266051
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
