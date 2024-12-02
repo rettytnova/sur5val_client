@@ -246,10 +246,11 @@ public class GameManager : MonoSingleton<GameManager>
         characters.Remove(id);
     }
 
-    public void SetMapInside(bool isInside)
+    public void SetMapInside(Transform BuildingCover, bool isInside)
     {
-        cover.SetActive(!isInside);
-        deco.SetActive(!isInside);
+        Debug.Log("BuildingCover: " + BuildingCover);
+        BuildingCover.gameObject.SetActive(!isInside);
+        //deco.SetActive(!isInside);
     }
 
     public void OnTargetSelect(Character character)

@@ -141,25 +141,66 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         else ChangeState<CharacterWalkState>().SetElement(anim, rig, this);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private async void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))
         {
             if (characterType == eCharacterType.playable)
             {
-                GameManager.instance.SetMapInside(true);
+                if (!isInside)
+                {
+                    Debug.Log("OnTriggerEnter2D: Building In");
+                    isInside = true;                    
+                    var BuildingCover = collision.gameObject.transform.GetChild(0);
+                    GameManager.instance.SetMapInside(BuildingCover, isInside);
+                }
+                if (userInfo != null)
+                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
-            isInside = true;
-            if (userInfo != null)
-                OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                    + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id); // °¡´ÉÇÑ °Å¸®¿¡ ÀÖ´Â À¯Àú ¾ÆÀÌÄÜ¸¸ Ç¥½Ã
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingFront"))
+        {
+            if (characterType == eCharacterType.playable)
+            {
+                if (isInside)
+                {
+                    Debug.Log("OnTriggerEnter2D: Building Out");
+                    isInside = false;
+                    var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
+                    GameManager.instance.SetMapInside(BuildingCover, isInside);
+                }
+                if (userInfo != null)
+                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
+            }
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+        {
+            if (characterType == eCharacterType.playable)
+            {
+                Debug.Log("OnTriggerEnter2D: Entered Store");
 
+                // í”Œë¦¬ë§ˆì¼“ UI ë„ìš°ê¸°
+                if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+                {
+                    if (characterType == eCharacterType.playable)
+                    {
+                        Debug.Log("OnTriggerEnter2D: Exited Store");
+
+                        // í”Œë¦¬ë§ˆì¼“ UI ì§€ìš°ê¸°
+                        GamePacket packet = new GamePacket();
+                        packet.FleaMarketPickRequest = new C2SFleaMarketPickRequest() { };
+                        Managers.networkManager.GameServerSend(packet);
+                    }
+                }
+
+            }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
         {
-            Debug.Log("OnTriggerEnter2D" + "Æ®¸®°Å ¿µ¿ª ÁøÀÔ" + collision.gameObject.layer + " " + LayerMask.NameToLayer("Extrance"));
             //if (characterType == eCharacterType.playable && userInfo.roleType == eRoleType.bodyguard)
-            if (characterType == eCharacterType.playable) // Å×½ºÆ®¿ë Á¶°Ç¹® (¿ªÇÒ Á¶°Ç x)
+            if (characterType == eCharacterType.playable)
             {
                 GamePacket packet = new GamePacket();
                 packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
@@ -170,18 +211,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))
-        {
-            if (characterType == eCharacterType.playable)
-            {
-                GameManager.instance.SetMapInside(false);
-            }
-            isInside = false;
-            if (userInfo != null)
-                OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                    + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id); // °¡´ÉÇÑ °Å¸®¿¡ ÀÖ´Â À¯Àú ¾ÆÀÌÄÜ¸¸ Ç¥½Ã
-        }
+
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
