@@ -31,9 +31,9 @@ public class ServerSession : Session
 
     // 방 생성
     public void CreateRoomResponse(GamePacket gamePacket)
-    {
-        var response = gamePacket.CreateRoomResponse;
-        Debug.Log("failcode : " + response.FailCode.ToString());
+    {       
+        var response = gamePacket.CreateRoomResponse;        
+        Debug.Log("failcode : " + response.FailCode.ToString());        
         UIManager.Get<PopupRoomCreate>().OnRoomCreateResult(response.Success, response.Room);
     }
 
@@ -471,12 +471,8 @@ public class ServerSession : Session
     {
         var response = chattingPacket.ChattingServerCreateRoomResponse;
 
-        var roomId = response.ChattingRoomId;
+        //var roomId = response.ChattingRoomId;
 
-        Debug.Log($"서버에서 만들어진 채팅 방 룸 id : {roomId}");
-
-        //ChattingPacket joinRoomChattingPacket = new ChattingPacket();
-        //joinRoomChattingPacket.ChattingServerJoinRoomRequest = new C2SChattingServerJoinRoomRequest() { ChattingRoomId = roomId };
-        //Managers.networkManager.ChattingServerSend(joinRoomChattingPacket);
+        //Debug.Log($"서버에서 만들어진 채팅 방 룸 id : {roomId}");        
     }
 }
