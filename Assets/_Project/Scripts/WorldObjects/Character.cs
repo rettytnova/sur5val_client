@@ -147,19 +147,43 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         {
             if (characterType == eCharacterType.playable)
             {
-                GameManager.instance.SetMapInside(true);
+                if (!isInside)
+                {
+                    Debug.Log("OnTriggerEnter2D: Building In");
+                    isInside = true;                    
+                    var BuildingCover = collision.gameObject.transform.GetChild(0);
+                    GameManager.instance.SetMapInside(BuildingCover, isInside);
+                }
+                if (userInfo != null)
+                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
-            isInside = true;
-            if (userInfo != null)
-                OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                    + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id); // 가능한 거리에 있는 유저 아이콘만 표시
-
+        }
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingFront"))
+        {
+            if (characterType == eCharacterType.playable)
+            {
+                if (isInside)
+                {
+                    Debug.Log("OnTriggerEnter2D: Building Out");
+                    isInside = false;
+                    var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
+                    GameManager.instance.SetMapInside(BuildingCover, isInside);
+                }
+                if (userInfo != null)
+                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
+            }
+        }
+        else if(collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+        {
+            if (characterType == eCharacterType.playable)
+                Debug.Log("OnTriggerEnter2D: Store");
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
         {
-            Debug.Log("OnTriggerEnter2D" + "트리거 영역 진입" + collision.gameObject.layer + " " + LayerMask.NameToLayer("Extrance"));
             //if (characterType == eCharacterType.playable && userInfo.roleType == eRoleType.bodyguard)
-            if (characterType == eCharacterType.playable) // 테스트용 조건문 (역할 조건 x)
+            if (characterType == eCharacterType.playable)
             {
                 GamePacket packet = new GamePacket();
                 packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
@@ -170,18 +194,13 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
         {
             if (characterType == eCharacterType.playable)
-            {
-                GameManager.instance.SetMapInside(false);
-            }
-            isInside = false;
-            if (userInfo != null)
-                OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                    + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id); // 가능한 거리에 있는 유저 아이콘만 표시
+                Debug.Log("OnTriggerExit2D: Store");
         }
     }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
