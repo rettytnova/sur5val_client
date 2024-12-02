@@ -91,7 +91,11 @@ public class PopupLogin : UIBase
         }
         PlayerPrefs.SetString("id" + tags[0], loginId.text);
         PlayerPrefs.SetString("password" + tags[0], loginPassword.text);
-        Managers.networkManager.GameServerSend(packet);        
+        Managers.networkManager.GameServerSend(packet);  
+        
+        ChattingPacket chattingPacket = new ChattingPacket();
+        chattingPacket.ChattingServerLoginRequest = new C2SChattingServerLoginRequest() { Email = loginId.text };
+        Managers.networkManager.ChattingServerSend(chattingPacket);        
         //OnLoginEnd(true);
     }
 
