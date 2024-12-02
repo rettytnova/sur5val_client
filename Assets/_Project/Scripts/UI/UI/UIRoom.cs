@@ -197,5 +197,13 @@ public class UIRoom : UIBase
         {
             HideDirect();
         }
+
+        if(Managers.networkManager.ChattingServerIsConnected())
+        {
+            ChattingPacket chattingLeaveRoomPacket = new ChattingPacket();
+            chattingLeaveRoomPacket.ChattingServerLeaveRoomRequest =
+                new C2SChattingServerLeaveRoomRequest();
+            Managers.networkManager.ChattingServerSend(chattingLeaveRoomPacket);
+        }
     }
 }

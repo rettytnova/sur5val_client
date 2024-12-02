@@ -71,7 +71,7 @@ public class UIMain : UIListBase<ItemRoom>
         UIManager.Show<PopupRoomCreate>();
     }
 
-    public void OnJoinRoom(int idx)
+    public void OnJoinRoom(int idx, string email)
     {
         if (Managers.networkManager.GameServerIsConnected())
         {
@@ -79,6 +79,13 @@ public class UIMain : UIListBase<ItemRoom>
             packet.JoinRoomRequest = new C2SJoinRoomRequest() { RoomId = idx };
             Managers.networkManager.GameServerSend(packet);
         }
-    }
 
+        if (Managers.networkManager.ChattingServerIsConnected())
+        {            
+            ChattingPacket chattingJoinRoomPacket = new ChattingPacket();
+            chattingJoinRoomPacket.ChattingServerJoinRoomRequest =
+                new C2SChattingServerJoinRoomRequest() { OwnerEmail = email };
+            Managers.networkManager.ChattingServerSend(chattingJoinRoomPacket);
+        }
+    }
 }
