@@ -130,7 +130,8 @@ public class UIGame : UIBase
 
     public void OnDaySetting(int day, PhaseType phase, long nextAt)
     {
-        dayInfo.text = string.Format("Day {0} {1}", day, phase == PhaseType.Day ? "Afternoon" : phase == PhaseType.Evening ? "Evening" : "Night");
+        // dayInfo.text = string.Format("Day {0} {1}", day, phase == PhaseType.Day ? "Afternoon" : phase == PhaseType.Evening ? "Evening" : "Night");
+        dayInfo.text = string.Format("라운드 종료까지 남은 시간");
         var dt = DateTimeOffset.FromUnixTimeMilliseconds(nextAt) - DateTime.UtcNow;
         timer = (float) dt.TotalSeconds;
         //timer = phase == 1 ? 180 : 60;

@@ -103,7 +103,7 @@ public class PopupLogin : UIBase
     {
         if(regPassword.text != regPasswordRe.text)
         {
-            UIManager.ShowAlert("ºñ¹Ð¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
+            UIManager.ShowAlert("ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½Ï´ï¿½.");
             return;
         }
         GamePacket packet = new GamePacket();
@@ -148,7 +148,7 @@ public class PopupLogin : UIBase
         }
         else
         {
-            UIManager.ShowAlert("·Î±×ÀÎ ½ÇÆÐ");
+            UIManager.ShowAlert("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
     }
 
@@ -168,7 +168,7 @@ public class PopupLogin : UIBase
         }
         else
         {
-            UIManager.ShowAlert("È¸¿ø°¡ÀÔ ½ÇÆÐ");
+            UIManager.ShowAlert("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
 
     }
