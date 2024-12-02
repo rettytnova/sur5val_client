@@ -145,12 +145,12 @@ public class PopupRemoveCardSelection : UIListBase<Card>
 
     public void OnClickUse()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.DestroyCardRequest = new C2SDestroyCardRequest();
             packet.DestroyCardRequest.DestroyCards.AddRange(CreateField());
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
         else
         {

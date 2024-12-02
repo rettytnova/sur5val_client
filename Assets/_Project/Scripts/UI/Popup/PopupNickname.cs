@@ -21,7 +21,7 @@ public class PopupNickname : UIBase
 
     public void OnClickOk()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             

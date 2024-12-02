@@ -32,12 +32,12 @@ public class UIMain : UIListBase<ItemRoom>
     }
 
     public void OnRefreshRoomList()
-    {
-        if (SocketManager.instance.isConnected)
+    {        
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.GetRoomListRequest = new C2SGetRoomListRequest();
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);            
         }
     }
 
@@ -58,11 +58,11 @@ public class UIMain : UIListBase<ItemRoom>
 
     public void OnClickRandomMatch()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.JoinRandomRoomRequest = new C2SJoinRandomRoomRequest();
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
     }
 
@@ -71,14 +71,21 @@ public class UIMain : UIListBase<ItemRoom>
         UIManager.Show<PopupRoomCreate>();
     }
 
-    public void OnJoinRoom(int idx)
+    public void OnJoinRoom(int idx, string email)
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.JoinRoomRequest = new C2SJoinRoomRequest() { RoomId = idx };
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
+        }
+
+        if (Managers.networkManager.ChattingServerIsConnected())
+        {            
+            ChattingPacket chattingJoinRoomPacket = new ChattingPacket();
+            chattingJoinRoomPacket.ChattingServerJoinRoomRequest =
+                new C2SChattingServerJoinRoomRequest() { OwnerEmail = email };
+            Managers.networkManager.ChattingServerSend(chattingJoinRoomPacket);
         }
     }
-
 }

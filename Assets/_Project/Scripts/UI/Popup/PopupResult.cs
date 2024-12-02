@@ -25,7 +25,7 @@ public class PopupResult : UIBase
     [SerializeField] private TMP_Text roleText;
     [SerializeField] private GameObject exit;
 
-    private string[] roleTexts = new string[3] { "너 대충 할래?", "탈출 성공!!", "탈출 실패.." };
+    private string[] roleTexts = new string[3] { "탈출 성공!!", "보스를 무찔렀다!!", "탈출 실패.." };
 
     public override async void Opened(object[] param)
     {

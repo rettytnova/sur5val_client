@@ -3,8 +3,47 @@ guid: 1c30fda2af8732a40a599166027ccd5a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5066161105885485884
-    second: iceauraProjectile2_4_0
+      213: 1989142422953054243
+    second: Shield_04_idle_0
+  - first:
+      213: -3704622289416662136
+    second: Shield_04_idle_1
+  - first:
+      213: 1112101334691429823
+    second: Shield_04_idle_2
+  - first:
+      213: -922476754976546639
+    second: Shield_04_idle_3
+  - first:
+      213: 1266306184538981456
+    second: Shield_04_idle_4
+  - first:
+      213: 421926987621827994
+    second: Shield_04_idle_5
+  - first:
+      213: -7272746536620478559
+    second: Shield_04_idle_6
+  - first:
+      213: -1775762404881031028
+    second: Shield_04_idle_7
+  - first:
+      213: -7116741877704756150
+    second: Shield_04_idle_8
+  - first:
+      213: -5978957865360216804
+    second: Shield_04_idle_9
+  - first:
+      213: 9007503196246812789
+    second: Shield_04_idle_10
+  - first:
+      213: -8885883058734604610
+    second: Shield_04_idle_11
+  - first:
+      213: 3539232753918483488
+    second: Shield_04_idle_12
+  - first:
+      213: 9201728566223669722
+    second: Shield_04_idle_13
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,10 +85,10 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
+  alignment: 2
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
@@ -96,43 +135,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: iOS
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: iceauraProjectile2_4_0
+      name: Shield_04_idle_0
       rect:
         serializedVersion: 2
-        x: 9
-        y: 4
-        width: 142
-        height: 122
+        x: 0
+        y: 236
+        width: 128
+        height: 20
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +154,294 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c3b54332fae9e4640800000000000000
-      internalID: 5066161105885485884
+      spriteID: 320d6c7ae7ada9b10800000000000000
+      internalID: 1989142422953054243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 224
+        width: 128
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 883535cd7a9869cc0800000000000000
+      internalID: -3704622289416662136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 212
+        width: 128
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbd3580954afe6f00800000000000000
+      internalID: 1112101334691429823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 199
+        width: 128
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b061126744b233f0800000000000000
+      internalID: -922476754976546639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 185
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 054835204c2d29110800000000000000
+      internalID: 1266306184538981456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 169
+        width: 128
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a95895a1c5cfad500800000000000000
+      internalID: 421926987621827994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 145
+        width: 128
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1afa84fbe83021b90800000000000000
+      internalID: -7272746536620478559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_7
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 68
+        width: 119
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c80a29b40893b57e0800000000000000
+      internalID: -1775762404881031028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 58
+        width: 128
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a44f245e7f04c3d90800000000000000
+      internalID: -7116741877704756150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 48
+        width: 128
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c1d2d24df79760da0800000000000000
+      internalID: -5978957865360216804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 38
+        width: 128
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 578ac75ee64110d70800000000000000
+      internalID: 9007503196246812789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_11
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 18
+        width: 128
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebe567000700fa480800000000000000
+      internalID: -8885883058734604610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 128
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02c1db22071ed1130800000000000000
+      internalID: 3539232753918483488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shield_04_idle_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad9835dc06b13bf70800000000000000
+      internalID: 9201728566223669722
       vertices: []
       indices: 
       edges: []
@@ -151,7 +450,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +460,20 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      iceauraProjectile2_4_0: 5066161105885485884
+      Shield_04_idle_0: 1989142422953054243
+      Shield_04_idle_1: -3704622289416662136
+      Shield_04_idle_10: 9007503196246812789
+      Shield_04_idle_11: -8885883058734604610
+      Shield_04_idle_12: 3539232753918483488
+      Shield_04_idle_13: 9201728566223669722
+      Shield_04_idle_2: 1112101334691429823
+      Shield_04_idle_3: -922476754976546639
+      Shield_04_idle_4: 1266306184538981456
+      Shield_04_idle_5: 421926987621827994
+      Shield_04_idle_6: -7272746536620478559
+      Shield_04_idle_7: -1775762404881031028
+      Shield_04_idle_8: -7116741877704756150
+      Shield_04_idle_9: -5978957865360216804
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

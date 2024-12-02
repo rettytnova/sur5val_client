@@ -26,14 +26,14 @@ public class CharacterWalkState : CharacterState
             anim.ChangeAnimation("walk");
         }
         rigidbody.linearVelocity = character.dir * character.Speed;
-        if (SocketManager.instance.isConnected && character.dir != Vector2.zero)
+        if (Managers.networkManager.GameServerIsConnected() && character.dir != Vector2.zero)
         {
             syncFrame++;
             if (syncFrame > 3)
             {
                 GamePacket packet = new GamePacket();
-                packet.PositionUpdateRequest = new C2SPositionUpdateRequest() { X = character.transform.position.x, Y = character.transform.position.y };
-                SocketManager.instance.Send(packet);
+                packet.PositionUpdateRequest = new C2SPositionUpdateRequest() { X = character.transform.position.x, Y = character.transform.position.y };                
+                Managers.networkManager.GameServerSend(packet);                
                 syncFrame = 0;
             }
         }

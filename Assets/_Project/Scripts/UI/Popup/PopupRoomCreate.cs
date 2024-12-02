@@ -23,15 +23,23 @@ public class PopupRoomCreate : UIBase
 
     public void OnClickCreate()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.CreateRoomRequest = new C2SCreateRoomRequest() { MaxUserNum = count.value + 4, Name = roomName.text };
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);            
         }
         else
         {
             OnRoomCreateResult(true, new RoomData() { Id = 1, MaxUserNum = count.value + 4, Name = roomName.text, OwnerId = UserInfo.myInfo.id, State = 0 });
+        }
+
+        // 채팅 서버 방 생성
+        if (Managers.networkManager.ChattingServerIsConnected())
+        {            
+            ChattingPacket chattingPacket = new ChattingPacket();
+            chattingPacket.ChattingServerCreateRoomRequest = new C2SChattingServerCreateRoomRequest();
+            Managers.networkManager.ChattingServerSend(chattingPacket);
         }
     }
 

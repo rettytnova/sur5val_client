@@ -152,7 +152,8 @@ public class UIManager : MonoSingleton<UIManager>
         if (count > 5)
         {
             count = 0;
-            SocketManager.instance.Disconnect(false);
+            Managers.networkManager.GameServerDisconnect(false);
+            Managers.networkManager.ChattingServerDisconnect(false);            
         }
     }
 }

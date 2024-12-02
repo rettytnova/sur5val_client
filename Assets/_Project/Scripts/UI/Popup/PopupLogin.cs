@@ -9,9 +9,9 @@ using Unity.Multiplayer.Playmode;
 public class PopupLogin : UIBase
 {
     [SerializeField] private GameObject touch;
-    [SerializeField] private GameObject buttonSet;
+    [SerializeField] public GameObject buttonSet;
     [SerializeField] private GameObject register;
-    [SerializeField] private GameObject login;
+    [SerializeField] public GameObject login;
     [SerializeField] private TMP_InputField loginId;
     [SerializeField] private TMP_InputField loginPassword;
     [SerializeField] private TMP_InputField regId;
@@ -39,17 +39,19 @@ public class PopupLogin : UIBase
 
     public void OnClickLogin()
     {
-        if (!SocketManager.instance.isConnected)
+        if (!Managers.networkManager.GameServerIsConnected())
         {
-            var ip = PlayerPrefs.GetString("ip", "127.0.0.1");
-            var port = PlayerPrefs.GetString("port", "5555");
-            SocketManager.instance.Init(ip, int.Parse(port));
-            SocketManager.instance.Connect(() =>
-            {
-                buttonSet.SetActive(false);
-                login.SetActive(true);
+            var gameServerIp = PlayerPrefs.GetString("gameServerIp", "127.0.0.1");
+            var gameServerPort = PlayerPrefs.GetString("gameServerPort", "5555");
 
-            });
+            var chattingServerIp = PlayerPrefs.GetString("chattingServerIp", "127.0.0.1");
+            var chattingServerPort = PlayerPrefs.GetString("chattingServerPort", "5556");
+
+            //Debug.Log($"gameServerIp {gameServerIp} gameServerPort {gameServerPort}");
+            //Debug.Log($"chattingServerIp {chattingServerIp} chattingServerPort {chattingServerPort}");
+
+            Managers.networkManager.GameServerConnect(gameServerIp,int.Parse(gameServerPort));
+            Managers.networkManager.ChattingServerConnect(chattingServerIp,int.Parse(chattingServerPort));
         }
         else
         {
@@ -60,16 +62,16 @@ public class PopupLogin : UIBase
 
     public void OnClickRegister()
     {
-        if (!SocketManager.instance.isConnected)
+        if (!Managers.networkManager.GameServerIsConnected())
         {
-            var ip = PlayerPrefs.GetString("ip", "127.0.0.1");
-            var port = PlayerPrefs.GetString("port", "5555");
-            SocketManager.instance.Init(ip, int.Parse(port));
-            SocketManager.instance.Connect(() =>
-            {
-                buttonSet.SetActive(false);
-                register.SetActive(true);
-            });
+            var gameServerIp = PlayerPrefs.GetString("gameServerIp", "127.0.0.1");
+            var gameServerPort = PlayerPrefs.GetString("gameServerPort", "5555");
+
+            var chattingServerIp = PlayerPrefs.GetString("chattingServerIp", "127.0.0.1");
+            var chattingServerPort = PlayerPrefs.GetString("chattingServerPort", "5556");           
+
+            Managers.networkManager.GameServerConnect(gameServerIp, int.Parse(gameServerPort));
+            Managers.networkManager.ChattingServerConnect(chattingServerIp, int.Parse(chattingServerPort));
         }
         else
         {
@@ -89,7 +91,11 @@ public class PopupLogin : UIBase
         }
         PlayerPrefs.SetString("id" + tags[0], loginId.text);
         PlayerPrefs.SetString("password" + tags[0], loginPassword.text);
-        SocketManager.instance.Send(packet);
+        Managers.networkManager.GameServerSend(packet);  
+        
+        ChattingPacket chattingPacket = new ChattingPacket();
+        chattingPacket.ChattingServerLoginRequest = new C2SChattingServerLoginRequest() { Email = loginId.text };
+        Managers.networkManager.ChattingServerSend(chattingPacket);        
         //OnLoginEnd(true);
     }
 
@@ -97,7 +103,7 @@ public class PopupLogin : UIBase
     {
         if(regPassword.text != regPasswordRe.text)
         {
-            UIManager.ShowAlert("ºñ¹Ð¹øÈ£°¡ ´Ù¸¨´Ï´Ù.");
+            UIManager.ShowAlert("ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½Ï´ï¿½.");
             return;
         }
         GamePacket packet = new GamePacket();
@@ -109,7 +115,7 @@ public class PopupLogin : UIBase
         }
         PlayerPrefs.SetString("id" + tags[0], regId.text);
         PlayerPrefs.SetString("password" + tags[0], regPassword.text);
-        SocketManager.instance.Send(packet);
+        Managers.networkManager.GameServerSend(packet);
     }
 
     public void OnClickCancelRegister()
@@ -142,7 +148,7 @@ public class PopupLogin : UIBase
         }
         else
         {
-            UIManager.ShowAlert("·Î±×ÀÎ ½ÇÆÐ");
+            UIManager.ShowAlert("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
     }
 
@@ -162,7 +168,7 @@ public class PopupLogin : UIBase
         }
         else
         {
-            UIManager.ShowAlert("È¸¿ø°¡ÀÔ ½ÇÆÐ");
+            UIManager.ShowAlert("È¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
 
     }

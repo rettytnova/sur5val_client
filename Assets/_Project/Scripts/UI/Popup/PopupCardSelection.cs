@@ -114,12 +114,12 @@ public class PopupCardSelection : UIListBase<Card>
 
     public void OnClickUse()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             SelectCardType selectType = selectCard.transform.parent == weaponSlot ? SelectCardType.Weapon : equipSlots.Find(obj => obj == selectCard.transform.parent) != null ? SelectCardType.Equip : debuffSlots.Find(obj => obj == selectCard.transform.parent) != null ? SelectCardType.Debuff : SelectCardType.Hand;
             packet.CardSelectRequest = new C2SCardSelectRequest() { SelectType = selectType, SelectCardType = selectType == 0 ? CardType.None : selectCard.cardData.cardType };
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
         }
         else
         {

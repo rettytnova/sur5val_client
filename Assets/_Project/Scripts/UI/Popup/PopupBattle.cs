@@ -27,7 +27,7 @@ public class PopupBattle : UIListBase<Card>
     {
         targetCard = DataManager.instance.GetData<CardDataSO>(param[0].ToString());
         targetUser = DataManager.instance.users.Find(obj => obj.id == (long)param[1]);
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             callback = (Action<int, long>)param[2];
         }
@@ -95,7 +95,7 @@ public class PopupBattle : UIListBase<Card>
     {
         var idx = uiPagingViewController.selectedIdx;
         var card = cards[idx];
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             callback.Invoke((int)card.cardType, targetUser.id);
         }
@@ -111,7 +111,7 @@ public class PopupBattle : UIListBase<Card>
 
     public void OnClickDamage()
     {
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             callback.Invoke(0, 0);
         }

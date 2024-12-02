@@ -43,11 +43,11 @@ public class PopupPleaMarket : UIBase
     public void OnClickItem(int idx)
     {
         //if (!isMyTurn) return;
-        if (SocketManager.instance.isConnected)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
             packet.FleMarketCardPickRequest = new C2SFleaMarketCardPickRequest() { PickIndex = idx };
-            SocketManager.instance.Send(packet);
+            Managers.networkManager.GameServerSend(packet);
             timer.text = "";
 
             //StopAllCoroutines();

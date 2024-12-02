@@ -12,10 +12,10 @@ public class ItemRoom : UIListItem
     [SerializeField] private TMP_Text title;
     [SerializeField] private TMP_Text count;
 
-    public UnityAction<int> callback;
+    public UnityAction<int, string> callback;
     public RoomData roomData;
 
-    public void SetItem(RoomData roomData, UnityAction<int> callback)
+    public void SetItem(RoomData roomData, UnityAction<int, string> callback)
     {
         gameObject.SetActive(true);
         this.roomData = roomData;
@@ -27,6 +27,6 @@ public class ItemRoom : UIListItem
 
     public void OnClickItem()
     {
-        callback?.Invoke(roomData.Id);
+        callback?.Invoke(roomData.Id, roomData.OwnerEmail);
     }
 }

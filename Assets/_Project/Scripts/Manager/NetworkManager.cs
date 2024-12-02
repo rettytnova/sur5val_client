@@ -9,7 +9,7 @@ public class NetworkManager
     string chattingServerIp = "127.0.0.1";
     int chattingServerPort = 5556;
 
-    ServerSession gameServerSession = null;
+    public ServerSession gameServerSession = null;
     ServerSession chattingServerSession = null;
 
     public void GameServerSend(GamePacket gamePacket)
@@ -61,8 +61,8 @@ public class NetworkManager
                 gameServerSession.SessionInit(this.gameServerIp, this.gameServerPort, en_ServerPacketType.SERVER_PACKET_TYPE_GAME);
                 gameServerSession.Connect(() =>
                 {
-                    //UIManager.Get<PopupLogin>().buttonSet.SetActive(false);
-                    //UIManager.Get<PopupLogin>().login.SetActive(true);
+                    UIManager.Get<PopupLogin>().buttonSet.SetActive(false);
+                    UIManager.Get<PopupLogin>().login.SetActive(true);
                 });
             }
         }
