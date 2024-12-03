@@ -524,7 +524,7 @@ public enum CardType {
   /// 1장
   /// </summary>
   [pbr::OriginalName("BOMB")] Bomb = 23,
-  [pbr::OriginalName("SUR5VER_BASIC_SKILL")] Sur5verBasicSkill = 100,
+  [pbr::OriginalName("SUR5VAL_BASIC_SKILL")] Sur5valBasicSkill = 100,
   [pbr::OriginalName("MAGICIAN_BASIC_SKILL")] MagicianBasicSkill = 101,
   [pbr::OriginalName("WARRIOR_BASIC_SKILL")] WarriorBasicSkill = 102,
   [pbr::OriginalName("ARCHER_BASIC_SKILL")] ArcherBasicSkill = 103,
