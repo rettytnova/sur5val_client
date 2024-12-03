@@ -56,7 +56,7 @@ public class GameManager : MonoSingleton<GameManager>
     {
         if (!Managers.networkManager.GameServerIsConnected()) Init();
         if (spawnPoints != null)
-            spawns = new List<Transform>(spawnPoints);        
+            spawns = new List<Transform>(spawnPoints);
     }
 
     private void Update()
@@ -229,6 +229,15 @@ public class GameManager : MonoSingleton<GameManager>
         character.name = rcode;
         character.Init(DataManager.instance.GetData<CharacterDataSO>(rcode));
         character.SetCharacterType(characterType);
+
+        // 보스 캐릭터(CHA00013)일 때 크기 조절
+        if (rcode == "CHA00013")
+        {
+            // 캐릭터 이미지 크기, 위치 조절
+            character.transform.GetChild(0).transform.localScale *= 2.3f;
+            character.transform.GetChild(0).transform.position = new Vector3(0, 0.2f, 0);
+        }
+
         characters.Add(id, character);
         if (characterType == eCharacterType.playable)
         {
