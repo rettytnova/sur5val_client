@@ -311,7 +311,6 @@ MonoBehaviour:
   version: 1.0.0
   sequenceNumber: 1
   isConnected: 0
-  level: 1
   isAnimationPlaying: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
