@@ -533,6 +533,7 @@ public enum CardType {
   [pbr::OriginalName("WARRIOR_EXTENDED_SKILL")] WarriorExtendedSkill = 106,
   [pbr::OriginalName("ARCHER_EXTENDED_SKILL")] ArcherExtendedSkill = 107,
   [pbr::OriginalName("PALADIN_EXTENDED_SKILL")] PaladinExtendedSkill = 108,
+  [pbr::OriginalName("BOSS_BASIC_SKILL")] BossBasicSkill = 113,
   [pbr::OriginalName("BASIC_HP_POTION")] BasicHpPotion = 201,
 }
 
