@@ -271,10 +271,14 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void OnBasicAttack()
     {
-        if (targetCharacter != null || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
-        {
-            SendSocketBasicAttack(UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath ? targetCharacter.userInfo : null, UserInfo.myInfo, "CAD00100");
-        }
+        //if (targetCharacter != null || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
+        //{
+        //    SendSocketBasicAttack(UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath ? targetCharacter.userInfo : null, UserInfo.myInfo, "CAD00100");
+        //}
+        if(UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
+            SendSocketBasicAttack(targetCharacter != null ? targetCharacter.userInfo : null, UserInfo.myInfo, "CAD00113");
+        else if (UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
+            SendSocketBasicAttack(targetCharacter != null ? targetCharacter.userInfo : null, UserInfo.myInfo, "CAD00100");
     }
 
     public void SendSocketBasicAttack(UserInfo userinfo, UserInfo useUserInfo, string rcode)
@@ -295,11 +299,16 @@ public class GameManager : MonoSingleton<GameManager>
         {
             SendSocketUseCard(target == null ? UserInfo.myInfo : target, UserInfo.myInfo, rcode);
         }
-        else if ((targetCharacter != null || UserInfo.myInfo.roleType == eRoleType.psychopass) && SelectedCard != null)
+        if (Managers.networkManager.GameServerIsConnected())
         {
             UserInfo.myInfo.handCards.Remove(SelectedCard);
-            SendSocketUseCard(UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath ? targetCharacter.userInfo : null, UserInfo.myInfo, SelectedCard.rcode);
+            SendSocketUseCard(targetCharacter != null ? targetCharacter.userInfo : null, UserInfo.myInfo, SelectedCard.rcode);
         }
+        //else if ((targetCharacter != null || UserInfo.myInfo.roleType == eRoleType.psychopass) && SelectedCard != null)
+        //{
+        //    UserInfo.myInfo.handCards.Remove(SelectedCard);
+        //    SendSocketUseCard(UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath ? targetCharacter.userInfo : null, UserInfo.myInfo, SelectedCard.rcode);
+        //}
     }
 
     public void SendSocketUseCard(UserInfo userinfo, UserInfo useUserInfo, string rcode)
@@ -310,7 +319,6 @@ public class GameManager : MonoSingleton<GameManager>
         {
             var cardIdx = useUserInfo.handCards.FindIndex(obj => obj.rcode == rcode);
             GamePacket packet = new GamePacket();
-            //packet.UseCardRequest = new C2SUseCardRequest() { CardType = cardIdx, TargetUserId = userinfo == null ? "" : userinfo.id };
             packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo == null ? 0 : userinfo.id };
             Managers.networkManager.GameServerSend(packet);
         }
