@@ -23,6 +23,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     [SerializeField] private GameObject death;
     [SerializeField] private CircleCollider2D collider;
     [SerializeField] public GameObject stop;
+    [SerializeField] public ChatBubble chatBubble;
 
     [SerializeField] private float speed = 3;
 
@@ -38,6 +39,20 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         if (characterType == eCharacterType.npc) minimapIcon.gameObject.SetActive(false);
+    }
+
+    public void chattingMessage(string chatMessage)
+    {
+        if(chatBubble.gameObject.activeSelf == true)
+        {            
+            chatBubble.ChatBubbleSetChatMessage(chatMessage);
+        }
+        else
+        {            
+            chatBubble.gameObject.SetActive(true);
+            
+            chatBubble.ChatBubbleSetChatMessage(chatMessage);
+        }
     }
 
     public override async void Init(BaseDataSO data)

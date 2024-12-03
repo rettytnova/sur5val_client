@@ -475,4 +475,25 @@ public class ServerSession : Session
 
         //Debug.Log($"서버에서 만들어진 채팅 방 룸 id : {roomId}");        
     }
+
+    public void ChattingServerChatSendResponse(ChattingPacket chattingPacket)
+    {
+        var response = chattingPacket.ChattingServerChatSendResponse;        
+
+        var users = DataManager.instance.users;
+        if(users != null )
+        {
+            for (int i = 0; i < users.Count; i++)
+            {
+                if (users[i].nickname == response.NickName)
+                {
+                    var targetCharacter = GameManager.instance.characters[users[i].id];
+                    if (targetCharacter != null)
+                    {
+                        targetCharacter.chattingMessage(response.ChatMessage);
+                    }
+                }
+            }
+        }
+    }
 }

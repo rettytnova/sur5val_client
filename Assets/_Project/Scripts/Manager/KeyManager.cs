@@ -12,6 +12,8 @@ public class KeyManager
     private BindingKey moveLeftKey = new BindingKey();
     private BindingKey moveRightKey = new BindingKey();
 
+    private UIChattingInput chattingInputUI = null;
+
     public KeyManager()
     {
         BindingKey inventoryOpenCloseKey = new BindingKey();
@@ -21,6 +23,10 @@ public class KeyManager
         BindingKey skillUseKey = new BindingKey();
         skillUseKey.quickSlotType = en_QuickSlot.QUICK_SLOT_SKILL_USE;
         skillUseKey.keyCode = en_KeyCode.KEY_CODE_SPACE;
+
+        BindingKey chattingInputKey = new BindingKey();
+        chattingInputKey.quickSlotType = en_QuickSlot.QUICK_SLOT_CHAT_INPUT;
+        chattingInputKey.keyCode = en_KeyCode.KEY_CODE_ENTER;
 
         moveUpKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_UP;
         moveUpKey.keyCode = en_KeyCode.KEY_CODE_W;
@@ -36,6 +42,7 @@ public class KeyManager
 
         uiBindingKeys.Add(inventoryOpenCloseKey);
         uiBindingKeys.Add(skillUseKey);
+        uiBindingKeys.Add(chattingInputKey);
     }
 
     public bool KeyboardGetKeyActions(en_KeyCode keyCode)
@@ -91,6 +98,12 @@ public class KeyManager
                     isKeyboardKeyAction = true;
                 }
                 break;
+            case en_KeyCode.KEY_CODE_ENTER:
+                if(Input.GetKeyDown(KeyCode.Return))
+                {
+                    isKeyboardKeyAction = true;
+                }
+                break;
         }
 
         return isKeyboardKeyAction;
@@ -107,7 +120,7 @@ public class KeyManager
         }
     }
 
-    public void UIActions(en_QuickSlot quickSlot)
+    public async void UIActions(en_QuickSlot quickSlot)
     {
         switch (quickSlot)
         {
@@ -118,10 +131,21 @@ public class KeyManager
                     return;
                 }
 
-                UIManager.Show<PopupDeck>();
+                await UIManager.Show<PopupDeck>();
                 break;
             case en_QuickSlot.QUICK_SLOT_SKILL_USE:
                 UIGame.instance.OnCardUse();
+                break;
+            case en_QuickSlot.QUICK_SLOT_CHAT_INPUT:
+                var GameSceneUI = GameScene.GetInstance.gameSceneUI;                
+                if(GameSceneUI.uiChattingInput.gameObject.activeSelf == false)
+                {
+                    GameSceneUI.uiChattingInput.ShowCloseUI(true);
+                }
+                else
+                {
+                    GameSceneUI.uiChattingInput.ShowCloseUI(false);
+                }                
                 break;
         }
     }
