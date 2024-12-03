@@ -106,18 +106,9 @@ public class UIGame : UIBase
 
     public void SetShotButton(bool isActive)
     {
-        if(UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
-        {
-            buttonShot.interactable = isActive;
-            selectCard.SetActive(isActive);
-            shotCount.transform.parent.gameObject.SetActive(isActive);
-        }
-        else if (UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
-        {
-            buttonShot.interactable = true;
-            selectCard.SetActive(true);
-            shotCount.transform.parent.gameObject.SetActive(true);
-        }
+        buttonShot.interactable = isActive;
+        selectCard.SetActive(isActive);
+        shotCount.transform.parent.gameObject.SetActive(isActive);
     }
 
     public void SetDeckCount()
@@ -158,8 +149,9 @@ public class UIGame : UIBase
 
     public void OnClickBang()
     {
-        if (UserInfo.myInfo.isShotPossible || GameManager.instance.SelectedCard.cardType != CardType.Bbang || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
-            GameManager.instance.OnUseCard();
+        //if (UserInfo.myInfo.isShotPossible || GameManager.instance.SelectedCard.cardType != CardType.Bbang || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
+        //    GameManager.instance.OnUseCard();
+        GameManager.instance.OnUseCard();
     }
 
     public void OnCardUse()
@@ -169,8 +161,9 @@ public class UIGame : UIBase
 
     public void OnClickBasicAttack()
     {
-        if (GameManager.instance.targetCharacter || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
-            GameManager.instance.OnBasicAttack();
+        //if (GameManager.instance.targetCharacter || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
+        //    GameManager.instance.OnBasicAttack();
+        GameManager.instance.OnBasicAttack();
     }
 
     public void SetSelectCard(CardDataSO card = null)
