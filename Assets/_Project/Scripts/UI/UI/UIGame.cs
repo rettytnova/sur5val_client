@@ -149,8 +149,9 @@ public class UIGame : UIBase
 
     public void OnClickBang()
     {
-        if (UserInfo.myInfo.isShotPossible || GameManager.instance.SelectedCard.cardType != CardType.Bbang)
-            GameManager.instance.OnUseCard();
+        //if (UserInfo.myInfo.isShotPossible || GameManager.instance.SelectedCard.cardType != CardType.Bbang || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
+        //    GameManager.instance.OnUseCard();
+        GameManager.instance.OnUseCard();
     }
 
     public void OnCardUse()
@@ -160,8 +161,9 @@ public class UIGame : UIBase
 
     public void OnClickBasicAttack()
     {
-        if (GameManager.instance.targetCharacter)
-            GameManager.instance.OnBasicAttack();
+        //if (GameManager.instance.targetCharacter || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
+        //    GameManager.instance.OnBasicAttack();
+        GameManager.instance.OnBasicAttack();
     }
 
     public void SetSelectCard(CardDataSO card = null)

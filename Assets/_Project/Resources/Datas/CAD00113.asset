@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9171727e36817448e486b1f30532e0, type: 3}
-  m_Name: CAD00100
+  m_Name: CAD00113
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
-  rcode: CAD00100
-  displayName: "\uC0DD\uC874\uC790 \uAE30\uBCF8 \uACF5\uACA9"
-  description: "SUR5VER \uAE30\uBCF8 \uACF5\uACA9 \uC0AC\uC6A9"
+  rcode: CAD00113
+  displayName: "\uBCF4\uC2A4 \uAE30\uBCF8 \uACF5\uACA9"
+  description: "BOSS \uAE30\uBCF8 \uACF5\uACA9 \uC0AC\uC6A9"
   type: 0
   isUsable: 1
   defCard: 
