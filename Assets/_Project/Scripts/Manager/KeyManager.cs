@@ -140,6 +140,7 @@ public class KeyManager
                 var GameSceneUI = GameScene.GetInstance.gameSceneUI;                
                 if(GameSceneUI.uiChattingInput.gameObject.activeSelf == false)
                 {
+                    GameManager.instance.userCharacter?.MoveCharacter(Vector2.zero);
                     GameSceneUI.uiChattingInput.ShowCloseUI(true);
                 }
                 else
@@ -193,6 +194,9 @@ public class KeyManager
             }
         }
 
-        GameManager.instance.userCharacter?.MoveCharacter(moveDirection);        
+        if (!GameScene.GetInstance.gameSceneUI.uiChattingInput.gameObject.activeSelf)
+        {
+            GameManager.instance.userCharacter?.MoveCharacter(moveDirection);
+        }        
     }
 }
