@@ -47,14 +47,17 @@ public class UIChattingInput : UIBaseTwo
             GetTMPInputField((int)en_ChattingInputfield.inputField).ActivateInputField();
         }
         else
-        {
+        {            
             string chatMessage = GetTMPInputField((int)en_ChattingInputfield.inputField).text;
-            ChattingPacket C2SChattingSendPacket = new ChattingPacket();
-            C2SChattingSendPacket.ChattingServerChatSendRequest = new C2SChattingServerChatSendRequest() { ChatMessage = chatMessage };
-            Managers.networkManager.ChattingServerSend(C2SChattingSendPacket);
+            if (chatMessage.Length > 0)
+            {
+                ChattingPacket C2SChattingSendPacket = new ChattingPacket();
+                C2SChattingSendPacket.ChattingServerChatSendRequest = new C2SChattingServerChatSendRequest() { ChatMessage = chatMessage };
+                Managers.networkManager.ChattingServerSend(C2SChattingSendPacket);
 
-            GetTMPInputField((int)en_ChattingInputfield.inputField).DeactivateInputField();
-            GetTMPInputField((int)en_ChattingInputfield.inputField).text = "";
+                GetTMPInputField((int)en_ChattingInputfield.inputField).DeactivateInputField();
+                GetTMPInputField((int)en_ChattingInputfield.inputField).text = "";
+            }            
         }
     }   
 
