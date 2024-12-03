@@ -26,21 +26,28 @@ public static partial class ChattingProtocolReflection {
           "Z1NlcnZlckxvZ2luUmVxdWVzdBINCgVlbWFpbBgBIAEoCSIkCiJDMlNDaGF0",
           "dGluZ1NlcnZlckNyZWF0ZVJvb21SZXF1ZXN0IjYKIEMyU0NoYXR0aW5nU2Vy",
           "dmVySm9pblJvb21SZXF1ZXN0EhIKCm93bmVyRW1haWwYAiABKAkiIwohQzJT",
-          "Q2hhdHRpbmdTZXJ2ZXJMZWF2ZVJvb21SZXF1ZXN0IkIKHlMyQ0NoYXR0aW5n",
-          "U2VydmVyTG9naW5SZXNwb25zZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3Nh",
-          "Z2UYAiABKAkiPQojUzJDQ2hhdHRpbmdTZXJ2ZXJDcmVhdGVSb29tUmVzcG9u",
-          "c2USFgoOY2hhdHRpbmdSb29tSWQYASABKAUi7QMKDkNoYXR0aW5nUGFja2V0",
-          "EkQKGmNoYXR0aW5nU2VydmVyTG9naW5SZXF1ZXN0GAEgASgLMh4uQzJTQ2hh",
-          "dHRpbmdTZXJ2ZXJMb2dpblJlcXVlc3RIABJGChtjaGF0dGluZ1NlcnZlckxv",
-          "Z2luUmVzcG9uc2UYAiABKAsyHy5TMkNDaGF0dGluZ1NlcnZlckxvZ2luUmVz",
-          "cG9uc2VIABJOCh9jaGF0dGluZ1NlcnZlckNyZWF0ZVJvb21SZXF1ZXN0GAMg",
-          "ASgLMiMuQzJTQ2hhdHRpbmdTZXJ2ZXJDcmVhdGVSb29tUmVxdWVzdEgAElAK",
-          "IGNoYXR0aW5nU2VydmVyQ3JlYXRlUm9vbVJlc3BvbnNlGAQgASgLMiQuUzJD",
-          "Q2hhdHRpbmdTZXJ2ZXJDcmVhdGVSb29tUmVzcG9uc2VIABJKCh1jaGF0dGlu",
-          "Z1NlcnZlckpvaW5Sb29tUmVxdWVzdBgFIAEoCzIhLkMyU0NoYXR0aW5nU2Vy",
-          "dmVySm9pblJvb21SZXF1ZXN0SAASTAoeY2hhdHRpbmdTZXJ2ZXJMZWF2ZVJv",
-          "b21SZXF1ZXN0GAYgASgLMiIuQzJTQ2hhdHRpbmdTZXJ2ZXJMZWF2ZVJvb21S",
-          "ZXF1ZXN0SABCEQoPY2hhdHRpbmdQYXlsb2FkYgZwcm90bzM="));
+          "Q2hhdHRpbmdTZXJ2ZXJMZWF2ZVJvb21SZXF1ZXN0IjcKIEMyU0NoYXR0aW5n",
+          "U2VydmVyQ2hhdFNlbmRSZXF1ZXN0EhMKC2NoYXRNZXNzYWdlGAEgASgJIkIK",
+          "HlMyQ0NoYXR0aW5nU2VydmVyTG9naW5SZXNwb25zZRIPCgdzdWNjZXNzGAEg",
+          "ASgIEg8KB21lc3NhZ2UYAiABKAkiPQojUzJDQ2hhdHRpbmdTZXJ2ZXJDcmVh",
+          "dGVSb29tUmVzcG9uc2USFgoOY2hhdHRpbmdSb29tSWQYASABKAUiSgohUzJD",
+          "Q2hhdHRpbmdTZXJ2ZXJDaGF0U2VuZFJlc3BvbnNlEhAKCG5pY2tOYW1lGAEg",
+          "ASgJEhMKC2NoYXRNZXNzYWdlGAIgASgJIocFCg5DaGF0dGluZ1BhY2tldBJE",
+          "ChpjaGF0dGluZ1NlcnZlckxvZ2luUmVxdWVzdBgBIAEoCzIeLkMyU0NoYXR0",
+          "aW5nU2VydmVyTG9naW5SZXF1ZXN0SAASRgobY2hhdHRpbmdTZXJ2ZXJMb2dp",
+          "blJlc3BvbnNlGAIgASgLMh8uUzJDQ2hhdHRpbmdTZXJ2ZXJMb2dpblJlc3Bv",
+          "bnNlSAASTgofY2hhdHRpbmdTZXJ2ZXJDcmVhdGVSb29tUmVxdWVzdBgDIAEo",
+          "CzIjLkMyU0NoYXR0aW5nU2VydmVyQ3JlYXRlUm9vbVJlcXVlc3RIABJQCiBj",
+          "aGF0dGluZ1NlcnZlckNyZWF0ZVJvb21SZXNwb25zZRgEIAEoCzIkLlMyQ0No",
+          "YXR0aW5nU2VydmVyQ3JlYXRlUm9vbVJlc3BvbnNlSAASSgodY2hhdHRpbmdT",
+          "ZXJ2ZXJKb2luUm9vbVJlcXVlc3QYBSABKAsyIS5DMlNDaGF0dGluZ1NlcnZl",
+          "ckpvaW5Sb29tUmVxdWVzdEgAEkwKHmNoYXR0aW5nU2VydmVyTGVhdmVSb29t",
+          "UmVxdWVzdBgGIAEoCzIiLkMyU0NoYXR0aW5nU2VydmVyTGVhdmVSb29tUmVx",
+          "dWVzdEgAEkoKHWNoYXR0aW5nU2VydmVyQ2hhdFNlbmRSZXF1ZXN0GAcgASgL",
+          "MiEuQzJTQ2hhdHRpbmdTZXJ2ZXJDaGF0U2VuZFJlcXVlc3RIABJMCh5jaGF0",
+          "dGluZ1NlcnZlckNoYXRTZW5kUmVzcG9uc2UYCCABKAsyIi5TMkNDaGF0dGlu",
+          "Z1NlcnZlckNoYXRTZW5kUmVzcG9uc2VIAEIRCg9jaGF0dGluZ1BheWxvYWRi",
+          "BnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
@@ -48,9 +55,11 @@ public static partial class ChattingProtocolReflection {
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerCreateRoomRequest), global::C2SChattingServerCreateRoomRequest.Parser, null, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerJoinRoomRequest), global::C2SChattingServerJoinRoomRequest.Parser, new[]{ "OwnerEmail" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerLeaveRoomRequest), global::C2SChattingServerLeaveRoomRequest.Parser, null, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerChatSendRequest), global::C2SChattingServerChatSendRequest.Parser, new[]{ "ChatMessage" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CChattingServerLoginResponse), global::S2CChattingServerLoginResponse.Parser, new[]{ "Success", "Message" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::S2CChattingServerCreateRoomResponse), global::S2CChattingServerCreateRoomResponse.Parser, new[]{ "ChattingRoomId" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::ChattingPacket), global::ChattingPacket.Parser, new[]{ "ChattingServerLoginRequest", "ChattingServerLoginResponse", "ChattingServerCreateRoomRequest", "ChattingServerCreateRoomResponse", "ChattingServerJoinRoomRequest", "ChattingServerLeaveRoomRequest" }, new[]{ "ChattingPayload" }, null, null, null)
+          new pbr::GeneratedClrTypeInfo(typeof(global::S2CChattingServerChatSendResponse), global::S2CChattingServerChatSendResponse.Parser, new[]{ "NickName", "ChatMessage" }, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::ChattingPacket), global::ChattingPacket.Parser, new[]{ "ChattingServerLoginRequest", "ChattingServerLoginResponse", "ChattingServerCreateRoomRequest", "ChattingServerCreateRoomResponse", "ChattingServerJoinRoomRequest", "ChattingServerLeaveRoomRequest", "ChattingServerChatSendRequest", "ChattingServerChatSendResponse" }, new[]{ "ChattingPayload" }, null, null, null)
         }));
   }
   #endregion
@@ -540,6 +549,141 @@ public sealed partial class C2SChattingServerLeaveRoomRequest : pb::IMessage<C2S
 }
 
 /// <summary>
+///----------------------------------------
+/// 채팅 전송
+/// chatMessage : 채팅 내용
+///----------------------------------------
+/// </summary>
+public sealed partial class C2SChattingServerChatSendRequest : pb::IMessage<C2SChattingServerChatSendRequest> {
+  private static readonly pb::MessageParser<C2SChattingServerChatSendRequest> _parser = new pb::MessageParser<C2SChattingServerChatSendRequest>(() => new C2SChattingServerChatSendRequest());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<C2SChattingServerChatSendRequest> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[4]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public C2SChattingServerChatSendRequest() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public C2SChattingServerChatSendRequest(C2SChattingServerChatSendRequest other) : this() {
+    chatMessage_ = other.chatMessage_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public C2SChattingServerChatSendRequest Clone() {
+    return new C2SChattingServerChatSendRequest(this);
+  }
+
+  /// <summary>Field number for the "chatMessage" field.</summary>
+  public const int ChatMessageFieldNumber = 1;
+  private string chatMessage_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string ChatMessage {
+    get { return chatMessage_; }
+    set {
+      chatMessage_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as C2SChattingServerChatSendRequest);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(C2SChattingServerChatSendRequest other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (ChatMessage != other.ChatMessage) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (ChatMessage.Length != 0) hash ^= ChatMessage.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (ChatMessage.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(ChatMessage);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (ChatMessage.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(ChatMessage);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(C2SChattingServerChatSendRequest other) {
+    if (other == null) {
+      return;
+    }
+    if (other.ChatMessage.Length != 0) {
+      ChatMessage = other.ChatMessage;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 10: {
+          ChatMessage = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+/// <summary>
 ///-------------------------------------
 /// 로그인 응답
 /// success : 로그인 성공 여부
@@ -554,7 +698,7 @@ public sealed partial class S2CChattingServerLoginResponse : pb::IMessage<S2CCha
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[4]; }
+    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[5]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -717,7 +861,7 @@ public sealed partial class S2CChattingServerCreateRoomResponse : pb::IMessage<S
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[5]; }
+    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[6]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -839,6 +983,170 @@ public sealed partial class S2CChattingServerCreateRoomResponse : pb::IMessage<S
 }
 
 /// <summary>
+///----------------------------------------
+/// 채팅 전송 응답
+/// nickName : 채팅 전송한 유저 닉네임
+/// chatMessage : 채팅 내용
+///----------------------------------------
+/// </summary>
+public sealed partial class S2CChattingServerChatSendResponse : pb::IMessage<S2CChattingServerChatSendResponse> {
+  private static readonly pb::MessageParser<S2CChattingServerChatSendResponse> _parser = new pb::MessageParser<S2CChattingServerChatSendResponse>(() => new S2CChattingServerChatSendResponse());
+  private pb::UnknownFieldSet _unknownFields;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pb::MessageParser<S2CChattingServerChatSendResponse> Parser { get { return _parser; } }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public static pbr::MessageDescriptor Descriptor {
+    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[7]; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  pbr::MessageDescriptor pb::IMessage.Descriptor {
+    get { return Descriptor; }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public S2CChattingServerChatSendResponse() {
+    OnConstruction();
+  }
+
+  partial void OnConstruction();
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public S2CChattingServerChatSendResponse(S2CChattingServerChatSendResponse other) : this() {
+    nickName_ = other.nickName_;
+    chatMessage_ = other.chatMessage_;
+    _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public S2CChattingServerChatSendResponse Clone() {
+    return new S2CChattingServerChatSendResponse(this);
+  }
+
+  /// <summary>Field number for the "nickName" field.</summary>
+  public const int NickNameFieldNumber = 1;
+  private string nickName_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string NickName {
+    get { return nickName_; }
+    set {
+      nickName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  /// <summary>Field number for the "chatMessage" field.</summary>
+  public const int ChatMessageFieldNumber = 2;
+  private string chatMessage_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string ChatMessage {
+    get { return chatMessage_; }
+    set {
+      chatMessage_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override bool Equals(object other) {
+    return Equals(other as S2CChattingServerChatSendResponse);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public bool Equals(S2CChattingServerChatSendResponse other) {
+    if (ReferenceEquals(other, null)) {
+      return false;
+    }
+    if (ReferenceEquals(other, this)) {
+      return true;
+    }
+    if (NickName != other.NickName) return false;
+    if (ChatMessage != other.ChatMessage) return false;
+    return Equals(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override int GetHashCode() {
+    int hash = 1;
+    if (NickName.Length != 0) hash ^= NickName.GetHashCode();
+    if (ChatMessage.Length != 0) hash ^= ChatMessage.GetHashCode();
+    if (_unknownFields != null) {
+      hash ^= _unknownFields.GetHashCode();
+    }
+    return hash;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public override string ToString() {
+    return pb::JsonFormatter.ToDiagnosticString(this);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void WriteTo(pb::CodedOutputStream output) {
+    if (NickName.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(NickName);
+    }
+    if (ChatMessage.Length != 0) {
+      output.WriteRawTag(18);
+      output.WriteString(ChatMessage);
+    }
+    if (_unknownFields != null) {
+      _unknownFields.WriteTo(output);
+    }
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public int CalculateSize() {
+    int size = 0;
+    if (NickName.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(NickName);
+    }
+    if (ChatMessage.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(ChatMessage);
+    }
+    if (_unknownFields != null) {
+      size += _unknownFields.CalculateSize();
+    }
+    return size;
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(S2CChattingServerChatSendResponse other) {
+    if (other == null) {
+      return;
+    }
+    if (other.NickName.Length != 0) {
+      NickName = other.NickName;
+    }
+    if (other.ChatMessage.Length != 0) {
+      ChatMessage = other.ChatMessage;
+    }
+    _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public void MergeFrom(pb::CodedInputStream input) {
+    uint tag;
+    while ((tag = input.ReadTag()) != 0) {
+      switch(tag) {
+        default:
+          _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+          break;
+        case 10: {
+          NickName = input.ReadString();
+          break;
+        }
+        case 18: {
+          ChatMessage = input.ReadString();
+          break;
+        }
+      }
+    }
+  }
+
+}
+
+/// <summary>
 ///
 ///최상위 ChattingPacket 메세지
 /// </summary>
@@ -850,7 +1158,7 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public static pbr::MessageDescriptor Descriptor {
-    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[6]; }
+    get { return global::ChattingProtocolReflection.Descriptor.MessageTypes[8]; }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -885,6 +1193,12 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
         break;
       case ChattingPayloadOneofCase.ChattingServerLeaveRoomRequest:
         ChattingServerLeaveRoomRequest = other.ChattingServerLeaveRoomRequest.Clone();
+        break;
+      case ChattingPayloadOneofCase.ChattingServerChatSendRequest:
+        ChattingServerChatSendRequest = other.ChattingServerChatSendRequest.Clone();
+        break;
+      case ChattingPayloadOneofCase.ChattingServerChatSendResponse:
+        ChattingServerChatSendResponse = other.ChattingServerChatSendResponse.Clone();
         break;
     }
 
@@ -962,6 +1276,28 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
     }
   }
 
+  /// <summary>Field number for the "chattingServerChatSendRequest" field.</summary>
+  public const int ChattingServerChatSendRequestFieldNumber = 7;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::C2SChattingServerChatSendRequest ChattingServerChatSendRequest {
+    get { return chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendRequest ? (global::C2SChattingServerChatSendRequest) chattingPayload_ : null; }
+    set {
+      chattingPayload_ = value;
+      chattingPayloadCase_ = value == null ? ChattingPayloadOneofCase.None : ChattingPayloadOneofCase.ChattingServerChatSendRequest;
+    }
+  }
+
+  /// <summary>Field number for the "chattingServerChatSendResponse" field.</summary>
+  public const int ChattingServerChatSendResponseFieldNumber = 8;
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public global::S2CChattingServerChatSendResponse ChattingServerChatSendResponse {
+    get { return chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendResponse ? (global::S2CChattingServerChatSendResponse) chattingPayload_ : null; }
+    set {
+      chattingPayload_ = value;
+      chattingPayloadCase_ = value == null ? ChattingPayloadOneofCase.None : ChattingPayloadOneofCase.ChattingServerChatSendResponse;
+    }
+  }
+
   private object chattingPayload_;
   /// <summary>Enum of possible cases for the "chattingPayload" oneof.</summary>
   public enum ChattingPayloadOneofCase {
@@ -972,6 +1308,8 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
     ChattingServerCreateRoomResponse = 4,
     ChattingServerJoinRoomRequest = 5,
     ChattingServerLeaveRoomRequest = 6,
+    ChattingServerChatSendRequest = 7,
+    ChattingServerChatSendResponse = 8,
   }
   private ChattingPayloadOneofCase chattingPayloadCase_ = ChattingPayloadOneofCase.None;
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1004,6 +1342,8 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
     if (!object.Equals(ChattingServerCreateRoomResponse, other.ChattingServerCreateRoomResponse)) return false;
     if (!object.Equals(ChattingServerJoinRoomRequest, other.ChattingServerJoinRoomRequest)) return false;
     if (!object.Equals(ChattingServerLeaveRoomRequest, other.ChattingServerLeaveRoomRequest)) return false;
+    if (!object.Equals(ChattingServerChatSendRequest, other.ChattingServerChatSendRequest)) return false;
+    if (!object.Equals(ChattingServerChatSendResponse, other.ChattingServerChatSendResponse)) return false;
     if (ChattingPayloadCase != other.ChattingPayloadCase) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
@@ -1017,6 +1357,8 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
     if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerCreateRoomResponse) hash ^= ChattingServerCreateRoomResponse.GetHashCode();
     if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerJoinRoomRequest) hash ^= ChattingServerJoinRoomRequest.GetHashCode();
     if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerLeaveRoomRequest) hash ^= ChattingServerLeaveRoomRequest.GetHashCode();
+    if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendRequest) hash ^= ChattingServerChatSendRequest.GetHashCode();
+    if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendResponse) hash ^= ChattingServerChatSendResponse.GetHashCode();
     hash ^= (int) chattingPayloadCase_;
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
@@ -1055,6 +1397,14 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
       output.WriteRawTag(50);
       output.WriteMessage(ChattingServerLeaveRoomRequest);
     }
+    if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendRequest) {
+      output.WriteRawTag(58);
+      output.WriteMessage(ChattingServerChatSendRequest);
+    }
+    if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendResponse) {
+      output.WriteRawTag(66);
+      output.WriteMessage(ChattingServerChatSendResponse);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -1080,6 +1430,12 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
     }
     if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerLeaveRoomRequest) {
       size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChattingServerLeaveRoomRequest);
+    }
+    if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendRequest) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChattingServerChatSendRequest);
+    }
+    if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendResponse) {
+      size += 1 + pb::CodedOutputStream.ComputeMessageSize(ChattingServerChatSendResponse);
     }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
@@ -1128,6 +1484,18 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
           ChattingServerLeaveRoomRequest = new global::C2SChattingServerLeaveRoomRequest();
         }
         ChattingServerLeaveRoomRequest.MergeFrom(other.ChattingServerLeaveRoomRequest);
+        break;
+      case ChattingPayloadOneofCase.ChattingServerChatSendRequest:
+        if (ChattingServerChatSendRequest == null) {
+          ChattingServerChatSendRequest = new global::C2SChattingServerChatSendRequest();
+        }
+        ChattingServerChatSendRequest.MergeFrom(other.ChattingServerChatSendRequest);
+        break;
+      case ChattingPayloadOneofCase.ChattingServerChatSendResponse:
+        if (ChattingServerChatSendResponse == null) {
+          ChattingServerChatSendResponse = new global::S2CChattingServerChatSendResponse();
+        }
+        ChattingServerChatSendResponse.MergeFrom(other.ChattingServerChatSendResponse);
         break;
     }
 
@@ -1194,6 +1562,24 @@ public sealed partial class ChattingPacket : pb::IMessage<ChattingPacket> {
           }
           input.ReadMessage(subBuilder);
           ChattingServerLeaveRoomRequest = subBuilder;
+          break;
+        }
+        case 58: {
+          global::C2SChattingServerChatSendRequest subBuilder = new global::C2SChattingServerChatSendRequest();
+          if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendRequest) {
+            subBuilder.MergeFrom(ChattingServerChatSendRequest);
+          }
+          input.ReadMessage(subBuilder);
+          ChattingServerChatSendRequest = subBuilder;
+          break;
+        }
+        case 66: {
+          global::S2CChattingServerChatSendResponse subBuilder = new global::S2CChattingServerChatSendResponse();
+          if (chattingPayloadCase_ == ChattingPayloadOneofCase.ChattingServerChatSendResponse) {
+            subBuilder.MergeFrom(ChattingServerChatSendResponse);
+          }
+          input.ReadMessage(subBuilder);
+          ChattingServerChatSendResponse = subBuilder;
           break;
         }
       }
