@@ -290,8 +290,19 @@ public class GameManager : MonoSingleton<GameManager>
         if (Managers.networkManager.GameServerIsConnected())
         {
             GamePacket packet = new GamePacket();
-            packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo == null ? 0 : userinfo.id };
-            Managers.networkManager.GameServerSend(packet);
+            if (userinfo != null)
+            {
+                if (IsTargetInRange())
+                {
+                    packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
+                    Managers.networkManager.GameServerSend(packet);
+                }
+            }
+            else
+            {
+                packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = 0 };
+                Managers.networkManager.GameServerSend(packet);
+            }
         }
     }
 
@@ -301,7 +312,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             SendSocketUseCard(target == null ? UserInfo.myInfo : target, UserInfo.myInfo, rcode);
         }
-        else if(SelectedCard != null)
+        else if (SelectedCard != null)
         {
             UserInfo.myInfo.handCards.Remove(SelectedCard);
             SendSocketUseCard(targetCharacter != null ? targetCharacter.userInfo : null, UserInfo.myInfo, SelectedCard.rcode);
@@ -322,8 +333,19 @@ public class GameManager : MonoSingleton<GameManager>
             var cardIdx = useUserInfo.handCards.FindIndex(obj => obj.rcode == rcode);
             GamePacket packet = new GamePacket();
             //packet.UseCardRequest = new C2SUseCardRequest() { CardType = cardIdx, TargetUserId = userinfo == null ? "" : userinfo.id };
-            packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo == null ? 0 : userinfo.id };
-            Managers.networkManager.GameServerSend(packet);
+            if (userinfo != null)
+            {
+                if (IsTargetInRange())
+                {
+                    packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
+                    Managers.networkManager.GameServerSend(packet);
+                }
+            }
+            else
+            {
+                packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = 0 };
+                Managers.networkManager.GameServerSend(packet);
+            }
         }
         else
         {
@@ -596,6 +618,11 @@ public class GameManager : MonoSingleton<GameManager>
             hiddenColliders.ForEach(obj => obj.SetActive(isVisible));
             navMeshSurface.BuildNavMesh();
         }
+    }
+    // 공격 가능 거리 체크
+    public bool IsTargetInRange()
+    {
+        return Vector3.Distance(userCharacter.transform.position, targetCharacter.transform.position) <= 4.5f;
     }
 
     public void OnGameEnd()
