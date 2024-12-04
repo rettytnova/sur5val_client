@@ -313,26 +313,19 @@ public class ServerSession : Session
         var response = gamePacket.UserUpdateNotification;
         var users = DataManager.instance.users.UpdateUserData(response.User);
         if (!GameManager.isInstance || GameManager.instance.characters == null || GameManager.instance.characters.Count == 0) return;
-        var myIndex = users.FindIndex(obj => obj.id == UserInfo.myInfo.id);
+        var myIndex = users.FindIndex(obj => obj.id == UserInfo.myInfo.id);        
         for (int i = 0; i < users.Count; i++)
         {
             var targetCharacter = GameManager.instance.characters[users[i].id];
             if (!users[i].aliveState && users[i].hp <= 0)
             {
-                targetCharacter.SetDeath();
-                UIGame.instance.SetDeath(users[i].id);
-            }
-            targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시                       
-        }
+                // 캐릭터 움직임 멈춤
+                GameManager.instance.userCharacter?.MoveCharacter(Vector2.zero);
 
-        for (int i = 0; i < users.Count; i++)
-        {
-            var targetCharacter = GameManager.instance.characters[users[i].id];
-            if (!users[i].aliveState && users[i].hp <= 0)
-            {
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
-            }
+            }            
+
             targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
 
             if (users[i].id == UserInfo.myInfo.id)
