@@ -25,8 +25,9 @@ public partial class UserInfo
     public int mp { get => characterData.Mp; set => characterData.Mp = value; }
     public int attack { get => characterData.Attack; set => characterData.Attack = value; }
     public int armor { get => characterData.Armor; set => characterData.Armor = value; }
-    public int gold { get => characterData.Gold; set => characterData.Gold = value; }
+    public int gold { get => characterData.Gold; set => characterData.Gold = value; }    
     public int level { get => characterData.Level; set => characterData.Level = value; }
+    public int maxExp { get => characterData.MaxExp; set => characterData.MaxExp = value; }
     public int exp { get => characterData.Exp; set => characterData.Exp = value; }
 
     public bool isStelth { get => equips.Find(obj => obj.rcode == "CAD00020") != null; }

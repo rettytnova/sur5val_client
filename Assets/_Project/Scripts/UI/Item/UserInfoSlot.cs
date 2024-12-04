@@ -18,8 +18,12 @@ public class UserInfoSlot : UIListItem
     [SerializeField] private TMP_Text mpTxt;
     [SerializeField] private TMP_Text attackTxt;
     [SerializeField] private TMP_Text armorTxt;
-    [SerializeField] private TMP_Text goldTxt;
-    [SerializeField] private TMP_Text expTxt;
+    [SerializeField] private TMP_Text goldTxt;    
+    [SerializeField] private TMP_Text levelTxt;
+    [SerializeField] private Image expGauge;
+    [SerializeField] private TMP_Text expGaugeText;
+    private string currentExpValue;
+    private string maxExpValue;
     [SerializeField] private GameObject targetMark;
     [SerializeField] private TMP_Text index;
     [SerializeField] private Image weapon;
@@ -42,14 +46,18 @@ public class UserInfoSlot : UIListItem
         targetMark.GetComponent<Image>().sprite = await ResourceManager.instance.LoadAsset<Sprite>("role_" + userinfo.roleType.ToString(), eAddressableType.Thumbnail);
         // 체력 바        
         SetHpGauge(userinfo.hp, userinfo.maxHp);
+        // 경험치 바
+        SetExpGauge(userinfo.exp, userinfo.maxExp);
         if (UserInfo.myInfo.id == userinfo.id)
         {
-            // 내 캐릭터일 경우 공격력, 방어력, 골드, 경험치 표시
+            // 내 캐릭터일 경우 공격력, 방어력, 골드, 레벨 표시
             mpTxt.text = userinfo.mp.ToString();
             attackTxt.text = userinfo.attack.ToString();
             armorTxt.text = userinfo.armor.ToString();
             goldTxt.text = userinfo.gold.ToString();
-            //exp.text = userinfo.exp.ToString();
+            levelTxt.text = userinfo.level.ToString();
+
+            currentExpValue = userinfo.exp.ToString();            
         }
         // for (int i = 0; i < 5; i++)
         // {
@@ -80,6 +88,8 @@ public class UserInfoSlot : UIListItem
         //     hpGauges[i].SetActive(userinfo.hp > i);
         // }
         SetHpGauge(userinfo.hp, userinfo.maxHp);
+        SetExpGauge(userinfo.exp, userinfo.maxExp);
+
         if (UserInfo.myInfo.id == userinfo.id)
         {
             // 내 캐릭터일 경우 공격력, 방어력, 골드, 경험치 표시
@@ -87,7 +97,7 @@ public class UserInfoSlot : UIListItem
             attackTxt.text = userinfo.attack.ToString();
             armorTxt.text = userinfo.armor.ToString();
             goldTxt.text = userinfo.gold.ToString();
-            //expTxt.text = userinfo.exp.ToString();
+            levelTxt.text = userinfo.level.ToString();
         }
         // if (weapon != null)
         // {
@@ -143,6 +153,16 @@ public class UserInfoSlot : UIListItem
         string maxHpText = " / " + maxHp.ToString();
         hpGaugeText.text = hp.ToString() + maxHpText;
         hpGauge.fillAmount = (float)hp / maxHp;
+    }
+
+    public void SetExpGauge(int exp, int maxExp)
+    {        
+        string maxExpText = maxExp.ToString();
+        string expText = exp.ToString();
+        Debug.Log("exp : " + exp + " maxExp : " + maxExp);
+        Debug.Log("expText : " + expText + " maxExpText : " + maxExpText);
+        expGaugeText.text = expText + " / " + maxExpText;
+        expGauge.fillAmount = (float)exp / maxExp;
     }
 
     public void SetDeath()
