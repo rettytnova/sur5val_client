@@ -289,19 +289,27 @@ public class GameManager : MonoSingleton<GameManager>
         if (!string.IsNullOrEmpty(card.useTag) && card.useTag != targetCharacter.tag) return;
         if (Managers.networkManager.GameServerIsConnected())
         {
-            GamePacket packet = new GamePacket();
-            if (userinfo != null)
+            var GameSceneUI = GameScene.GetInstance.gameSceneUI;
+            if (GameSceneUI != null)
             {
-                if (IsTargetInRange())
+                if (GameSceneUI.cooltimeProgress == 1.0f)
                 {
-                    packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
+                GameSceneUI.cooltimeAttackStart();
+                GamePacket packet = new GamePacket();
+                if (userinfo != null)
+                {
+                    if (IsTargetInRange())
+                    {
+                        packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
+                        Managers.networkManager.GameServerSend(packet);
+                    }
+                }
+                else
+                {
+                    packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = 0 };
                     Managers.networkManager.GameServerSend(packet);
                 }
-            }
-            else
-            {
-                packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = 0 };
-                Managers.networkManager.GameServerSend(packet);
+                }
             }
         }
     }
