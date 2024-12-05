@@ -192,7 +192,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
         {
-            if (characterType == eCharacterType.playable)
+            if (characterType == eCharacterType.playable && UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
             {
                 Debug.Log("OnTriggerEnter2D: Entered Store");
 
@@ -224,7 +224,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Store") && UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
         {
             UIGame.instance.SetShopButton(false);
         }
