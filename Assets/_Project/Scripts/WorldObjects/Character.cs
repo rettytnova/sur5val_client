@@ -43,14 +43,14 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     public void chattingMessage(string chatMessage)
     {
-        if(chatBubble.gameObject.activeSelf == true)
-        {            
+        if (chatBubble.gameObject.activeSelf == true)
+        {
             chatBubble.ChatBubbleSetChatMessage(chatMessage);
         }
         else
-        {            
+        {
             chatBubble.gameObject.SetActive(true);
-            
+
             chatBubble.ChatBubbleSetChatMessage(chatMessage);
         }
     }
@@ -165,7 +165,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                 if (!isInside)
                 {
                     Debug.Log("OnTriggerEnter2D: Building In");
-                    isInside = true;                    
+                    isInside = true;
                     var BuildingCover = collision.gameObject.transform.GetChild(0);
                     GameManager.instance.SetMapInside(BuildingCover, isInside);
                 }
@@ -190,7 +190,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                         + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
         }
-        else if(collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+        else if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
         {
             if (characterType == eCharacterType.playable)
             {
@@ -201,12 +201,10 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                 {
                     if (characterType == eCharacterType.playable)
                     {
-                        Debug.Log("OnTriggerEnter2D: Exited Store");
-
-                        // 플리마켓 UI 지우기
-                        GamePacket packet = new GamePacket();
-                        packet.FleaMarketPickRequest = new C2SFleaMarketPickRequest() { };
-                        Managers.networkManager.GameServerSend(packet);
+                        // GamePacket packet = new GamePacket();
+                        // packet.FleaMarketPickRequest = new C2SFleaMarketPickRequest() { };
+                        // Managers.networkManager.GameServerSend(packet);
+                        UIGame.instance.SetShopButton(true);
                     }
                 }
 
@@ -226,7 +224,10 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+        {
+            UIGame.instance.SetShopButton(false);
+        }
     }
 
 
