@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class KeyManager
 {
     private List<BindingKey> uiBindingKeys = new List<BindingKey>();
-    
+
     private BindingKey moveUpKey = new BindingKey();
     private BindingKey moveDownKey = new BindingKey();
     private BindingKey moveLeftKey = new BindingKey();
@@ -26,7 +26,7 @@ public class KeyManager
 
         BindingKey chattingInputKey = new BindingKey();
         chattingInputKey.quickSlotType = en_QuickSlot.QUICK_SLOT_CHAT_INPUT;
-        chattingInputKey.keyCode = en_KeyCode.KEY_CODE_ENTER;
+        chattingInputKey.keyCode = en_KeyCode.KEY_CODE_ENTER;      
 
         moveUpKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_UP;
         moveUpKey.keyCode = en_KeyCode.KEY_CODE_W;
@@ -69,7 +69,7 @@ public class KeyManager
                     isKeyboardKeyAction = true;
                 }
                 break;
-            case en_KeyCode.KEY_CODE_D:
+            case en_KeyCode.KEY_CODE_D:                
                 if (Input.GetKey(KeyCode.D))
                 {
                     isKeyboardKeyAction = true;
@@ -78,7 +78,7 @@ public class KeyManager
         }
 
         return isKeyboardKeyAction;
-    }
+    }    
 
     public bool KeyboardGetKeyDownActions(en_KeyCode keyCode)
     {
@@ -99,7 +99,7 @@ public class KeyManager
                 }
                 break;
             case en_KeyCode.KEY_CODE_ENTER:
-                if(Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     isKeyboardKeyAction = true;
                 }
@@ -107,7 +107,7 @@ public class KeyManager
         }
 
         return isKeyboardKeyAction;
-    }
+    } 
 
     public void QuickSlotBarActions()
     {
@@ -137,16 +137,20 @@ public class KeyManager
                 UIGame.instance.OnCardUse();
                 break;
             case en_QuickSlot.QUICK_SLOT_CHAT_INPUT:
-                var GameSceneUI = GameScene.GetInstance.gameSceneUI;                
-                if(GameSceneUI.uiChattingInput.gameObject.activeSelf == false)
+                var GameSceneUI = GameScene.GetInstance.gameSceneUI;
+                if (GameSceneUI != null)
                 {
-                    GameManager.instance.userCharacter?.MoveCharacter(Vector2.zero);
-                    GameSceneUI.uiChattingInput.ShowCloseUI(true);
+                    if (GameSceneUI.uiChattingInput.gameObject.activeSelf == false)
+                    {
+                        GameManager.instance.userCharacter?.MoveCharacter(Vector2.zero);
+                        GameSceneUI.uiChattingInput.ShowCloseUI(true);
+                    }
+                    else
+                    {
+                        GameSceneUI.uiChattingInput.ShowCloseUI(false);
+                    }
+
                 }
-                else
-                {
-                    GameSceneUI.uiChattingInput.ShowCloseUI(false);
-                }                
                 break;
         }
     }
@@ -197,6 +201,6 @@ public class KeyManager
         if (!GameScene.GetInstance.gameSceneUI.uiChattingInput.gameObject.activeSelf)
         {
             GameManager.instance.userCharacter?.MoveCharacter(moveDirection);
-        }        
+        }
     }
 }

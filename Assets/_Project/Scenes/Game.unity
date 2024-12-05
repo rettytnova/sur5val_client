@@ -45250,38 +45250,27 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6236790251759674049, guid: e137fae51b3a05c4c806a6b4a293c99f, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7289129685831566063, guid: e137fae51b3a05c4c806a6b4a293c99f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1356637528}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e137fae51b3a05c4c806a6b4a293c99f, type: 3}
 --- !u!224 &1356637526 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3274988519610316934, guid: e137fae51b3a05c4c806a6b4a293c99f, type: 3}
   m_PrefabInstance: {fileID: 1356637525}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1356637527 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7289129685831566063, guid: e137fae51b3a05c4c806a6b4a293c99f, type: 3}
+--- !u!114 &1356637527 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6236790251759674049, guid: e137fae51b3a05c4c806a6b4a293c99f, type: 3}
   m_PrefabInstance: {fileID: 1356637525}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1356637528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356637527}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db2234906af9d69449d7929014a5c886, type: 3}
+  m_Script: {fileID: 11500000, guid: 44fc6d61c0060e84c855f92a1010e8de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _SceneUIListIndex: 0
 --- !u!1 &1375736989
 GameObject:
   m_ObjectHideFlags: 0
@@ -57400,7 +57389,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1682788927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a9b99d1f7f02a240a08c91d9c5f561e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9023af4ed527fc54cb62c8597bba0f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gameSceneUI: {fileID: 2138148937}
@@ -79828,11 +79817,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2138148935}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ee30c740cee584581b8c78fa1d38f7, type: 3}
+  m_Script: {fileID: 11500000, guid: 171a5101c3a02e344874ae3d1c582e09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _SceneUIListIndex: 0
-  uiChattingInput: {fileID: 1356637528}
+  uiChattingInput: {fileID: 1356637527}
+  cooltimeProgress: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
