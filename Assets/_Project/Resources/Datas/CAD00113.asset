@@ -15,7 +15,7 @@ MonoBehaviour:
   thumbnail: {fileID: 0}
   rcode: CAD00113
   displayName: "\uBCF4\uC2A4 \uAE30\uBCF8 \uACF5\uACA9"
-  description: "BOSS \uAE30\uBCF8 \uACF5\uACA9 \uC0AC\uC6A9"
+  description: "\uBCF4\uC2A4 \uAE30\uBCF8 \uACF5\uACA9"
   type: 0
   isUsable: 1
   defCard: 

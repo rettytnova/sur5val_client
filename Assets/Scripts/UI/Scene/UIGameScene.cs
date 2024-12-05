@@ -53,7 +53,7 @@ public class UIGameScene : UIBaseTwo
             }
         }                  
 
-        _SkillCoolTime = 2000.0f / 1000.0f;
+        _SkillCoolTime = 3050.0f / 1000.0f;
         _SkillCoolTimeSpeed = 1.0f / _SkillCoolTime;
 
         if (coolTimeStartCO != null)
