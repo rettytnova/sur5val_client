@@ -22,6 +22,7 @@ public class UIGame : UIBase
     [SerializeField] private TMP_Text deckCount;
     [SerializeField] private Button buttonBasicAttack;
     [SerializeField] private Button buttonShot;
+    [SerializeField] private Button buttonShop;
     [SerializeField] private TMP_Text noticeText;
     [SerializeField] private TMP_Text noticeLogItem;
     [SerializeField] private GameObject noticeLog;
@@ -41,7 +42,7 @@ public class UIGame : UIBase
     public IEnumerator Init()
     {
         yield return new WaitUntil(() => GameManager.instance.isInit);
-        for(int i = 0; i < DataManager.instance.users.Count; i++)
+        for (int i = 0; i < DataManager.instance.users.Count; i++)
         {
             if (DataManager.instance.users[i].id != UserInfo.myInfo.id)
             {
@@ -68,14 +69,14 @@ public class UIGame : UIBase
             GameManager.instance.SendSocketUseCard(target, UserInfo.myInfo, card.rcode);
             SetSelectCard(null);
         }
-        if(GameManager.instance.isSelectBombTarget)
+        if (GameManager.instance.isSelectBombTarget)
         {
             GameManager.instance.isSelectBombTarget = false;
             if (Managers.networkManager.GameServerIsConnected())
             {
                 GamePacket packet = new GamePacket();
-                packet.PassDebuffRequest = new C2SPassDebuffRequest() { DebuffCardType = CardType.Bomb, TargetUserId = target.id };                
-                Managers.networkManager.GameServerSend(packet);                
+                packet.PassDebuffRequest = new C2SPassDebuffRequest() { DebuffCardType = CardType.Bomb, TargetUserId = target.id };
+                Managers.networkManager.GameServerSend(packet);
             }
             else
             {
@@ -134,7 +135,7 @@ public class UIGame : UIBase
         // dayInfo.text = string.Format("Day {0} {1}", day, phase == PhaseType.Day ? "Afternoon" : phase == PhaseType.Evening ? "Evening" : "Night");
         dayInfo.text = string.Format("라운드 종료까지 남은 시간");
         var dt = DateTimeOffset.FromUnixTimeMilliseconds(nextAt) - DateTime.UtcNow;
-        timer = (float) dt.TotalSeconds;
+        timer = (float)dt.TotalSeconds;
         //timer = phase == 1 ? 180 : 60;
     }
 
@@ -164,6 +165,18 @@ public class UIGame : UIBase
         //if (GameManager.instance.targetCharacter || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
         //    GameManager.instance.OnBasicAttack();
         GameManager.instance.OnBasicAttack();
+    }
+
+    public void OnClickShop()
+    {
+        GamePacket packet = new GamePacket();
+        packet.FleaMarketPickRequest = new C2SFleaMarketPickRequest() { };
+        Managers.networkManager.GameServerSend(packet);
+    }
+
+    public void SetShopButton(bool isActive)
+    {
+        buttonShop.gameObject.SetActive(isActive);
     }
 
     public void SetSelectCard(CardDataSO card = null)
@@ -239,7 +252,7 @@ public class UIGame : UIBase
 
     public void OnClickBomb()
     {
-        if(GameManager.instance.targetCharacter != null && GameManager.instance.targetCharacter.tag == "Bomb")
+        if (GameManager.instance.targetCharacter != null && GameManager.instance.targetCharacter.tag == "Bomb")
         {
             GameManager.instance.isSelectBombTarget = true;
             OnSelectDirectTarget(true);
