@@ -201,7 +201,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC5F0\uACB0"
+  m_text: "\uC785\uB825"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 54767ba5fd4c65d4fbbc1d2abb1c8b7f, type: 2}
   m_sharedMaterial: {fileID: 1575574767915447597, guid: 54767ba5fd4c65d4fbbc1d2abb1c8b7f, type: 2}
@@ -2872,7 +2872,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 8257617912597713492}
         m_TargetAssemblyTypeName: PopupConnection, Assembly-CSharp
-        m_MethodName: OnClickConnection
+        m_MethodName: OnClickIPPortInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
