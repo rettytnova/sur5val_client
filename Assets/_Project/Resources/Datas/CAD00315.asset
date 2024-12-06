@@ -16,7 +16,7 @@ MonoBehaviour:
   rcode: CAD00315
   displayName: "\uC601\uC6C5\uC758 \uC7A5\uAC11"
   description: "\uC804\uD22C \uAE30\uC220\uC744 \uADF9\uB300\uD654\uD558\uB294 \uC7A5\uAC11.
-    \uACF5\uACA9\uB825+4, \uBC29\uC5B4\uB825+4, \uCCB4\uB825+8"
+    \uACF5\uACA9\uB825+2, \uBC29\uC5B4\uB825+4, \uCCB4\uB825+10"
   type: 2
   isUsable: 1
   defCard: 
