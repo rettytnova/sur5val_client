@@ -72,6 +72,25 @@ public class PopupDeck : UIListBase<Card>
 
     public void AddEquip(CardDataSO data, int idx)
     {
+        if(idx >= 4)
+        {
+            if(CardType.ExplorerWeapon <= data.cardType && data.cardType <= CardType.LegendaryGlove)
+            {
+                // 투구, 갑옷, 망토, 장갑 카드 타입을 정수로 변환 후
+                // %10 %5 를 하여 해당 타입의 장비만 교환(무기 제외)
+                CardType cardType = data.cardType;
+                int cardSlot = (int)cardType % 10 % 5;
+                
+                if(cardSlot == 2) // 투구
+                    idx = 0;
+                else if (cardSlot == 3) // 갑옷
+                    idx = 1;
+                else if (cardSlot == 4) // 망토
+                    idx = 2;
+                else if (cardSlot == 0) // 장갑
+                    idx = 3;
+            }            
+        }
         var slot = equipSlots[idx];
         var item = Instantiate(itemPrefab, slot);
         item.Init(data);
@@ -169,13 +188,16 @@ public class PopupDeck : UIListBase<Card>
         {
             UIGame.instance.OnSelectDirectTarget(true);
         }
+
         if (!card.isDirectUse)
         {
             HideDirect();
         }
         else
         {
-            GameManager.instance.OnUseCard(card.rcode);
+            //if (!((CardType.BasicHpPotion <= card.cardType && card.cardType <= CardType.MasterExpPotion) || (CardType.ExplorerWeapon <= card.cardType && card.cardType <= CardType.LegendaryGlove)))
+            //GameManager.instance.OnUseCard(card.rcode);
+            GameManager.instance.OnUseCard(card.rcode, idx);
             SetList();
         }
     }

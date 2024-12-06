@@ -314,14 +314,19 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
 
-    public void OnUseCard(string rcode = "", UserInfo target = null)
+    //public void OnUseCard(string rcode = "", UserInfo target = null)
+    public void OnUseCard(string rcode = "", int idx = -1)
     {
-        if (!string.IsNullOrEmpty(rcode))
+        if (!string.IsNullOrEmpty(rcode)) // 사실상 기능 없음
         {
-            SendSocketUseCard(target == null ? UserInfo.myInfo : target, UserInfo.myInfo, rcode);
+            //SendSocketUseCard(target == null ? null, UserInfo.myInfo, rcode);
+            SendSocketUseCard(null, UserInfo.myInfo, rcode);
         }
-        else if (SelectedCard != null)
+        else if (SelectedCard != null || rcode != "")
         {
+            if (SelectedCard == null)
+                SelectedCard = UserInfo.myInfo.handCards[idx];
+
             UserInfo.myInfo.handCards.Remove(SelectedCard);
             SendSocketUseCard(targetCharacter != null ? targetCharacter.userInfo : null, UserInfo.myInfo, SelectedCard.rcode);
         }
@@ -339,7 +344,13 @@ public class GameManager : MonoSingleton<GameManager>
         if (Managers.networkManager.GameServerIsConnected())
         {
             var GameSceneUI = GameScene.GetInstance.gameSceneUI;
-            if (GameSceneUI != null)
+            if ((CardType.BasicHpPotion <= card.cardType && card.cardType <= CardType.MasterExpPotion) || (CardType.ExplorerWeapon <= card.cardType && card.cardType <= CardType.LegendaryGlove))
+            {
+                GamePacket packet = new GamePacket();
+                packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = -1 };
+                Managers.networkManager.GameServerSend(packet);
+            }
+            else if (GameSceneUI != null)
             {
                 if(GameSceneUI.cooltimeProgress == 1.0f)
                 {
