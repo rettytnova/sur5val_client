@@ -10,7 +10,7 @@ public class PopupLogin : UIBase
 {
     [SerializeField] private GameObject touch;
     [SerializeField] public GameObject buttonSet;
-    [SerializeField] private GameObject register;
+    [SerializeField] public GameObject register;
     [SerializeField] public GameObject login;
     [SerializeField] private TMP_InputField loginId;
     [SerializeField] private TMP_InputField loginPassword;
@@ -50,7 +50,7 @@ public class PopupLogin : UIBase
             //Debug.Log($"gameServerIp {gameServerIp} gameServerPort {gameServerPort}");
             //Debug.Log($"chattingServerIp {chattingServerIp} chattingServerPort {chattingServerPort}");
 
-            Managers.networkManager.GameServerConnect(gameServerIp,int.Parse(gameServerPort));
+            Managers.networkManager.GameServerConnect(gameServerIp,int.Parse(gameServerPort), "login");
             Managers.networkManager.ChattingServerConnect(chattingServerIp,int.Parse(chattingServerPort));
         }
         else
@@ -70,7 +70,7 @@ public class PopupLogin : UIBase
             var chattingServerIp = PlayerPrefs.GetString("chattingServerIp", "127.0.0.1");
             var chattingServerPort = PlayerPrefs.GetString("chattingServerPort", "5556");           
 
-            Managers.networkManager.GameServerConnect(gameServerIp, int.Parse(gameServerPort));
+            Managers.networkManager.GameServerConnect(gameServerIp, int.Parse(gameServerPort), "register");
             Managers.networkManager.ChattingServerConnect(chattingServerIp, int.Parse(chattingServerPort));
         }
         else
