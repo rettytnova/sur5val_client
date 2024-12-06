@@ -42,7 +42,7 @@ public class NetworkManager
         chattingServerSession.SendChattingPacket(chattingPacket);
     }
 
-    public void GameServerConnect(string gameServerIp, int gameServerPort)
+    public void GameServerConnect(string gameServerIp, int gameServerPort, string connectUI)
     {
         if (gameServerSession == null)
         {
@@ -62,7 +62,15 @@ public class NetworkManager
                 gameServerSession.Connect(() =>
                 {
                     UIManager.Get<PopupLogin>().buttonSet.SetActive(false);
-                    UIManager.Get<PopupLogin>().login.SetActive(true);
+                    switch (connectUI)
+                    {
+                        case "login":
+                            UIManager.Get<PopupLogin>().login.SetActive(true);
+                            break;
+                        case "register":
+                            UIManager.Get<PopupLogin>().register.SetActive(true);
+                            break;
+                    }                                        
                 });
             }
         }
