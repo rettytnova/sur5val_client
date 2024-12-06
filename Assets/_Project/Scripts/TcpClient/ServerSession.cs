@@ -31,9 +31,9 @@ public class ServerSession : Session
 
     // 방 생성
     public void CreateRoomResponse(GamePacket gamePacket)
-    {       
-        var response = gamePacket.CreateRoomResponse;        
-        Debug.Log("failcode : " + response.FailCode.ToString());        
+    {
+        var response = gamePacket.CreateRoomResponse;
+        Debug.Log("failcode : " + response.FailCode.ToString());
         UIManager.Get<PopupRoomCreate>().OnRoomCreateResult(response.Success, response.Room);
     }
 
@@ -298,7 +298,8 @@ public class ServerSession : Session
         {
             if (UIManager.IsOpened<PopupBattle>())
                 UIManager.Hide<PopupBattle>();
-            GameManager.instance.visualHiddenRoad(true);
+
+            GameManager.instance.visualHiddenRoad(true, (int)response.FailCode);
         }
     }
 
@@ -313,7 +314,7 @@ public class ServerSession : Session
         var response = gamePacket.UserUpdateNotification;
         var users = DataManager.instance.users.UpdateUserData(response.User);
         if (!GameManager.isInstance || GameManager.instance.characters == null || GameManager.instance.characters.Count == 0) return;
-        var myIndex = users.FindIndex(obj => obj.id == UserInfo.myInfo.id);        
+        var myIndex = users.FindIndex(obj => obj.id == UserInfo.myInfo.id);
         for (int i = 0; i < users.Count; i++)
         {
             var targetCharacter = GameManager.instance.characters[users[i].id];
@@ -324,7 +325,7 @@ public class ServerSession : Session
 
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
-            }            
+            }
 
             targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
 
@@ -471,10 +472,10 @@ public class ServerSession : Session
 
     public void ChattingServerChatSendResponse(ChattingPacket chattingPacket)
     {
-        var response = chattingPacket.ChattingServerChatSendResponse;        
+        var response = chattingPacket.ChattingServerChatSendResponse;
 
         var users = DataManager.instance.users;
-        if(users != null )
+        if (users != null)
         {
             for (int i = 0; i < users.Count; i++)
             {

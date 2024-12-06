@@ -306,7 +306,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         {
             if (UIManager.IsOpened<PopupBattle>())
                 UIManager.Hide<PopupBattle>();
-            GameManager.instance.visualHiddenRoad(true);
+            GameManager.instance.visualHiddenRoad(true, (int)response.FailCode);
         }
     }
 
@@ -325,7 +325,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         {
             var targetCharacter = GameManager.instance.characters[users[i].id];
             if (!users[i].aliveState && users[i].hp <= 0)
-            {                
+            {
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
             }
