@@ -27,7 +27,7 @@ public class PopupConnection : UIBase
         UIManager.Hide<PopupConnection>();
     }
 
-    public void OnClickConnection()
+    public void OnClickIPPortInput()
     {
         if (string.IsNullOrEmpty(gameServerIp.text)) gameServerIp.text = "127.0.0.1";
         if (string.IsNullOrEmpty(gameServerPort.text)) gameServerPort.text = "5555";
@@ -39,41 +39,6 @@ public class PopupConnection : UIBase
         PlayerPrefs.SetString("chattingServerIp", chattingServerIp.text);
         PlayerPrefs.SetString("chattingServerPort", chattingServerPort.text);
 
-        if (Managers.networkManager.GameServerIsConnected())
-        {
-            Managers.networkManager.GameServerDisconnect();            
-        }        
-
-        if(Managers.networkManager.ChattingServerIsConnected())
-        {
-            Managers.networkManager.ChattingServerDisconnect();
-        }
-
-        Managers.networkManager.GameServerConnect(gameServerIp.text, int.Parse(gameServerPort.text));
-        Managers.networkManager.ChattingServerConnect(chattingServerIp.text, int.Parse(chattingServerPort.text));
-        
         HideDirect();
-    }
-
-    public void OnClickClose()
-    {
-        var gameServerIp = PlayerPrefs.GetString("gameServerIp");
-        var gameServerPort = PlayerPrefs.GetString("gameServerPort");
-        var chattingServerIp = PlayerPrefs.GetString("chattingServerIp");
-        var chattingServerPort = PlayerPrefs.GetString("chattingServerPort");
-
-        if (Managers.networkManager.GameServerIsConnected())
-        {
-            Managers.networkManager.GameServerDisconnect();
-        }
-
-        if (Managers.networkManager.ChattingServerIsConnected())
-        {
-            Managers.networkManager.ChattingServerDisconnect();
-        }
-
-        Managers.networkManager.GameServerConnect(gameServerIp, int.Parse(gameServerPort));
-        Managers.networkManager.ChattingServerConnect(chattingServerIp, int.Parse(chattingServerPort));
-        HideDirect();
-    }
+    }    
 }
