@@ -294,21 +294,21 @@ public class GameManager : MonoSingleton<GameManager>
             {
                 if (GameSceneUI.cooltimeProgress == 1.0f)
                 {
-                GameSceneUI.cooltimeAttackStart();
-                GamePacket packet = new GamePacket();
-                if (userinfo != null)
-                {
-                    if (IsTargetInRange())
+                    GameSceneUI.cooltimeAttackStart();
+                    GamePacket packet = new GamePacket();
+                    if (userinfo != null)
                     {
-                        packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
+                        if (IsTargetInRange())
+                        {
+                            packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
+                            Managers.networkManager.GameServerSend(packet);
+                        }
+                    }
+                    else
+                    {
+                        packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = 0 };
                         Managers.networkManager.GameServerSend(packet);
                     }
-                }
-                else
-                {
-                    packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = 0 };
-                    Managers.networkManager.GameServerSend(packet);
-                }
                 }
             }
         }
@@ -352,7 +352,7 @@ public class GameManager : MonoSingleton<GameManager>
             }
             else if (GameSceneUI != null)
             {
-                if(GameSceneUI.cooltimeProgress == 1.0f)
+                if (GameSceneUI.cooltimeProgress == 1.0f)
                 {
                     GameSceneUI.cooltimeAttackStart();
 
@@ -372,7 +372,7 @@ public class GameManager : MonoSingleton<GameManager>
                         Managers.networkManager.GameServerSend(packet);
                     }
                 }
-            }                
+            }
         }
         else
         {
@@ -627,15 +627,14 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
     // 탈출로 활성화
-    public void visualHiddenRoad(bool isVisible)
+    public void visualHiddenRoad(bool isVisible, int index = -1)
     {
         navMeshSurface.hideEditorLogs = true;
-        if (isVisible)
+        if (isVisible && index != -1)
         {
-            int rand = Util.Random(0, hiddenRoads.Count - 1);
-            hiddenRoads[rand].SetActive(isVisible);
+            hiddenRoads[index].SetActive(isVisible);
             colliders.SetActive(!isVisible);
-            hiddenColliders[rand].SetActive(isVisible);
+            hiddenColliders[index].SetActive(isVisible);
             navMeshSurface.BuildNavMesh();
         }
         else
