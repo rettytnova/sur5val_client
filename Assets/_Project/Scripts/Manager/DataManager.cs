@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DataManager : DataManagerBase<DataManager>
 {
+    public Dictionary<long, UserInfo> userDict = new Dictionary<long, UserInfo>();
     public List<UserInfo> users = new List<UserInfo>();
 
     public override void Init()

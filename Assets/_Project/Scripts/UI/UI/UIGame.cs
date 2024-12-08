@@ -44,7 +44,7 @@ public class UIGame : UIBase
         yield return new WaitUntil(() => GameManager.instance.isInit);
         for (int i = 0; i < DataManager.instance.users.Count; i++)
         {
-            if (DataManager.instance.users[i].id != UserInfo.myInfo.id)
+            if (DataManager.instance.users[i].id != UserInfo.myInfo.id && DataManager.instance.users[i].roleType != eRoleType.target)
             {
                 var item = Instantiate(anotherSlotPrefab, userInfoParent);
                 yield return item.Init(DataManager.instance.users[i], i, OnClickCharacterSlot);
@@ -90,16 +90,17 @@ public class UIGame : UIBase
 
     public void UpdateUserSlot(List<UserInfo> users)
     {
-        Debug.Log("UIGame UpdateUserSlot");
         for (int i = 0; i < users.Count; i++)
         {
-            if (userslots.ContainsKey(users[i].id))
+            var user = users[i];
+
+            if (user.id == UserInfo.myInfo.id)
             {
-                userslots[users[i].id].UpdateData(users[i]);
+                userInfoSlot.UpdateData(user);
             }
-            else
+            else if (userslots.ContainsKey(user.id))
             {
-                userInfoSlot.UpdateData(users[i]);
+                userslots[user.id].UpdateData(user);
             }
         }
         SetDeckCount();
@@ -297,13 +298,13 @@ public class UIGame : UIBase
 
     public void SetDeath(long id)
     {
-        if (userslots.ContainsKey(id))
-        {
-            userslots[id].SetDeath();
-        }
-        else
+        if (id == UserInfo.myInfo.id)
         {
             userInfoSlot.SetDeath();
+        }
+        else if (userslots.ContainsKey(id))
+        {
+            userslots[id].SetDeath();
         }
     }
 }

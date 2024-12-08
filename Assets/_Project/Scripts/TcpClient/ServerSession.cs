@@ -148,10 +148,12 @@ public class ServerSession : Session
                 //userinfo = UserInfo.myInfo;                
                 UserInfo.myInfo.UpdateUserInfo(user);
                 DataManager.instance.users.Add(UserInfo.myInfo);
+                DataManager.instance.userDict[UserInfo.myInfo.id] = UserInfo.myInfo;
             }
             else
             {
                 DataManager.instance.users.Add(userinfo);
+                DataManager.instance.userDict[userinfo.id] = userinfo;
             }
         }
         for (int i = 0; i < response.Users.Count; i++)
@@ -161,7 +163,7 @@ public class ServerSession : Session
             GameManager.instance.characters[DataManager.instance.users[i].id].SetPosition(response.CharacterPositions[i].ToVector3());
         }
         GameManager.instance.OnGameStart();
-        GameManager.instance.visualHiddenRoad(false);
+        GameManager.instance.VisualHiddenRoad(false);
         GameManager.instance.SetGameState(response.GameState);
     }
 
@@ -299,7 +301,7 @@ public class ServerSession : Session
             if (UIManager.IsOpened<PopupBattle>())
                 UIManager.Hide<PopupBattle>();
 
-            GameManager.instance.visualHiddenRoad(true, (int)response.FailCode);
+            GameManager.instance.VisualHiddenRoad(true, (int)response.FailCode);
         }
     }
 

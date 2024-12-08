@@ -286,14 +286,14 @@ namespace Ironcow
         {
             int count = 0;
             int bit = val;
-            while(bit != 0)
+            while (bit != 0)
             {
                 bit = bit >> 1;
                 count++;
             }
             return count;
         }
-        
+
         public static List<int> BitToIntList(this int val)
         {
             int count = 0;
@@ -334,7 +334,7 @@ namespace Ironcow
         public static List<string> ConvertObjectListToStringList(this List<object> list)
         {
             List<string> retList = new List<string>();
-            foreach(var key in list)
+            foreach (var key in list)
             {
                 retList.Add(key.ToString());
             }
@@ -350,7 +350,7 @@ namespace Ironcow
         {
             string ret = "";
             list.ForEach(obj => ret += obj + "|");
-            
+
             if (ret.Length > 0)
             {
                 return ret.Substring(0, ret.Length - 1);
@@ -423,7 +423,7 @@ namespace Ironcow
         {
             foreach (var data in datas)
             {
-                if(!dic.ContainsKey(data.rcode)) if (!dic.ContainsKey(data.rcode))
+                if (!dic.ContainsKey(data.rcode)) if (!dic.ContainsKey(data.rcode))
                         dic.Add(data.rcode, data);
             }
         }
@@ -487,6 +487,7 @@ namespace Ironcow
             {
                 var user = users.Find(obj => obj.id == userdatas[i].Id);
                 user.UpdateUserInfo(userdatas[i]);
+                DataManager.instance.userDict[user.id] = user;  // Dictionary 동기화
             }
             return users;
         }
@@ -495,6 +496,7 @@ namespace Ironcow
         {
             var user = users.Find(obj => obj.id == userdata.Id);
             user.UpdateUserInfo(userdata);
+            DataManager.instance.userDict[user.id] = user;  // Dictionary 동기화
             return user;
         }
     }
