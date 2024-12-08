@@ -10,6 +10,7 @@ public enum en_QuickSlot
     QUICK_SLOT_MOVE_RIGHT,    
 
     QUICK_SLOT_SKILL_USE,
+    QUICK_SLOT_DEFAULT_ATTACK,
 
     QUICK_SLOT_CHAT_INPUT
 }
@@ -27,7 +28,9 @@ public enum en_KeyCode
     KEY_CODE_A,
     KEY_CODE_D,
 
-    KEY_CODE_ENTER
+    KEY_CODE_ENTER,
+
+    KEY_CODE_MOUSE_RIGHT_CLICK
 }
 
 public class BindingKey
