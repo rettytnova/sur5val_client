@@ -10,18 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9171727e36817448e486b1f30532e0, type: 3}
-  m_Name: CAD00317
+  m_Name: CAD00111
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
-  rcode: CAD00317
-  displayName: "\uC804\uC124\uC758 \uD22C\uAD6C"
-  description: "\uC2E0\uC131\uD55C \uBCF4\uD638\uB9C9\uC744 \uC81C\uACF5\uD558\uB294
-    \uD22C\uAD6C, \uC0AC\uC6A9\uC790\uB97C \uBD88\uBA78\uB85C \uC774\uB048\uB2E4.
-    \uCCB4\uB825+60"
-  type: 2
+  rcode: CAD00111
+  displayName: "\uB3C4\uC801 \uB9C8\uC2A4\uD130 \uC2A4\uD0AC"
+  description: "\uB3C4\uC801 \uB9C8\uC2A4\uD130 \uC2A4\uD0AC"
+  type: 0
   isUsable: 1
   defCard: 
-  isDirectUse: 1
+  isDirectUse: 0
   isTargetSelect: 0
   isTargetCardSelection: 0
   useTag: 

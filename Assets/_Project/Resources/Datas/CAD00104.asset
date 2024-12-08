@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
   rcode: CAD00104
-  displayName: "\uC804\uC7A5\uC758 \uD568\uC131"
-  description: "MP\uC18C\uBAA8: 2, \uC804\uBC29\uC5D0 \uD568\uC131\uC744 \uB0B4\uC9C8\uB7EC
-    \uD30C\uD2F0\uC6D0\uB4E4\uC758 \uC0AC\uAE30\uB97C 10\uCD08\uAC04 \uBD81\uB3CB\uB294\uB2E4."
+  displayName: "\uD22C\uC0AC\uC758 \uACB0\uB2E8"
+  description: "MP\uC18C\uBAA8: 2, \uD22C\uC0AC\uC758 \uC758\uC9C0\uB85C \uBC29\uD328\uB294
+    \uACAC\uACE0\uD574\uC9C0\uACE0 \uAC80\uC740 \uAC15\uB825\uD574\uC9D1\uB2C8\uB2E4."
   type: 0
   isUsable: 1
   defCard: 
