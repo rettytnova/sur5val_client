@@ -12,6 +12,8 @@ public class KeyManager
     private BindingKey moveLeftKey = new BindingKey();
     private BindingKey moveRightKey = new BindingKey();
 
+    private BindingKey defaultAttackKey = new BindingKey();
+
     private UIChattingInput chattingInputUI = null;
 
     public KeyManager()
@@ -39,6 +41,9 @@ public class KeyManager
 
         moveRightKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_RIGHT;
         moveRightKey.keyCode = en_KeyCode.KEY_CODE_D;
+
+        defaultAttackKey.quickSlotType = en_QuickSlot.QUICK_SLOT_DEFAULT_ATTACK;
+        defaultAttackKey.keyCode = en_KeyCode.KEY_CODE_MOUSE_RIGHT_CLICK;
 
         uiBindingKeys.Add(inventoryOpenCloseKey);
         uiBindingKeys.Add(skillUseKey);
@@ -109,6 +114,23 @@ public class KeyManager
         return isKeyboardKeyAction;
     } 
 
+    public bool MouseGetKeyDownActions(en_KeyCode keyCode)
+    {
+        bool isMouseKeyAction = false;
+
+        switch (keyCode)
+        {
+            case en_KeyCode.KEY_CODE_MOUSE_RIGHT_CLICK:
+                if(Input.GetMouseButtonDown(1))
+                {
+                    isMouseKeyAction = true;
+                }
+                break;
+        }
+
+        return isMouseKeyAction;
+    }
+    
     public void QuickSlotBarActions()
     {
         foreach (BindingKey key in uiBindingKeys)
@@ -116,6 +138,16 @@ public class KeyManager
             if (KeyboardGetKeyDownActions(key.keyCode))
             {
                 UIActions(key.quickSlotType);
+            }
+        }
+
+        if (MouseGetKeyDownActions(defaultAttackKey.keyCode))
+        {
+            switch (defaultAttackKey.keyCode)
+            {
+                case en_KeyCode.KEY_CODE_MOUSE_RIGHT_CLICK:
+                    GameManager.instance.OnBasicAttack();
+                    break;
             }
         }
     }
@@ -202,5 +234,5 @@ public class KeyManager
         {
             GameManager.instance.userCharacter?.MoveCharacter(moveDirection);
         }
-    }
+    }   
 }
