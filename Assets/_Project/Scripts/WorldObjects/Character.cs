@@ -24,7 +24,8 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     [SerializeField] private CircleCollider2D collider;
     [SerializeField] public GameObject stop;
     [SerializeField] public ChatBubble chatBubble;
-
+    [SerializeField] public GameObject hpBarCanvas;
+    [SerializeField] private Image hpBar;
     [SerializeField] private float speed = 3;
 
     [HideInInspector] public UserInfo userInfo;
@@ -39,6 +40,12 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         if (characterType == eCharacterType.npc) minimapIcon.gameObject.SetActive(false);
+    }
+
+    public void UpdateHpBar()
+    {
+        userInfo = DataManager.instance.userDict[userInfo.id];
+        hpBar.fillAmount = (float)userInfo.hp / userInfo.maxHp;
     }
 
     public void chattingMessage(string chatMessage)
@@ -226,7 +233,8 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Store") && UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
         {
-            UIGame.instance.SetShopButton(false);
+            if (characterType == eCharacterType.playable)
+                UIGame.instance.SetShopButton(false);
         }
     }
 
@@ -247,6 +255,8 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     {
         if (fsm != null)
             fsm.UpdateState();
+        if (hpBarCanvas.activeInHierarchy)
+            UpdateHpBar();
     }
 
     public async void SetDeath()

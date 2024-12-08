@@ -169,7 +169,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
             GameManager.instance.characters[DataManager.instance.users[i].id].SetPosition(response.CharacterPositions[i].ToVector3());
         }
         GameManager.instance.OnGameStart();
-        GameManager.instance.visualHiddenRoad(false);
+        GameManager.instance.VisualHiddenRoad(false);
         GameManager.instance.SetGameState(response.GameState);
     }
 
@@ -306,7 +306,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         {
             if (UIManager.IsOpened<PopupBattle>())
                 UIManager.Hide<PopupBattle>();
-            GameManager.instance.visualHiddenRoad(true, (int)response.FailCode);
+            GameManager.instance.VisualHiddenRoad(true, (int)response.FailCode);
         }
     }
 

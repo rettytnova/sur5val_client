@@ -90,8 +90,8 @@ public class GameManager : MonoSingleton<GameManager>
             var chara = await AddCharacter(userinfo.selectedCharacterRcode, userinfo == UserInfo.myInfo ? eCharacterType.playable : eCharacterType.non_playable, userinfo.id);
             chara.transform.position = spawns.RandomPeek().position; //new Vector3(Util.Random(bounds.min.x, bounds.max.x), Util.Random(bounds.min.y, bounds.max.y));
             chara.OnChangeState<CharacterStopState>();
-            if (userinfo.roleType == eRoleType.target)
-                chara.SetTargetMark();
+            // if (userinfo.roleType == eRoleType.target)
+            //     chara.SetTargetMark();
             chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
             chara.userInfo = userinfo;
             var data = DataManager.instance.GetData<CharacterDataSO>(userinfo.selectedCharacterRcode);
@@ -110,7 +110,7 @@ public class GameManager : MonoSingleton<GameManager>
             }
         }
         // 싱글모드 탈출로 활성화 테스트
-        visualHiddenRoad(true);
+        VisualHiddenRoad(true);
         OnGameStart();
         isInit = true;
     }
@@ -179,11 +179,13 @@ public class GameManager : MonoSingleton<GameManager>
     public async Task OnCreateCharacter(UserInfo userinfo, int idx)
     {
         var myIndex = DataManager.instance.users.FindIndex(obj => obj == UserInfo.myInfo);
-        var chara = await AddCharacter(userinfo.selectedCharacterRcode, userinfo.id == UserInfo.myInfo.id ? eCharacterType.playable : eCharacterType.non_playable, userinfo.id);
+        var chara = await AddCharacter(userinfo.selectedCharacterRcode,
+            userinfo.id == UserInfo.myInfo.id ? eCharacterType.playable : eCharacterType.non_playable,
+            userinfo.id, userinfo.roleType);
         //chara.transform.position = spawns.RandomPeek().position; //new Vector3(Util.Random(bounds.min.x, bounds.max.x), Util.Random(bounds.min.y, bounds.max.y));
         chara.OnChangeState<CharacterStopState>();
-        if (userinfo.roleType == eRoleType.target)
-            chara.SetTargetMark();
+        // if (userinfo.roleType == eRoleType.target)
+        //     chara.SetTargetMark();
         chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // 가능한 거리에 있는 유저 아이콘만 표시
         chara.userInfo = userinfo;
     }
@@ -223,7 +225,13 @@ public class GameManager : MonoSingleton<GameManager>
         UIGame.instance.SetDeckCount();
     }
 
-    public async Task<Character> AddCharacter(string rcode, eCharacterType characterType, long id)
+    /**
+    @param rcode: 캐릭터 코드   
+    @param characterType: 본인 캐릭터 여부
+    @param id: 캐릭터 아이디
+    @param roleType: 캐릭터 역할
+    */
+    public async Task<Character> AddCharacter(string rcode, eCharacterType characterType, long id, eRoleType roleType = eRoleType.none)
     {
         var character = Instantiate(await ResourceManager.instance.LoadAsset<Character>("Character", eAddressableType.Prefabs));
         character.name = rcode;
@@ -231,11 +239,17 @@ public class GameManager : MonoSingleton<GameManager>
         character.SetCharacterType(characterType);
 
         // 보스 캐릭터(CHA00013)일 때 크기 조절
+        //if (roleType == eRoleType.psychopass)
         if (rcode == "CHA00013")
         {
             // 캐릭터 이미지 크기, 위치 조절
             character.transform.GetChild(0).transform.localScale *= 2.3f;
             character.transform.GetChild(0).transform.position = new Vector3(0, 0.2f, 0);
+        }
+
+        if (roleType == eRoleType.target)
+        {
+            character.hpBarCanvas.SetActive(true);
         }
 
         characters.Add(id, character);
@@ -627,7 +641,7 @@ public class GameManager : MonoSingleton<GameManager>
         }
     }
     // 탈출로 활성화
-    public void visualHiddenRoad(bool isVisible, int index = -1)
+    public void VisualHiddenRoad(bool isVisible, int index = -1)
     {
         navMeshSurface.hideEditorLogs = true;
         if (isVisible && index != -1)
