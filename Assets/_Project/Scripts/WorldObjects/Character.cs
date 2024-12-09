@@ -51,13 +51,12 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
             hpBarCanvas.SetActive(false);
             return;
         }
-
         userInfo = DataManager.instance.userDict.TryGetValue(userInfo.id, out var info) ? info : userInfo;
         hpBar.fillAmount = (float)userInfo.hp / userInfo.maxHp;
         level.text = userInfo.level.ToString();
     }
 
-    public void chattingMessage(string chatMessage)
+    public void ChattingMessage(string chatMessage)
     {
         if (chatBubble.gameObject.activeSelf == true)
         {
@@ -147,10 +146,11 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     public void OnVisibleMinimapIcon(bool visible)
     {
-        if (characterType == eCharacterType.non_playable)
-            minimapIcon.gameObject.SetActive(visible && !isInside);
-        else
-            minimapIcon.gameObject.SetActive(false);
+        // if (characterType == eCharacterType.non_playable)
+        //     minimapIcon.gameObject.SetActive(visible && !isInside);
+        // else
+        //     minimapIcon.gameObject.SetActive(false);
+        minimapIcon.gameObject.SetActive(visible);
     }
 
     public void OnSelect()
@@ -189,9 +189,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     var BuildingCover = collision.gameObject.transform.GetChild(0);
                     GameManager.instance.SetMapInside(BuildingCover, isInside);
                 }
-                if (userInfo != null)
-                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
+                // if (userInfo != null)
+                //     OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                //         + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingFront"))
@@ -205,9 +205,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
                     GameManager.instance.SetMapInside(BuildingCover, isInside);
                 }
-                if (userInfo != null)
-                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
+                // if (userInfo != null)
+                //     OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                //         + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
@@ -232,8 +232,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
         {
-            //if (characterType == eCharacterType.playable && userInfo.roleType == eRoleType.bodyguard)
-            if (characterType == eCharacterType.playable)
+            if (characterType == eCharacterType.playable && userInfo.roleType == eRoleType.bodyguard)
             {
                 GamePacket packet = new GamePacket();
                 packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
