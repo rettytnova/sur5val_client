@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a9171727e36817448e486b1f30532e0, type: 3}
+  m_Name: CAD02210
+  m_EditorClassIdentifier: 
+  thumbnail: {fileID: 0}
+  rcode: CAD02210
+  displayName: "\uAC15\uCCA0\uC758 \uBE44\uC57D"
+  description: "\uD310\uB9E4 \uAC00\uACA9: 150Gold \uD55C \uBAA8\uAE08 \uB9C8\uC2DC\uBA74
+    \uBAB8\uC774 \uAC15\uCCA0\uCC98\uB7FC \uB2E8\uB2E8\uD574\uC838 \uC801\uC758 \uACF5\uACA9\uC744
+    \uACAC\uB38C\uB0C5\uB2C8\uB2E4. 30\uCD08\uAC04 \uBC29\uC5B4\uB825 +8"
+  type: 0
+  isUsable: 1
+  defCard: 
+  isDirectUse: 1
+  isTargetSelect: 0
+  isTargetCardSelection: 0
+  useTag: 
+  isMarketSelected: 0
