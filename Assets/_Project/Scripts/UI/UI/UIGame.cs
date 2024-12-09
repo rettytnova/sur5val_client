@@ -48,6 +48,7 @@ public class UIGame : UIBase
             {
                 var item = Instantiate(anotherSlotPrefab, userInfoParent);
                 yield return item.Init(DataManager.instance.users[i], i, OnClickCharacterSlot);
+                item.SetVisibleRole(true);
                 userslots.Add(DataManager.instance.users[i].id, item);
             }
             else

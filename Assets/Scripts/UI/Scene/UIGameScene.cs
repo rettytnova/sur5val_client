@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class UIGameScene : UIBaseTwo
 {
+    public UIGlobalMessageBox globalMessageBox = null;
     public UIChattingInput uiChattingInput = null;
 
     private Coroutine coolTimeStartCO;

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public abstract class UIBaseTwo : MonoBehaviour
 {
-    // UI에 할당된 배열 인덱스 번호    
+    [HideInInspector]// UI에 할당된 배열 인덱스 번호    
     public int _SceneUIListIndex;
 
     Dictionary<Type, UnityEngine.Object[]> _Objects = new Dictionary<Type, UnityEngine.Object[]>();

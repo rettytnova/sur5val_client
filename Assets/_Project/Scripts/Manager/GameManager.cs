@@ -67,6 +67,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public async void Init()
     {
+        // 싱글모드 실행 시 호출되는 함수
         Debug.Log("Init");
         // 카드 덱을 먼저 구성
         var deckDatas = DataManager.instance.GetDatas<DeckData>();
@@ -95,11 +96,11 @@ public class GameManager : MonoSingleton<GameManager>
             chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + userinfo.slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
             chara.userInfo = userinfo;
             var data = DataManager.instance.GetData<CharacterDataSO>(userinfo.selectedCharacterRcode);
-            userinfo.maxHp = data.health + (userinfo.roleType == eRoleType.target ? 1 : 0);
-            for (int j = 0; j < userinfo.hp; j++)
-            {
-                OnDrawCard(userinfo);
-            }
+            //userinfo.maxHp = data.health + (userinfo.roleType == eRoleType.target ? 1 : 0);
+            // for (int j = 0; j < userinfo.hp; j++)
+            // {
+            //     OnDrawCard(userinfo);
+            // }
         }
         if (!Managers.networkManager.GameServerIsConnected())
         {
@@ -183,11 +184,20 @@ public class GameManager : MonoSingleton<GameManager>
             userinfo.id == UserInfo.myInfo.id ? eCharacterType.playable : eCharacterType.non_playable,
             userinfo.id, userinfo.roleType);
         //chara.transform.position = spawns.RandomPeek().position; //new Vector3(Util.Random(bounds.min.x, bounds.max.x), Util.Random(bounds.min.y, bounds.max.y));
+        chara.userInfo = userinfo;
         chara.OnChangeState<CharacterStopState>();
+        if (userinfo.roleType != eRoleType.none)
+            chara.SetTargetMark();
         // if (userinfo.roleType == eRoleType.target)
         //     chara.SetTargetMark();
-        chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // 가능한 거리에 있는 유저 아이콘만 표시
-        chara.userInfo = userinfo;
+
+        // 본인 캐릭터일 경우 미니맵 아이콘 표시, 본인 캐릭터와 역할이 같은 경우 미니맵 아이콘 표시
+        if (userinfo.id == UserInfo.myInfo.id)
+            chara.OnVisibleMinimapIcon(true);
+        else if (userinfo.roleType == UserInfo.myInfo.roleType)
+            chara.OnVisibleMinimapIcon(true);
+        Debug.Log(userinfo.id + "userinfo.roleType: " + userinfo.roleType + " UserInfo.myInfo.roleType: " + UserInfo.myInfo.roleType);
+        //chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // 가능한 거리에 있는 유저 아이콘만 표시        
     }
 
     public void OnDrawCard(UserInfo user)
@@ -239,18 +249,22 @@ public class GameManager : MonoSingleton<GameManager>
         character.SetCharacterType(characterType);
 
         // 보스 캐릭터(CHA00013)일 때 크기 조절
-        //if (roleType == eRoleType.psychopass)
-        if (rcode == "CHA00013")
+        if (roleType == eRoleType.psychopass)
+        //if (rcode == "CHA00013")
         {
-            // 캐릭터 이미지 크기, 위치 조절
+            // 캐릭터 이미지 크기, 위치조절
             character.transform.GetChild(0).transform.localScale *= 2.3f;
             character.transform.GetChild(0).transform.position = new Vector3(0, 0.2f, 0);
+            // Hp바 위치 조절
+            character.hpBarCanvas.transform.position += new Vector3(0, 0.2f, 0);
         }
 
-        if (roleType == eRoleType.target)
-        {
-            character.hpBarCanvas.SetActive(true);
-        }
+        // 몬스터일 경우 Hp바 표시 (일단 모두 표시)
+        // if (roleType == eRoleType.target)
+        // {
+        //     character.hpBarCanvas.SetActive(true);
+        //     character.SetTargetMark();
+        // }
 
         characters.Add(id, character);
         if (characterType == eCharacterType.playable)

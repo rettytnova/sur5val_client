@@ -329,7 +329,7 @@ public class ServerSession : Session
                 UIGame.instance.SetDeath(users[i].id);
             }
 
-            targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
+            //targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
 
             if (users[i].id == UserInfo.myInfo.id)
             {
@@ -458,6 +458,19 @@ public class ServerSession : Session
         }
     }
 
+    public void GlobalMessageResponse(GamePacket gamePacket)
+    {
+        var response = gamePacket.GlobalMessageResponse;
+                
+        var GameSceneUI = GameScene.GetInstance?.gameSceneUI;
+        if (GameSceneUI == null)
+        {
+            return;
+        }        
+        
+        GameSceneUI.globalMessageBox.NewGlobalMessage(response.GlobalMessageType, response.GlobalMessage);
+    }
+
     public void ChattingServerLoginResponse(ChattingPacket chattingPacket)
     {
 
@@ -486,7 +499,7 @@ public class ServerSession : Session
                     var targetCharacter = GameManager.instance.characters[users[i].id];
                     if (targetCharacter != null)
                     {
-                        targetCharacter.chattingMessage(response.ChatMessage);
+                        targetCharacter.ChattingMessage(response.ChatMessage);
                     }
                 }
             }

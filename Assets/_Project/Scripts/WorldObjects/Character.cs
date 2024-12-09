@@ -8,6 +8,7 @@ using UnityEngine.AI;
 using System;
 using Unity.Multiplayer.Playmode;
 using Ironcow.WebSocketPacket;
+using TMPro;
 
 
 public class Character : FSMController<CharacterState, CharacterFSM, CharacterDataSO>
@@ -26,6 +27,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     [SerializeField] public ChatBubble chatBubble;
     [SerializeField] public GameObject hpBarCanvas;
     [SerializeField] private Image hpBar;
+    [SerializeField] private TMP_Text level;
     [SerializeField] private float speed = 3;
 
     [HideInInspector] public UserInfo userInfo;
@@ -44,11 +46,17 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     public void UpdateHpBar()
     {
-        userInfo = DataManager.instance.userDict[userInfo.id];
+        if (userInfo == null || DataManager.instance?.userDict == null || hpBar == null)
+        {
+            hpBarCanvas.SetActive(false);
+            return;
+        }
+        userInfo = DataManager.instance.userDict.TryGetValue(userInfo.id, out var info) ? info : userInfo;
         hpBar.fillAmount = (float)userInfo.hp / userInfo.maxHp;
+        level.text = userInfo.level.ToString();
     }
 
-    public void chattingMessage(string chatMessage)
+    public void ChattingMessage(string chatMessage)
     {
         if (chatBubble.gameObject.activeSelf == true)
         {
@@ -127,17 +135,22 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         return fsm.IsState<T>();
     }
 
-    public void SetTargetMark()
+    public async void SetTargetMark()
     {
-        targetMark.SetActive(true);
+        // 임시로 내용 변경 - 보스일 경우 호출해서 타겟마크의 위치 조절
+        //targetMark.SetActive(true);
+        targetMark.GetComponent<SpriteRenderer>().sprite = await ResourceManager.instance.LoadAsset<Sprite>("Role_" + userInfo.roleType.ToString(), eAddressableType.Thumbnail);
+        if (userInfo.roleType == eRoleType.psychopass)
+            targetMark.transform.position += new Vector3(0, 0.2f, 0);
     }
 
     public void OnVisibleMinimapIcon(bool visible)
     {
-        if (characterType == eCharacterType.non_playable)
-            minimapIcon.gameObject.SetActive(visible && !isInside);
-        else
-            minimapIcon.gameObject.SetActive(false);
+        // if (characterType == eCharacterType.non_playable)
+        //     minimapIcon.gameObject.SetActive(visible && !isInside);
+        // else
+        //     minimapIcon.gameObject.SetActive(false);
+        minimapIcon.gameObject.SetActive(visible);
     }
 
     public void OnSelect()
@@ -176,9 +189,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     var BuildingCover = collision.gameObject.transform.GetChild(0);
                     GameManager.instance.SetMapInside(BuildingCover, isInside);
                 }
-                if (userInfo != null)
-                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
+                // if (userInfo != null)
+                //     OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                //         + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingFront"))
@@ -192,9 +205,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
                     GameManager.instance.SetMapInside(BuildingCover, isInside);
                 }
-                if (userInfo != null)
-                    OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                        + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
+                // if (userInfo != null)
+                //     OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
+                //         + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
@@ -219,8 +232,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
         {
-            //if (characterType == eCharacterType.playable && userInfo.roleType == eRoleType.bodyguard)
-            if (characterType == eCharacterType.playable)
+            if (characterType == eCharacterType.playable && userInfo.roleType == eRoleType.bodyguard)
             {
                 GamePacket packet = new GamePacket();
                 packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
