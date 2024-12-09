@@ -458,6 +458,19 @@ public class ServerSession : Session
         }
     }
 
+    public void GlobalMessageResponse(GamePacket gamePacket)
+    {
+        var response = gamePacket.GlobalMessageResponse;
+                
+        var GameSceneUI = GameScene.GetInstance?.gameSceneUI;
+        if (GameSceneUI == null)
+        {
+            return;
+        }        
+        
+        GameSceneUI.globalMessageBox.NewGlobalMessage(response.GlobalMessageType, response.GlobalMessage);
+    }
+
     public void ChattingServerLoginResponse(ChattingPacket chattingPacket)
     {
 

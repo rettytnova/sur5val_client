@@ -250,7 +250,7 @@ public abstract class Session : MonoBehaviour
 
             if (socket != null && socket.Connected)
             {
-                Debug.Log("소켓 리시브 멈춤 다시 시작");
+                //Debug.Log("소켓 리시브 멈춤 다시 시작");
                 OnReceive();
             }
         }
