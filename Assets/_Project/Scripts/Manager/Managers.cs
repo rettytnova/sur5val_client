@@ -33,7 +33,7 @@ public class Managers : MonoBehaviour
     
     void Update()
     {
-
+        
     }
 
     static void Init()
@@ -49,6 +49,8 @@ public class Managers : MonoBehaviour
 
             // 백그라운드에서도 실행 하도록 함
             Application.runInBackground = true;
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
 
             // Managers 오브젝트가 사라지지 않도록 해줌
             DontDestroyOnLoad(GOManagers);
