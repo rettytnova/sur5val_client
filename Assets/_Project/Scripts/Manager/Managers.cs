@@ -12,9 +12,18 @@ public class Managers : MonoBehaviour
     NetworkManager _networkManager = new NetworkManager();
     #endregion
 
+    #region ClientManager
+    ResourceManagers _resourceManager = new ResourceManagers();
+    #endregion
+
     public static NetworkManager networkManager
     {
         get { return GetInstance._networkManager; }
+    }
+
+    public static ResourceManagers resourceManager
+    {
+        get { return GetInstance._resourceManager; }
     }
 
     void Start()
@@ -44,7 +53,9 @@ public class Managers : MonoBehaviour
             // Managers 오브젝트가 사라지지 않도록 해줌
             DontDestroyOnLoad(GOManagers);
 
-            _Instance = GOManagers.GetComponent<Managers>();            
+            _Instance = GOManagers.GetComponent<Managers>();
+
+            _Instance._resourceManager.Init();
         }
     }
 }
