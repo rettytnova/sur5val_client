@@ -186,15 +186,17 @@ public class GameManager : MonoSingleton<GameManager>
         //chara.transform.position = spawns.RandomPeek().position; //new Vector3(Util.Random(bounds.min.x, bounds.max.x), Util.Random(bounds.min.y, bounds.max.y));
         chara.userInfo = userinfo;
         chara.OnChangeState<CharacterStopState>();
-        chara.SetTargetMark();
+        if (userinfo.roleType != eRoleType.none)
+            chara.SetTargetMark();
         // if (userinfo.roleType == eRoleType.target)
         //     chara.SetTargetMark();
 
         // 본인 캐릭터일 경우 미니맵 아이콘 표시, 본인 캐릭터와 역할이 같은 경우 미니맵 아이콘 표시
-        if (chara.characterType == eCharacterType.playable)
+        if (userinfo.id == UserInfo.myInfo.id)
             chara.OnVisibleMinimapIcon(true);
-        else if (chara.userInfo.roleType == UserInfo.myInfo.roleType)
+        else if (userinfo.roleType == UserInfo.myInfo.roleType)
             chara.OnVisibleMinimapIcon(true);
+        Debug.Log(userinfo.id + "userinfo.roleType: " + userinfo.roleType + " UserInfo.myInfo.roleType: " + UserInfo.myInfo.roleType);
         //chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // 가능한 거리에 있는 유저 아이콘만 표시        
     }
 
@@ -255,8 +257,6 @@ public class GameManager : MonoSingleton<GameManager>
             character.transform.GetChild(0).transform.position = new Vector3(0, 0.2f, 0);
             // Hp바 위치 조절
             character.hpBarCanvas.transform.position += new Vector3(0, 0.2f, 0);
-            // 역할 마크 위치 조절
-            character.SetTargetMark();
         }
 
         // 몬스터일 경우 Hp바 표시 (일단 모두 표시)
