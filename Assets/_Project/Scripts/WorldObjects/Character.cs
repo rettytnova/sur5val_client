@@ -8,6 +8,7 @@ using UnityEngine.AI;
 using System;
 using Unity.Multiplayer.Playmode;
 using Ironcow.WebSocketPacket;
+using TMPro;
 
 
 public class Character : FSMController<CharacterState, CharacterFSM, CharacterDataSO>
@@ -26,6 +27,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     [SerializeField] public ChatBubble chatBubble;
     [SerializeField] public GameObject hpBarCanvas;
     [SerializeField] private Image hpBar;
+    [SerializeField] private TMP_Text level;
     [SerializeField] private float speed = 3;
 
     [HideInInspector] public UserInfo userInfo;
@@ -44,8 +46,15 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     public void UpdateHpBar()
     {
-        userInfo = DataManager.instance.userDict[userInfo.id];
+        if (userInfo == null || DataManager.instance?.userDict == null || hpBar == null)
+        {
+            hpBarCanvas.SetActive(false);
+            return;
+        }
+
+        userInfo = DataManager.instance.userDict.TryGetValue(userInfo.id, out var info) ? info : userInfo;
         hpBar.fillAmount = (float)userInfo.hp / userInfo.maxHp;
+        level.text = userInfo.level.ToString();
     }
 
     public void chattingMessage(string chatMessage)
@@ -127,9 +136,13 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         return fsm.IsState<T>();
     }
 
-    public void SetTargetMark()
+    public async void SetTargetMark()
     {
-        targetMark.SetActive(true);
+        // 임시로 내용 변경 - 보스일 경우 호출해서 타겟마크의 위치 조절
+        //targetMark.SetActive(true);
+        targetMark.GetComponent<SpriteRenderer>().sprite = await ResourceManager.instance.LoadAsset<Sprite>("Role_" + userInfo.roleType.ToString(), eAddressableType.Thumbnail);
+        if (userInfo.roleType == eRoleType.psychopass)
+            targetMark.transform.position += new Vector3(0, 0.2f, 0);
     }
 
     public void OnVisibleMinimapIcon(bool visible)
