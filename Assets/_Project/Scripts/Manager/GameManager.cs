@@ -196,7 +196,7 @@ public class GameManager : MonoSingleton<GameManager>
             chara.OnVisibleMinimapIcon(true);
         else if (userinfo.roleType == UserInfo.myInfo.roleType)
             chara.OnVisibleMinimapIcon(true);
-        Debug.Log(userinfo.id + "userinfo.roleType: " + userinfo.roleType + " UserInfo.myInfo.roleType: " + UserInfo.myInfo.roleType);
+        //Debug.Log(userinfo.id + "userinfo.roleType: " + userinfo.roleType + " UserInfo.myInfo.roleType: " + UserInfo.myInfo.roleType);
         //chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // 가능한 거리에 있는 유저 아이콘만 표시        
     }
 
@@ -229,7 +229,16 @@ public class GameManager : MonoSingleton<GameManager>
         //await Task.Delay(1000);
         foreach (var chara in characters.Values)
         {
-            chara.OnChangeState<CharacterIdleState>();
+            if (chara.userInfo.hp != 0)
+            {
+                chara.OnChangeState<CharacterIdleState>();
+            }
+            else
+            {
+                chara.MoveCharacter(Vector2.zero);
+                chara.SetDeath();
+                UIGame.instance.SetDeath(chara.userInfo.id);
+            }            
         }
         isPlaying = true;
         UIGame.instance.SetDeckCount();
