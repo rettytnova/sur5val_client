@@ -23,36 +23,36 @@ public static partial class ChattingProtocolReflection {
     byte[] descriptorData = global::System.Convert.FromBase64String(
         string.Concat(
           "Ch1wcm90b3MvY2hhdHRpbmdQcm90b2NvbC5wcm90byIuCh1DMlNDaGF0dGlu",
-          "Z1NlcnZlckxvZ2luUmVxdWVzdBINCgVlbWFpbBgBIAEoCSIkCiJDMlNDaGF0",
-          "dGluZ1NlcnZlckNyZWF0ZVJvb21SZXF1ZXN0IjYKIEMyU0NoYXR0aW5nU2Vy",
-          "dmVySm9pblJvb21SZXF1ZXN0EhIKCm93bmVyRW1haWwYAiABKAkiIwohQzJT",
-          "Q2hhdHRpbmdTZXJ2ZXJMZWF2ZVJvb21SZXF1ZXN0IjcKIEMyU0NoYXR0aW5n",
-          "U2VydmVyQ2hhdFNlbmRSZXF1ZXN0EhMKC2NoYXRNZXNzYWdlGAEgASgJIkIK",
-          "HlMyQ0NoYXR0aW5nU2VydmVyTG9naW5SZXNwb25zZRIPCgdzdWNjZXNzGAEg",
-          "ASgIEg8KB21lc3NhZ2UYAiABKAkiPQojUzJDQ2hhdHRpbmdTZXJ2ZXJDcmVh",
-          "dGVSb29tUmVzcG9uc2USFgoOY2hhdHRpbmdSb29tSWQYASABKAUiSgohUzJD",
-          "Q2hhdHRpbmdTZXJ2ZXJDaGF0U2VuZFJlc3BvbnNlEhAKCG5pY2tOYW1lGAEg",
-          "ASgJEhMKC2NoYXRNZXNzYWdlGAIgASgJIocFCg5DaGF0dGluZ1BhY2tldBJE",
-          "ChpjaGF0dGluZ1NlcnZlckxvZ2luUmVxdWVzdBgBIAEoCzIeLkMyU0NoYXR0",
-          "aW5nU2VydmVyTG9naW5SZXF1ZXN0SAASRgobY2hhdHRpbmdTZXJ2ZXJMb2dp",
-          "blJlc3BvbnNlGAIgASgLMh8uUzJDQ2hhdHRpbmdTZXJ2ZXJMb2dpblJlc3Bv",
-          "bnNlSAASTgofY2hhdHRpbmdTZXJ2ZXJDcmVhdGVSb29tUmVxdWVzdBgDIAEo",
-          "CzIjLkMyU0NoYXR0aW5nU2VydmVyQ3JlYXRlUm9vbVJlcXVlc3RIABJQCiBj",
-          "aGF0dGluZ1NlcnZlckNyZWF0ZVJvb21SZXNwb25zZRgEIAEoCzIkLlMyQ0No",
-          "YXR0aW5nU2VydmVyQ3JlYXRlUm9vbVJlc3BvbnNlSAASSgodY2hhdHRpbmdT",
-          "ZXJ2ZXJKb2luUm9vbVJlcXVlc3QYBSABKAsyIS5DMlNDaGF0dGluZ1NlcnZl",
-          "ckpvaW5Sb29tUmVxdWVzdEgAEkwKHmNoYXR0aW5nU2VydmVyTGVhdmVSb29t",
-          "UmVxdWVzdBgGIAEoCzIiLkMyU0NoYXR0aW5nU2VydmVyTGVhdmVSb29tUmVx",
-          "dWVzdEgAEkoKHWNoYXR0aW5nU2VydmVyQ2hhdFNlbmRSZXF1ZXN0GAcgASgL",
-          "MiEuQzJTQ2hhdHRpbmdTZXJ2ZXJDaGF0U2VuZFJlcXVlc3RIABJMCh5jaGF0",
-          "dGluZ1NlcnZlckNoYXRTZW5kUmVzcG9uc2UYCCABKAsyIi5TMkNDaGF0dGlu",
-          "Z1NlcnZlckNoYXRTZW5kUmVzcG9uc2VIAEIRCg9jaGF0dGluZ1BheWxvYWRi",
-          "BnByb3RvMw=="));
+          "Z1NlcnZlckxvZ2luUmVxdWVzdBINCgVlbWFpbBgBIAEoCSIzCiJDMlNDaGF0",
+          "dGluZ1NlcnZlckNyZWF0ZVJvb21SZXF1ZXN0Eg0KBWVtYWlsGAEgASgJIjYK",
+          "IEMyU0NoYXR0aW5nU2VydmVySm9pblJvb21SZXF1ZXN0EhIKCm93bmVyRW1h",
+          "aWwYAiABKAkiIwohQzJTQ2hhdHRpbmdTZXJ2ZXJMZWF2ZVJvb21SZXF1ZXN0",
+          "IjcKIEMyU0NoYXR0aW5nU2VydmVyQ2hhdFNlbmRSZXF1ZXN0EhMKC2NoYXRN",
+          "ZXNzYWdlGAEgASgJIkIKHlMyQ0NoYXR0aW5nU2VydmVyTG9naW5SZXNwb25z",
+          "ZRIPCgdzdWNjZXNzGAEgASgIEg8KB21lc3NhZ2UYAiABKAkiPQojUzJDQ2hh",
+          "dHRpbmdTZXJ2ZXJDcmVhdGVSb29tUmVzcG9uc2USFgoOY2hhdHRpbmdSb29t",
+          "SWQYASABKAUiSgohUzJDQ2hhdHRpbmdTZXJ2ZXJDaGF0U2VuZFJlc3BvbnNl",
+          "EhAKCG5pY2tOYW1lGAEgASgJEhMKC2NoYXRNZXNzYWdlGAIgASgJIocFCg5D",
+          "aGF0dGluZ1BhY2tldBJEChpjaGF0dGluZ1NlcnZlckxvZ2luUmVxdWVzdBgB",
+          "IAEoCzIeLkMyU0NoYXR0aW5nU2VydmVyTG9naW5SZXF1ZXN0SAASRgobY2hh",
+          "dHRpbmdTZXJ2ZXJMb2dpblJlc3BvbnNlGAIgASgLMh8uUzJDQ2hhdHRpbmdT",
+          "ZXJ2ZXJMb2dpblJlc3BvbnNlSAASTgofY2hhdHRpbmdTZXJ2ZXJDcmVhdGVS",
+          "b29tUmVxdWVzdBgDIAEoCzIjLkMyU0NoYXR0aW5nU2VydmVyQ3JlYXRlUm9v",
+          "bVJlcXVlc3RIABJQCiBjaGF0dGluZ1NlcnZlckNyZWF0ZVJvb21SZXNwb25z",
+          "ZRgEIAEoCzIkLlMyQ0NoYXR0aW5nU2VydmVyQ3JlYXRlUm9vbVJlc3BvbnNl",
+          "SAASSgodY2hhdHRpbmdTZXJ2ZXJKb2luUm9vbVJlcXVlc3QYBSABKAsyIS5D",
+          "MlNDaGF0dGluZ1NlcnZlckpvaW5Sb29tUmVxdWVzdEgAEkwKHmNoYXR0aW5n",
+          "U2VydmVyTGVhdmVSb29tUmVxdWVzdBgGIAEoCzIiLkMyU0NoYXR0aW5nU2Vy",
+          "dmVyTGVhdmVSb29tUmVxdWVzdEgAEkoKHWNoYXR0aW5nU2VydmVyQ2hhdFNl",
+          "bmRSZXF1ZXN0GAcgASgLMiEuQzJTQ2hhdHRpbmdTZXJ2ZXJDaGF0U2VuZFJl",
+          "cXVlc3RIABJMCh5jaGF0dGluZ1NlcnZlckNoYXRTZW5kUmVzcG9uc2UYCCAB",
+          "KAsyIi5TMkNDaGF0dGluZ1NlcnZlckNoYXRTZW5kUmVzcG9uc2VIAEIRCg9j",
+          "aGF0dGluZ1BheWxvYWRiBnByb3RvMw=="));
     descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
         new pbr::FileDescriptor[] { },
         new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerLoginRequest), global::C2SChattingServerLoginRequest.Parser, new[]{ "Email" }, null, null, null, null),
-          new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerCreateRoomRequest), global::C2SChattingServerCreateRoomRequest.Parser, null, null, null, null, null),
+          new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerCreateRoomRequest), global::C2SChattingServerCreateRoomRequest.Parser, new[]{ "Email" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerJoinRoomRequest), global::C2SChattingServerJoinRoomRequest.Parser, new[]{ "OwnerEmail" }, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerLeaveRoomRequest), global::C2SChattingServerLeaveRoomRequest.Parser, null, null, null, null, null),
           new pbr::GeneratedClrTypeInfo(typeof(global::C2SChattingServerChatSendRequest), global::C2SChattingServerChatSendRequest.Parser, new[]{ "ChatMessage" }, null, null, null, null),
@@ -204,6 +204,7 @@ public sealed partial class C2SChattingServerLoginRequest : pb::IMessage<C2SChat
 /// <summary>
 ///-----------------------------------------
 /// 방 생성
+/// email : 방 생성하는 대상의 email
 ///-----------------------------------------
 /// </summary>
 public sealed partial class C2SChattingServerCreateRoomRequest : pb::IMessage<C2SChattingServerCreateRoomRequest> {
@@ -231,12 +232,24 @@ public sealed partial class C2SChattingServerCreateRoomRequest : pb::IMessage<C2
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public C2SChattingServerCreateRoomRequest(C2SChattingServerCreateRoomRequest other) : this() {
+    email_ = other.email_;
     _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public C2SChattingServerCreateRoomRequest Clone() {
     return new C2SChattingServerCreateRoomRequest(this);
+  }
+
+  /// <summary>Field number for the "email" field.</summary>
+  public const int EmailFieldNumber = 1;
+  private string email_ = "";
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+  public string Email {
+    get { return email_; }
+    set {
+      email_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+    }
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -252,12 +265,14 @@ public sealed partial class C2SChattingServerCreateRoomRequest : pb::IMessage<C2
     if (ReferenceEquals(other, this)) {
       return true;
     }
+    if (Email != other.Email) return false;
     return Equals(_unknownFields, other._unknownFields);
   }
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public override int GetHashCode() {
     int hash = 1;
+    if (Email.Length != 0) hash ^= Email.GetHashCode();
     if (_unknownFields != null) {
       hash ^= _unknownFields.GetHashCode();
     }
@@ -271,6 +286,10 @@ public sealed partial class C2SChattingServerCreateRoomRequest : pb::IMessage<C2
 
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public void WriteTo(pb::CodedOutputStream output) {
+    if (Email.Length != 0) {
+      output.WriteRawTag(10);
+      output.WriteString(Email);
+    }
     if (_unknownFields != null) {
       _unknownFields.WriteTo(output);
     }
@@ -279,6 +298,9 @@ public sealed partial class C2SChattingServerCreateRoomRequest : pb::IMessage<C2
   [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
   public int CalculateSize() {
     int size = 0;
+    if (Email.Length != 0) {
+      size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
+    }
     if (_unknownFields != null) {
       size += _unknownFields.CalculateSize();
     }
@@ -289,6 +311,9 @@ public sealed partial class C2SChattingServerCreateRoomRequest : pb::IMessage<C2
   public void MergeFrom(C2SChattingServerCreateRoomRequest other) {
     if (other == null) {
       return;
+    }
+    if (other.Email.Length != 0) {
+      Email = other.Email;
     }
     _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
   }
@@ -301,6 +326,10 @@ public sealed partial class C2SChattingServerCreateRoomRequest : pb::IMessage<C2
         default:
           _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
           break;
+        case 10: {
+          Email = input.ReadString();
+          break;
+        }
       }
     }
   }
