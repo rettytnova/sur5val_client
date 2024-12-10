@@ -178,7 +178,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private async void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Map"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("RoofTrigger"))
         {
             if (characterType == eCharacterType.playable)
             {
@@ -189,25 +189,6 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     var BuildingCover = collision.gameObject.transform.GetChild(0);
                     GameManager.instance.SetMapInside(BuildingCover, isInside);
                 }
-                // if (userInfo != null)
-                //     OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                //         + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
-            }
-        }
-        else if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingFront"))
-        {
-            if (characterType == eCharacterType.playable)
-            {
-                if (isInside)
-                {
-                    Debug.Log("OnTriggerEnter2D: Building Out");
-                    isInside = false;
-                    var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
-                    GameManager.instance.SetMapInside(BuildingCover, isInside);
-                }
-                // if (userInfo != null)
-                //     OnVisibleMinimapIcon(Util.GetDistance(UserInfo.myInfo.index, userInfo.index, DataManager.instance.users.Count)
-                //         + userInfo.slotFar <= UserInfo.myInfo.slotRange && userInfo.id != UserInfo.myInfo.id);
             }
         }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
@@ -221,9 +202,6 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                 {
                     if (characterType == eCharacterType.playable)
                     {
-                        // GamePacket packet = new GamePacket();
-                        // packet.FleaMarketPickRequest = new C2SFleaMarketPickRequest() { };
-                        // Managers.networkManager.GameServerSend(packet);
                         UIGame.instance.SetShopButton(true);
                     }
                 }
@@ -243,6 +221,19 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("RoofTrigger"))            
+        {
+            if (characterType == eCharacterType.playable)
+            {
+                if (isInside)
+                {
+                    Debug.Log("OnTriggerExit2D: Building Out");
+                    isInside = false;
+                    var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
+                    GameManager.instance.SetMapInside(BuildingCover, isInside);
+                }
+            }
+        }
         if (collision.gameObject.layer == LayerMask.NameToLayer("Store") && UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
         {
             if (characterType == eCharacterType.playable)
