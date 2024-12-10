@@ -23,6 +23,7 @@ public class UIGame : UIBase
     [SerializeField] private Button buttonBasicAttack;
     [SerializeField] private Button buttonShot;
     [SerializeField] private Button buttonShop;
+    [SerializeField] private Button buttonSellShop;
     [SerializeField] private TMP_Text noticeText;
     [SerializeField] private TMP_Text noticeLogItem;
     [SerializeField] private GameObject noticeLog;
@@ -176,9 +177,17 @@ public class UIGame : UIBase
         Managers.networkManager.GameServerSend(packet);
     }
 
+    public void OnClickSellShop()
+    {
+        GamePacket packet = new GamePacket();
+        packet.FleaMarketSellRequest = new C2SFleaMarketSellRequest() { };
+        Managers.networkManager.GameServerSend(packet);
+    }
+
     public void SetShopButton(bool isActive)
     {
         buttonShop.gameObject.SetActive(isActive);
+        buttonSellShop.gameObject.SetActive(isActive);
     }
 
     public void SetSelectCard(CardDataSO card = null)

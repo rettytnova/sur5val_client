@@ -30,4 +30,9 @@ public class UIGnb : UIBase
     {
 
     }
+
+    public void OnClickSellShop()
+    {
+
+    }
 }

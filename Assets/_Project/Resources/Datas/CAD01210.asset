@@ -15,9 +15,8 @@ MonoBehaviour:
   thumbnail: {fileID: 0}
   rcode: CAD01210
   displayName: "\uAC15\uCCA0\uC758 \uBE44\uC57D"
-  description: "\uAC00\uACA9: 300Gold \uD55C \uBAA8\uAE08 \uB9C8\uC2DC\uBA74 \uBAB8\uC774
-    \uAC15\uCCA0\uCC98\uB7FC \uB2E8\uB2E8\uD574\uC838 \uC801\uC758 \uACF5\uACA9\uC744
-    \uACAC\uB38C\uB0C5\uB2C8\uB2E4. 30\uCD08\uAC04 \uBC29\uC5B4\uB825 +8"
+  description: "\uAC00\uACA9: 300Gold   \\n30\uCD08\uAC04 \uBC29\uC5B4\uB825\uC744
+    +8 \uC99D\uCE74\uC2DC\uCF1C\uC900\uB2E4."
   type: 0
   isUsable: 1
   defCard: 
