@@ -78,14 +78,6 @@ public class UIMain : UIListBase<ItemRoom>
             GamePacket packet = new GamePacket();
             packet.JoinRoomRequest = new C2SJoinRoomRequest() { RoomId = idx };
             Managers.networkManager.GameServerSend(packet);
-        }
-
-        if (Managers.networkManager.ChattingServerIsConnected())
-        {            
-            ChattingPacket chattingJoinRoomPacket = new ChattingPacket();
-            chattingJoinRoomPacket.ChattingServerJoinRoomRequest =
-                new C2SChattingServerJoinRoomRequest() { OwnerEmail = email };
-            Managers.networkManager.ChattingServerSend(chattingJoinRoomPacket);
-        }
+        }        
     }
 }
