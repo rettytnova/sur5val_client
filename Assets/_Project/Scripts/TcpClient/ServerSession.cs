@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 
 public class ServerSession : Session
-{
-    public bool isAnimationPlaying = false;
+{    
     public int id = 0;
 
     public void LoginResponse(GamePacket gamePacket)
@@ -308,11 +307,6 @@ public class ServerSession : Session
     // 카드 사용 등으로 인한 유저 정보 업데이트
     public async void UserUpdateNotification(GamePacket gamePacket)
     {
-        while (isAnimationPlaying)
-        {
-            await Task.Delay(100);
-        }
-
         var response = gamePacket.UserUpdateNotification;
         var users = DataManager.instance.users.UpdateUserData(response.User);
         if (!GameManager.isInstance || GameManager.instance.characters == null || GameManager.instance.characters.Count == 0) return;
@@ -431,8 +425,7 @@ public class ServerSession : Session
     public async void AnimationNotification(GamePacket gamePacket)
     {
         var response = gamePacket.AnimationNotification;
-        var target = GameManager.instance.characters[response.UserId].transform;
-        isAnimationPlaying = true;
+        var target = GameManager.instance.characters[response.UserId].transform;        
         switch (response.AnimationType)
         {
             case AnimationType.BombAnimation:
