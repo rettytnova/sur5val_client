@@ -189,13 +189,17 @@ public class ServerSession : Session
         var response = gamePacket.UseCardResponse;
         if (response.Success)
         {
+            // if (UIManager.IsOpened<PopupDeck>())
+            //     UIManager.Hide<PopupDeck>();
+            // if (UIManager.IsOpened<PopupBattle>())
+            //     UIManager.Hide<PopupBattle>();
+            // UIGame.instance.SetSelectCard(null);
+            // GameManager.instance.targetCharacter.OnSelect();
+            // GameManager.instance.targetCharacter = null;
             if (UIManager.IsOpened<PopupDeck>())
-                UIManager.Hide<PopupDeck>();
-            if (UIManager.IsOpened<PopupBattle>())
-                UIManager.Hide<PopupBattle>();
-            UIGame.instance.SetSelectCard(null);
-            GameManager.instance.targetCharacter.OnSelect();
-            GameManager.instance.targetCharacter = null;
+            {
+                UIManager.Get<PopupDeck>().SetList();
+            }
         }
     }
 
@@ -461,13 +465,13 @@ public class ServerSession : Session
     public void GlobalMessageResponse(GamePacket gamePacket)
     {
         var response = gamePacket.GlobalMessageResponse;
-                
+
         var GameSceneUI = GameScene.GetInstance?.gameSceneUI;
         if (GameSceneUI == null)
         {
             return;
-        }        
-        
+        }
+
         GameSceneUI.globalMessageBox.NewGlobalMessage(response.GlobalMessageType, response.GlobalMessage);
     }
 

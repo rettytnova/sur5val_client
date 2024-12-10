@@ -196,7 +196,6 @@ public class GameManager : MonoSingleton<GameManager>
             chara.OnVisibleMinimapIcon(true);
         else if (userinfo.roleType == UserInfo.myInfo.roleType)
             chara.OnVisibleMinimapIcon(true);
-        Debug.Log(userinfo.id + "userinfo.roleType: " + userinfo.roleType + " UserInfo.myInfo.roleType: " + UserInfo.myInfo.roleType);
         //chara.OnVisibleMinimapIcon(Util.GetDistance(myIndex, idx, DataManager.instance.users.Count) <= UserInfo.myInfo.slotRange && myIndex != idx); // 가능한 거리에 있는 유저 아이콘만 표시        
     }
 
