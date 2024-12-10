@@ -13,8 +13,7 @@ public class AnimationEnd :
 #endif
 {
     public void OnAnimationEnd()
-    {
-        Managers.networkManager.gameServerSession.isAnimationPlaying = false;        
+    {        
         GameManager.instance.virtualCamera.Target.TrackingTarget = GameManager.instance.userCharacter.transform;
         Destroy(gameObject);
     }

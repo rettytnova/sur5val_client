@@ -32,15 +32,7 @@ public class PopupRoomCreate : UIBase
         else
         {
             OnRoomCreateResult(true, new RoomData() { Id = 1, MaxUserNum = count.value + 4, Name = roomName.text, OwnerId = UserInfo.myInfo.id, State = 0 });
-        }
-
-        // 채팅 서버 방 생성
-        if (Managers.networkManager.ChattingServerIsConnected())
-        {            
-            ChattingPacket chattingPacket = new ChattingPacket();
-            chattingPacket.ChattingServerCreateRoomRequest = new C2SChattingServerCreateRoomRequest();
-            Managers.networkManager.ChattingServerSend(chattingPacket);
-        }
+        }       
     }
 
     public void OnRoomCreateResult(bool isSuccess, RoomData roomData)

@@ -228,7 +228,16 @@ public class GameManager : MonoSingleton<GameManager>
         //await Task.Delay(1000);
         foreach (var chara in characters.Values)
         {
-            chara.OnChangeState<CharacterIdleState>();
+            if (chara.userInfo.hp != 0)
+            {
+                chara.OnChangeState<CharacterIdleState>();
+            }
+            else
+            {
+                chara.MoveCharacter(Vector2.zero);
+                chara.SetDeath();
+                UIGame.instance.SetDeath(chara.userInfo.id);
+            }            
         }
         isPlaying = true;
         UIGame.instance.SetDeckCount();
