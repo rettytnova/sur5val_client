@@ -15,10 +15,8 @@ MonoBehaviour:
   thumbnail: {fileID: 0}
   rcode: CAD01201
   displayName: "\uD558\uAE09 HP \uD68C\uBCF5 \uD3EC\uC158"
-  description: "\uAC00\uACA9: 100Gold \uB9D1\uACE0 \uC21C\uC218\uD55C \uC774\uC2AC
-    \uD55C \uBC29\uC6B8\uC774 \uCCB4\uB825\uC744 20 \uD68C\uBCF5\uD574\uC900\uB2E4!
-    \uC9C0\uCE5C \uBAB8\uC5D0 \uD65C\uB825\uC744 \uB354\uD574 \uB2E4\uC2DC \uC804\uD22C\uC5D0
-    \uB098\uC124 \uC218 \uC788\uB3C4\uB85D \uB3D5\uB294\uB2E4."
+  description: "\uAC00\uACA9: 100Gold \\n\uCCB4\uB825\uC744 20 \uD68C\uBCF5\uC2DC\uCF1C
+    \uC900\uB2E4"
   type: 0
   isUsable: 1
   defCard: 
