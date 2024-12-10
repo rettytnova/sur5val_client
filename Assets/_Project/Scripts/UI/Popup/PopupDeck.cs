@@ -72,16 +72,16 @@ public class PopupDeck : UIListBase<Card>
 
     public void AddEquip(CardDataSO data, int idx)
     {
-        if(idx >= 4)
+        if (idx >= 4)
         {
-            if(CardType.ExplorerWeapon <= data.cardType && data.cardType <= CardType.LegendaryGlove)
+            if (CardType.ExplorerWeapon <= data.cardType && data.cardType <= CardType.LegendaryGlove)
             {
                 // 투구, 갑옷, 망토, 장갑 카드 타입을 정수로 변환 후
                 // %10 %5 를 하여 해당 타입의 장비만 교환(무기 제외)
                 CardType cardType = data.cardType;
                 int cardSlot = (int)cardType % 10 % 5;
-                
-                if(cardSlot == 2) // 투구
+
+                if (cardSlot == 2) // 투구
                     idx = 0;
                 else if (cardSlot == 3) // 갑옷
                     idx = 1;
@@ -89,7 +89,7 @@ public class PopupDeck : UIListBase<Card>
                     idx = 2;
                 else if (cardSlot == 0) // 장갑
                     idx = 3;
-            }            
+            }
         }
         var slot = equipSlots[idx];
         var item = Instantiate(itemPrefab, slot);
@@ -139,6 +139,15 @@ public class PopupDeck : UIListBase<Card>
         for (int i = 0; i < UserInfo.myInfo.equips.Count; i++)
         {
             AddEquip(UserInfo.myInfo.equips[i], i);
+        }
+
+        // 카드 목록 갱신 후 현재 선택된 인덱스가 유효한지 확인하고 조정
+        if (uiPagingViewController.selectedIdx >= items.Count)
+        {
+            // 현재 인덱스를 가능한 한 유지하되, 최대 카드 개수를 넘지 않도록 조정
+            uiPagingViewController.selectedIdx = Mathf.Min(uiPagingViewController.selectedIdx, items.Count - 1);
+            // 페이징 뷰 컨트롤러에 강제로 이동 명령
+            uiPagingViewController.OnCalcMovePos(Vector2.zero, uiPagingViewController.selectedIdx);
         }
     }
 
