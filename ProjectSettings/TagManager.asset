@@ -20,9 +20,9 @@ TagManager:
   - Character
   - Extrance
   - Store
-  - RoofTrigger
-  - 
-  - 
+  - BuildingInsideTrigger
+  - BuildingOutsideTrigger
+  - PlantsTrigger
   - 
   - 
   - 
