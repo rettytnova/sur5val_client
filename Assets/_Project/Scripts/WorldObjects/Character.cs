@@ -229,7 +229,9 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                 {
                     Debug.Log("OnTriggerExit2D: Building Out");
                     isInside = false;
-                    var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
+                    //var BuildingCover = collision.gameObject.transform.parent.GetChild(collision.transform.GetSiblingIndex() - 1).GetChild(0);
+                    //GameManager.instance.SetMapInside(BuildingCover, isInside);
+                    var BuildingCover = collision.gameObject.transform.GetChild(0);
                     GameManager.instance.SetMapInside(BuildingCover, isInside);
                 }
             }
