@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 
 public class ServerSession : Session
-{
-    public bool isAnimationPlaying = false;
+{    
     public int id = 0;
 
     public void LoginResponse(GamePacket gamePacket)
@@ -29,7 +28,7 @@ public class ServerSession : Session
         UIManager.Get<PopupLogin>().OnRegisterEnd(response.Success);
     }
 
-    // ¹æ »ý¼º
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void CreateRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.CreateRoomResponse;
@@ -37,14 +36,14 @@ public class ServerSession : Session
         UIManager.Get<PopupRoomCreate>().OnRoomCreateResult(response.Success, response.Room);
     }
 
-    // ¹æ ¸ñ·Ï Á¶È¸
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
     public void GetRoomListResponse(GamePacket gamePacket)
     {
         var response = gamePacket.GetRoomListResponse;
         UIManager.Get<UIMain>().SetRoomList(response.Rooms.ToList());
     }
 
-    // ¹æ Âü°¡
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void JoinRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRoomResponse;
@@ -54,7 +53,7 @@ public class ServerSession : Session
         }
     }
 
-    // ·£´ý ¹æ Âü°¡
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void JoinRandomRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRandomRoomResponse;
@@ -68,7 +67,7 @@ public class ServerSession : Session
         }
     }
 
-    // ¹æ Âü°¡ ¾Ë¸²
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½
     public void JoinRoomNotification(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRoomNotification;
@@ -78,7 +77,7 @@ public class ServerSession : Session
         }
     }
 
-    // ¹æ ³ª°¡±â
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void LeaveRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.LeaveRoomResponse;
@@ -88,7 +87,7 @@ public class ServerSession : Session
         }
     }
 
-    // ¹æ ³ª°¡±â ¾Ë¸²
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½
     public void LeaveRoomNotification(GamePacket gamePacket)
     {
         var response = gamePacket.LeaveRoomNotification;
@@ -100,7 +99,7 @@ public class ServerSession : Session
         var response = gamePacket.GamePrepareResponse;
         if (response.FailCode != 0)
         {
-            UIManager.ShowAlert(response.FailCode.ToString(), "¿À·ù");
+            UIManager.ShowAlert(response.FailCode.ToString(), "ï¿½ï¿½ï¿½ï¿½");
             Debug.Log("GamePrepareResponse Failcode : " + response.FailCode.ToString());
         }
     }
@@ -123,12 +122,12 @@ public class ServerSession : Session
         var response = gamePacket.GameStartResponse;
         if (response.FailCode != 0)
         {
-            UIManager.ShowAlert(response.FailCode.ToString(), "¿À·ù");
+            UIManager.ShowAlert(response.FailCode.ToString(), "ï¿½ï¿½ï¿½ï¿½");
             Debug.Log("GameStartResponse Failcode : " + response.FailCode.ToString());
         }
     }
 
-    // °ÔÀÓ ½ÃÀÛ
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public async void GameStartNotification(GamePacket gamePacket)
     {
         var response = gamePacket.GameStartNotification;
@@ -167,7 +166,7 @@ public class ServerSession : Session
         GameManager.instance.SetGameState(response.GameState);
     }
 
-    // À§Ä¡ ¾÷µ¥ÀÌÆ®
+    // ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public void PositionUpdateNotification(GamePacket gamePacket)
     {
         var response = gamePacket.PositionUpdateNotification;
@@ -183,19 +182,23 @@ public class ServerSession : Session
         }
     }
 
-    // Ä«µå »ç¿ë
+    // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½
     public void UseCardResponse(GamePacket gamePacket)
     {
         var response = gamePacket.UseCardResponse;
         if (response.Success)
         {
+            // if (UIManager.IsOpened<PopupDeck>())
+            //     UIManager.Hide<PopupDeck>();
+            // if (UIManager.IsOpened<PopupBattle>())
+            //     UIManager.Hide<PopupBattle>();
+            // UIGame.instance.SetSelectCard(null);
+            // GameManager.instance.targetCharacter.OnSelect();
+            // GameManager.instance.targetCharacter = null;
             if (UIManager.IsOpened<PopupDeck>())
-                UIManager.Hide<PopupDeck>();
-            if (UIManager.IsOpened<PopupBattle>())
-                UIManager.Hide<PopupBattle>();
-            UIGame.instance.SetSelectCard(null);
-            GameManager.instance.targetCharacter.OnSelect();
-            GameManager.instance.targetCharacter = null;
+            {
+                UIManager.Get<PopupDeck>().SetList();
+            }
         }
     }
 
@@ -209,7 +212,7 @@ public class ServerSession : Session
         }
         var use = DataManager.instance.users.Find(obj => obj.id == response.UserId);
         var target = DataManager.instance.users.Find(obj => obj.id == response.TargetUserId);
-        var text = string.Format(response.TargetUserId != 0 ? "{0}À¯Àú°¡ {1}Ä«µå¸¦ »ç¿ëÇß½À´Ï´Ù." : "{0}À¯Àú°¡ {1}Ä«µå¸¦ {2}À¯Àú¿¡°Ô »ç¿ëÇß½À´Ï´Ù.",
+        var text = string.Format(response.TargetUserId != 0 ? "{0}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {1}Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½." : "{0}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {1}Ä«ï¿½å¸¦ {2}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.",
             use.nickname, response.CardType.GetCardData().displayName, target.nickname);
         UIGame.instance.SetNotice(text);
         if (response.UserId == UserInfo.myInfo.id && card.cardType == CardType.Bbang)
@@ -232,7 +235,7 @@ public class ServerSession : Session
         var response = gamePacket.UseCardNotification;
         var use = DataManager.instance.users.Find(obj => obj.id == response.UserId);
         var target = DataManager.instance.users.Find(obj => obj.id == response.TargetUserId);
-        var text = string.Format(response.TargetUserId != 0 ? "{0}À¯Àú°¡ {1}Ä«µå¸¦ »ç¿ëÇß½À´Ï´Ù." : "{0}À¯Àú°¡ {1}Ä«µå¸¦ {2}À¯Àú¿¡°Ô »ç¿ëÇß½À´Ï´Ù.",
+        var text = string.Format(response.TargetUserId != 0 ? "{0}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {1}Ä«ï¿½å¸¦ ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½." : "{0}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {1}Ä«ï¿½å¸¦ {2}ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ß½ï¿½ï¿½Ï´ï¿½.",
             use.nickname, response.CardType.GetCardData().displayName, target.nickname);
         UIGame.instance.SetNotice(text);
     }
@@ -247,7 +250,7 @@ public class ServerSession : Session
             popupPleaMarket = await UIManager.Show<PopupPleaMarket>();
         }
 
-        // isInit = ÇÃ¸®¸¶ÄÏ ÆË¾÷Ã¢ÀÇ cards°¡ 0 º¸´Ù Å©¸é true       
+        // isInit = ï¿½Ã¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾ï¿½Ã¢ï¿½ï¿½ cardsï¿½ï¿½ 0 ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ true       
         if (!popupPleaMarket.isInitCards)
         {
             popupPleaMarket.SetCards(response.FleaMarketCardTypes);
@@ -258,7 +261,7 @@ public class ServerSession : Session
     {
         var response = gamePacket.FleMarketCardPickResponse;
 
-        Debug.Log($"¸¶ÄÏ¿¡¼­ Ä«µå ¼±ÅÃÇÔ {response.HandCards}");
+        Debug.Log($"ï¿½ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ {response.HandCards}");
         var users = DataManager.instance.users;
         for (int i = 0; i < users.Count; i++)
         {
@@ -305,14 +308,9 @@ public class ServerSession : Session
         }
     }
 
-    // Ä«µå »ç¿ë µîÀ¸·Î ÀÎÇÑ À¯Àú Á¤º¸ ¾÷µ¥ÀÌÆ®
+    // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public async void UserUpdateNotification(GamePacket gamePacket)
     {
-        while (isAnimationPlaying)
-        {
-            await Task.Delay(100);
-        }
-
         var response = gamePacket.UserUpdateNotification;
         var users = DataManager.instance.users.UpdateUserData(response.User);
         if (!GameManager.isInstance || GameManager.instance.characters == null || GameManager.instance.characters.Count == 0) return;
@@ -322,14 +320,14 @@ public class ServerSession : Session
             var targetCharacter = GameManager.instance.characters[users[i].id];
             if (!users[i].aliveState && users[i].hp <= 0)
             {
-                // Ä³¸¯ÅÍ ¿òÁ÷ÀÓ ¸ØÃã
+                // Ä³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
                 GameManager.instance.userCharacter?.MoveCharacter(Vector2.zero);
 
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
             }
 
-            //targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // °¡´ÉÇÑ °Å¸®¿¡ ÀÖ´Â À¯Àú ¾ÆÀÌÄÜ¸¸ Ç¥½Ã
+            //targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ü¸ï¿½ Ç¥ï¿½ï¿½
 
             if (users[i].id == UserInfo.myInfo.id)
             {
@@ -364,7 +362,7 @@ public class ServerSession : Session
         }
     }
 
-    // ÅÏ Á¾·á½Ã (phaseType 3) Ä«µå ¹ö¸®±â
+    // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ (phaseType 3) Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     public void DestroyCardResponse(GamePacket gamePacket)
     {
         var response = gamePacket.DestroyCardResponse;
@@ -374,7 +372,7 @@ public class ServerSession : Session
         UIGame.instance.SetDeckCount();
     }
 
-    // ÆäÀÌÁî ¾÷µ¥ÀÌÆ®
+    // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
     public void PhaseUpdateNotification(GamePacket gamePacket)
     {
         var response = gamePacket.PhaseUpdateNotification;
@@ -386,7 +384,7 @@ public class ServerSession : Session
         }
     }
 
-    // °ÔÀÓ Á¾·á
+    // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     public void GameEndNotification(GamePacket gamePacket)
     {
         var response = gamePacket.GameEndNotification;
@@ -408,7 +406,7 @@ public class ServerSession : Session
         }
     }
 
-    // ÆøÅº ³Ñ±â±â 
+    // ï¿½ï¿½Åº ï¿½Ñ±ï¿½ï¿½ 
     public void PassDebuffResponse(GamePacket gamePacket)
     {
         var response = gamePacket.PassDebuffResponse;
@@ -420,31 +418,30 @@ public class ServerSession : Session
         }
     }
 
-    // ÆøÅº À§±â ½Ã
+    // ï¿½ï¿½Åº ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     public void WarningNotification(GamePacket gamePacket)
     {
         var response = gamePacket.WarningNotification;
         UIGame.instance.SetBombAlert(response.WarningType == WarningType.BombWaning);
     }
 
-    // ¾Ö´Ï¸ÞÀÌ¼Ç ¿äÃ»
+    // ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½Ã»
     public async void AnimationNotification(GamePacket gamePacket)
     {
         var response = gamePacket.AnimationNotification;
-        var target = GameManager.instance.characters[response.UserId].transform;
-        isAnimationPlaying = true;
+        var target = GameManager.instance.characters[response.UserId].transform;        
         switch (response.AnimationType)
         {
             case AnimationType.BombAnimation:
                 {
-                    GameManager.instance.virtualCamera.Target.TrackingTarget = target;
+                    // GameManager.instance.virtualCamera.Target.TrackingTarget = target;
                     var bomb = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Explosion", eAddressableType.Prefabs));
                     bomb.transform.position = target.position;
                 }
                 break;
             case AnimationType.SatelliteTargetAnimation:
                 {
-                    GameManager.instance.virtualCamera.Target.TrackingTarget = target;
+                    // GameManager.instance.virtualCamera.Target.TrackingTarget = target;
                     var beam = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Beam", eAddressableType.Prefabs));
                     beam.transform.position = target.position;
                 }
@@ -461,13 +458,13 @@ public class ServerSession : Session
     public void GlobalMessageResponse(GamePacket gamePacket)
     {
         var response = gamePacket.GlobalMessageResponse;
-                
+
         var GameSceneUI = GameScene.GetInstance?.gameSceneUI;
         if (GameSceneUI == null)
         {
             return;
-        }        
-        
+        }
+
         GameSceneUI.globalMessageBox.NewGlobalMessage(response.GlobalMessageType, response.GlobalMessage);
     }
 
@@ -482,7 +479,7 @@ public class ServerSession : Session
 
         //var roomId = response.ChattingRoomId;
 
-        //Debug.Log($"¼­¹ö¿¡¼­ ¸¸µé¾îÁø Ã¤ÆÃ ¹æ ·ë id : {roomId}");        
+        //Debug.Log($"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¤ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ id : {roomId}");        
     }
 
     public void ChattingServerChatSendResponse(ChattingPacket chattingPacket)

@@ -15,7 +15,7 @@ MonoBehaviour:
   thumbnail: {fileID: 0}
   rcode: CAD02309
   displayName: "\uD0D0\uD5D8\uAC00\uC758 \uB9DD\uD1A0"
-  description: "\uD310\uB9E4 \uAC00\uACA9: 100Gold \\n\uBC29\uC5B4\uB825+2, \uCCB4\uB825+10"
+  description: "\uD310\uB9E4 \uAC00\uACA9: 100Gold \\n\uBC29\uC5B4\uB825+2, \uCCB4\uB825+13"
   type: 2
   isUsable: 1
   defCard: 
