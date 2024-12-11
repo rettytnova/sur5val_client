@@ -14,8 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thumbnail: {fileID: 0}
   rcode: CAD00114
-  displayName: "\uBCF4\uC2A4\uC2A4\uD0AC1"
-  description: "\uBCF4\uC2A4\uC2A4\uD0AC1"
+  displayName: "\uB300\uC7AC\uC559\uC758 \uAC15\uD0C0"
+  description: "Mp\uC18C\uBAA8: 10\\n\uCE58\uBA85\uC801\uC778 \uC77C\uACA9\uC73C\uB85C
+    \uC801\uC744 \uACF5\uACA9\uD558\uACE0, \uCDA9\uACA9\uD30C\uB85C \uAD11\uBC94\uC704\uD55C
+    \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   type: 0
   isUsable: 1
   defCard: 
