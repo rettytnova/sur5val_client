@@ -237,7 +237,7 @@ public class GameManager : MonoSingleton<GameManager>
                 chara.MoveCharacter(Vector2.zero);
                 chara.SetDeath();
                 UIGame.instance.SetDeath(chara.userInfo.id);
-            }            
+            }
         }
         isPlaying = true;
         UIGame.instance.SetDeckCount();
@@ -394,7 +394,7 @@ public class GameManager : MonoSingleton<GameManager>
 
                     var cardIdx = useUserInfo.handCards.FindIndex(obj => obj.rcode == rcode);
                     GamePacket packet = new GamePacket();
-                    if (userinfo != null)
+                    if (userinfo != null && card.isTargetSelect)
                     {
                         if (IsTargetInRange())
                         {

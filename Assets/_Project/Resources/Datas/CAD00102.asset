@@ -21,7 +21,7 @@ MonoBehaviour:
   isUsable: 1
   defCard: 
   isDirectUse: 0
-  isTargetSelect: 0
+  isTargetSelect: 1
   isTargetCardSelection: 0
   useTag: 
   isMarketSelected: 0
