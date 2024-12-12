@@ -9,6 +9,7 @@ public class ResourceManagers
     public void Init()
     {
         resourcePath.Add(Define.en_ResourceName.RESOURCE_UI_GLOBAL_MESSAGE, "UIGlobalMessage");        
+        resourcePath.Add(Define.en_ResourceName.RESOURCE_GENERIC_DEATH, "GenericDeath");        
     }
 
     public T Load<T>(string Path) where T : Object

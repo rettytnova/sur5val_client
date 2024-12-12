@@ -33,6 +33,7 @@ public class Define
     {
         RESOURCE_NAME_NONE,
 
-        RESOURCE_UI_GLOBAL_MESSAGE
+        RESOURCE_UI_GLOBAL_MESSAGE,
+        RESOURCE_GENERIC_DEATH
     }
 }
