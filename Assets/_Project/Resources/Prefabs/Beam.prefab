@@ -67,7 +67,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   spriteRenderer: {fileID: 282592928352154386}
-  moveToFrame: 10
+  moveToFrame: 8
 --- !u!114 &4724643954935278142
 MonoBehaviour:
   m_ObjectHideFlags: 0

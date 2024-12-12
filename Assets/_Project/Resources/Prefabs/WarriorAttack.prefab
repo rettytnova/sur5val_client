@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5063982478012101911}
   - component: {fileID: 2829694928369879479}
   - component: {fileID: 4724643954935278142}
-  - component: {fileID: 6126724476546605957}
+  - component: {fileID: 219658236969373124}
   m_Layer: 0
-  m_Name: Explosion
+  m_Name: WarriorAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   spriteRenderer: {fileID: 282592928352154386}
-  moveToFrame: 5
+  moveToFrame: 7
 --- !u!114 &4724643954935278142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +80,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e21e4da509f86764b8a6ad04bc76606d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!82 &6126724476546605957
+--- !u!82 &219658236969373124
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -90,8 +90,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 2fa7e733c7a764243ae28b02f61c8606, type: 3}
-  m_Resource: {fileID: 8300000, guid: 2fa7e733c7a764243ae28b02f61c8606, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c0ac2edeca774a54aaf0a4a92559099d, type: 3}
+  m_Resource: {fileID: 8300000, guid: c0ac2edeca774a54aaf0a4a92559099d, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: 1
@@ -204,7 +204,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2777778, y: 0.33333334, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5063982478012101911}
@@ -253,7 +253,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: dbe1f649a30643cea0e839a906dfedea, type: 3}
+  m_Sprite: {fileID: -3659211338898435424, guid: 6c04fefa1a6a6494cafeec6f632afd58, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

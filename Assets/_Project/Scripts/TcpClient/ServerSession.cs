@@ -452,6 +452,42 @@ public class ServerSession : Session
                     shield.transform.position = target.position;
                 }
                 break;
+            case AnimationType.TwinmagicAnimation:
+                {
+                    var twinmagic = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Twinmagic", eAddressableType.Prefabs));
+                    twinmagic.transform.position = target.position;
+                }
+                break;
+            case AnimationType.ArcherShotAnimation:
+                {
+                    var archerShot = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("ArcherShot", eAddressableType.Prefabs));
+                    archerShot.transform.position = target.position;
+                }
+                break;
+            case AnimationType.RogueAttackAnimation:
+                {
+                    var rogueAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("RogueAttack", eAddressableType.Prefabs));
+                    rogueAttack.transform.position = target.position;
+                }
+                break;
+            case AnimationType.WarriorAttackAnimation:
+                {
+                    var warriorAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("WarriorAttack", eAddressableType.Prefabs));
+                    warriorAttack.transform.position = target.position;
+                }
+                break;
+            case AnimationType.SpiritAttackAnimation:
+                {
+                    var spiritAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("SpiritAttack", eAddressableType.Prefabs));
+                    spiritAttack.transform.position = target.position;
+                }
+                break;
+            case AnimationType.BuffAnimation:
+                {
+                    var buff = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Buff", eAddressableType.Prefabs));
+                    buff.transform.position = target.position;
+                }
+                break;
         }
     }
 
