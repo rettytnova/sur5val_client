@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      RogueAttack_04_idle_0: -8337732167640627195
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      WarriorAttack_03_idle_0: -3659211338898435424
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ArcherShot_03_idle_0: 540766158071343300
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

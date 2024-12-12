@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SpiritAttack_05_idle_0: 3927773996472146052
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
