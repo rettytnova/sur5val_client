@@ -426,53 +426,47 @@ public class ServerSession : Session
 
     // 애니메이션 표시
     public async void AnimationNotification(GamePacket gamePacket)
-    {
-        var response = gamePacket.AnimationNotification;
-        var target = GameManager.instance.characters[response.UserId].transform;
-        switch (response.AnimationType)
         {
-            case AnimationType.BombAnimation:
+            var response = gamePacket.AnimationNotification;
+            var target = GameManager.instance.characters[response.UserId].transform;
+            switch (response.AnimationType)
+            {
+            case AnimationType.Sur5verAttackAnimation:
                 {
                     // GameManager.instance.virtualCamera.Target.TrackingTarget = target;
-                    var bomb = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Explosion", eAddressableType.Prefabs));
-                    bomb.transform.position = target.position;
+                    var sur5verAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Sur5verAttack", eAddressableType.Prefabs));
+                    sur5verAttack.transform.position = target.position;
                 }
                 break;
-            case AnimationType.SatelliteTargetAnimation:
+            case AnimationType.MonsterAttackAnimation:
                 {
                     // GameManager.instance.virtualCamera.Target.TrackingTarget = target;
-                    var beam = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Beam", eAddressableType.Prefabs));
-                    beam.transform.position = target.position;
+                    var monsterAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("MonsterAttack", eAddressableType.Prefabs));
+                    monsterAttack.transform.position = target.position;
                 }
                 break;
-            case AnimationType.ShieldAnimation:
+            case AnimationType.TwinmagicSkillAnimation:
                 {
-                    var shield = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Shield", eAddressableType.Prefabs));
-                    shield.transform.position = target.position;
+                    var twinmagicSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("TwinmagicSkill", eAddressableType.Prefabs));
+                    twinmagicSkill.transform.position = target.position;
                 }
                 break;
-            case AnimationType.TwinmagicAnimation:
+            case AnimationType.MagicianFinalSkillAnimation:
                 {
-                    var twinmagic = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Twinmagic", eAddressableType.Prefabs));
-                    twinmagic.transform.position = target.position;
+                    var magicianFinalSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("MagicianFinalSkill", eAddressableType.Prefabs));
+                    magicianFinalSkill.transform.position = target.position;
                 }
                 break;
-            case AnimationType.ArcherShotAnimation:
+            case AnimationType.ChargeshotSkillAnimation:
                 {
-                    var archerShot = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("ArcherShot", eAddressableType.Prefabs));
-                    archerShot.transform.position = target.position;
+                    var chargeshotSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("ChargeshotSkill", eAddressableType.Prefabs));
+                    chargeshotSkill.transform.position = target.position;
                 }
                 break;
-            case AnimationType.RogueAttackAnimation:
+            case AnimationType.BuffSkillAnimation:
                 {
-                    var rogueAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("RogueAttack", eAddressableType.Prefabs));
-                    rogueAttack.transform.position = target.position;
-                }
-                break;
-            case AnimationType.WarriorAttackAnimation:
-                {
-                    var warriorAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("WarriorAttack", eAddressableType.Prefabs));
-                    warriorAttack.transform.position = target.position;
+                    var buffSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("BuffSkill", eAddressableType.Prefabs));
+                    buffSkill.transform.position = target.position;
                 }
                 break;
             case AnimationType.SpiritAttackAnimation:
@@ -481,10 +475,28 @@ public class ServerSession : Session
                     spiritAttack.transform.position = target.position;
                 }
                 break;
-            case AnimationType.BuffAnimation:
+            case AnimationType.RogueBasicSkill:
                 {
-                    var buff = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Buff", eAddressableType.Prefabs));
-                    buff.transform.position = target.position;
+                    var rogueBasicSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("RogueBasicSkill", eAddressableType.Prefabs));
+                    rogueBasicSkill.transform.position = target.position;
+                }
+                break;
+            case AnimationType.MasterSkillAnimation:
+                {
+                    var masterSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("MasterSkill", eAddressableType.Prefabs));
+                    masterSkill.transform.position = target.position;
+                }
+                break;
+            case AnimationType.WarriorExtendedSkillAnimation:
+                {
+                    var warriorExtendedSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("WarriorExtendedSkill", eAddressableType.Prefabs));
+                    warriorExtendedSkill.transform.position = target.position;
+                }
+                break;
+            case AnimationType.BossExtendedSkillAnimation:
+                {
+                    var bossExtendedSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("BossExtendedSkill", eAddressableType.Prefabs));
+                    bossExtendedSkill.transform.position = target.position;
                 }
                 break;
         }

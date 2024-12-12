@@ -599,35 +599,35 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
     }
 
     // 애니메이션 요청
-    public async void AnimationNotification(GamePacket gamePacket)
-    {
-        var response = gamePacket.AnimationNotification;
-        var target = GameManager.instance.characters[response.UserId].transform;
-        isAnimationPlaying = true;
-        switch (response.AnimationType)
-        {
-            case AnimationType.BombAnimation:
-                {
-                    GameManager.instance.virtualCamera.Target.TrackingTarget = target;
-                    var bomb = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Explosion", eAddressableType.Prefabs));
-                    bomb.transform.position = target.position;
-                }
-                break;
-            case AnimationType.SatelliteTargetAnimation:
-                {
-                    GameManager.instance.virtualCamera.Target.TrackingTarget = target;
-                    var beam = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Beam", eAddressableType.Prefabs));
-                    beam.transform.position = target.position;
-                }
-                break;
-            case AnimationType.ShieldAnimation:
-                {
-                    var shield = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Shield", eAddressableType.Prefabs));
-                    shield.transform.position = target.position;
-                }
-                break;
-        }
-    }
+    // public async void AnimationNotification(GamePacket gamePacket)
+    // {
+    //     var response = gamePacket.AnimationNotification;
+    //     var target = GameManager.instance.characters[response.UserId].transform;
+    //     isAnimationPlaying = true;
+    //     switch (response.AnimationType)
+    //     {
+    //         case AnimationType.BombAnimation:
+    //             {
+    //                 GameManager.instance.virtualCamera.Target.TrackingTarget = target;
+    //                 var bomb = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Explosion", eAddressableType.Prefabs));
+    //                 bomb.transform.position = target.position;
+    //             }
+    //             break;
+    //         case AnimationType.SatelliteTargetAnimation:
+    //             {
+    //                 GameManager.instance.virtualCamera.Target.TrackingTarget = target;
+    //                 var beam = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Beam", eAddressableType.Prefabs));
+    //                 beam.transform.position = target.position;
+    //             }
+    //             break;
+    //         case AnimationType.ShieldAnimation:
+    //             {
+    //                 var shield = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Shield", eAddressableType.Prefabs));
+    //                 shield.transform.position = target.position;
+    //             }
+    //             break;
+    //     }
+    // }
 
 
 }

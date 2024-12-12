@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4724643954935278142}
   - component: {fileID: 219658236969373124}
   m_Layer: 0
-  m_Name: ArcherShot
+  m_Name: RogueBasicSkill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   spriteRenderer: {fileID: 282592928352154386}
-  moveToFrame: 10
+  moveToFrame: 8
 --- !u!114 &4724643954935278142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -7570798152740308123, guid: 06996e9f1ae5af949ae404d008e2f667, type: 3}
+  m_Sprite: {fileID: -6420349996124274134, guid: c8046024756f1dd4bb140a7f082cd81f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
