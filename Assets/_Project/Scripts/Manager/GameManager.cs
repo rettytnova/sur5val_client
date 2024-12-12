@@ -334,7 +334,7 @@ public class GameManager : MonoSingleton<GameManager>
                     GamePacket packet = new GamePacket();
                     if (userinfo != null)
                     {
-                        if (IsTargetInRange())
+                        if (IsTargetInRange() && card.isTargetSelect)
                         {
                             packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
                             Managers.networkManager.GameServerSend(packet);
