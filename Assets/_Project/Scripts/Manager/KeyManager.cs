@@ -142,7 +142,7 @@ public class KeyManager
                 break;
             case en_KeyCode.KEY_CODE_MOUSE_RIGHT_CLICK:
                 if(Input.GetMouseButtonDown(1))
-                {
+                {   
                     isMouseKeyAction = true;
                 }
                 break;
@@ -194,11 +194,14 @@ public class KeyManager
                                 break;
                         }
 
-                        Vector3 ScreenToMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        if(roleType != null)
+                        {
+                            Vector3 ScreenToMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                        GamePacket spawnPositionSendPacket = new GamePacket();
-                        spawnPositionSendPacket.SpawnPositionSendRequest = new C2SSpawnPositionSendRequest() { SpawnPositionX = ScreenToMousePosition.x, SpawnPositionY = ScreenToMousePosition.y, RoleType = roleType };
-                        Managers.networkManager.GameServerSend(spawnPositionSendPacket);
+                            GamePacket spawnPositionSendPacket = new GamePacket();
+                            spawnPositionSendPacket.SpawnPositionSendRequest = new C2SSpawnPositionSendRequest() { SpawnPositionX = ScreenToMousePosition.x, SpawnPositionY = ScreenToMousePosition.y, RoleType = roleType };
+                            Managers.networkManager.GameServerSend(spawnPositionSendPacket);
+                        }                        
                     }
                 }
             }            
