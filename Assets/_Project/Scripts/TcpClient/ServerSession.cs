@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using System.Threading.Tasks;
 
 public class ServerSession : Session
-{    
+{
     public int id = 0;
 
     public void LoginResponse(GamePacket gamePacket)
@@ -28,7 +28,7 @@ public class ServerSession : Session
         UIManager.Get<PopupLogin>().OnRegisterEnd(response.Success);
     }
 
-    // �� ����
+    // 방 생성
     public void CreateRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.CreateRoomResponse;
@@ -36,14 +36,14 @@ public class ServerSession : Session
         UIManager.Get<PopupRoomCreate>().OnRoomCreateResult(response.Success, response.Room);
     }
 
-    // �� ��� ��ȸ
+    // 방 목록 조회
     public void GetRoomListResponse(GamePacket gamePacket)
     {
         var response = gamePacket.GetRoomListResponse;
         UIManager.Get<UIMain>().SetRoomList(response.Rooms.ToList());
     }
 
-    // �� ����
+    // 방 참가
     public void JoinRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRoomResponse;
@@ -53,7 +53,7 @@ public class ServerSession : Session
         }
     }
 
-    // ���� �� ����
+    // 랜덤 방 참가
     public void JoinRandomRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRandomRoomResponse;
@@ -67,7 +67,7 @@ public class ServerSession : Session
         }
     }
 
-    // �� ���� �˸�
+    // 방 참가
     public void JoinRoomNotification(GamePacket gamePacket)
     {
         var response = gamePacket.JoinRoomNotification;
@@ -77,7 +77,7 @@ public class ServerSession : Session
         }
     }
 
-    // �� ������
+    // 방 나가기
     public void LeaveRoomResponse(GamePacket gamePacket)
     {
         var response = gamePacket.LeaveRoomResponse;
@@ -87,7 +87,7 @@ public class ServerSession : Session
         }
     }
 
-    // �� ������ �˸�
+    // 방 나가기
     public void LeaveRoomNotification(GamePacket gamePacket)
     {
         var response = gamePacket.LeaveRoomNotification;
@@ -99,7 +99,7 @@ public class ServerSession : Session
         var response = gamePacket.GamePrepareResponse;
         if (response.FailCode != 0)
         {
-            UIManager.ShowAlert(response.FailCode.ToString(), "����");
+            UIManager.ShowAlert(response.FailCode.ToString(), "오류");
             Debug.Log("GamePrepareResponse Failcode : " + response.FailCode.ToString());
         }
     }
@@ -122,12 +122,12 @@ public class ServerSession : Session
         var response = gamePacket.GameStartResponse;
         if (response.FailCode != 0)
         {
-            UIManager.ShowAlert(response.FailCode.ToString(), "����");
+            UIManager.ShowAlert(response.FailCode.ToString(), "오류");
             Debug.Log("GameStartResponse Failcode : " + response.FailCode.ToString());
         }
     }
 
-    // ���� ����
+    // 게임 시작
     public async void GameStartNotification(GamePacket gamePacket)
     {
         var response = gamePacket.GameStartNotification;
@@ -166,7 +166,7 @@ public class ServerSession : Session
         GameManager.instance.SetGameState(response.GameState);
     }
 
-    // ��ġ ������Ʈ
+    // 위치 업데이트
     public void PositionUpdateNotification(GamePacket gamePacket)
     {
         var response = gamePacket.PositionUpdateNotification;
@@ -182,7 +182,7 @@ public class ServerSession : Session
         }
     }
 
-    // ī�� ���
+    // 카드 사용 응답
     public void UseCardResponse(GamePacket gamePacket)
     {
         var response = gamePacket.UseCardResponse;
@@ -212,7 +212,7 @@ public class ServerSession : Session
         }
         var use = DataManager.instance.users.Find(obj => obj.id == response.UserId);
         var target = DataManager.instance.users.Find(obj => obj.id == response.TargetUserId);
-        var text = string.Format(response.TargetUserId != 0 ? "{0}������ {1}ī�带 ����߽��ϴ�." : "{0}������ {1}ī�带 {2}�������� ����߽��ϴ�.",
+        var text = string.Format(response.TargetUserId != 0 ? "{0}유저가 {1}카드를 사용했습니다." : "{0}유저가 {1}카드를 {2}유저에게 사용했습니다.",
             use.nickname, response.CardType.GetCardData().displayName, target.nickname);
         UIGame.instance.SetNotice(text);
         if (response.UserId == UserInfo.myInfo.id && card.cardType == CardType.Bbang)
@@ -235,7 +235,7 @@ public class ServerSession : Session
         var response = gamePacket.UseCardNotification;
         var use = DataManager.instance.users.Find(obj => obj.id == response.UserId);
         var target = DataManager.instance.users.Find(obj => obj.id == response.TargetUserId);
-        var text = string.Format(response.TargetUserId != 0 ? "{0}������ {1}ī�带 ����߽��ϴ�." : "{0}������ {1}ī�带 {2}�������� ����߽��ϴ�.",
+        var text = string.Format(response.TargetUserId != 0 ? "{0}유저가 {1}카드를 사용했습니다." : "{0}유저가 {1}카드를 {2}유저에게 사용했습니다.",
             use.nickname, response.CardType.GetCardData().displayName, target.nickname);
         UIGame.instance.SetNotice(text);
     }
@@ -250,7 +250,7 @@ public class ServerSession : Session
             popupPleaMarket = await UIManager.Show<PopupPleaMarket>();
         }
 
-        // isInit = �ø����� �˾�â�� cards�� 0 ���� ũ�� true       
+        // isInit = 플리마켓 팝업창의 cards가 0 보다 크면 true   
         if (!popupPleaMarket.isInitCards)
         {
             popupPleaMarket.SetCards(response.FleaMarketCardTypes);
@@ -261,7 +261,7 @@ public class ServerSession : Session
     {
         var response = gamePacket.FleMarketCardPickResponse;
 
-        Debug.Log($"���Ͽ��� ī�� ������ {response.HandCards}");
+        Debug.Log($"마켓에서 카드 선택함 {response.HandCards}");
         var users = DataManager.instance.users;
         for (int i = 0; i < users.Count; i++)
         {
@@ -308,7 +308,7 @@ public class ServerSession : Session
         }
     }
 
-    // ī�� ��� ������ ���� ���� ���� ������Ʈ
+    // 카드 사용 등으로 인한 유저 정보 업데이트
     public async void UserUpdateNotification(GamePacket gamePacket)
     {
         var response = gamePacket.UserUpdateNotification;
@@ -320,7 +320,6 @@ public class ServerSession : Session
             var targetCharacter = GameManager.instance.characters[users[i].id];
             if (!users[i].aliveState && users[i].hp <= 0)
             {
-                // ĳ���� ������ ����
                 GameManager.instance.userCharacter?.MoveCharacter(Vector2.zero);
 
                 targetCharacter.SetDeath();
@@ -362,7 +361,7 @@ public class ServerSession : Session
         }
     }
 
-    // �� ����� (phaseType 3) ī�� ������
+    // 턴 종료시 (phaseType 3) 카드 버리기
     public void DestroyCardResponse(GamePacket gamePacket)
     {
         var response = gamePacket.DestroyCardResponse;
@@ -372,7 +371,7 @@ public class ServerSession : Session
         UIGame.instance.SetDeckCount();
     }
 
-    // ������ ������Ʈ
+    // 페이즈 업데이트
     public void PhaseUpdateNotification(GamePacket gamePacket)
     {
         var response = gamePacket.PhaseUpdateNotification;
@@ -384,7 +383,7 @@ public class ServerSession : Session
         }
     }
 
-    // ���� ����
+    // 게임 종료
     public void GameEndNotification(GamePacket gamePacket)
     {
         var response = gamePacket.GameEndNotification;
@@ -406,7 +405,7 @@ public class ServerSession : Session
         }
     }
 
-    // ��ź �ѱ�� 
+    // 폭탄 넘기기
     public void PassDebuffResponse(GamePacket gamePacket)
     {
         var response = gamePacket.PassDebuffResponse;
@@ -418,18 +417,18 @@ public class ServerSession : Session
         }
     }
 
-    // ��ź ���� ��
+    // 폭탄 위기 시
     public void WarningNotification(GamePacket gamePacket)
     {
         var response = gamePacket.WarningNotification;
         UIGame.instance.SetBombAlert(response.WarningType == WarningType.BombWaning);
     }
 
-    // �ִϸ��̼� ��û
+    // 애니메이션 표시
     public async void AnimationNotification(GamePacket gamePacket)
     {
         var response = gamePacket.AnimationNotification;
-        var target = GameManager.instance.characters[response.UserId].transform;        
+        var target = GameManager.instance.characters[response.UserId].transform;
         switch (response.AnimationType)
         {
             case AnimationType.BombAnimation:
@@ -515,7 +514,7 @@ public class ServerSession : Session
 
         //var roomId = response.ChattingRoomId;
 
-        //Debug.Log($"�������� ������� ä�� �� �� id : {roomId}");        
+        //Debug.Log($"채팅방 생성 응답 받음 {response.ChattingRoomId}");
     }
 
     public void ChattingServerChatSendResponse(ChattingPacket chattingPacket)
