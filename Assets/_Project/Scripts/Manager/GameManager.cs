@@ -52,6 +52,12 @@ public class GameManager : MonoSingleton<GameManager>
 
     private KeyManager keyManager = new KeyManager();
 
+    [HideInInspector]
+    public bool isDebug = false;
+
+    [HideInInspector]
+    public Define.en_DebugSpawnPosition debugSpawnPosition = Define.en_DebugSpawnPosition.DEBUG_SPAWN_POSITION_NONE;
+
     private void Start()
     {
         if (!Managers.networkManager.GameServerIsConnected()) Init();

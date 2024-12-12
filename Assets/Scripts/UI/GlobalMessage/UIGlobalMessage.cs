@@ -32,14 +32,20 @@ public class UIGlobalMessage : UIBaseTwo
         switch(globalMessageType)
         {
             case GlobalMessageType.GlobalMessageRound:
-                GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).color = new Color32(255, 100, 100, 255);
-                GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).text = globalMessage;
+                GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).color = new Color32(255, 100, 100, 255);                
                 break;
             case GlobalMessageType.GlobalMessageCooltime:
                 GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).color = new Color32(100, 255, 100, 255);
-                GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).text = globalMessage;
                 break;
-        }       
+            case GlobalMessageType.GlobalDebugModeOn:
+                GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).color = new Color32(255, 50, 50, 255);
+                break;
+            case GlobalMessageType.GlobalDebugModeOff:
+                GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).color = new Color32(50, 50, 255, 255);
+                break;
+        }
+
+        GetTextMeshPro((int)en_GlobalMessageText.GlobalMessageText).text = globalMessage;
 
         StartCoroutine(GlobalMessageUIDestory());
     }

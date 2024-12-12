@@ -1,5 +1,7 @@
+using Ironcow;
 using System.Collections.Generic;
 using Unity.Collections.LowLevel.Unsafe;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -13,6 +15,8 @@ public class KeyManager
     private BindingKey moveRightKey = new BindingKey();
 
     private BindingKey defaultAttackKey = new BindingKey();
+
+    private BindingKey debugModeKey = new BindingKey();
 
     private UIChattingInput chattingInputUI = null;
 
@@ -42,12 +46,16 @@ public class KeyManager
         moveRightKey.quickSlotType = en_QuickSlot.QUICK_SLOT_MOVE_RIGHT;
         moveRightKey.keyCode = en_KeyCode.KEY_CODE_D;
 
+        debugModeKey.quickSlotType = en_QuickSlot.QUICK_SLOT_DEBUG_MODE;
+        debugModeKey.keyCode = en_KeyCode.KEY_CODE_Y;
+
         defaultAttackKey.quickSlotType = en_QuickSlot.QUICK_SLOT_DEFAULT_ATTACK;
         defaultAttackKey.keyCode = en_KeyCode.KEY_CODE_MOUSE_RIGHT_CLICK;
 
         uiBindingKeys.Add(inventoryOpenCloseKey);
         uiBindingKeys.Add(skillUseKey);
         uiBindingKeys.Add(chattingInputKey);
+        uiBindingKeys.Add(debugModeKey);
     }
 
     public bool KeyboardGetKeyActions(en_KeyCode keyCode)
@@ -79,7 +87,7 @@ public class KeyManager
                 {
                     isKeyboardKeyAction = true;
                 }
-                break;
+                break;            
         }
 
         return isKeyboardKeyAction;
@@ -109,6 +117,12 @@ public class KeyManager
                     isKeyboardKeyAction = true;
                 }
                 break;
+            case en_KeyCode.KEY_CODE_Y:
+                if (Input.GetKeyDown(KeyCode.Y))
+                {
+                    isKeyboardKeyAction = true;
+                }
+                break;
         }
 
         return isKeyboardKeyAction;
@@ -120,6 +134,12 @@ public class KeyManager
 
         switch (keyCode)
         {
+            case en_KeyCode.KEY_CODE_MOUSE_LEFT_CLICK:
+                if(Input.GetMouseButtonDown(0))
+                {
+                    isMouseKeyAction = true;
+                }
+                break;
             case en_KeyCode.KEY_CODE_MOUSE_RIGHT_CLICK:
                 if(Input.GetMouseButtonDown(1))
                 {
@@ -150,10 +170,45 @@ public class KeyManager
                     break;
             }
         }
+
+        if(GameManager.instance.isDebug == true)
+        {
+            if(!EventSystem.current.IsPointerOverGameObject())
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    string roleType = null;
+
+                    if (GameManager.instance.isDebug == true)
+                    {
+                        switch (GameManager.instance.debugSpawnPosition)
+                        {
+                            case Define.en_DebugSpawnPosition.DEBUG_SPAWN_POSITION_MONSTER:
+                                roleType = "monster";
+                                break;
+                            case Define.en_DebugSpawnPosition.DEBUG_SPAWN_POSITION_PLAYER:
+                                roleType = "player";
+                                break;
+                            case Define.en_DebugSpawnPosition.DEBUG_SPAWN_POSITION_BOSS:
+                                roleType = "boss";
+                                break;
+                        }
+
+                        Vector3 ScreenToMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                        GamePacket spawnPositionSendPacket = new GamePacket();
+                        spawnPositionSendPacket.SpawnPositionSendRequest = new C2SSpawnPositionSendRequest() { SpawnPositionX = ScreenToMousePosition.x, SpawnPositionY = ScreenToMousePosition.y, RoleType = roleType };
+                        Managers.networkManager.GameServerSend(spawnPositionSendPacket);
+                    }
+                }
+            }            
+        }        
     }
 
     public async void UIActions(en_QuickSlot quickSlot)
     {
+        var GameSceneUI = GameScene.GetInstance.gameSceneUI;
+
         switch (quickSlot)
         {
             case en_QuickSlot.QUICK_SLOT_UI_INVENTORY:
@@ -168,8 +223,7 @@ public class KeyManager
             case en_QuickSlot.QUICK_SLOT_SKILL_USE:
                 UIGame.instance.OnCardUse();
                 break;
-            case en_QuickSlot.QUICK_SLOT_CHAT_INPUT:
-                var GameSceneUI = GameScene.GetInstance.gameSceneUI;
+            case en_QuickSlot.QUICK_SLOT_CHAT_INPUT:                
                 if (GameSceneUI != null)
                 {
                     if (GameSceneUI.uiChattingInput.gameObject.activeSelf == false)
@@ -182,6 +236,22 @@ public class KeyManager
                         GameSceneUI.uiChattingInput.ShowCloseUI(false);
                     }
 
+                }
+                break;
+            case en_QuickSlot.QUICK_SLOT_DEBUG_MODE:
+                bool isDebugMode = GameManager.instance.isDebug;
+                if(isDebugMode == true)
+                {
+                    GameManager.instance.debugSpawnPosition = Define.en_DebugSpawnPosition.DEBUG_SPAWN_POSITION_NONE;
+                    GameSceneUI.spawnPositionDebug.gameObject.SetActive(false);
+                    GameSceneUI.globalMessageBox.NewGlobalMessage(GlobalMessageType.GlobalDebugModeOff, "디버그 모드가 꺼졌습니다.");
+                    GameManager.instance.isDebug = false;
+                }
+                else
+                {
+                    GameSceneUI.spawnPositionDebug.gameObject.SetActive(true);
+                    GameSceneUI.globalMessageBox.NewGlobalMessage(GlobalMessageType.GlobalDebugModeOn, "디버그 모드가 켜졌습니다.");
+                    GameManager.instance.isDebug = true;                                      
                 }
                 break;
         }

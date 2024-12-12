@@ -19,7 +19,7 @@ public class Controller : FSMController<ControlState, ControlFSM, BaseDataSO>
 
     public IEnumerator Click()
     {
-        Debug.Log("Click");
+        //Debug.Log("Click");
         while (true)
         {
             yield return new WaitUntil(() => Input.GetMouseButtonUp(0));

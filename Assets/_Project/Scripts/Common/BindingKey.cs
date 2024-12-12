@@ -12,7 +12,9 @@ public enum en_QuickSlot
     QUICK_SLOT_SKILL_USE,
     QUICK_SLOT_DEFAULT_ATTACK,
 
-    QUICK_SLOT_CHAT_INPUT
+    QUICK_SLOT_CHAT_INPUT,
+
+    QUICK_SLOT_DEBUG_MODE
 }
 
 public enum en_KeyCode
@@ -27,8 +29,12 @@ public enum en_KeyCode
     KEY_CODE_S,
     KEY_CODE_A,
     KEY_CODE_D,
+        
+    KEY_CODE_Y,
 
     KEY_CODE_ENTER,
+
+    KEY_CODE_MOUSE_LEFT_CLICK,
 
     KEY_CODE_MOUSE_RIGHT_CLICK
 }

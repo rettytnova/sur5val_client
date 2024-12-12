@@ -15,8 +15,6 @@ public class UIGlobalMessageBox : UIBaseTwo
     public override void Init()
     {
         Bind<GameObject>(typeof(en_GlobalMessageBoxGameObject));
-
-
     }
 
     public override void Binding()
@@ -35,8 +33,8 @@ public class UIGlobalMessageBox : UIBaseTwo
         GameObject globalMessageBoxGo = GetGameObject((int)en_GlobalMessageBoxGameObject.GlobalMessageBoxScroll);
         if (globalMessageBoxGo != null)
         {
-            RectTransform globalMessageBoxRect = globalMessageBoxGo.GetComponent<RectTransform>();
-            globalMessageBoxRect.sizeDelta = new Vector2(globalMessageBoxRect.rect.width, globalMessageCount * Constant.GLOBAL_MESSAGE_GAP);
+            RectTransform globalMessageBoxRect = globalMessageBoxGo.GetComponent<RectTransform>();            
+            globalMessageBoxRect.sizeDelta = new Vector2(globalMessageBoxRect.rect.width, globalMessageCount * Constant.GLOBAL_MESSAGE_GAP);            
         }
     }
 
@@ -48,7 +46,7 @@ public class UIGlobalMessageBox : UIBaseTwo
                 .FirstOrDefault(globalMessageUI => globalMessageUI.globalMessageType == globalMessageType);
             if (findGlobalMessage != null)
             {
-                Destroy(findGlobalMessage);
+                Destroy(findGlobalMessage.gameObject);
 
                 globalMessages.Remove(globalMessageType);
             }

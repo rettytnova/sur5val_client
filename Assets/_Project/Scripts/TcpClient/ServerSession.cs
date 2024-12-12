@@ -431,7 +431,7 @@ public class ServerSession : Session
             var target = GameManager.instance.characters[response.UserId].transform;
             switch (response.AnimationType)
             {
-            case AnimationType.Sur5verAttackAnimation:
+            case AnimationType.Sur5VerAttackAnimation:
                 {
                     // GameManager.instance.virtualCamera.Target.TrackingTarget = target;
                     var sur5verAttack = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("Sur5verAttack", eAddressableType.Prefabs));
@@ -475,7 +475,7 @@ public class ServerSession : Session
                     spiritAttack.transform.position = target.position;
                 }
                 break;
-            case AnimationType.RogueBasicSkill:
+            case AnimationType.RogueBasicSkillAnimation:
                 {
                     var rogueBasicSkill = Instantiate(await ResourceManager.instance.LoadAsset<Transform>("RogueBasicSkill", eAddressableType.Prefabs));
                     rogueBasicSkill.transform.position = target.position;

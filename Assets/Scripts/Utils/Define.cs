@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Constant
 {
-    public const float GLOBAL_MESSAGE_GAP = 50.0f;
-    public const float GLOBAL_MESSAGE_TIME = 20.0f;
+    public const float GLOBAL_MESSAGE_GAP = 60.0f;
+    public const float GLOBAL_MESSAGE_TIME = 2.0f;
 }
 
 public class Define
 {
+    public enum en_DebugSpawnPosition
+    {
+        DEBUG_SPAWN_POSITION_NONE,
+        DEBUG_SPAWN_POSITION_MONSTER,
+        DEBUG_SPAWN_POSITION_PLAYER,
+        DEBUG_SPAWN_POSITION_BOSS
+    }
+
     public enum en_GlobalMessageType
     {
         GLOBAL_MESSAGE_NONE,

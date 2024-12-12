@@ -8,6 +8,7 @@ public class UIGameScene : UIBaseTwo
 {
     public UIGlobalMessageBox globalMessageBox = null;
     public UIChattingInput uiChattingInput = null;
+    public GameObject spawnPositionDebug = null;
 
     private Coroutine coolTimeStartCO;
 
