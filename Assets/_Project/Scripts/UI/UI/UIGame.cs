@@ -66,7 +66,7 @@ public class UIGame : UIBase
         if (GameManager.instance.SelectedCard == null && !GameManager.instance.isSelectBombTarget) return;
         var card = GameManager.instance.SelectedCard;
         var target = DataManager.instance.users[idx];
-        if (card != null && (card.isTargetSelect || (card.rcode == "CAD00001" && UserInfo.myInfo.weapon != null && UserInfo.myInfo.weapon.rcode == "CAD00013")))
+        if (card != null && card.rcode == "CAD00001" && UserInfo.myInfo.weapon != null && UserInfo.myInfo.weapon.rcode == "CAD00013")
         {
             GameManager.instance.SendSocketUseCard(target, UserInfo.myInfo, card.rcode);
             SetSelectCard(null);

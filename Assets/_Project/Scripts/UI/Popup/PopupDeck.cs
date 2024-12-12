@@ -193,7 +193,7 @@ public class PopupDeck : UIListBase<Card>
     {
         var idx = GetHandCardIndex(uiPagingViewController.selectedIdx);
         var card = UserInfo.myInfo.OnUseCard(idx);
-        if (card.isTargetSelect || (UserInfo.myInfo.isSniper && card.cardType == CardType.Bbang))
+        if (UserInfo.myInfo.isSniper && card.cardType == CardType.Bbang)
         {
             UIGame.instance.OnSelectDirectTarget(true);
         }
