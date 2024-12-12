@@ -265,6 +265,7 @@ public class GameManager : MonoSingleton<GameManager>
             character.transform.GetChild(0).transform.position = new Vector3(0, 0.2f, 0);
             // Hp바 위치 조절
             character.hpBarCanvas.transform.position += new Vector3(0, 0.2f, 0);
+            character.GetComponent<CircleCollider2D>().radius *= 1.5f;
         }
 
         // 몬스터일 경우 Hp바 표시 (일단 모두 표시)
