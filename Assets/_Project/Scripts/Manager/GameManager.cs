@@ -335,9 +335,9 @@ public class GameManager : MonoSingleton<GameManager>
             var GameSceneUI = GameScene.GetInstance.gameSceneUI;
             if (GameSceneUI != null)
             {
-                if (GameSceneUI.cooltimeProgress == 1.0f)
+                if (IsTargetInRange() && GameSceneUI.basicAttackCooltimeProgress == 1.0f)
                 {
-                    GameSceneUI.cooltimeAttackStart();
+                    GameSceneUI.cooltimeAttackStart("CAD00100");
                     GamePacket packet = new GamePacket();
                     if (userinfo != null)
                     {
@@ -379,7 +379,22 @@ public class GameManager : MonoSingleton<GameManager>
         //    SendSocketUseCard(UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath ? targetCharacter.userInfo : null, UserInfo.myInfo, SelectedCard.rcode);
         //}
     }
-
+    public bool TargetRequiredCard(bool IsTargetInRange, CardType cardType)
+    {
+        switch(cardType)
+        {
+            case CardType.WarriorBasicSkill:                
+            case CardType.ArcherExtendedSkill:
+            case CardType.RogueExtendedSkill:
+            case CardType.ArcherFinalSkill:
+            case CardType.BossBasicSkill:
+                return true;
+            default:
+                if (IsTargetInRange)
+                    return true;
+                else return false;
+        }
+    }
     public void SendSocketUseCard(UserInfo userinfo, UserInfo useUserInfo, string rcode)
     {
         var card = DataManager.instance.GetData<CardDataSO>(rcode);
@@ -395,11 +410,11 @@ public class GameManager : MonoSingleton<GameManager>
             }
             else if (GameSceneUI != null)
             {
-                if (GameSceneUI.cooltimeProgress == 1.0f)
+                if ((TargetRequiredCard(IsTargetInRange(), card.cardType)) && GameSceneUI.skillCooltimeProgress == 1.0f)
                 {
-                    GameSceneUI.cooltimeAttackStart();
-
                     var cardIdx = useUserInfo.handCards.FindIndex(obj => obj.rcode == rcode);
+                    GameSceneUI.cooltimeAttackStart(rcode);
+                    
                     GamePacket packet = new GamePacket();
                     if (userinfo != null && card.isTargetSelect)
                     {

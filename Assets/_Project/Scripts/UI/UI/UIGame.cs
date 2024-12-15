@@ -20,7 +20,8 @@ public class UIGame : UIBase
     [SerializeField] private GameObject selectCard;
     [SerializeField] private TMP_Text selectCardText;
     [SerializeField] private TMP_Text deckCount;
-    [SerializeField] private Button buttonBasicAttack;
+    public TMP_Text buttonAttackCooltimeText;
+    public TMP_Text buttonShotCooltimeText;
     [SerializeField] private Button buttonShot;
     [SerializeField] private Button buttonShop;
     [SerializeField] private Button buttonSellShop;
@@ -58,6 +59,8 @@ public class UIGame : UIBase
                 userInfoSlot.SetVisibleRole(true);
             }
         }
+        buttonAttackCooltimeText.gameObject.SetActive(false);
+        buttonShotCooltimeText.gameObject.SetActive(false);
         SetShotButton(false);
     }
 
@@ -153,8 +156,6 @@ public class UIGame : UIBase
 
     public void OnClickBang()
     {
-        //if (UserInfo.myInfo.isShotPossible || GameManager.instance.SelectedCard.cardType != CardType.Bbang || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
-        //    GameManager.instance.OnUseCard();
         GameManager.instance.OnUseCard();
     }
 
@@ -165,8 +166,6 @@ public class UIGame : UIBase
 
     public void OnClickBasicAttack()
     {
-        //if (GameManager.instance.targetCharacter || UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
-        //    GameManager.instance.OnBasicAttack();
         GameManager.instance.OnBasicAttack();
     }
 
