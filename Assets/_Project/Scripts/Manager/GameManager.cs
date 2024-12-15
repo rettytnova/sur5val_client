@@ -286,6 +286,7 @@ public class GameManager : MonoSingleton<GameManager>
         {
             userCharacter = character;
             virtualCamera.Target.TrackingTarget = userCharacter.transform;
+            userCharacter.OnVisibleRange();
             //virtualCamera.target
             //virtualCamera.Follow = userCharacter.transform;
             //virtualCamera.LookAt = userCharacter.transform;
@@ -381,9 +382,9 @@ public class GameManager : MonoSingleton<GameManager>
     }
     public bool TargetRequiredCard(bool IsTargetInRange, CardType cardType)
     {
-        switch(cardType)
+        switch (cardType)
         {
-            case CardType.WarriorBasicSkill:                
+            case CardType.WarriorBasicSkill:
             case CardType.ArcherExtendedSkill:
             case CardType.RogueExtendedSkill:
             case CardType.ArcherFinalSkill:
@@ -414,7 +415,7 @@ public class GameManager : MonoSingleton<GameManager>
                 {
                     var cardIdx = useUserInfo.handCards.FindIndex(obj => obj.rcode == rcode);
                     GameSceneUI.cooltimeAttackStart(rcode);
-                    
+
                     GamePacket packet = new GamePacket();
                     if (userinfo != null && card.isTargetSelect)
                     {

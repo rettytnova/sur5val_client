@@ -10,10 +10,10 @@ public class ControlDayState : ControlState
         {
             if (character == GameManager.instance.userCharacter)
                 character.OnVisibleRange();
-            else if (Vector3.Distance(character.transform.position, GameManager.instance.userCharacter.transform.position) < 4.5f)
+            else
             {
                 if (character.characterType != eCharacterType.npc && character.IsState<CharacterStopState>()) return;
-                switch(character.tag)
+                switch (character.tag)
                 {/*
                     case "Bank":
                         {
@@ -61,16 +61,16 @@ public class ControlDayState : ControlState
 
     public override void OnStateEnter()
     {
-        
+
     }
 
     public override void OnStateExit()
     {
-        
+
     }
 
     public override void OnStateUpdate()
     {
-        
+
     }
 }
