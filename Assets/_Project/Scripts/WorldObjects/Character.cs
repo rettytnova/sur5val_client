@@ -298,7 +298,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                 {
                     Debug.Log("OnTriggerExit2D: Leaved Store");
                     UIGame.instance.SetShopButton(false);
-                }                    
+                }
             }
         }
     }
@@ -332,6 +332,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
         targetMark.GetComponent<SpriteRenderer>().sprite = await ResourceManager.instance.LoadAsset<Sprite>("Role_" + userInfo.roleType.ToString(), eAddressableType.Thumbnail);
         minimapIcon.gameObject.SetActive(false);
         ChangeState<CharacterDeathState>();
+        GameManager.instance.CheckBossRound(userInfo);
     }
 
     protected override T ChangeState<T>()
