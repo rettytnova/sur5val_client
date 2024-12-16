@@ -129,7 +129,7 @@ public class GameManager : MonoSingleton<GameManager>
 
     public async void SetGameState(PhaseType PhaseType, long NextPhaseAt)
     {
-        if (PhaseType == PhaseType.Day)
+        if (PhaseType == PhaseType.round1)
         {
             UserInfo.myInfo.OnDayOfAfter();
             day++;
@@ -137,13 +137,13 @@ public class GameManager : MonoSingleton<GameManager>
 
         foreach (var key in characters.Keys)
         {
-            if (PhaseType == PhaseType.Day)
+            if (PhaseType == PhaseType.round1)
                 characters[key].OnChangeState<CharacterIdleState>();
             else
                 characters[key].OnChangeState<CharacterStopState>();
         }
 
-        isAfternoon = PhaseType == PhaseType.Day;
+        isAfternoon = PhaseType == PhaseType.round1;
         UIManager.Get<UIGame>().OnDaySetting(day, PhaseType, NextPhaseAt);
 
         if (PhaseType == PhaseType.End)
@@ -301,7 +301,6 @@ public class GameManager : MonoSingleton<GameManager>
 
     public void SetMapInside(Transform BuildingCover, bool isInside)
     {
-        Debug.Log("BuildingCover: " + BuildingCover);
         BuildingCover.gameObject.SetActive(!isInside);
         //deco.SetActive(!isInside);
     }
@@ -336,23 +335,27 @@ public class GameManager : MonoSingleton<GameManager>
             var GameSceneUI = GameScene.GetInstance.gameSceneUI;
             if (GameSceneUI != null)
             {
-                if (IsTargetInRange() && GameSceneUI.basicAttackCooltimeProgress == 1.0f)
+                if (GameSceneUI.basicAttackCooltimeProgress == 1.0f)
                 {
-                    GameSceneUI.cooltimeAttackStart("CAD00100");
                     GamePacket packet = new GamePacket();
-                    if (userinfo != null)
-                    {
-                        if (IsTargetInRange() && card.isTargetSelect)
+                    if(UserInfo.myInfo.characterData.RoleType == RoleType.Bodyguard)
+                    {                        
+                        if (userinfo != null)
                         {
-                            packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = userinfo.id };
-                            Managers.networkManager.GameServerSend(packet);
+                            if (IsTargetInRange() && card.isTargetSelect)
+                            {
+                                GameSceneUI.cooltimeAttackStart("CAD00100");
+                                packet.UseCardRequest = new C2SUseCardRequest() { CardType = CardType.Sur5VerBasicSkill, TargetUserId = userinfo.id };
+                                Managers.networkManager.GameServerSend(packet);
+                            }
                         }
                     }
-                    else
+                    else if (UserInfo.myInfo.characterData.RoleType == RoleType.Psychopath)
                     {
-                        packet.UseCardRequest = new C2SUseCardRequest() { CardType = card.cardType, TargetUserId = 0 };
+                        GameSceneUI.cooltimeAttackStart("CAD00113");
+                        packet.UseCardRequest = new C2SUseCardRequest() { CardType = CardType.BossBasicSkill, TargetUserId = -1 };
                         Managers.networkManager.GameServerSend(packet);
-                    }
+                    }                       
                 }
             }
         }
