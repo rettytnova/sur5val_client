@@ -9,6 +9,7 @@ using System;
 using UnityEngine.TextCore.Text;
 using Unity.Cinemachine;
 using NavMeshPlus.Components;
+using System.Linq;
 
 public class GameManager : MonoSingleton<GameManager>
 {
@@ -45,7 +46,13 @@ public class GameManager : MonoSingleton<GameManager>
     private int day = 0;
     private bool isAfternoon = true;
     public bool isPlaying;
-
+    bool isBossRound = false;
+    int survivalDeathCount = 0;
+    public enum GameResult
+    {
+        SurvivorsWin,
+        BossWin
+    }
     public List<CardDataSO> pleaMarketCards = new List<CardDataSO>();
     List<Transform> spawns;
     public bool isSelectBombTarget = false;
@@ -127,34 +134,26 @@ public class GameManager : MonoSingleton<GameManager>
         SetGameState(gameStateData.PhaseType, gameStateData.NextPhaseAt);
     }
 
-    public async void SetGameState(PhaseType PhaseType, long NextPhaseAt)
+    public async void SetGameState(PhaseType phaseType, long NextPhaseAt)
     {
-        if (PhaseType == PhaseType.round1)
+        Debug.Log("SetGameState: " + PhaseType);
+        if (phaseType == PhaseType.Day)
         {
             UserInfo.myInfo.OnDayOfAfter();
             day++;
         }
+        else if (phaseType == PhaseType.Evening)
+        {
+            isBossRound = true;
+        }
 
         foreach (var key in characters.Keys)
         {
-            if (PhaseType == PhaseType.round1)
-                characters[key].OnChangeState<CharacterIdleState>();
-            else
-                characters[key].OnChangeState<CharacterStopState>();
+            characters[key].OnChangeState<CharacterIdleState>();
         }
 
-        isAfternoon = PhaseType == PhaseType.round1;
-        UIManager.Get<UIGame>().OnDaySetting(day, PhaseType, NextPhaseAt);
-
-        if (PhaseType == PhaseType.End)
-        {
-            if (UserInfo.myInfo.handCards.Count > UserInfo.myInfo.hp)
-                UIManager.Show<PopupRemoveCardSelection>();
-        }
-        else
-        {
-            UIManager.Hide<PopupRemoveCardSelection>();
-        }
+        isAfternoon = phaseType == PhaseType.round1;
+        UIManager.Get<UIGame>().OnDaySetting(day, phaseType, NextPhaseAt);
 
         isPlaying = true;
         UIGame.instance.SetDeckCount();
@@ -582,6 +581,31 @@ public class GameManager : MonoSingleton<GameManager>
         return Vector3.Distance(userCharacter.transform.position, targetCharacter.transform.position) <= 4.5f;
     }
 
+    public void CheckBossRound(UserInfo userInfo)
+    {
+        Debug.Log("CheckBossRound: " + userInfo.roleType);
+        if (isBossRound)
+        {
+            if (userInfo.roleType == eRoleType.psychopass)
+            {
+                // 보스 캐릭터 사망 시 생존자 승리 (서버에서 처리해 줌)
+                //SetResult(GameResult.SurvivorsWin);
+            }
+            else if (userInfo.roleType == eRoleType.bodyguard)
+            {
+                // 생존자 모두 사망 시 보스 캐릭터 승리
+                survivalDeathCount++;
+                Debug.Log("survivalDeathCount: " + survivalDeathCount);
+                // 생존자 수를 계산
+                int survivorCount = DataManager.instance.users.Where(user => user.roleType == eRoleType.bodyguard).Count();
+                if (survivalDeathCount == survivorCount)
+                {
+                    SetResult(GameResult.BossWin);
+                }
+            }
+        }
+    }
+
     public void OnGameEnd()
     {
         isPlaying = false;
@@ -592,6 +616,24 @@ public class GameManager : MonoSingleton<GameManager>
     public void UnselectCard()
     {
         selectedCard = null;
+    }
+
+    public void SetResult(GameResult result)
+    {
+        GamePacket packet = new GamePacket();
+
+        // 결과에 따라 다른 ReactionType 설정
+        switch (result)
+        {
+            case GameResult.SurvivorsWin:
+                packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
+                break;
+            case GameResult.BossWin:
+                packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NotUseCard };
+                break;
+        }
+
+        Managers.networkManager.GameServerSend(packet);
     }
 
 }
