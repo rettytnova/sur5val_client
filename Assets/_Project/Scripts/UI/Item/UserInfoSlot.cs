@@ -95,7 +95,6 @@ public class UserInfoSlot : UIListItem
             goldTxt.text = userinfo.gold.ToString();
             levelTxt.text = userinfo.level.ToString();            
             SetExpGauge(userinfo.exp, userinfo.maxExp);
-            Debug.Log("levelTxt : " + userinfo.level + ", expText : " + userinfo.exp + ", maxExpText : " + userinfo.maxExp);
         }
         // if (weapon != null)
         // {
