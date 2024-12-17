@@ -136,13 +136,13 @@ public class GameManager : MonoSingleton<GameManager>
 
     public async void SetGameState(PhaseType phaseType, long NextPhaseAt)
     {
-        Debug.Log("SetGameState: " + PhaseType);
-        if (phaseType == PhaseType.Day)
+        Debug.Log("SetGameState: " + PhaseType.round1);
+        if (phaseType == PhaseType.round1)
         {
             UserInfo.myInfo.OnDayOfAfter();
             day++;
         }
-        else if (phaseType == PhaseType.Evening)
+        else if (phaseType == PhaseType.bossRound)
         {
             isBossRound = true;
         }
