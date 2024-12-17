@@ -629,9 +629,12 @@ public enum RoomStateType {
 
 public enum PhaseType {
   [pbr::OriginalName("NONE_PHASE")] NonePhase = 0,
-  [pbr::OriginalName("DAY")] Day = 1,
-  [pbr::OriginalName("EVENING")] Evening = 2,
-  [pbr::OriginalName("END")] End = 3,
+  [pbr::OriginalName("NORMAL_ROUND_1")] round1 = 1,
+  [pbr::OriginalName("NORMAL_ROUND_2")] round2 = 2,
+  [pbr::OriginalName("NORMAL_ROUND_3")] round3 = 3,
+  [pbr::OriginalName("NORMAL_ROUND_4")] round4 = 4,
+  [pbr::OriginalName("BOSS_ROUND")] bossRound = 5,
+  [pbr::OriginalName("END")] End = 6
 }
 
 public enum ReactionType {

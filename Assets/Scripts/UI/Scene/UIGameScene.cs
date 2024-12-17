@@ -39,27 +39,10 @@ public class UIGameScene : UIBaseTwo
 
     public void cooltimeAttackStart(string rcode)
     {
-        if (rcode != "CAD00100" && shotCooltimeImage == null)
-        {
-            GameObject buttonShotGO = UtilTwo.FindChild(gameObject, "ButtonShotCooltime", true);
-            if (buttonShotGO != null)
-            {
-                shotCooltimeImage = buttonShotGO.GetComponent<Image>();
-            }
-        }
-        else if (rcode == "CAD00100" && attackCooltimeImage == null)
-        {
-            GameObject buttonAttackGO = UtilTwo.FindChild(gameObject, "ButtonAttackCooltime", true);
-            if (buttonAttackGO != null)
-            {
-                attackCooltimeImage = buttonAttackGO.GetComponent<Image>();
-            }
-        }
-
         // 원래 DB작업으로 해야됨(필요하면 구현)
-        int dragRcodeNumber = int.Parse(rcode.Substring(3));
+        int rcodeNumber = int.Parse(rcode.Substring(3));
         float coolTimeMilliSecond = 0.0f;
-        switch(dragRcodeNumber)
+        switch (rcodeNumber)
         {
             case (int)CardType.Sur5VerBasicSkill: // 기본 공격
                 coolTimeMilliSecond = 3000.0f;
@@ -111,19 +94,41 @@ public class UIGameScene : UIBaseTwo
         _SkillCoolTime = (coolTimeMilliSecond + 10.0f) / 1000.0f;
         _SkillCoolTimeSpeed = 1.0f / _SkillCoolTime;
 
-        switch (dragRcodeNumber)
+        bool isBasicAttack = (rcode == "CAD00100" || rcode == "CAD00113");
+        if (isBasicAttack)
         {
-            case (int)CardType.Sur5VerBasicSkill:
-                if (basicAttackTimeStartCO != null) StopCoroutine(basicAttackTimeStartCO);
-                UIGame.instance.buttonAttackCooltimeText.gameObject.SetActive(true);
-                basicAttackTimeStartCO = StartCoroutine(BasicAttackCooltimeStart(rcode));
-                break;
-            default:
-                if (skillTimeStartCO != null) StopCoroutine(skillTimeStartCO);
-                UIGame.instance.buttonShotCooltimeText.gameObject.SetActive(true);
-                skillTimeStartCO = StartCoroutine(SkillCooltimeStart(rcode));
-                break;
-        }        
+            if (attackCooltimeImage == null)
+            {
+                GameObject buttonAttackGO = UtilTwo.FindChild(gameObject, "ButtonAttackCooltime", true);
+                if (buttonAttackGO != null)
+                    attackCooltimeImage = buttonAttackGO.GetComponent<Image>();
+            }
+
+            basicAttackCooltimeProgress = 1.0f;
+            attackCooltimeImage.fillAmount = 1.0f;
+
+            if (basicAttackTimeStartCO != null) StopCoroutine(basicAttackTimeStartCO);
+            UIGame.instance.buttonAttackCooltimeText.gameObject.SetActive(true);
+            UIGame.instance.buttonAttackCooltimeText.text = (_SkillCoolTime = 3.0f).ToString("N2");
+            basicAttackTimeStartCO = StartCoroutine(BasicAttackCooltimeStart(rcode));
+        }
+        else
+        {
+            if (shotCooltimeImage == null)
+            {
+                GameObject buttonShotGO = UtilTwo.FindChild(gameObject, "ButtonShotCooltime", true);
+                if (buttonShotGO != null)
+                    shotCooltimeImage = buttonShotGO.GetComponent<Image>();
+            }
+
+            skillCooltimeProgress = 1.0f;
+            shotCooltimeImage.fillAmount = 1.0f;
+
+            if (skillTimeStartCO != null) StopCoroutine(skillTimeStartCO);
+            UIGame.instance.buttonShotCooltimeText.gameObject.SetActive(true);
+            UIGame.instance.buttonShotCooltimeText.text = (_SkillCoolTime = 5.0f).ToString("N2");
+            skillTimeStartCO = StartCoroutine(SkillCooltimeStart(rcode));
+        }
     }
 
     IEnumerator BasicAttackCooltimeStart(string rcode)

@@ -168,6 +168,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     public void MoveCharacter(Vector2 dir)
     {
         if (fsm.IsState<CharacterStopState>() || fsm.IsState<CharacterPrisonState>() || fsm.IsState<CharacterDeathState>()) return;
+
         this.dir = dir;
         var isLeft = dir.x < 0;
         isLeft = data.isLeft ? !isLeft : isLeft;
@@ -185,17 +186,16 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
             {
                 if (!isInside)
                 {
-                    Debug.Log("OnTriggerEnter2D: Entered Building Inside");
                     isInside = true;
                     var buildingSprite = collision.gameObject.transform.Find("Building Sprite");
                     GameManager.instance.SetMapInside(buildingSprite, isInside);
                 }
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingOutsideTrigger"))
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingOutsideTrigger"))
             {
                 if (!isInside)
                 {
-                    Debug.Log("OnTriggerEnter2D: Entered Building Outside");
                     isInside = true;
 
                     var buildingSprite = collision.gameObject.transform.parent.Find("Building Sprite").GetComponent<Tilemap>();
@@ -210,11 +210,11 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     buildingInsideDeco.sortingOrder = 5;
                 }
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer("PlantsTrigger"))
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("PlantsTrigger"))
             {
                 if (!isInside)
                 {
-                    Debug.Log("OnTriggerEnter2D: Entered Plants");
                     isInside = true;
 
                     var plantsTileMap = collision.gameObject.transform.parent.GetComponent<Tilemap>();
@@ -223,20 +223,85 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     plantsTileMap.color = color;
                 }
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
             {
                 if (UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
                 {
-                    Debug.Log("OnTriggerEnter2D: Entered Store");
                     UIGame.instance.SetShopButton(true);
                 }
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
             {
                 if (userInfo.roleType == eRoleType.bodyguard)
                 {
-                    Debug.Log("OnTriggerEnter2D: Entered Extrance");
+                    GamePacket packet = new GamePacket();
+                    packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
+                    Managers.networkManager.GameServerSend(packet);
+                }
+            }
+        }
+    }
 
+    private async void OnTriggerStay2D(Collider2D collision)
+    {
+        if (characterType == eCharacterType.playable)
+        {
+            if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingInsideTrigger"))
+            {
+                if (!isInside)
+                {
+                    isInside = true;
+                    var buildingSprite = collision.gameObject.transform.Find("Building Sprite");
+                    GameManager.instance.SetMapInside(buildingSprite, isInside);
+                }
+            }
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingOutsideTrigger"))
+            {
+                if (!isInside)
+                {
+                    isInside = true;
+
+                    var buildingSprite = collision.gameObject.transform.parent.Find("Building Sprite").GetComponent<Tilemap>();
+                    var buildingInside = collision.gameObject.transform.parent.Find("Building Inside").GetComponent<TilemapRenderer>();
+                    var buildingInsideDeco = collision.gameObject.transform.parent.Find("Building Inside Deco").GetComponent<TilemapRenderer>();
+
+                    Color buildingSpriteColor = buildingSprite.color;
+                    buildingSpriteColor.a = 0.5f;
+                    buildingSprite.color = buildingSpriteColor;
+
+                    buildingInside.sortingOrder = 4;
+                    buildingInsideDeco.sortingOrder = 5;
+                }
+            }
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("PlantsTrigger"))
+            {
+                if (!isInside)
+                {
+                    isInside = true;
+
+                    var plantsTileMap = collision.gameObject.transform.parent.GetComponent<Tilemap>();
+                    Color color = plantsTileMap.color;
+                    color.a = 0.5f;
+                    plantsTileMap.color = color;
+                }
+            }
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+            {
+                if (UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
+                {
+                    UIGame.instance.SetShopButton(true);
+                }
+            }
+
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
+            {
+                if (userInfo.roleType == eRoleType.bodyguard)
+                {
                     GamePacket packet = new GamePacket();
                     packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
                     Managers.networkManager.GameServerSend(packet);
@@ -253,18 +318,16 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
             {
                 if (isInside)
                 {
-                    Debug.Log("OnTriggerExit2D: Leaved Building Inside");
                     isInside = false;
-
                     var buildingSprite = collision.gameObject.transform.Find("Building Sprite");
                     GameManager.instance.SetMapInside(buildingSprite, isInside);
                 }
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingOutsideTrigger"))
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingOutsideTrigger"))
             {
                 if (isInside)
                 {
-                    Debug.Log("OnTriggerEnter2D: Entered Building Outside");
                     isInside = false;
 
                     var buildingSprite = collision.gameObject.transform.parent.Find("Building Sprite").GetComponent<Tilemap>();
@@ -279,11 +342,11 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     buildingInsideDeco.sortingOrder = 2;
                 }
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer("PlantsTrigger"))
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("PlantsTrigger"))
             {
                 if (isInside)
                 {
-                    Debug.Log("OnTriggerExit2D: Leaved Plants");
                     isInside = false;
 
                     var plantsTileMap = collision.gameObject.transform.parent.GetComponent<Tilemap>();
@@ -292,17 +355,16 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     plantsTileMap.color = color;
                 }
             }
-            else if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
+            
+            if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
             {
                 if (UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
                 {
-                    Debug.Log("OnTriggerExit2D: Leaved Store");
                     UIGame.instance.SetShopButton(false);
                 }
             }
         }
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
