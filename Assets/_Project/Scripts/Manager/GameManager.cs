@@ -337,8 +337,8 @@ public class GameManager : MonoSingleton<GameManager>
                 if (GameSceneUI.basicAttackCooltimeProgress == 1.0f)
                 {
                     GamePacket packet = new GamePacket();
-                    if(UserInfo.myInfo.characterData.RoleType == RoleType.Bodyguard)
-                    {                        
+                    if (UserInfo.myInfo.characterData.RoleType == RoleType.Bodyguard)
+                    {
                         if (userinfo != null)
                         {
                             if (IsTargetInRange() && card.isTargetSelect)
@@ -354,7 +354,7 @@ public class GameManager : MonoSingleton<GameManager>
                         GameSceneUI.cooltimeAttackStart("CAD00113");
                         packet.UseCardRequest = new C2SUseCardRequest() { CardType = CardType.BossBasicSkill, TargetUserId = -1 };
                         Managers.networkManager.GameServerSend(packet);
-                    }                       
+                    }
                 }
             }
         }
@@ -626,10 +626,10 @@ public class GameManager : MonoSingleton<GameManager>
         switch (result)
         {
             case GameResult.SurvivorsWin:
-                packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
+                packet.ResultRequest = new C2SResultRequest() { ResultType = ResultType.SurvivorWin };
                 break;
             case GameResult.BossWin:
-                packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NotUseCard };
+                packet.ResultRequest = new C2SResultRequest() { ResultType = ResultType.BossWin };
                 break;
         }
 
