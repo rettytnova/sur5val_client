@@ -299,14 +299,14 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
         }
     }
 
-    public void ReactionResponse(GamePacket gamePacket)
+    public void BossRoundResponse(GamePacket gamePacket)
     {
-        var response = gamePacket.ReactionResponse;
+        var response = gamePacket.BossRoundResponse;
         if (response.Success)
         {
             if (UIManager.IsOpened<PopupBattle>())
                 UIManager.Hide<PopupBattle>();
-            GameManager.instance.VisualHiddenRoad(true, (int)response.FailCode);
+            GameManager.instance.VisualHiddenRoad(true, response.ExtranceIdx);
         }
     }
 
@@ -329,207 +329,7 @@ public class SocketManager : TCPSocketManagerBase<SocketManager>
                 targetCharacter.SetDeath();
                 UIGame.instance.SetDeath(users[i].id);
             }
-            targetCharacter.OnVisibleMinimapIcon(Util.GetDistance(myIndex, i, DataManager.instance.users.Count) + users[i].slotFar <= UserInfo.myInfo.slotRange && myIndex != i); // 가능한 거리에 있는 유저 아이콘만 표시
 
-            GamePacket packet = new GamePacket();
-            Action<int, long> callback = (type, userId) =>
-            {
-                if (type == 0 || userId == 0)
-                {
-                    packet.ReactionRequest = new C2SReactionRequest();
-                    packet.ReactionRequest.ReactionType = (ReactionType)type;
-                }
-                else
-                {
-                    packet.UseCardRequest = new C2SUseCardRequest();
-                    packet.UseCardRequest.CardType = (CardType)type;
-                    packet.UseCardRequest.TargetUserId = userId;
-                }
-                Send(packet);
-            };
-            if (users[i].id == UserInfo.myInfo.id)
-            {
-                var user = users[i];
-                var targetId = user.characterData.StateInfo.StateTargetUserId;
-                var targetInfo = DataManager.instance.users.Find(obj => obj.id == targetId);
-                if (user.debuffs.Find(obj => obj.rcode == "CAD00023"))
-                {
-                    UIGame.instance.SetBombButton(true);
-                }
-                else
-                {
-                    UIGame.instance.SetBombButton(false);
-                }
-                switch ((eCharacterState)users[i].characterData.StateInfo.State)
-                {
-                    case eCharacterState.BBANG_SHOOTER: // 뱅 사용 후 대기
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                        }
-                        break;
-                    case eCharacterState.BBANG_TARGET: // 뱅 타겟
-                        {
-                            var card = DataManager.instance.GetData<CardDataSO>("CAD00001");
-                            if (user.handCards.FindAll(obj => obj.rcode == card.defCard).Count >= targetInfo.needShieldCount)
-                            {
-                                targetCharacter.OnChangeState<CharacterStopState>();
-                                UIManager.Show<PopupBattle>(card.rcode, users[i].characterData.StateInfo.StateTargetUserId, callback);
-                            }
-                            else
-                            {
-                                callback.Invoke(0, 0);
-                            }
-                        }
-                        break;
-                    case eCharacterState.DEATH_MATCH: // 현피 대기
-                        {
-                            var card = DataManager.instance.GetData<CardDataSO>("CAD00006");
-                            if (user.handCards.Find(obj => obj.rcode == card.defCard))
-                            {
-                                targetCharacter.OnChangeState<CharacterStopState>();
-                                var ui = await UIManager.Show<PopupBattle>(card.rcode, targetId, callback);
-                                ui.SetActiveControl(false);
-                            }
-                        }
-                        break;
-                    case eCharacterState.DEATH_MATCH_TURN: // 현피 차례
-                        {
-                            var card = DataManager.instance.GetData<CardDataSO>("CAD00006");
-                            if (user.handCards.Find(obj => obj.rcode == card.defCard))
-                            {
-                                targetCharacter.OnChangeState<CharacterStopState>();
-                                var ui = await UIManager.Show<PopupBattle>(card.rcode, targetId, callback);
-                                ui.SetActiveControl(true);
-                            }
-                            else
-                            {
-                                UIManager.Hide<PopupBattle>();
-                                callback.Invoke(0, 0);
-                            }
-                        }
-                        break;
-                    case eCharacterState.FLEA_MARKET_TURN: // 플리마켓 내 턴
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                            var ui = UIManager.Get<PopupPleaMarket>();
-                            if (ui == null)
-                            {
-                                ui = await UIManager.Show<PopupPleaMarket>();
-                            }
-                            var dt = DateTimeOffset.FromUnixTimeMilliseconds(user.characterData.StateInfo.NextStateAt) - DateTime.UtcNow;
-                            ui.SetUserSelectTurn((int)dt.TotalSeconds);
-                        }
-                        break;
-                    case eCharacterState.FLEA_MARKET_WAIT: // 플라마켓 대기
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                            var ui = UIManager.Get<PopupPleaMarket>();
-                            if (ui == null)
-                            {
-                                ui = await UIManager.Show<PopupPleaMarket>();
-                            }
-                        }
-                        break;
-                    case eCharacterState.GUERRILLA_SHOOTER:
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                        }
-                        break;
-                    case eCharacterState.GUERRILLA_TARGET:
-                        {
-                            var card = DataManager.instance.GetData<CardDataSO>("CAD00007");
-                            if (user.handCards.Find(obj => obj.rcode == card.rcode))
-                            {
-                                targetCharacter.OnChangeState<CharacterStopState>();
-                                var ui = await UIManager.Show<PopupBattle>(card.rcode, targetId, callback);
-                                ui.SetActiveControl(true);
-                            }
-                            else
-                            {
-                                UIManager.Hide<PopupBattle>();
-                                callback.Invoke(0, 0);
-                            }
-                        }
-                        break;
-                    case eCharacterState.BIG_BBANG_SHOOTER:
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                        }
-                        break;
-                    case eCharacterState.BIG_BBANG_TARGET:
-                        {
-                            var card = DataManager.instance.GetData<CardDataSO>("CAD00002");
-                            if (user.handCards.Find(obj => obj.rcode == card.rcode))
-                            {
-                                targetCharacter.OnChangeState<CharacterStopState>();
-                                var ui = await UIManager.Show<PopupBattle>(card.rcode, targetId, callback);
-                                ui.SetActiveControl(true);
-                            }
-                            else
-                            {
-                                UIManager.Hide<PopupBattle>();
-                                callback.Invoke(0, 0);
-                            }
-                        }
-                        break;
-                    case eCharacterState.ABSORBING:
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                        }
-                        break;
-                    case eCharacterState.ABSORB_TARGET:
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                        }
-                        break;
-                    case eCharacterState.HALLUCINATING:
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                        }
-                        break;
-                    case eCharacterState.HALLUCINATION_TARGET:
-                        {
-                            targetCharacter.OnChangeState<CharacterStopState>();
-                        }
-                        break;
-                    case eCharacterState.NONE:
-                        {
-                            if (!targetCharacter.IsState<CharacterDeathState>())
-                            {
-                                targetCharacter.OnChangeState<CharacterIdleState>();
-                            }
-                            targetCharacter.OnChangeState<CharacterIdleState>();
-                            if (UIManager.IsOpened<PopupPleaMarket>())
-                                UIManager.Hide<PopupPleaMarket>();
-                            if (UIManager.IsOpened<PopupBattle>())
-                                UIManager.Hide<PopupBattle>();
-                        }
-                        break;
-                    case eCharacterState.CONTAINED:
-                        {
-                            Debug.Log(user.id + " is prison");
-                            GameManager.instance.userCharacter.OnChangeState<CharacterPrisonState>();
-                        }
-                        break;
-                    default:
-                        targetCharacter.OnChangeState<CharacterStopState>();
-                        break;
-                }
-            }
-            else
-            {
-                if (!targetCharacter.IsState<CharacterDeathState>())
-                {
-                    if ((eCharacterState)users[i].characterData.StateInfo.State == eCharacterState.NONE)
-                    {
-                        targetCharacter.OnChangeState<CharacterIdleState>();
-                    }
-                    else
-                    {
-                        targetCharacter.OnChangeState<CharacterStopState>();
-                    }
-                }
-            }
         }
         if (UIGame.instance != null)
             UIGame.instance.UpdateUserSlot(users);

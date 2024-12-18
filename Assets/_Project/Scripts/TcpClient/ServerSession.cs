@@ -296,15 +296,12 @@ public class ServerSession : Session
         }
     }
 
-    public void ReactionResponse(GamePacket gamePacket)
+    public void BossRoundResponse(GamePacket gamePacket)
     {
-        var response = gamePacket.ReactionResponse;
+        var response = gamePacket.BossRoundResponse;
         if (response.Success)
         {
-            if (UIManager.IsOpened<PopupBattle>())
-                UIManager.Hide<PopupBattle>();
-
-            GameManager.instance.VisualHiddenRoad(true, (int)response.FailCode);
+            GameManager.instance.VisualHiddenRoad(true, response.ExtranceIdx);
         }
     }
 
@@ -426,11 +423,11 @@ public class ServerSession : Session
 
     // 애니메이션 표시
     public async void AnimationNotification(GamePacket gamePacket)
+    {
+        var response = gamePacket.AnimationNotification;
+        var target = GameManager.instance.characters[response.UserId].transform;
+        switch (response.AnimationType)
         {
-            var response = gamePacket.AnimationNotification;
-            var target = GameManager.instance.characters[response.UserId].transform;
-            switch (response.AnimationType)
-            {
             case AnimationType.Sur5VerAttackAnimation:
                 {
                     // GameManager.instance.virtualCamera.Target.TrackingTarget = target;

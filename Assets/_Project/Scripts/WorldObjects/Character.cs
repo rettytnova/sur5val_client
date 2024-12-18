@@ -191,7 +191,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     GameManager.instance.SetMapInside(buildingSprite, isInside);
                 }
             }
-            
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingOutsideTrigger"))
             {
                 if (!isInside)
@@ -210,7 +210,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     buildingInsideDeco.sortingOrder = 5;
                 }
             }
-            
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("PlantsTrigger"))
             {
                 if (!isInside)
@@ -223,7 +223,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     plantsTileMap.color = color;
                 }
             }
-            
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
             {
                 if (UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
@@ -231,13 +231,13 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     UIGame.instance.SetShopButton(true);
                 }
             }
-            
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("Extrance"))
             {
                 if (userInfo.roleType == eRoleType.bodyguard)
                 {
                     GamePacket packet = new GamePacket();
-                    packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
+                    packet.ResultRequest = new C2SResultRequest() { ResultType = ResultType.SurvivorWin };
                     Managers.networkManager.GameServerSend(packet);
                 }
             }
@@ -303,7 +303,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                 if (userInfo.roleType == eRoleType.bodyguard)
                 {
                     GamePacket packet = new GamePacket();
-                    packet.ReactionRequest = new C2SReactionRequest() { ReactionType = ReactionType.NoneReaction };
+                    packet.ResultRequest = new C2SResultRequest() { ResultType = ResultType.SurvivorWin };
                     Managers.networkManager.GameServerSend(packet);
                 }
             }
@@ -323,7 +323,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     GameManager.instance.SetMapInside(buildingSprite, isInside);
                 }
             }
-            
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("BuildingOutsideTrigger"))
             {
                 if (isInside)
@@ -342,7 +342,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     buildingInsideDeco.sortingOrder = 2;
                 }
             }
-            
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("PlantsTrigger"))
             {
                 if (isInside)
@@ -355,7 +355,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
                     plantsTileMap.color = color;
                 }
             }
-            
+
             if (collision.gameObject.layer == LayerMask.NameToLayer("Store"))
             {
                 if (UserInfo.myInfo.characterData.RoleType != RoleType.Psychopath)
