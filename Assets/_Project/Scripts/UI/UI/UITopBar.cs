@@ -27,7 +27,7 @@ public class UITopBar : UIBase
 
     public void OnClickNickname()
     {
-        UIManager.Show<PopupNickname>();
+        //UIManager.Show<PopupNickname>();
     }
 
     public void SetUserInfo(UserInfo userInfo)
