@@ -38,6 +38,8 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     public float Speed { get => speed; }
     public bool isInside;
 
+    bool isDeath = false;
+
     private void Awake()
     {
         if (UserInfo.myInfo.roleType == eRoleType.psychopass)
@@ -395,13 +397,32 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     public async void SetDeath()
     {
-        death.SetActive(true);
-        collider.enabled = false;
-        targetMark.SetActive(true);
-        targetMark.GetComponent<SpriteRenderer>().sprite = await ResourceManager.instance.LoadAsset<Sprite>("Role_" + userInfo.roleType.ToString(), eAddressableType.Thumbnail);
-        minimapIcon.gameObject.SetActive(false);
-        ChangeState<CharacterDeathState>();
-        GameManager.instance.CheckBossRound(userInfo);
+        if (!isDeath)
+        {
+            isDeath = true;
+            Death();
+            collider.enabled = false;
+            targetMark.SetActive(true);
+            targetMark.GetComponent<SpriteRenderer>().sprite = await ResourceManager.instance.LoadAsset<Sprite>("Role_" + userInfo.roleType.ToString(), eAddressableType.Thumbnail);
+            minimapIcon.gameObject.SetActive(false);
+            ChangeState<CharacterDeathState>();
+            GameManager.instance.CheckBossRound(userInfo);
+        }
+    }
+
+    private void Death()
+    {
+        // 캐릭터의 첫 번째 자식 오브젝트(이미지)를 가져옴
+        Transform characterImage = transform.GetChild(0);
+        // 이미지를 90도 회전
+        characterImage.rotation = Quaternion.Euler(0, 0, 90);
+        // 이미지의 SpriteRenderer 컴포넌트를 가져와서 색상을 어둡게 변경
+        SpriteRenderer spriteRenderer = characterImage.GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null)
+        {
+            Color darkColor = new Color(0.5f, 0.5f, 0.5f, 1f); // 회색빛 어두운 색상
+            spriteRenderer.color = darkColor;
+        }
     }
 
     protected override T ChangeState<T>()
