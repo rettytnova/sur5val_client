@@ -593,14 +593,15 @@ public class GameManager : MonoSingleton<GameManager>
             }
             else if (userInfo.roleType == eRoleType.bodyguard)
             {
-                // 생존자 모두 사망 시 보스 캐릭터 승리
+                // 생존자 모두 사망 시 보스 캐릭터 승리                
                 survivalDeathCount++;
                 Debug.Log("survivalDeathCount: " + survivalDeathCount);
+                Debug.Log(userInfo.id);
                 // 생존자 수를 계산
                 int survivorCount = DataManager.instance.users.Where(user => user.roleType == eRoleType.bodyguard).Count();
                 if (survivalDeathCount == survivorCount)
                 {
-                    SetResult(GameResult.BossWin);
+                    //SetResult(GameResult.BossWin);
                 }
             }
         }
