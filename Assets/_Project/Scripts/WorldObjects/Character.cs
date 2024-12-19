@@ -41,7 +41,7 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
     private void Awake()
     {
         if (UserInfo.myInfo.roleType == eRoleType.psychopass)
-            speed = 3.6f;
+            speed = 4.0f;
         else if (UserInfo.myInfo.roleType == eRoleType.bodyguard)
             speed = 3.0f;
         else
