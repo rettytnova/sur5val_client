@@ -40,6 +40,13 @@ public class Character : FSMController<CharacterState, CharacterFSM, CharacterDa
 
     private void Awake()
     {
+        if (UserInfo.myInfo.roleType == eRoleType.psychopass)
+            speed = 3.6f;
+        else if (UserInfo.myInfo.roleType == eRoleType.bodyguard)
+            speed = 3.0f;
+        else
+            speed = 3.0f;
+
         agent.updateRotation = false;
         agent.updateUpAxis = false;
         if (characterType == eCharacterType.npc) minimapIcon.gameObject.SetActive(false);
