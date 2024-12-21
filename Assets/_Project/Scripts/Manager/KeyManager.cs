@@ -215,13 +215,16 @@ public class KeyManager
         switch (quickSlot)
         {
             case en_QuickSlot.QUICK_SLOT_UI_INVENTORY:
-                if (UIManager.IsOpened<PopupDeck>())
+                if (GameSceneUI.uiChattingInput.gameObject.activeSelf == false)
                 {
-                    UIManager.Hide<PopupDeck>();
-                    return;
-                }
+                    if (UIManager.IsOpened<PopupDeck>())
+                    {
+                        UIManager.Hide<PopupDeck>();
+                        return;
+                    }
 
-                await UIManager.Show<PopupDeck>();
+                    await UIManager.Show<PopupDeck>();
+                }                    
                 break;
             case en_QuickSlot.QUICK_SLOT_SKILL_USE:
                 UIGame.instance.OnCardUse();
